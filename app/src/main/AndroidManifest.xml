@@ -67,7 +67,6 @@
             android:exported="true"
             android:theme="@style/Theme.Intro"/>
 
-
         <activity
             android:name=".ui.main.PilihUserActivity"
             android:theme="@style/Theme.Intro" >
