@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fero.skripsi" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Skripsi" >
+        <activity
+            android:name=".ui.pelanggan.EditDataPelangganActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.pelanggan.DetailPenjahitPelangganActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Intro"/>
+        <activity
+            android:name=".ui.penjahit.EditDataPenjahitActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.penjahit.DetailPenjahitActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.pelanggan.RegisterPelangganActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Intro"/>
+        <activity
+            android:name=".ui.pelanggan.LoginPelangganActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Intro"/>
+
+<!--        <activity-->
+<!--            android:name=".ui.main.PilihUserActivity"-->
+<!--            android:exported="true" />-->
+
+        <activity
+            android:name=".ui.penjahit.RegisterPenjahitActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Intro"/>
+        <activity
+            android:name=".ui.penjahit.LoginPenjahitActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Intro"/>
+        <activity
+            android:name=".ui.landingpage.IntroActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Intro" />
+
+        <activity
+            android:name=".ui.main.HomePelangganActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Intro"/>
+
+        <activity
+            android:name=".ui.main.HomePenjahitActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Intro"/>
+
+        <activity
+            android:name=".ui.splashscreen.SplashScreenActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Intro"/>
+
+
+        <activity
+            android:name=".ui.main.PilihUserActivity"
+            android:theme="@style/Theme.Intro" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.HomePelangganActivity">
+
+    <!--Top Nav-->
+    <LinearLayout
+        android:id="@+id/top_header"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="8dp"
+        android:clipToPadding="false">
+
+        <TextView
+            android:id="@+id/tv_hi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hi,"
+            android:textSize="18sp"
+            android:textColor="#1C213F"
+            android:fontFamily="@font/gilroy_medium"/>
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="Feronika"
+            android:textSize="18sp"
+            android:textColor="#1C213F"
+            android:fontFamily="@font/gilroy_medium"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_pelanggan"
+            android:transitionName="userIconTransition"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:elevation="2dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/white"
+            tools:src="@tools:sample/avatars"/>
+    </LinearLayout>
+
+    <!--Top Nav-->
+    <LinearLayout
+        android:id="@+id/top_header2"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="8dp"
+        android:layout_below="@id/top_header"
+        android:clipToPadding="false">
+
+        <TextView
+            android:id="@+id/tv_hi2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hi,"
+            android:textSize="18sp"
+            android:textColor="#1C213F"
+            android:fontFamily="@font/gilroy_medium"/>
+
+        <TextView
+            android:id="@+id/tv_username2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="Feronika"
+            android:textSize="18sp"
+            android:textColor="#1C213F"
+            android:fontFamily="@font/gilroy_medium"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_pelanggan2"
+            android:transitionName="userIconTransition"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:elevation="2dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/white"
+            tools:src="@tools:sample/avatars"/>
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_below="@id/top_header2">
+    </FrameLayout>
+
+
+    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:mbn_countBackgroundColor="#ff6f00"
+        app:mbn_countTextColor="#ffffff"
+        app:mbn_defaultIconColor="#90a4ae"
+        app:mbn_rippleColor="#2f424242"
+        app:mbn_selectedIconColor="#67478F"
+        app:mbn_shadowColor="#1f212121" />
+
+</RelativeLayout>
