@@ -1,10 +1,12 @@
 package com.fero.skripsi.ui.pelanggan
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fero.skripsi.R
@@ -14,18 +16,16 @@ import com.fero.skripsi.model.Kategori
 import com.fero.skripsi.model.Nilai
 import com.fero.skripsi.model.Pelanggan
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_detail_penjahit.*
 
 
 class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBinding>() {
 
     private lateinit var viewModel: DashboardPelangganViewModel
     private var imageList = intArrayOf(R.drawable.img_slider1, R.drawable.img_slider2)
-
-//    private val extraArgument: Pelanggan by lazy {
-//        Gson().fromJson(
-//            arguments?.getString("BUNDLE_REGISTER"), Pelanggan::class.java
-//        )
-//    }
+    private val dataPelanggan by lazy {
+        baseGetInstance<Pelanggan>("EXTRA_PELANGGAN_DASHBOARD")
+    }
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
@@ -44,7 +44,7 @@ class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBindin
             })
 
             listNilai.observe(viewLifecycleOwner, {
-                setupRvPenjahit(it)
+                setupRvPenjahit(it, dataPelanggan)
                 binding.tvRekomendasi.visibility = View.VISIBLE
             })
 
@@ -69,8 +69,10 @@ class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBindin
         viewModel.getDataPenjahit()
     }
 
+    override fun setupUI(view: View, savedInstanceState: Bundle?) {
 
-    override fun setupUI(savedInstanceState: Bundle?) {
+        Log.d("Data Pelanggan : ", dataPelanggan.toString())
+
         binding.apply {
             viewFlipper.setInAnimation(context, android.R.anim.slide_in_left)
             viewFlipper.setOutAnimation(context, android.R.anim.slide_out_right)
@@ -81,6 +83,8 @@ class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBindin
                 viewFlipper.flipInterval = 5000
                 viewFlipper.isAutoStart = true
             }
+
+            tvNamaPelanggan.text = dataPelanggan.nama_pelanggan
         }
 
 //        binding.tvText.text = extraArgument.nama_pelanggan
@@ -101,14 +105,31 @@ class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBindin
         }
     }
 
-    private fun setupRvPenjahit(data: List<Nilai>) {
+    private fun setupRvPenjahit(data: List<Nilai>, dataPelanggan: Pelanggan) {
         val rekomendasiPenjahitAdapter = RekomendasiPenjahitAdapter()
+        rekomendasiPenjahitAdapter.setupDataPelanggan(dataPelanggan)
         rekomendasiPenjahitAdapter.setPenjahit(data)
 
         binding.rvPenjahit.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = rekomendasiPenjahitAdapter
         }
+
+        rekomendasiPenjahitAdapter.setOnItemClickCallback(object :
+            RekomendasiPenjahitAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Nilai) {
+                selectedPenjahit(data)
+            }
+
+        })
+
+
+    }
+
+    private fun selectedPenjahit(data: Nilai) {
+        Toast.makeText(context, "Kamu memilih " + data.nama_penjahit, Toast.LENGTH_SHORT).show()
+        Log.d("Test", "CLICK FROM ADAPTER")
+
     }
 
     companion object {

@@ -39,7 +39,7 @@ class LoginPenjahitActivity : AppCompatActivity() {
                     val idPenjahit = it.id_penjahit.toString()
                     val namaPenjahit = it.nama_penjahit
 
-                    prefHelper.put(PREF_ID_PENJAHIT, idPenjahit!!)
+                    prefHelper.put(PREF_ID_PENJAHIT, idPenjahit)
                     prefHelper.put(PREF_NAMA_PENJAHIT, namaPenjahit!!)
 
                     val moveIntent = Intent(this@LoginPenjahitActivity, HomePenjahitActivity::class.java)
@@ -47,16 +47,6 @@ class LoginPenjahitActivity : AppCompatActivity() {
                     startActivity(moveIntent)
 
                 }
-
-                val idPenjahit = it.id_penjahit.toString()
-                val namaPenjahit = it.nama_penjahit
-
-                prefHelper.put(PREF_ID_PENJAHIT, idPenjahit!!)
-                prefHelper.put(PREF_NAMA_PENJAHIT, namaPenjahit!!)
-
-                val moveIntent = Intent(this@LoginPenjahitActivity, HomePenjahitActivity::class.java)
-                moveIntent.putExtra("EXTRA_LOGIN_PENJAHIT", it)
-                startActivity(moveIntent)
             })
 
             messageSuccess.observe(this@LoginPenjahitActivity, {
@@ -98,8 +88,8 @@ class LoginPenjahitActivity : AppCompatActivity() {
     }
 
     private fun saveSession(emailPenjahit: String, passwordPenjahit: String) {
-        prefHelper.put(PrefHelper.PREF_EMAIL_PELANGGAN, emailPenjahit)
-        prefHelper.put(PrefHelper.PREF_PASSWORD_PELANGGAN, passwordPenjahit)
-        prefHelper.put(PrefHelper.PREF_IS_LOGIN_PELANGGAN, true)
+        prefHelper.put(PrefHelper.PREF_EMAIL_PENJAHIT, emailPenjahit)
+        prefHelper.put(PrefHelper.PREF_PASSWORD_PENJAHIT, passwordPenjahit)
+        prefHelper.put(PrefHelper.PREF_IS_LOGIN_PENJAHIT, true)
     }
 }

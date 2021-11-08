@@ -13,6 +13,7 @@ import com.fero.skripsi.model.Penjahit
 import com.fero.skripsi.ui.pelanggan.ProfilePelangganFragment
 import com.fero.skripsi.ui.penjahit.TransaksiPenjahitFragment
 import com.fero.skripsi.ui.penjahit.DashboardPenjahitFragment
+import com.fero.skripsi.ui.penjahit.KategoriPenjahitFragment
 import com.fero.skripsi.ui.penjahit.ProfilePenjahitFragment
 import com.fero.skripsi.utils.Constant
 import com.fero.skripsi.utils.PrefHelper
@@ -55,8 +56,9 @@ class HomePenjahitActivity : BaseActivity<ActivityHomePenjahitBinding>() {
         binding.apply {
             bottomNavigation.show(0)
             bottomNavigation.add(MeowBottomNavigation.Model(0, R.drawable.ic_home))
-            bottomNavigation.add(MeowBottomNavigation.Model(1, R.drawable.ic_add))
-            bottomNavigation.add(MeowBottomNavigation.Model(2, R.drawable.ic_profile))
+            bottomNavigation.add(MeowBottomNavigation.Model(1, R.drawable.ic_order))
+            bottomNavigation.add(MeowBottomNavigation.Model(2, R.drawable.ic_add))
+            bottomNavigation.add(MeowBottomNavigation.Model(3, R.drawable.ic_profile))
 
             bottomNavigation.setOnClickMenuListener {
                 when (it.id) {
@@ -67,7 +69,10 @@ class HomePenjahitActivity : BaseActivity<ActivityHomePenjahitBinding>() {
                         replaceFragment(TransaksiPenjahitFragment.newInstance())
                     }
                     2 -> {
-                        replaceFragment(ProfilePenjahitFragment.newInstance())
+                        replaceFragment(KategoriPenjahitFragment.newInstance())
+                    }
+                    3 -> {
+                        replaceFragment(profilePenjahitFragment)
                     }
                     else -> {
                         replaceFragment(DashboardPenjahitFragment.newInstance())

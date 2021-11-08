@@ -51,13 +51,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_gojahit"
             android:layout_gravity="center"
-            android:orientation="vertical"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/background_card"
             android:elevation="5dp"
+            android:orientation="vertical"
             android:padding="20dp">
 
             <TextView
@@ -66,6 +66,17 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/gilroy_bold"
                 android:text="Edit Data"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_nama_penjahit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/gilroy_bold"
+                android:text="Nama Penjahit"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
@@ -122,6 +133,18 @@
                 android:layout_height="wrap_content"
                 android:inputType="text" />
 
+            <EditText
+                android:id="@+id/et_latitude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/et_longitude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
             <ImageButton
                 android:id="@+id/btn_get_loc"
                 android:layout_width="50dp"
@@ -156,82 +179,6 @@
                 android:inputType="text" />
 
             <TextView
-                android:id="@+id/tv_kategori"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Kategori" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <CheckBox
-                        android:id="@+id/cb_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Kemeja" />
-
-                    <CheckBox
-                        android:id="@+id/cb_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Celana" />
-
-                    <CheckBox
-                        android:id="@+id/cb_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rok" />
-
-                    <CheckBox
-                        android:id="@+id/cb_4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Seragam" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:orientation="vertical">
-
-                    <CheckBox
-                        android:id="@+id/cb_5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Dress" />
-
-                    <CheckBox
-                        android:id="@+id/cb_6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Kaos" />
-
-                    <CheckBox
-                        android:id="@+id/cb_7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Jaket" />
-
-                    <CheckBox
-                        android:id="@+id/cb_8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Kaos" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <TextView
                 android:id="@+id/tv_jangkauan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -255,7 +202,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Jangkauan" />
+                android:text="Spesifikasi" />
 
             <CheckBox
                 android:id="@+id/cb_spek_1"

@@ -64,7 +64,7 @@ class DashboardPenjahitFragment : BaseFragment<FragmentDashboardPenjahitBinding>
 
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
+    override fun setupUI(view: View, savedInstanceState: Bundle?) {
         binding.apply {
             viewFlipper.setInAnimation(context, android.R.anim.slide_in_left)
             viewFlipper.setOutAnimation(context, android.R.anim.slide_out_right)

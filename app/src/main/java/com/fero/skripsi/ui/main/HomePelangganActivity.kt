@@ -2,6 +2,7 @@ package com.fero.skripsi.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
@@ -10,10 +11,7 @@ import com.fero.skripsi.core.BaseActivity
 import com.fero.skripsi.databinding.ActivityHomePelangganBinding
 import com.fero.skripsi.model.Nilai
 import com.fero.skripsi.model.Pelanggan
-import com.fero.skripsi.ui.pelanggan.DashboardPelangganFragment
-import com.fero.skripsi.ui.pelanggan.DetailPenjahitPelangganActivity
-import com.fero.skripsi.ui.pelanggan.ProfilePelangganFragment
-import com.fero.skripsi.ui.pelanggan.TransaksiPelangganFragment
+import com.fero.skripsi.ui.pelanggan.*
 import com.fero.skripsi.utils.Constant
 import com.fero.skripsi.utils.PrefHelper
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_EMAIL_PELANGGAN
@@ -39,7 +37,7 @@ class HomePelangganActivity : BaseActivity<ActivityHomePelangganBinding>() {
 
     override fun setupUI(savedInstanceState: Bundle?) {
 
-        val dashboardPelangganFragment = DashboardPelangganFragment.newInstance()
+        val dashboardPelangganFragment = DashboardPelangganFragment()
         val transaksiPelangganFragment = TransaksiPelangganFragment.newInstance()
         val profilePelangganFragment = ProfilePelangganFragment.newInstance()
 
@@ -58,9 +56,13 @@ class HomePelangganActivity : BaseActivity<ActivityHomePelangganBinding>() {
         val bundleData = Gson().toJson(extraData)
         bundle.putString("EXTRA_PELANGGAN", bundleData)
         profilePelangganFragment.arguments = bundle
+        transaksiPelangganFragment.arguments = bundle
+
+        dashboardPelangganFragment.baseNewInstance("EXTRA_PELANGGAN_DASHBOARD",extraData)
+        extraData.nama_pelanggan?.let { Log.d("EXTRA PELANGGAN DASH", it) }
 
 
-        addFragment(DashboardPelangganFragment.newInstance())
+        addFragment(dashboardPelangganFragment)
         binding.apply {
             bottomNavigation.show(0)
             bottomNavigation.add(MeowBottomNavigation.Model(0, R.drawable.ic_home))
@@ -70,7 +72,7 @@ class HomePelangganActivity : BaseActivity<ActivityHomePelangganBinding>() {
             bottomNavigation.setOnClickMenuListener {
                 when (it.id) {
                     0 -> {
-                        replaceFragment(DashboardPelangganFragment.newInstance())
+                        replaceFragment(dashboardPelangganFragment)
                     }
                     1 -> {
                         replaceFragment(transaksiPelangganFragment)
@@ -79,7 +81,7 @@ class HomePelangganActivity : BaseActivity<ActivityHomePelangganBinding>() {
                         replaceFragment(profilePelangganFragment)
                     }
                     else -> {
-                        replaceFragment(DashboardPelangganFragment.newInstance())
+                        replaceFragment(dashboardPelangganFragment)
                     }
                 }
             }

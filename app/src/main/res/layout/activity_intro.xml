@@ -7,24 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".ui.landingpage.IntroActivity">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/tv_intro_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/rubik_regular"
+        android:background="@drawable/custom_button_skip"
+        android:clickable="true"
+        android:fontFamily="@font/gilroy_medium"
         android:text="@string/skip_intro"
-        android:textAppearance="@style/skip_intro"
+        android:textAppearance="@style/button_skip"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_intro"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:overScrollMode="never"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,25 +35,29 @@
         android:id="@+id/indicatorsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="40dp"
         android:gravity="center"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/btn_intro_next"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vp_intro"/>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_intro_next"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:background="@drawable/custom_button_register_login"
-        android:fontFamily="@font/rubik_regular"
-        android:text="@string/next_intro"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/gilroy_medium"
         android:gravity="center_horizontal|center"
+        android:text="@string/next_intro"
+        android:clickable="true"
+        android:focusable="true"
         android:textAppearance="@style/button_login_register"
-        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/indicatorsContainer"/>
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

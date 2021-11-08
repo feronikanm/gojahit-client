@@ -25,7 +25,7 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
     abstract fun setupViewModel()
 
-    abstract fun setupUI(savedInstanceState: Bundle?)
+    abstract fun setupUI(view: View, savedInstanceState: Bundle?)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +39,7 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupUI(savedInstanceState)
+        setupUI(view, savedInstanceState)
     }
 
     override fun onDestroy() {

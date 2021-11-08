@@ -126,15 +126,15 @@
                 android:id="@+id/et_latitude"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:enabled="false"/>
+                android:inputType="text" />
+
+<!--            android:enabled="false"-->
 
             <EditText
                 android:id="@+id/et_longitude"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:enabled="false"/>
+                android:inputType="text" />
 
             <ImageButton
                 android:id="@+id/btn_get_loc"

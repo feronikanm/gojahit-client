@@ -1,6 +1,6 @@
 <resources>
+    <string name="application_name">GoJahit</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="skip_intro">skip</string>
     <string name="next_intro">Next</string>
     <string name="title_intro">Title Intro</string>
@@ -11,6 +11,11 @@
     <string name="reg_pelanggan_text">Already have an account? <b>Login</b></string>
     <string name="reg_penjahit_text">Already have an account? <b>Login</b></string>
     <string name="see_all"><b><u>See All</u></b></string>
+
+    <string name="home">Home</string>
+    <string name="profile">Profil</string>
+    <string name="transaction">Transaksi</string>
+
 
     <!--    <string name="about">Designed by <a href="https://github.com/feronikanm">feronikanm</a></string>-->
     <!--    <string name="about_us"><font fgcolor="#039BE5">Designed by </font><font fgcolor="#000000"><a href="https://github.com/feronikanm">feronikanm</a></font></string>-->

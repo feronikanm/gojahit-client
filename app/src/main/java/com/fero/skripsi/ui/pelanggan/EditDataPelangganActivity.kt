@@ -39,7 +39,6 @@ class EditDataPelangganActivity : AppCompatActivity() {
     companion object {
         //image pick code
         private val IMAGE_PICK_CODE = 1000
-
         //Permission code
         private val PERMISSION_CODE = 1001
 
@@ -85,10 +84,14 @@ class EditDataPelangganActivity : AppCompatActivity() {
             })
         }
 
-
         val extraData: Pelanggan? = intent.extras?.getParcelable(EXTRA_DATA_PELANGGAN)
 
         binding.tvNamaPelanggan.text = extraData!!.nama_pelanggan
+        binding.etNama.setText(extraData.nama_pelanggan)
+        binding.etTelepon.setText(extraData.telp_pelanggan)
+        binding.etAlamat.setText(extraData.alamat_pelanggan)
+        binding.etLatitude.setText(extraData.latitude_pelanggan)
+        binding.etLongitude.setText(extraData.longitude_pelanggan)
 
         initLocationProviderClient()
         binding.btnGetLoc.setOnClickListener {

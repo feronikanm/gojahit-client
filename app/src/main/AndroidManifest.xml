@@ -9,7 +9,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/application_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Skripsi" >
@@ -35,10 +35,6 @@
             android:exported="true"
             android:theme="@style/Theme.Intro"/>
 
-<!--        <activity-->
-<!--            android:name=".ui.main.PilihUserActivity"-->
-<!--            android:exported="true" />-->
-
         <activity
             android:name=".ui.penjahit.RegisterPenjahitActivity"
             android:exported="true"
@@ -61,6 +57,10 @@
             android:name=".ui.main.HomePenjahitActivity"
             android:exported="true"
             android:theme="@style/Theme.Intro"/>
+
+<!--        <activity-->
+<!--            android:name=".ui.main.PilihUserActivity"-->
+<!--            android:exported="true" />-->
 
         <activity
             android:name=".ui.splashscreen.SplashScreenActivity"

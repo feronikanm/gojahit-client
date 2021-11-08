@@ -99,7 +99,6 @@ class AuthPelangganViewModel(private val repository: Repository) : ViewModel() {
             }
 
         })
-
     }
 
 }

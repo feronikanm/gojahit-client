@@ -38,8 +38,9 @@ class PenjahitAdapter : RecyclerView.Adapter<PenjahitAdapter.PenjahitViewHolder>
     inner class PenjahitViewHolder(private var binding: ItemRowPenjahitBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Nilai){
             binding.apply {
-                tvPenjahitName.text = data.nama_penjahit
-                tvToko.text = data.nama_toko
+                tvNamaPenjahit.text = data.nama_penjahit
+                tvNamaToko.text = data.nama_toko
+                tvRating.text = data.nilai_akhir.toString()
 
                 Glide.with(itemView.context)
                     .load("${Constant.IMAGE_PENJAHIT}${data.foto_penjahit}")

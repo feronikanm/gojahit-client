@@ -3,13 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/img_slide_intro"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="100dp"
         android:contentDescription="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
         android:lineSpacingExtra="4sp"
         android:text="@string/title_intro_desc"
         android:textColor="#78746D"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:translationY="-2.21sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
