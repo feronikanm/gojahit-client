@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
-import com.fero.skripsi.ui.penjahit.DashboardPenjahitViewModel
 import com.fero.skripsi.utils.ViewModelFactory
 import com.google.gson.Gson
 

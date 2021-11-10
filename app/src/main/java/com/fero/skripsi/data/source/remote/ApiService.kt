@@ -2,6 +2,8 @@ package com.fero.skripsi.data.source.remote
 
 import com.fero.skripsi.model.*
 import com.fero.skripsi.utils.Constant
+import com.fero.skripsi.utils.Constant.URL_DETAIL_KATEGORI_GET
+import com.fero.skripsi.utils.Constant.URL_DETAIL_KATEGORI_GET_BY_PENJAHIT
 import com.fero.skripsi.utils.Constant.URL_KATEGORI_GET
 import com.fero.skripsi.utils.Constant.URL_PELANGGAN_GET
 import com.fero.skripsi.utils.Constant.URL_PELANGGAN_INSERT
@@ -107,10 +109,12 @@ interface ApiService {
         ): Call<Success<Penjahit>>
 
 
+    @GET(URL_DETAIL_KATEGORI_GET_BY_PENJAHIT)
+    fun getDetailKategori(
+        @Path("id_penjahit") id_penjahit_path: Int,
+    ): Observable<List<DetailKategori>>
 
-//    @GET(URL_DETAIL_KATEGORI_GET)
-//    fun getDetailKategori(): Call<List<DetailKategori>>
-//
+
 //    @FormUrlEncoded
 //    @POST(ApiEndPoint.URL_DETAIL_KATEGORI_INSERT)
 //    fun registerDetailKategori(

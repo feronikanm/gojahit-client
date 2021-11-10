@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@color/loginBkColor"
     android:focusableInTouchMode="true"
-    tools:context=".ui.penjahit.EditDataPenjahitActivity">
+    tools:context=".ui.penjahit.auth.EditDataPenjahitActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -1,6 +1,5 @@
 package com.fero.skripsi.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,12 +8,12 @@ import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.fero.skripsi.R
 import com.fero.skripsi.core.BaseActivity
 import com.fero.skripsi.databinding.ActivityHomePelangganBinding
-import com.fero.skripsi.model.Nilai
 import com.fero.skripsi.model.Pelanggan
-import com.fero.skripsi.ui.pelanggan.*
+import com.fero.skripsi.ui.pelanggan.dashboard.DashboardPelangganFragment
+import com.fero.skripsi.ui.pelanggan.auth.ProfilePelangganFragment
+import com.fero.skripsi.ui.pelanggan.transaksi.TransaksiPelangganFragment
 import com.fero.skripsi.utils.Constant
 import com.fero.skripsi.utils.PrefHelper
-import com.fero.skripsi.utils.PrefHelper.Companion.PREF_EMAIL_PELANGGAN
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_ID_PELANGGAN
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_NAMA_PELANGGAN
 import com.google.gson.Gson

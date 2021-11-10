@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.fero.skripsi.databinding.ActivityPilihUserBinding
-import com.fero.skripsi.ui.pelanggan.LoginPelangganActivity
-import com.fero.skripsi.ui.penjahit.LoginPenjahitActivity
+import com.fero.skripsi.ui.pelanggan.auth.LoginPelangganActivity
+import com.fero.skripsi.ui.penjahit.auth.LoginPenjahitActivity
 
 class PilihUserActivity : AppCompatActivity() {
 

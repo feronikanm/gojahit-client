@@ -43,7 +43,6 @@ class RemoteDataSource(context: Context) : DataSource {
                     }
                     EspressoIdlingResource.decrement()
                 }
-
                 override fun onFailure(code: Int, errorMessage: String) {
                     callback.onFailed(code, errorMessage)
                     EspressoIdlingResource.decrement()
@@ -137,11 +136,7 @@ class RemoteDataSource(context: Context) : DataSource {
 
     }
 
-    override fun loginPelanggan(
-        email: String,
-        password: String,
-        responseCallback: ResponseCallback<Pelanggan>
-    ) {
+    override fun loginPelanggan(email: String, password: String, responseCallback: ResponseCallback<Pelanggan>) {
 
         EspressoIdlingResource.increment()
 
@@ -250,11 +245,7 @@ class RemoteDataSource(context: Context) : DataSource {
         })
     }
 
-    override fun loginPenjahit(
-        email: String,
-        password: String,
-        responseCallback: ResponseCallback<Penjahit>
-    ) {
+    override fun loginPenjahit(email: String, password: String, responseCallback: ResponseCallback<Penjahit>) {
         EspressoIdlingResource.increment()
 
         responseCallback.onShowProgress()
@@ -372,5 +363,31 @@ class RemoteDataSource(context: Context) : DataSource {
 
         })
     }
+
+    override fun getListDetailKategori(data: Penjahit, callback: ResponseCallback<List<DetailKategori>>){
+        EspressoIdlingResource.increment()
+        apiService.getDetailKategori(data.id_penjahit!!)
+            .subscribeOn(Schedulers.io())
+            .doOnSubscribe { callback.onShowProgress() }
+            .doOnTerminate { callback.onHideProgress() }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object :
+            ApiCallback<List<DetailKategori>>(){
+            override fun onSuccess(data: List<DetailKategori>) {
+                if (data.isNotEmpty()) {
+                    callback.onSuccess(data)
+                    callback.isEmptyData(false)
+                } else {
+                    callback.isEmptyData(true)
+                }
+                EspressoIdlingResource.decrement()
+            }
+            override fun onFailure(code: Int, errorMessage: String) {
+                callback.onFailed(code, errorMessage)
+                EspressoIdlingResource.decrement()
+            }
+        })
+    }
+
 
 }

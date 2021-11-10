@@ -4,110 +4,124 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:layout_gravity="center"
+    android:padding="16dp"
     tools:context=".ui.main.PilihUserActivity">
 
-    <RelativeLayout
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/layout_user1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/img_user1round"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/img_user1"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/img_user1round" />
+            android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="210dp"
-            android:background="@drawable/background_with_shadow"
-            android:orientation="vertical"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="8dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="8dp">
+            <ImageView
+                android:id="@+id/img_user1"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_user1round" />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pengguna"
-                android:fontFamily="@font/gilroy_bold"
-                android:lineSpacingExtra="4sp"
-                android:textAppearance="@style/intro_title"
-                android:translationY="1.78sp"
-                android:textSize="20sp"/>
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="210dp"
+                android:background="@drawable/background_with_shadow"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Pilih ini jika ingin mencari dan melakukan jahitan"
-                android:fontFamily="@font/gilroy_medium"/>
-        </LinearLayout>
-    </RelativeLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:lineSpacingExtra="4sp"
+                    android:text="Pengguna"
+                    android:textAppearance="@style/intro_title"
+                    android:textSize="20sp"
+                    android:translationY="1.78sp" />
 
-    <RelativeLayout
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:text="Pilih ini jika ingin mencari dan melakukan jahitan" />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/layout_user2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_user1">
 
-        <ImageView
-            android:id="@+id/img_user2"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/img_user2round" />
+            android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="210dp"
-            android:background="@drawable/background_with_shadow"
-            android:orientation="vertical"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="8dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="8dp">
+            <ImageView
+                android:id="@+id/img_user2"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_user2round" />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Penjahit"
-                android:fontFamily="@font/gilroy_bold"
-                android:lineSpacingExtra="4sp"
-                android:textAppearance="@style/intro_title"
-                android:translationY="1.78sp"
-                android:textSize="20sp"/>
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="210dp"
+                android:background="@drawable/background_with_shadow"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Pilih ini jika ingin daftar sebagai penjahit"
-                android:fontFamily="@font/gilroy_medium"/>
-        </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:lineSpacingExtra="4sp"
+                    android:text="Penjahit"
+                    android:textAppearance="@style/intro_title"
+                    android:textSize="20sp"
+                    android:translationY="1.78sp" />
 
-    </RelativeLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:text="Pilih ini jika ingin daftar sebagai penjahit" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

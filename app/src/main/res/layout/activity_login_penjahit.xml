@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/loginBkColor"
     android:focusableInTouchMode="true"
-    tools:context=".ui.penjahit.LoginPenjahitActivity">
+    tools:context=".ui.penjahit.auth.LoginPenjahitActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="50dp"
             android:layout_marginRight="30dp"
             android:fontFamily="@font/gilroy_bold"
             android:maxLines="1"
@@ -62,18 +62,23 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/gilroy_bold"
                 android:text="Login Penjahit"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_sign_in" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/ti_email_penjahit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 app:boxStrokeColor="@color/primaryTextColor"
                 app:errorEnabled="true"
                 app:hintTextColor="@color/primaryTextColor">
@@ -85,7 +90,7 @@
                     android:background="@color/white"
                     android:fontFamily="@font/gilroy_medium"
                     android:hint="Email"
-                    android:text="agus@agus.com"
+                    android:text="widyanatasha99@gmail.com"
                     android:inputType="textEmailAddress"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -94,10 +99,9 @@
                 android:id="@+id/ti_password_penjahit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 app:boxStrokeColor="@color/primaryTextColor"
                 app:counterEnabled="true"
-                app:counterMaxLength="8"
+                app:counterMaxLength="15"
                 app:errorEnabled="true"
                 app:hintTextColor="@color/primaryTextColor"
                 app:passwordToggleEnabled="true"
@@ -110,7 +114,7 @@
                     android:background="@color/white"
                     android:fontFamily="@font/gilroy_medium"
                     android:hint="Password"
-                    android:text="agus1234"
+                    android:text="widyanatasha123"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     app:hintAnimationEnabled="true"

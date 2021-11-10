@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@color/loginBkColor"
     android:focusableInTouchMode="true"
-    tools:context=".ui.pelanggan.EditDataPelangganActivity">
+    tools:context=".ui.pelanggan.auth.EditDataPelangganActivity">
 
 
     <RelativeLayout

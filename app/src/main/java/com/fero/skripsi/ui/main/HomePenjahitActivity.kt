@@ -7,14 +7,11 @@ import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.fero.skripsi.R
 import com.fero.skripsi.core.BaseActivity
 import com.fero.skripsi.databinding.ActivityHomePenjahitBinding
-import com.fero.skripsi.model.Nilai
-import com.fero.skripsi.model.Pelanggan
 import com.fero.skripsi.model.Penjahit
-import com.fero.skripsi.ui.pelanggan.ProfilePelangganFragment
-import com.fero.skripsi.ui.penjahit.TransaksiPenjahitFragment
-import com.fero.skripsi.ui.penjahit.DashboardPenjahitFragment
-import com.fero.skripsi.ui.penjahit.KategoriPenjahitFragment
-import com.fero.skripsi.ui.penjahit.ProfilePenjahitFragment
+import com.fero.skripsi.ui.penjahit.transaksi.TransaksiPenjahitFragment
+import com.fero.skripsi.ui.penjahit.dashboard.DashboardPenjahitFragment
+import com.fero.skripsi.ui.penjahit.kategori.KategoriPenjahitFragment
+import com.fero.skripsi.ui.penjahit.auth.ProfilePenjahitFragment
 import com.fero.skripsi.utils.Constant
 import com.fero.skripsi.utils.PrefHelper
 import com.google.gson.Gson
@@ -37,6 +34,9 @@ class HomePenjahitActivity : BaseActivity<ActivityHomePenjahitBinding>() {
 
     override fun setupUI(savedInstanceState: Bundle?) {
 
+        val dashboardPenjahitFragment = DashboardPenjahitFragment.newInstance()
+        val transaksiPenjahitFragment = TransaksiPenjahitFragment.newInstance()
+        val kategoriPenjahitFragment = KategoriPenjahitFragment.newInstance()
         val profilePenjahitFragment = ProfilePenjahitFragment.newInstance()
 
         prefHelper = PrefHelper(this)
@@ -52,7 +52,9 @@ class HomePenjahitActivity : BaseActivity<ActivityHomePenjahitBinding>() {
         bundle.putString("EXTRA_PENJAHIT", bundleData)
         profilePenjahitFragment.arguments = bundle
 
-        addFragment(DashboardPenjahitFragment.newInstance())
+        kategoriPenjahitFragment.baseNewInstance("EXTRA_PENJAHIT_KATEGORI", extraData)
+
+        addFragment(dashboardPenjahitFragment)
         binding.apply {
             bottomNavigation.show(0)
             bottomNavigation.add(MeowBottomNavigation.Model(0, R.drawable.ic_home))
@@ -63,19 +65,19 @@ class HomePenjahitActivity : BaseActivity<ActivityHomePenjahitBinding>() {
             bottomNavigation.setOnClickMenuListener {
                 when (it.id) {
                     0 -> {
-                        replaceFragment(DashboardPenjahitFragment.newInstance())
+                        replaceFragment(dashboardPenjahitFragment)
                     }
                     1 -> {
-                        replaceFragment(TransaksiPenjahitFragment.newInstance())
+                        replaceFragment(transaksiPenjahitFragment)
                     }
                     2 -> {
-                        replaceFragment(KategoriPenjahitFragment.newInstance())
+                        replaceFragment(kategoriPenjahitFragment)
                     }
                     3 -> {
                         replaceFragment(profilePenjahitFragment)
                     }
                     else -> {
-                        replaceFragment(DashboardPenjahitFragment.newInstance())
+                        replaceFragment(dashboardPenjahitFragment)
                     }
                 }
             }

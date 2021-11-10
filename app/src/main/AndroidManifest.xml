@@ -14,33 +14,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Skripsi" >
         <activity
-            android:name=".ui.pelanggan.EditDataPelangganActivity"
+            android:name=".ui.pelanggan.auth.EditDataPelangganActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.pelanggan.DetailPenjahitPelangganActivity"
+            android:name=".ui.pelanggan.transaksi.DetailPenjahitPelangganActivity"
             android:exported="true"
             android:theme="@style/Theme.Intro"/>
         <activity
-            android:name=".ui.penjahit.EditDataPenjahitActivity"
+            android:name=".ui.penjahit.auth.EditDataPenjahitActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.penjahit.DetailPenjahitActivity"
+            android:name=".ui.penjahit.transaksi.DetailPenjahitActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.pelanggan.RegisterPelangganActivity"
+            android:name=".ui.pelanggan.auth.RegisterPelangganActivity"
             android:exported="true"
             android:theme="@style/Theme.Intro"/>
         <activity
-            android:name=".ui.pelanggan.LoginPelangganActivity"
+            android:name=".ui.pelanggan.auth.LoginPelangganActivity"
             android:exported="true"
             android:theme="@style/Theme.Intro"/>
 
         <activity
-            android:name=".ui.penjahit.RegisterPenjahitActivity"
+            android:name=".ui.penjahit.auth.RegisterPenjahitActivity"
             android:exported="true"
             android:theme="@style/Theme.Intro"/>
         <activity
-            android:name=".ui.penjahit.LoginPenjahitActivity"
+            android:name=".ui.penjahit.auth.LoginPenjahitActivity"
             android:exported="true"
             android:theme="@style/Theme.Intro"/>
         <activity

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/loginBkColor"
     android:focusableInTouchMode="true"
-    tools:context=".ui.pelanggan.RegisterPelangganActivity">
+    tools:context=".ui.pelanggan.auth.RegisterPelangganActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="50dp"
             android:layout_marginRight="30dp"
             android:fontFamily="@font/gilroy_bold"
             android:maxLines="1"
@@ -62,18 +62,23 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/gilroy_bold"
-                android:text="Register"
+                android:text="Daftar Sebagai Penjahit"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_sign_up" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/ti_nama_pelanggan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 app:boxStrokeColor="@color/primaryTextColor"
                 app:errorEnabled="true"
                 app:hintTextColor="@color/primaryTextColor">
@@ -93,7 +98,6 @@
                 android:id="@+id/ti_email_pelanggan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 app:boxStrokeColor="@color/primaryTextColor"
                 app:errorEnabled="true"
                 app:hintTextColor="@color/primaryTextColor">
@@ -113,10 +117,9 @@
                 android:id="@+id/ti_password_pelanggan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 app:boxStrokeColor="@color/primaryTextColor"
                 app:counterEnabled="true"
-                app:counterMaxLength="8"
+                app:counterMaxLength="15"
                 app:errorEnabled="true"
                 app:hintTextColor="@color/primaryTextColor"
                 app:passwordToggleEnabled="true"
@@ -143,7 +146,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/login_button_bk"
                 android:fontFamily="@font/gilroy_medium"
-                android:text="Register"
+                android:text="Daftar"
                 android:textAppearance="@style/button_login_register"
                 android:textColor="@color/white" />
 
