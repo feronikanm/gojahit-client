@@ -21,7 +21,6 @@
             android:orientation="vertical"
             android:weightSum="12">
 
-
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -79,6 +78,7 @@
                 android:id="@+id/ti_nama_pelanggan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/primaryTextColor"
                 app:errorEnabled="true"
                 app:hintTextColor="@color/primaryTextColor">
@@ -89,6 +89,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:fontFamily="@font/gilroy_medium"
+                    android:textColor="@color/black"
                     android:hint="Nama"
                     android:inputType="text"
                     android:maxLines="1" />
@@ -98,6 +99,7 @@
                 android:id="@+id/ti_email_pelanggan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/primaryTextColor"
                 app:errorEnabled="true"
                 app:hintTextColor="@color/primaryTextColor">
@@ -108,6 +110,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:fontFamily="@font/gilroy_medium"
+                    android:textColor="@color/black"
                     android:hint="Email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1" />
@@ -117,6 +120,7 @@
                 android:id="@+id/ti_password_pelanggan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/primaryTextColor"
                 app:counterEnabled="true"
                 app:counterMaxLength="15"
@@ -131,6 +135,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:fontFamily="@font/gilroy_medium"
+                    android:textColor="@color/black"
                     android:hint="Password"
                     android:inputType="textPassword"
                     android:maxLines="1"

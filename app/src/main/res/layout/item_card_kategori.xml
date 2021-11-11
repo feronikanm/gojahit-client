@@ -8,7 +8,6 @@
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:elevation="4dp"
-    android:background="@drawable/background_card"
     android:layout_marginBottom="16dp"
     android:layout_marginLeft="12dp"
     app:cardCornerRadius="8dp">
@@ -16,6 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:padding="4dp">
 
         <ImageView
@@ -31,13 +31,14 @@
         <TextView
             android:id="@+id/tv_nama_kategori"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="8dp"
-            android:maxLines="2"
             android:textSize="12sp"
             android:fontFamily="@font/gilroy_medium"
+            android:textColor="@color/not_black"
             android:text="Kemeja"
             android:gravity="center"
+            android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_gambar_kategori" />

@@ -364,16 +364,15 @@ class RemoteDataSource(context: Context) : DataSource {
         })
     }
 
-    override fun getListDetailKategori(data: Penjahit, callback: ResponseCallback<List<DetailKategori>>){
+    override fun getListDetailKategori(data: Penjahit, callback: ResponseCallback<List<ListDetailKategori>>){
         EspressoIdlingResource.increment()
         apiService.getDetailKategori(data.id_penjahit!!)
             .subscribeOn(Schedulers.io())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object :
-            ApiCallback<List<DetailKategori>>(){
-            override fun onSuccess(data: List<DetailKategori>) {
+            .subscribe(object : ApiCallback<List<ListDetailKategori>>(){
+            override fun onSuccess(data: List<ListDetailKategori>) {
                 if (data.isNotEmpty()) {
                     callback.onSuccess(data)
                     callback.isEmptyData(false)
@@ -386,6 +385,62 @@ class RemoteDataSource(context: Context) : DataSource {
                 callback.onFailed(code, errorMessage)
                 EspressoIdlingResource.decrement()
             }
+        })
+    }
+
+    override fun insertDataDetailKategoriPenjahit(data: DetailKategori, responseCallback: ResponseCallback<DetailKategori>) {
+        EspressoIdlingResource.increment()
+
+        responseCallback.onShowProgress()
+
+        apiService.insertDataDetailKategori(
+            id_penjahit = data.id_penjahit!!,
+            id_kategori = data.id_kategori!!,
+            keterangan_kategori = data.keterangan_kategori!!,
+            bahan_jahit = data.bahan_jahit!!,
+            harga_bahan = data.harga_bahan,
+            ongkos_penjahit = data.ongkos_penjahit,
+            perkiraan_lama_waktu_pengerjaan = data.perkiraan_lama_waktu_pengerjaan!!,
+        ).enqueue(object : Callback<Success<DetailKategori>>{
+            override fun onResponse(
+                call: Call<Success<DetailKategori>>,
+                response: Response<Success<DetailKategori>>
+            ) {
+                responseCallback.onHideProgress()
+                response.body()?.data?.let { responseCallback.onSuccess(it) }
+                Log.d("Repsonse Body", response.body().toString())
+                EspressoIdlingResource.decrement()
+            }
+
+            override fun onFailure(call: Call<Success<DetailKategori>>, t: Throwable) {
+                responseCallback.onHideProgress()
+                EspressoIdlingResource.decrement()
+                responseCallback.onFailed(500, t.localizedMessage)
+            }
+
+        })
+
+    }
+
+    override fun deleteDataDetailKategori(data: DetailKategori, responseCallback: ResponseCallback<DetailKategori>) {
+        EspressoIdlingResource.increment()
+
+        responseCallback.onShowProgress()
+
+        apiService.deleteDataDetailKategori(data.id_detail_kategori!!).enqueue(object : Callback<Success<DetailKategori>>{
+            override fun onResponse(call: Call<Success<DetailKategori>>, response: Response<Success<DetailKategori>>) {
+                responseCallback.onHideProgress()
+                response.body()?.data?.let { responseCallback.onSuccess(it) }
+                Log.d("Repsonse Body", response.body().toString())
+                EspressoIdlingResource.decrement()
+            }
+
+            override fun onFailure(call: Call<Success<DetailKategori>>, t: Throwable) {
+                responseCallback.onHideProgress()
+                EspressoIdlingResource.decrement()
+                responseCallback.onFailed(500, t.localizedMessage)
+            }
+
         })
     }
 

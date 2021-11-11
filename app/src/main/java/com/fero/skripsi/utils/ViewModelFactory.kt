@@ -9,7 +9,7 @@ import com.fero.skripsi.ui.pelanggan.auth.AuthPelangganViewModel
 import com.fero.skripsi.ui.pelanggan.dashboard.DashboardPelangganViewModel
 import com.fero.skripsi.ui.penjahit.auth.AuthPenjahitViewModel
 import com.fero.skripsi.ui.penjahit.dashboard.DashboardPenjahitViewModel
-import com.fero.skripsi.ui.penjahit.kategori.ListKategoriViewModel
+import com.fero.skripsi.ui.penjahit.kategori.KategoriPenjahitViewModel
 
 class ViewModelFactory private constructor(private val repository: Repository) : ViewModelProvider.NewInstanceFactory() {
 
@@ -44,8 +44,8 @@ class ViewModelFactory private constructor(private val repository: Repository) :
                 return AuthPenjahitViewModel(repository) as T
             }
 
-            modelClass.isAssignableFrom(ListKategoriViewModel::class.java) -> {
-                return ListKategoriViewModel(repository) as T
+            modelClass.isAssignableFrom(KategoriPenjahitViewModel::class.java) -> {
+                return KategoriPenjahitViewModel(repository) as T
             }
 
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)

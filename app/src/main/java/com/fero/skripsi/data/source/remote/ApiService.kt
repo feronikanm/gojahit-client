@@ -1,9 +1,9 @@
 package com.fero.skripsi.data.source.remote
 
 import com.fero.skripsi.model.*
-import com.fero.skripsi.utils.Constant
-import com.fero.skripsi.utils.Constant.URL_DETAIL_KATEGORI_GET
+import com.fero.skripsi.utils.Constant.URL_DETAIL_KATEGORI_DELETE
 import com.fero.skripsi.utils.Constant.URL_DETAIL_KATEGORI_GET_BY_PENJAHIT
+import com.fero.skripsi.utils.Constant.URL_DETAIL_KATEGORI_INSERT
 import com.fero.skripsi.utils.Constant.URL_KATEGORI_GET
 import com.fero.skripsi.utils.Constant.URL_PELANGGAN_GET
 import com.fero.skripsi.utils.Constant.URL_PELANGGAN_INSERT
@@ -111,24 +111,29 @@ interface ApiService {
 
     @GET(URL_DETAIL_KATEGORI_GET_BY_PENJAHIT)
     fun getDetailKategori(
-        @Path("id_penjahit") id_penjahit_path: Int,
-    ): Observable<List<DetailKategori>>
+        @Path("id_penjahit") id_penjahit_path: Int
+    ): Observable<List<ListDetailKategori>>
 
 
-//    @FormUrlEncoded
-//    @POST(ApiEndPoint.URL_DETAIL_KATEGORI_INSERT)
-//    fun registerDetailKategori(
-//        @Field("idPenjahit") id_penjahit: Int,
-//        @Field("idKategori") id_kategori: Int,
-//        @Field("keteranganKategori") keterangan_kategori: String,
-//        @Field("bahanJahit") bahan_jahit: String,
-//        @Field("hargaBahan") harga_bahan: Int,
-//        @Field("ongkosPenjahit") ongkos_penjahit: Int,
-//        @Field("perkiraanLamaWaktuPengerjaan") perkiraan_lama_waktu_pengerjaan: String,
-//
-//
-//        ): Call<Success<DetailKategori>>
-//
+    @FormUrlEncoded
+    @POST(URL_DETAIL_KATEGORI_INSERT)
+    fun insertDataDetailKategori(
+        @Field("idPenjahit") id_penjahit: Int,
+        @Field("idKategori") id_kategori: Int,
+        @Field("keteranganKategori") keterangan_kategori: String,
+        @Field("bahanJahit") bahan_jahit: String,
+        @Field("hargaBahan") harga_bahan: String,
+        @Field("ongkosPenjahit") ongkos_penjahit: String,
+        @Field("perkiraanLamaWaktuPengerjaan") perkiraan_lama_waktu_pengerjaan: String,
+
+        ): Call<Success<DetailKategori>>
+
+
+    @DELETE(URL_DETAIL_KATEGORI_DELETE)
+    fun deleteDataDetailKategori(
+        @Path("id_detail_pesanan") id_detail_kategori_path: Int
+    ): Call<Success<DetailKategori>>
+
 //    @GET(URL_DETAIL_PESANAN_GET)
 //    fun getDetailPesanan(): Call<List<DetailPesanan>>
 //

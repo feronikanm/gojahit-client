@@ -76,6 +76,7 @@
                 android:id="@+id/ti_email_pelanggan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/primaryTextColor"
                 app:errorEnabled="true"
                 app:hintTextColor="@color/primaryTextColor">
@@ -87,6 +88,7 @@
                     android:background="@color/white"
                     android:fontFamily="@font/gilroy_medium"
                     android:hint="Email"
+                    android:textColor="@color/black"
                     android:text="amir@amir.com"
                     android:inputType="textEmailAddress"
                     android:maxLines="1" />
@@ -96,6 +98,7 @@
                 android:id="@+id/ti_password_pelanggan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/primaryTextColor"
                 app:counterEnabled="true"
                 app:counterMaxLength="15"
@@ -110,6 +113,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:fontFamily="@font/gilroy_medium"
+                    android:textColor="@color/black"
                     android:hint="Password"
                     android:text="amir1234"
                     android:inputType="textPassword"

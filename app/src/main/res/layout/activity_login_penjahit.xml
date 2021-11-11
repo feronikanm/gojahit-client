@@ -79,6 +79,7 @@
                 android:id="@+id/ti_email_penjahit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/primaryTextColor"
                 app:errorEnabled="true"
                 app:hintTextColor="@color/primaryTextColor">
@@ -90,6 +91,7 @@
                     android:background="@color/white"
                     android:fontFamily="@font/gilroy_medium"
                     android:hint="Email"
+                    android:textColor="@color/black"
                     android:text="widyanatasha99@gmail.com"
                     android:inputType="textEmailAddress"
                     android:maxLines="1" />
@@ -99,6 +101,7 @@
                 android:id="@+id/ti_password_penjahit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/primaryTextColor"
                 app:counterEnabled="true"
                 app:counterMaxLength="15"
@@ -113,6 +116,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:fontFamily="@font/gilroy_medium"
+                    android:textColor="@color/black"
                     android:hint="Password"
                     android:text="widyanatasha123"
                     android:inputType="textPassword"

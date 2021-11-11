@@ -8,6 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#4BFFBF00</color>
+    <color name="not_black">#99000000</color>
+    <color name="almost_black">#1C213F</color>
 
     <!--colors for modern ui-->
     <color name="whiteTextColor">#fff</color>

@@ -114,7 +114,7 @@
 
             <ImageView
                 android:id="@+id/emailImageView"
-                android:src="@drawable/ic_email"
+                android:src="@drawable/img_email"
                 android:layout_height="40dp"
                 android:layout_width="40dp"
                 android:layout_alignParentTop="true"

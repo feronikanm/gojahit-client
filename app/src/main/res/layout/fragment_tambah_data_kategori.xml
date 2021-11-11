@@ -22,6 +22,16 @@
             android:textSize="24sp" />
 
         <TextView
+            android:id="@+id/tv_nama_penjahit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/gilroy_medium"
+            android:gravity="center_horizontal"
+            android:text="Nama Penjahit"
+            android:textSize="20sp" />
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -131,7 +141,7 @@
                 android:id="@+id/et_ket_kategori"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@color/design_default_color_background"
                 android:fontFamily="@font/gilroy_medium"
                 android:hint="Keterangan"
                 android:inputType="text"
@@ -146,11 +156,11 @@
             app:errorEnabled="true"
             app:hintTextColor="@color/primaryTextColor">
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <EditText
                 android:id="@+id/et_bahan_jahit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@color/design_default_color_background"
                 android:fontFamily="@font/gilroy_medium"
                 android:hint="Bahan Jahit"
                 android:inputType="text"
@@ -169,7 +179,7 @@
                 android:id="@+id/et_harga_bahan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@color/design_default_color_background"
                 android:fontFamily="@font/gilroy_medium"
                 android:hint="Harga Bahan (Rp)"
                 android:inputType="number"
@@ -188,7 +198,7 @@
                 android:id="@+id/et_ongkos_jahit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@color/design_default_color_background"
                 android:fontFamily="@font/gilroy_medium"
                 android:hint="Ongkos Jahit (Rp)"
                 android:inputType="number"
@@ -207,7 +217,7 @@
                 android:id="@+id/et_lama_waktu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@color/design_default_color_background"
                 android:fontFamily="@font/gilroy_medium"
                 android:hint="Perkiraan lama waktu jahitan (Hari)"
                 android:inputType="text"

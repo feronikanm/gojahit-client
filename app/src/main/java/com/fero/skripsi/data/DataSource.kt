@@ -21,5 +21,9 @@ interface DataSource {
 
     fun updatePenjahit(data: Penjahit, responseCallback: ResponseCallback<Penjahit>)
 
-    fun getListDetailKategori(data: Penjahit, callback: ResponseCallback<List<DetailKategori>>)
+    fun getListDetailKategori(data: Penjahit, callback: ResponseCallback<List<ListDetailKategori>>)
+
+    fun insertDataDetailKategoriPenjahit(data: DetailKategori, responseCallback: ResponseCallback<DetailKategori>)
+
+    fun deleteDataDetailKategori(data: DetailKategori, responseCallback: ResponseCallback<DetailKategori>)
 }

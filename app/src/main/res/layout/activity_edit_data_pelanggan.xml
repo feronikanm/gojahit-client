@@ -52,13 +52,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_gojahit"
             android:layout_gravity="center"
-            android:orientation="vertical"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/background_card"
             android:elevation="5dp"
+            android:orientation="vertical"
             android:padding="20dp">
 
             <TextView
@@ -119,8 +119,8 @@
                 android:id="@+id/et_alamat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLines="4"
-                android:inputType="text" />
+                android:inputType="text"
+                android:maxLines="4" />
 
             <EditText
                 android:id="@+id/et_latitude"
@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="text" />
 
-<!--            android:enabled="false"-->
+            <!--            android:enabled="false"-->
 
             <EditText
                 android:id="@+id/et_longitude"
@@ -173,14 +173,14 @@
                     android:id="@+id/rb_jk_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Laki-laki"/>
+                    android:text="Laki-laki" />
 
                 <RadioButton
                     android:id="@+id/rb_jk_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:text="Perempuan"/>
+                    android:text="Perempuan" />
 
             </RadioGroup>
 

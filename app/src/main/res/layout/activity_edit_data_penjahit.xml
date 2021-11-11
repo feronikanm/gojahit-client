@@ -86,12 +86,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:textAppearance="@style/labelEditData"
                 android:text="Nama" />
 
-            <EditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="@color/black"
                 android:inputType="text" />
 
             <TextView
@@ -99,12 +102,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:textAppearance="@style/labelEditData"
                 android:text="Telepon" />
 
             <EditText
                 android:id="@+id/et_telepon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="@color/black"
                 android:inputType="phone" />
 
             <TextView
@@ -112,18 +118,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:textAppearance="@style/labelEditData"
                 android:text="Nama Toko" />
 
             <EditText
                 android:id="@+id/et_nama_toko"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="@color/black"
                 android:inputType="text" />
 
             <TextView
                 android:id="@+id/tv_alamat_toko"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/labelEditData"
                 android:layout_marginTop="8dp"
                 android:text="Alamat" />
 
@@ -131,18 +141,24 @@
                 android:id="@+id/et_alamat_toko"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="@color/black"
                 android:inputType="text" />
 
             <EditText
                 android:id="@+id/et_latitude"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="@color/black"
                 android:inputType="text" />
 
             <EditText
                 android:id="@+id/et_longitude"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="@color/black"
                 android:inputType="text" />
 
             <ImageButton
@@ -156,12 +172,14 @@
                 android:id="@+id/tv_latitude"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/labelEditData"
                 android:text="Latitude : 0.0" />
 
             <TextView
                 android:id="@+id/tv_longitude"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/labelEditData"
                 android:text="Longitude : 0.0" />
 
             <TextView
@@ -169,12 +187,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:textAppearance="@style/labelEditData"
                 android:text="Keterangan tambahan mengenai toko" />
 
             <EditText
                 android:id="@+id/et_ket"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="@color/black"
                 android:hint="Toko ini dibuka kapan saja"
                 android:inputType="text" />
 
@@ -183,18 +204,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:textAppearance="@style/labelEditData"
                 android:text="Jangkauan" />
 
             <CheckBox
                 android:id="@+id/cb_jang_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="@color/black"
                 android:text="Anak-anak" />
 
             <CheckBox
                 android:id="@+id/cb_jang_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="@color/black"
                 android:text="Remaja - Dewasa" />
 
             <TextView
@@ -202,18 +228,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="@color/black"
                 android:text="Spesifikasi" />
 
             <CheckBox
                 android:id="@+id/cb_spek_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="@color/black"
                 android:text="Laki-laki" />
 
             <CheckBox
                 android:id="@+id/cb_spek_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="@color/black"
                 android:text="Perempuan" />
 
             <TextView
@@ -221,6 +253,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:textAppearance="@style/labelEditData"
                 android:text="Hari Buka" />
 
             <LinearLayout
@@ -237,24 +270,32 @@
                         android:id="@+id/cb_hari_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:textColor="@color/black"
                         android:text="Senin" />
 
                     <CheckBox
                         android:id="@+id/cb_hari_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:textColor="@color/black"
                         android:text="Selasa" />
 
                     <CheckBox
                         android:id="@+id/cb_hari_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:textColor="@color/black"
                         android:text="Rabu" />
 
                     <CheckBox
                         android:id="@+id/cb_hari_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:textColor="@color/black"
                         android:text="Kamis" />
 
                 </LinearLayout>
@@ -269,18 +310,24 @@
                         android:id="@+id/cb_hari_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:textColor="@color/black"
                         android:text="Jum'at" />
 
                     <CheckBox
                         android:id="@+id/cb_hari_6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:textColor="@color/black"
                         android:text="Sabtu" />
 
                     <CheckBox
                         android:id="@+id/cb_hari_7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:textColor="@color/black"
                         android:text="Minggu" />
 
                 </LinearLayout>
@@ -291,6 +338,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:textAppearance="@style/labelEditData"
                 android:text="Jam Buka" />
 
             <ImageButton
@@ -304,6 +352,7 @@
                 android:id="@+id/tv_jam_buka"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/labelEditData"
                 android:text="Jam Buka" />
 
             <TextView
@@ -311,6 +360,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:textAppearance="@style/labelEditData"
                 android:text="Jam Tutup" />
 
             <ImageButton
@@ -324,6 +374,7 @@
                 android:id="@+id/tv_jam_tutup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/labelEditData"
                 android:text="Jam Tutup" />
 
             <TextView
@@ -331,6 +382,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:textAppearance="@style/labelEditData"
                 android:text="Foto Penjahit" />
 
             <ImageView

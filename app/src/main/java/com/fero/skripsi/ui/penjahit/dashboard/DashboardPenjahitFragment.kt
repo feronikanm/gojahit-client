@@ -12,16 +12,17 @@ import com.fero.skripsi.core.BaseFragment
 import com.fero.skripsi.databinding.FragmentDashboardPenjahitBinding
 import com.fero.skripsi.model.Kategori
 import com.fero.skripsi.model.Nilai
+import com.fero.skripsi.model.Penjahit
 
 class DashboardPenjahitFragment : BaseFragment<FragmentDashboardPenjahitBinding>() {
 
     private lateinit var viewModel: DashboardPenjahitViewModel
     private var imageList = intArrayOf(R.drawable.img_slider1, R.drawable.img_slider2)
+    private val dataPenjahit by lazy {
+        baseGetInstance<Penjahit>("EXTRA_PENJAHIT_DASHBOARD")
+    }
 
-    override fun setupViewBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): FragmentDashboardPenjahitBinding {
+    override fun setupViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentDashboardPenjahitBinding {
         return FragmentDashboardPenjahitBinding.inflate(inflater, container, false)
     }
 
@@ -34,7 +35,7 @@ class DashboardPenjahitFragment : BaseFragment<FragmentDashboardPenjahitBinding>
             })
 
             listNilai.observe(viewLifecycleOwner, {
-                setupRvPenjahit(it)
+                setupRvPenjahit(it, dataPenjahit)
                 binding.tvRekomendasi.visibility = View.VISIBLE
             })
 
@@ -44,7 +45,6 @@ class DashboardPenjahitFragment : BaseFragment<FragmentDashboardPenjahitBinding>
 
             eventErrorMessage.observe(viewLifecycleOwner, {
                 showToast(it)
-
             })
 
             eventIsEmpty.observe(viewLifecycleOwner, {
@@ -57,8 +57,6 @@ class DashboardPenjahitFragment : BaseFragment<FragmentDashboardPenjahitBinding>
 
         binding.tvRekomendasi.visibility = View.INVISIBLE
         viewModel.getDataPenjahit()
-
-
     }
 
     override fun setupUI(view: View, savedInstanceState: Bundle?) {
@@ -93,8 +91,9 @@ class DashboardPenjahitFragment : BaseFragment<FragmentDashboardPenjahitBinding>
         }
     }
 
-    private fun setupRvPenjahit(data: List<Nilai>) {
+    private fun setupRvPenjahit(data: List<Nilai>, dataPenjahit: Penjahit) {
         val penjahitAdapter = PenjahitAdapter()
+        penjahitAdapter.setupDataPenjahit(dataPenjahit)
         penjahitAdapter.setPenjahit(data)
 
         binding.rvPenjahit.apply {

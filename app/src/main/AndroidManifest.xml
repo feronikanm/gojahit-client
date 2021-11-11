@@ -58,17 +58,17 @@
             android:exported="true"
             android:theme="@style/Theme.Intro"/>
 
+        <activity
+            android:name=".ui.main.PilihUserActivity"
+            android:exported="true" />
+
 <!--        <activity-->
-<!--            android:name=".ui.main.PilihUserActivity"-->
-<!--            android:exported="true" />-->
+<!--            android:name=".ui.splashscreen.SplashScreenActivity"-->
+<!--            android:exported="true"-->
+<!--            android:theme="@style/Theme.Intro"/>-->
 
         <activity
             android:name=".ui.splashscreen.SplashScreenActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Intro"/>
-
-        <activity
-            android:name=".ui.main.PilihUserActivity"
             android:theme="@style/Theme.Intro" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

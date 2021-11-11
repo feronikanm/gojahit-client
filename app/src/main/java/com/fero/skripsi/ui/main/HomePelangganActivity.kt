@@ -60,7 +60,6 @@ class HomePelangganActivity : BaseActivity<ActivityHomePelangganBinding>() {
         dashboardPelangganFragment.baseNewInstance("EXTRA_PELANGGAN_DASHBOARD",extraData)
         extraData.nama_pelanggan?.let { Log.d("EXTRA PELANGGAN DASH", it) }
 
-
         addFragment(dashboardPelangganFragment)
         binding.apply {
             bottomNavigation.show(0)

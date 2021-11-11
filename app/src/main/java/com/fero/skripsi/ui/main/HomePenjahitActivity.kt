@@ -52,6 +52,7 @@ class HomePenjahitActivity : BaseActivity<ActivityHomePenjahitBinding>() {
         bundle.putString("EXTRA_PENJAHIT", bundleData)
         profilePenjahitFragment.arguments = bundle
 
+        dashboardPenjahitFragment.baseNewInstance("EXTRA_PENJAHIT_DASHBOARD", extraData)
         kategoriPenjahitFragment.baseNewInstance("EXTRA_PENJAHIT_KATEGORI", extraData)
 
         addFragment(dashboardPenjahitFragment)

@@ -25,13 +25,9 @@ class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBindin
         baseGetInstance<Pelanggan>("EXTRA_PELANGGAN_DASHBOARD")
     }
 
-    override fun setupViewBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): FragmentDashboardPelangganBinding {
+    override fun setupViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentDashboardPelangganBinding {
         return FragmentDashboardPelangganBinding.inflate(inflater, container, false)
     }
-
 
     override fun setupViewModel() {
         viewModel = obtainViewModel<DashboardPelangganViewModel>().apply {
@@ -52,7 +48,6 @@ class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBindin
 
             eventErrorMessage.observe(viewLifecycleOwner, {
                 showToast(it)
-
             })
 
             eventIsEmpty.observe(viewLifecycleOwner, {
@@ -118,10 +113,7 @@ class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBindin
             override fun onItemClicked(data: Nilai) {
                 selectedPenjahit(data)
             }
-
         })
-
-
     }
 
     private fun selectedPenjahit(data: Nilai) {

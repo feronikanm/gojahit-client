@@ -7,21 +7,24 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
-    android:background="@drawable/background_card"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
     android:padding="16dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:padding="8dp">
 
         <ImageView
             android:id="@+id/img_kategori"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_marginLeft="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
@@ -31,10 +34,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:maxLines="1"
             android:textSize="16sp"
-            android:textStyle="bold"
+            android:textColor="@color/almost_black"
+            android:fontFamily="@font/gilroy_medium"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_kategori"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Kategori" />
@@ -44,7 +48,7 @@
             android:layout_height="match_parent">
 
             <ImageButton
-                android:id="@+id/imgBtnDeleteBarang"
+                android:id="@+id/btn_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_delete"
@@ -58,10 +62,10 @@
                 android:layout_marginBottom="8dp"/>
 
             <ImageButton
-                android:id="@+id/imgBtnEditBarang"
+                android:id="@+id/btn_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/imgBtnDeleteBarang"
+                android:layout_below="@+id/btn_delete"
                 android:layout_alignParentRight="true"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
