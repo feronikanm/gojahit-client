@@ -10,9 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.fero.skripsi.R
 import com.fero.skripsi.core.BaseFragment
 import com.fero.skripsi.databinding.FragmentDashboardPenjahitBinding
+import com.fero.skripsi.model.DetailKategoriNilai
 import com.fero.skripsi.model.Kategori
 import com.fero.skripsi.model.Nilai
 import com.fero.skripsi.model.Penjahit
+import com.fero.skripsi.ui.pelanggan.dashboard.DetailKategoriFragment
+import com.fero.skripsi.ui.pelanggan.dashboard.KategoriPenjahitAdapter
+import com.google.gson.Gson
 
 class DashboardPenjahitFragment : BaseFragment<FragmentDashboardPenjahitBinding>() {
 
@@ -35,6 +39,7 @@ class DashboardPenjahitFragment : BaseFragment<FragmentDashboardPenjahitBinding>
             })
 
             listNilai.observe(viewLifecycleOwner, {
+                //dataPenjahit adalah extraData Penjahit dari login Penjahit
                 setupRvPenjahit(it, dataPenjahit)
                 binding.tvRekomendasi.visibility = View.VISIBLE
             })
@@ -70,18 +75,10 @@ class DashboardPenjahitFragment : BaseFragment<FragmentDashboardPenjahitBinding>
                 viewFlipper.flipInterval = 5000
                 viewFlipper.isAutoStart = true
             }
-
-//            btnHello.setOnClickListener {
-//                Toast.makeText(context, "Di Klik" , Toast.LENGTH_SHORT).show()
-//                val moveIntent = Intent(context, PilihUserActivity::class.java)
-//                startActivity(moveIntent)
-//            }
-
-//            tvKategori.movementMethod = LinkMovementMethod.getInstance()
         }
     }
 
-    private fun setupRvKategori(data: List<Kategori>?) {
+    private fun setupRvKategori(data: List<DetailKategoriNilai>?) {
         val kategoriAdapter = KategoriAdapter()
         data?.let { kategoriAdapter.setKategori(it) }
 
@@ -89,9 +86,29 @@ class DashboardPenjahitFragment : BaseFragment<FragmentDashboardPenjahitBinding>
             layoutManager = GridLayoutManager(context, 4)
             adapter = kategoriAdapter
         }
+
+        kategoriAdapter.setOnItemClickCallback(object : KategoriAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: DetailKategoriNilai) {
+
+                val detailKategoriFragment = DetailKategoriFragment()
+
+                val bundle = Bundle()
+                val bundleData = Gson().toJson(data)
+                bundle.putString("EXTRA_PENJAHIT_BY_KATEGORI", bundleData)
+                detailKategoriFragment.arguments = bundle
+
+                val fragmentManager = parentFragmentManager
+                fragmentManager.beginTransaction().apply {
+                    replace(R.id.fragment_container, detailKategoriFragment, DetailKategoriFragment::class.java.simpleName)
+                    addToBackStack(null)
+                    commit()
+                }
+            }
+        })
+
     }
 
-    private fun setupRvPenjahit(data: List<Nilai>, dataPenjahit: Penjahit) {
+    private fun setupRvPenjahit(data: List<DetailKategoriNilai>, dataPenjahit: Penjahit) {
         val penjahitAdapter = PenjahitAdapter()
         penjahitAdapter.setupDataPenjahit(dataPenjahit)
         penjahitAdapter.setPenjahit(data)

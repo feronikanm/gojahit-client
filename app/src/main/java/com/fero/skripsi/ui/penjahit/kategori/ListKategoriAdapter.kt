@@ -1,24 +1,25 @@
 package com.fero.skripsi.ui.penjahit.kategori
 
-import android.content.Context
-import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.fero.skripsi.R
 import com.fero.skripsi.databinding.ItemListKategoriBinding
 import com.fero.skripsi.model.ListDetailKategori
 import com.fero.skripsi.utils.Constant
-import com.fero.skripsi.utils.ViewModelFactory
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class ListKategoriAdapter : RecyclerView.Adapter<ListKategoriAdapter.ListKategoriViewHolder>() {
 
+    private lateinit var onItemClickCallback: OnItemClickCallback
     var listDetailKategori = mutableListOf<ListDetailKategori>()
 
+    fun setOnDeleteBtnClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    fun setOnEditBtnClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     fun setDetailKategori(kategoriList: List<ListDetailKategori>){
         this.listDetailKategori.clear()
@@ -45,9 +46,14 @@ class ListKategoriAdapter : RecyclerView.Adapter<ListKategoriAdapter.ListKategor
 
                 tvKategori.text = data.nama_kategori
 
-                binding.btnDelete.setOnClickListener {
-                    popupDelete(root.context)
+                btnDelete.setOnClickListener {
+                    onItemClickCallback.onItemClicked(listDetailKategori[adapterPosition])
+//                    popupDelete(root.context)
 //                    deleteData(root.context, data)
+                }
+
+                btnEdit.setOnClickListener {
+                    onItemClickCallback.onItemClicked(listDetailKategori[adapterPosition])
                 }
 
                 Glide.with(root.context)
@@ -61,25 +67,8 @@ class ListKategoriAdapter : RecyclerView.Adapter<ListKategoriAdapter.ListKategor
         }
     }
 
-
-    private fun popupDelete(context: Context) {
-        val box: Context = ContextThemeWrapper(context, R.style.AppTheme)
-        val materialAlertDialogBuilder = MaterialAlertDialogBuilder(box)
-        materialAlertDialogBuilder.setTitle("Hapus Data")
-            .setMessage("Apa anda yakin ingin menghapus data ini?")
-            .setNegativeButton("Batalkan", null)
-            .setPositiveButton(
-                "Hapus"
-            ) { dialogInterface, i -> {
-                // panggil disini
-                showMessage( "Data Berhasil dihapus", context)
-            } }
-            .show()
-    }
-
-
-    private fun showMessage(message: String, context: Context) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    interface OnItemClickCallback {
+        fun onItemClicked(data: ListDetailKategori)
     }
 
 

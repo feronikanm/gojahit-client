@@ -1,5 +1,6 @@
 package com.fero.skripsi.ui.pelanggan.dashboard
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,9 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.fero.skripsi.R
 import com.fero.skripsi.core.BaseFragment
 import com.fero.skripsi.databinding.FragmentDashboardPelangganBinding
+import com.fero.skripsi.model.DetailKategoriNilai
 import com.fero.skripsi.model.Kategori
 import com.fero.skripsi.model.Nilai
 import com.fero.skripsi.model.Pelanggan
+import com.fero.skripsi.ui.pelanggan.transaksi.DetailPenjahitPelangganActivity
+import com.google.gson.Gson
 
 
 class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBinding>() {
@@ -25,7 +29,10 @@ class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBindin
         baseGetInstance<Pelanggan>("EXTRA_PELANGGAN_DASHBOARD")
     }
 
-    override fun setupViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentDashboardPelangganBinding {
+    override fun setupViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentDashboardPelangganBinding {
         return FragmentDashboardPelangganBinding.inflate(inflater, container, false)
     }
 
@@ -41,6 +48,8 @@ class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBindin
                 setupRvPenjahit(it, dataPelanggan)
                 binding.tvRekomendasi.visibility = View.VISIBLE
             })
+
+
 
             eventShowProgress.observe(viewLifecycleOwner, {
                 setupEventProgressView(binding.progressBar, it)
@@ -62,6 +71,10 @@ class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBindin
         viewModel.getDataPenjahit()
     }
 
+    private fun setupRvPenjahitByKategori(data: List<DetailKategoriNilai>?) {
+
+    }
+
     override fun setupUI(view: View, savedInstanceState: Bundle?) {
 
         Log.d("Data Pelanggan : ", dataPelanggan.toString())
@@ -77,7 +90,7 @@ class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBindin
                 viewFlipper.isAutoStart = true
             }
 
-            tvNamaPelanggan.text = dataPelanggan.nama_pelanggan
+//            tvNamaPelanggan.text = dataPelanggan.nama_pelanggan
         }
 
 //        binding.tvText.text = extraArgument.nama_pelanggan
@@ -88,7 +101,7 @@ class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBindin
 //        }
     }
 
-    private fun setupRvKategori(data: List<Kategori>?) {
+    private fun setupRvKategori(data: List<DetailKategoriNilai>?) {
         val kategoriPenjahitAdapter = KategoriPenjahitAdapter()
         data?.let { kategoriPenjahitAdapter.setKategori(it) }
 
@@ -96,9 +109,28 @@ class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBindin
             layoutManager = GridLayoutManager(context, 4)
             adapter = kategoriPenjahitAdapter
         }
+
+        kategoriPenjahitAdapter.setOnItemClickCallback(object : KategoriPenjahitAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: DetailKategoriNilai) {
+
+                val detailKategoriFragment = DetailKategoriFragment()
+
+                val bundle = Bundle()
+                val bundleData = Gson().toJson(data)
+                bundle.putString("EXTRA_PENJAHIT_BY_KATEGORI", bundleData)
+                detailKategoriFragment.arguments = bundle
+
+                val fragmentManager = parentFragmentManager
+                fragmentManager.beginTransaction().apply {
+                    replace(R.id.fragment_container, detailKategoriFragment, DetailKategoriFragment::class.java.simpleName)
+                    addToBackStack(null)
+                    commit()
+                }
+            }
+        })
     }
 
-    private fun setupRvPenjahit(data: List<Nilai>, dataPelanggan: Pelanggan) {
+    private fun setupRvPenjahit(data: List<DetailKategoriNilai>, dataPelanggan: Pelanggan) {
         val rekomendasiPenjahitAdapter = RekomendasiPenjahitAdapter()
         rekomendasiPenjahitAdapter.setupDataPelanggan(dataPelanggan)
         rekomendasiPenjahitAdapter.setPenjahit(data)
@@ -110,16 +142,18 @@ class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBindin
 
         rekomendasiPenjahitAdapter.setOnItemClickCallback(object :
             RekomendasiPenjahitAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Nilai) {
+            override fun onItemClicked(data: DetailKategoriNilai) {
                 selectedPenjahit(data)
             }
         })
     }
 
-    private fun selectedPenjahit(data: Nilai) {
+    private fun selectedPenjahit(data: DetailKategoriNilai) {
         Toast.makeText(context, "Kamu memilih " + data.nama_penjahit, Toast.LENGTH_SHORT).show()
         Log.d("Test", "CLICK FROM ADAPTER")
-
+        val intent = Intent(binding.root.context, DetailPenjahitPelangganActivity::class.java)
+        intent.putExtra(DetailPenjahitPelangganActivity.EXTRA_DATA_PENJAHIT, data)
+        startActivity(intent)
     }
 
     companion object {

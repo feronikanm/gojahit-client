@@ -2,8 +2,10 @@ package com.fero.skripsi.data.source.remote
 
 import com.fero.skripsi.model.*
 import com.fero.skripsi.utils.Constant.URL_DETAIL_KATEGORI_DELETE
+import com.fero.skripsi.utils.Constant.URL_DETAIL_KATEGORI_GET_BY_KATEGORI
 import com.fero.skripsi.utils.Constant.URL_DETAIL_KATEGORI_GET_BY_PENJAHIT
 import com.fero.skripsi.utils.Constant.URL_DETAIL_KATEGORI_INSERT
+import com.fero.skripsi.utils.Constant.URL_DETAIL_KATEGORI_UPDATE
 import com.fero.skripsi.utils.Constant.URL_KATEGORI_GET
 import com.fero.skripsi.utils.Constant.URL_PELANGGAN_GET
 import com.fero.skripsi.utils.Constant.URL_PELANGGAN_INSERT
@@ -20,10 +22,10 @@ import retrofit2.http.*
 interface ApiService {
 
     @GET(URL_PENJAHIT_GET_BY_NILAI)
-    fun getDataPenjahit() : Observable<List<Nilai>>
+    fun getDataPenjahit() : Observable<List<DetailKategoriNilai>>
 
     @GET(URL_KATEGORI_GET)
-    fun getDataKategori() : Observable<List<Kategori>>
+    fun getDataKategori() : Observable<List<DetailKategoriNilai>>
 
     @GET(URL_PELANGGAN_GET)
     fun getPelanggan(): Call<List<Pelanggan>>
@@ -129,10 +131,33 @@ interface ApiService {
         ): Call<Success<DetailKategori>>
 
 
-    @DELETE(URL_DETAIL_KATEGORI_DELETE)
+    @POST(URL_DETAIL_KATEGORI_DELETE)
     fun deleteDataDetailKategori(
-        @Path("id_detail_pesanan") id_detail_kategori_path: Int
-    ): Call<Success<DetailKategori>>
+        @Path("id_detail_kategori") id_detail_kategori_path: Int
+    ): Call<Success<ListDetailKategori>>
+
+
+    @FormUrlEncoded
+    @POST(URL_DETAIL_KATEGORI_UPDATE)
+    fun updateDataDetailKategori(
+        @Path("id_detail_kategori") id_detail_kategori_path: Int,
+        @Field("idPenjahit") id_penjahit: Int,
+        @Field("idKategori") id_kategori: Int,
+        @Field("keteranganKategori") keterangan_kategori: String,
+        @Field("bahanJahit") bahan_jahit: String,
+        @Field("hargaBahan") harga_bahan: String?,
+        @Field("ongkosPenjahit") ongkos_penjahit: String?,
+        @Field("perkiraanLamaWaktuPengerjaan") perkiraan_lama_waktu_pengerjaan: String,
+
+        ): Call<Success<ListDetailKategori>>
+
+
+    @GET(URL_DETAIL_KATEGORI_GET_BY_KATEGORI)
+    fun getDataPenjahitByKategori(
+        @Path("id_kategori") id_kategori_path: Int
+    ): Observable<List<DetailKategoriNilai>>
+
+
 
 //    @GET(URL_DETAIL_PESANAN_GET)
 //    fun getDetailPesanan(): Call<List<DetailPesanan>>

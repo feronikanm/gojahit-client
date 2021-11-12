@@ -4,18 +4,19 @@ import androidx.lifecycle.MutableLiveData
 import com.fero.skripsi.core.BaseViewModel
 import com.fero.skripsi.data.Repository
 import com.fero.skripsi.data.source.ResponseCallback
+import com.fero.skripsi.model.DetailKategoriNilai
 import com.fero.skripsi.model.Kategori
 import com.fero.skripsi.model.Nilai
 import com.fero.skripsi.utils.SingleLiveEvent
 
 class DashboardPenjahitViewModel (private val repository: Repository) : BaseViewModel() {
 
-    var listNilai = SingleLiveEvent<List<Nilai>>()
-    var listKategori = SingleLiveEvent<List<Kategori>>()
+    var listNilai = SingleLiveEvent<List<DetailKategoriNilai>>()
+    var listKategori = SingleLiveEvent<List<DetailKategoriNilai>>()
 
     fun getDataPenjahit() {
-        repository.getDataPenjahit(object : ResponseCallback<List<Nilai>>{
-            override fun onSuccess(data: List<Nilai>) {
+        repository.getDataPenjahit(object : ResponseCallback<List<DetailKategoriNilai>>{
+            override fun onSuccess(data: List<DetailKategoriNilai>) {
                 listNilai.postValue(data)
             }
 
@@ -38,8 +39,8 @@ class DashboardPenjahitViewModel (private val repository: Repository) : BaseView
     }
 
     fun getDataKategori(){
-        repository.getDataKategori(object : ResponseCallback<List<Kategori>>{
-            override fun onSuccess(data: List<Kategori>) {
+        repository.getDataKategori(object : ResponseCallback<List<DetailKategoriNilai>>{
+            override fun onSuccess(data: List<DetailKategoriNilai>) {
                 listKategori.postValue(data)
             }
 

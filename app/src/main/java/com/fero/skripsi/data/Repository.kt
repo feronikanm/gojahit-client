@@ -15,11 +15,11 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
             }
     }
 
-    override fun getDataPenjahit(callback: ResponseCallback<List<Nilai>>) {
+    override fun getDataPenjahit(callback: ResponseCallback<List<DetailKategoriNilai>>) {
         remoteDataSource.getDataPenjahit(callback)
     }
 
-    override fun getDataKategori(callback: ResponseCallback<List<Kategori>>) {
+    override fun getDataKategori(callback: ResponseCallback<List<DetailKategoriNilai>>) {
         remoteDataSource.getDataKategori(callback)
     }
 
@@ -74,10 +74,24 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
     }
 
     override fun deleteDataDetailKategori(
-        data: DetailKategori,
-        responseCallback: ResponseCallback<DetailKategori>
+        data: ListDetailKategori,
+        responseCallback: ResponseCallback<ListDetailKategori>
     ) {
         remoteDataSource.deleteDataDetailKategori(data, responseCallback)
+    }
+
+    override fun updateDataDetailKategori(
+        data: ListDetailKategori,
+        responseCallback: ResponseCallback<ListDetailKategori>
+    ) {
+        remoteDataSource.updateDataDetailKategori(data, responseCallback)
+    }
+
+    override fun getDataPenjahitByKategori(
+        data: DetailKategoriNilai,
+        callback: ResponseCallback<List<DetailKategoriNilai>>
+    ) {
+        remoteDataSource.getDataPenjahitByKategori(data, callback)
     }
 
 

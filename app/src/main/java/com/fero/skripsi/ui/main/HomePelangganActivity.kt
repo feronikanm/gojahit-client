@@ -41,8 +41,8 @@ class HomePelangganActivity : BaseActivity<ActivityHomePelangganBinding>() {
         val profilePelangganFragment = ProfilePelangganFragment.newInstance()
 
         prefHelper = PrefHelper(this)
-        binding.tvUsername2.text = prefHelper.getString(PREF_NAMA_PELANGGAN)
-        binding.tvHi2.text = prefHelper.getString(PREF_ID_PELANGGAN)
+//        binding.tvUsername2.text = prefHelper.getString(PREF_NAMA_PELANGGAN)
+//        binding.tvHi2.text = prefHelper.getString(PREF_ID_PELANGGAN)
 
         val extraData: Pelanggan? = intent.extras?.getParcelable(EXTRA_LOGIN_PELANGGAN)
 

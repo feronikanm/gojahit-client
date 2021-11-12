@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fero.skripsi.databinding.ItemListPenjahitBinding
+import com.fero.skripsi.model.DetailKategoriNilai
 import com.fero.skripsi.model.Nilai
 import com.fero.skripsi.model.Pelanggan
 import com.fero.skripsi.utils.Constant
@@ -24,9 +25,9 @@ class RekomendasiPenjahitAdapter : RecyclerView.Adapter<RekomendasiPenjahitAdapt
         this.onItemClickCallback = onItemClickCallback
     }
 
-    var listPenjahit = mutableListOf<Nilai>()
+    var listPenjahit = mutableListOf<DetailKategoriNilai>()
 
-    fun setPenjahit(penjahit: List<Nilai>) {
+    fun setPenjahit(penjahit: List<DetailKategoriNilai>) {
         this.listPenjahit.clear()
         this.listPenjahit.addAll(penjahit)
     }
@@ -35,8 +36,7 @@ class RekomendasiPenjahitAdapter : RecyclerView.Adapter<RekomendasiPenjahitAdapt
         parent: ViewGroup,
         viewType: Int
     ): RekomendasiPenjahitViewHolder {
-        val itemListPenjahitBinding =
-            ItemListPenjahitBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val itemListPenjahitBinding = ItemListPenjahitBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RekomendasiPenjahitViewHolder(itemListPenjahitBinding)
     }
 
@@ -54,7 +54,7 @@ class RekomendasiPenjahitAdapter : RecyclerView.Adapter<RekomendasiPenjahitAdapt
 
     inner class RekomendasiPenjahitViewHolder(private var binding: ItemListPenjahitBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: Nilai) {
+        fun bind(data: DetailKategoriNilai) {
             binding.apply {
                 tvNamaToko.text = data.nama_toko
                 tvNamaPenjahit.text = data.nama_penjahit
@@ -66,7 +66,7 @@ class RekomendasiPenjahitAdapter : RecyclerView.Adapter<RekomendasiPenjahitAdapt
                     .into(imgProfile)
 
 
-                itemView.setOnClickListener {
+                root.setOnClickListener {
 
                     onItemClickCallback.onItemClicked(listPenjahit[adapterPosition])
 
@@ -94,10 +94,10 @@ class RekomendasiPenjahitAdapter : RecyclerView.Adapter<RekomendasiPenjahitAdapt
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: Nilai)
+        fun onItemClicked(data: DetailKategoriNilai)
     }
 
-    fun getHasilOlahDataLongLat(dataPelanggan: Pelanggan, dataNilai: Nilai): String {
+    fun getHasilOlahDataLongLat(dataPelanggan: Pelanggan, dataNilai: DetailKategoriNilai): String {
 
         val lat1 = dataPelanggan.latitude_pelanggan
         val long1 = dataPelanggan.longitude_pelanggan

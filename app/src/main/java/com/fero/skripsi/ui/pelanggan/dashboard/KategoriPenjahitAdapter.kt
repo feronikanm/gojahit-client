@@ -5,14 +5,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fero.skripsi.databinding.ItemCardKategoriBinding
+import com.fero.skripsi.model.DetailKategoriNilai
 import com.fero.skripsi.model.Kategori
+import com.fero.skripsi.model.ListDetailKategori
+import com.fero.skripsi.ui.penjahit.kategori.ListKategoriAdapter
 import com.fero.skripsi.utils.Constant
 
 class KategoriPenjahitAdapter : RecyclerView.Adapter<KategoriPenjahitAdapter.KategoriPenjahitViewHolder>() {
 
-    var listKategori = mutableListOf<Kategori>()
+    private lateinit var onItemClickCallback: OnItemClickCallback
+    var listKategori = mutableListOf<DetailKategoriNilai>()
 
-    fun setKategori(kategori: List<Kategori>){
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    fun setKategori(kategori: List<DetailKategoriNilai>){
         this.listKategori.clear()
         this.listKategori.addAll(kategori)
     }
@@ -38,17 +46,21 @@ class KategoriPenjahitAdapter : RecyclerView.Adapter<KategoriPenjahitAdapter.Kat
     }
 
     inner class KategoriPenjahitViewHolder(private var binding: ItemCardKategoriBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: Kategori){
+        fun bind(data: DetailKategoriNilai){
             binding.apply {
                 tvNamaKategori.text = data.nama_kategori
                 Glide.with(itemView.context)
                     .load("${Constant.IMAGE_KATEGORI}${data.gambar_kategori}")
                     .into(ivGambarKategori)
 
-                itemView.setOnClickListener {
-
+                root.setOnClickListener {
+                    onItemClickCallback.onItemClicked(listKategori[adapterPosition])
                 }
             }
         }
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: DetailKategoriNilai)
     }
 }

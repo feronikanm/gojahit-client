@@ -71,8 +71,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/gilroy_medium"
-                android:text="Pilih ini jika ingin mencari penjahit dan melakukan jahitan"
-                android:textAppearance="@style/tv_see_all" />
+                android:textColor="@color/not_black"
+                android:textStyle="italic"
+                android:text="Pilih ini jika ingin mencari penjahit dan melakukan jahitan" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -136,8 +137,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/gilroy_medium"
+                android:textStyle="italic"
                 android:text="Pilih ini jika ingin mendaftar sebagai penjahit"
-                android:textAppearance="@style/tv_see_all" />
+                android:textColor="@color/not_black" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

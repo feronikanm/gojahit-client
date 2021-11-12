@@ -5,9 +5,9 @@ import com.fero.skripsi.model.*
 
 interface DataSource {
 
-    fun getDataPenjahit(callback: ResponseCallback<List<Nilai>>)
+    fun getDataPenjahit(callback: ResponseCallback<List<DetailKategoriNilai>>)
 
-    fun getDataKategori(callback: ResponseCallback<List<Kategori>>)
+    fun getDataKategori(callback: ResponseCallback<List<DetailKategoriNilai>>)
 
     fun registerPelanggan(data: Pelanggan, responseCallback: ResponseCallback<Pelanggan>)
 
@@ -25,5 +25,10 @@ interface DataSource {
 
     fun insertDataDetailKategoriPenjahit(data: DetailKategori, responseCallback: ResponseCallback<DetailKategori>)
 
-    fun deleteDataDetailKategori(data: DetailKategori, responseCallback: ResponseCallback<DetailKategori>)
+    fun deleteDataDetailKategori(data: ListDetailKategori, responseCallback: ResponseCallback<ListDetailKategori>)
+
+    fun updateDataDetailKategori(data: ListDetailKategori, responseCallback: ResponseCallback<ListDetailKategori>)
+
+    fun getDataPenjahitByKategori(data: DetailKategoriNilai, callback: ResponseCallback<List<DetailKategoriNilai>>)
+
 }

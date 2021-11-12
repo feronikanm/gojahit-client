@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fero.skripsi.databinding.ItemListPenjahitBinding
+import com.fero.skripsi.model.DetailKategoriNilai
 import com.fero.skripsi.model.Nilai
 import com.fero.skripsi.model.Penjahit
 import com.fero.skripsi.ui.penjahit.transaksi.DetailPenjahitActivity
@@ -15,14 +16,15 @@ import java.text.DecimalFormat
 
 class PenjahitAdapter : RecyclerView.Adapter<PenjahitAdapter.PenjahitViewHolder>() {
 
-    var listPenjahit  = mutableListOf<Nilai>()
+    var listPenjahit  = mutableListOf<DetailKategoriNilai>()
     private lateinit var dataPenjahit: Penjahit
 
+    //mendapatkan extraData penjahit dari dashboard
     fun setupDataPenjahit(data: Penjahit) {
         dataPenjahit = data
     }
 
-    fun setPenjahit(penjahit : List<Nilai>){
+    fun setPenjahit(penjahit : List<DetailKategoriNilai>){
         this.listPenjahit.clear()
         this.listPenjahit.addAll(penjahit)
     }
@@ -42,7 +44,7 @@ class PenjahitAdapter : RecyclerView.Adapter<PenjahitAdapter.PenjahitViewHolder>
     }
 
     inner class PenjahitViewHolder(private var binding: ItemListPenjahitBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: Nilai){
+        fun bind(data: DetailKategoriNilai){
             binding.apply {
                 tvNamaToko.text = data.nama_toko
                 tvNamaPenjahit.text = data.nama_penjahit
@@ -72,7 +74,7 @@ class PenjahitAdapter : RecyclerView.Adapter<PenjahitAdapter.PenjahitViewHolder>
         }
     }
 
-    private fun getHasilOlahDataLongLat(dataPenjahit: Penjahit, dataNilai: Nilai): String {
+    private fun getHasilOlahDataLongLat(dataPenjahit: Penjahit, dataNilai: DetailKategoriNilai): String {
 
         val lat1 = dataPenjahit.latitude_penjahit
         val long1 = dataPenjahit.longitude_penjahit

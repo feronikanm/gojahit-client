@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.fero.skripsi.R
 import com.fero.skripsi.databinding.ActivityDetailPenjahitPelangganBinding
 import com.fero.skripsi.databinding.ContentDataPenjahitBinding
+import com.fero.skripsi.model.DetailKategoriNilai
 import com.fero.skripsi.model.Nilai
 import com.fero.skripsi.utils.Constant
 
@@ -31,7 +32,7 @@ class DetailPenjahitPelangganActivity : AppCompatActivity() {
         binding.collapsingToolbar.setTitle("Data Penjahit")
         toolbarTextAppernce()
 
-        val extraData: Nilai? = intent.extras?.getParcelable(EXTRA_DATA_PENJAHIT)
+        val extraData: DetailKategoriNilai? = intent.extras?.getParcelable(EXTRA_DATA_PENJAHIT)
 
         binding.apply {
             if (extraData != null) {

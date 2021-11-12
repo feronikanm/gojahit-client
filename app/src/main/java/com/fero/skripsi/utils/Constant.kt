@@ -13,13 +13,15 @@ object Constant {
 
     const val PATH_DETAIL_KATEGORI = "/detail_kategori"
     const val PATH_GET_PENJAHIT = "/get_penjahit"
+    const val PATH_GET_KATEGORI = "/get_kategori"
     const val PATH_DETAIL_PESANAN = "/detail_pesanan"
     const val PATH_KATEGORI = "/kategori"
     const val PATH_PELANGGAN = "/pelanggan"
     const val PATH_ID_PELANGGAN = "/{id_pelanggan}"
     const val PATH_PENJAHIT = "/penjahit"
     const val PATH_ID_PENJAHIT = "/{id_penjahit}"
-    const val PATH_ID_DETAIL_KATEGORI = "/{id_detail_pesanan}"
+    const val PATH_ID_DETAIL_KATEGORI = "/{id_detail_kategori}"
+    const val PATH_ID_KATEGORI = "/{id_kategori}"
     const val PATH_NILAI = "/nilai"
     const val PATH_PESANAN = "/pesanan"
     const val PATH_RATING = "/rating"
@@ -32,11 +34,14 @@ object Constant {
     const val PATH_UPDATE = "/update"
     const val PATH_DELETE = "/delete"
 
+
     const val URL_DETAIL_KATEGORI_GET = "$PATH_API$PATH_DETAIL_KATEGORI"
     const val URL_DETAIL_KATEGORI_GET_BY_PENJAHIT = "$PATH_API$PATH_DETAIL_KATEGORI$PATH_GET_PENJAHIT$PATH_ID_PENJAHIT"
     const val URL_DETAIL_KATEGORI_INSERT = "$PATH_API$PATH_DETAIL_KATEGORI$PATH_INSERT_DATA"
-    const val URL_DETAIL_KATEGORI_UPDATE = "$PATH_API$PATH_DETAIL_KATEGORI$PATH_UPDATE"
+    const val URL_DETAIL_KATEGORI_UPDATE = "$PATH_API$PATH_DETAIL_KATEGORI$PATH_UPDATE$PATH_ID_DETAIL_KATEGORI"
     const val URL_DETAIL_KATEGORI_DELETE = "$PATH_API$PATH_DETAIL_KATEGORI$PATH_DELETE$PATH_ID_DETAIL_KATEGORI"
+//    https://penjahitapi.000webhostapp.com/api/detail_kategori/get_kategori/2
+    const val URL_DETAIL_KATEGORI_GET_BY_KATEGORI = "$PATH_API$PATH_DETAIL_KATEGORI$PATH_GET_KATEGORI$PATH_ID_KATEGORI"
 
     const val URL_DETAIL_PESANAN_GET = "$PATH_API$PATH_DETAIL_PESANAN"
     const val URL_DETAIL_PESANAN_INSERT = "$PATH_API$PATH_DETAIL_PESANAN$PATH_INSERT_DATA"

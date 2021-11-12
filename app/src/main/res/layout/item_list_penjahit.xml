@@ -62,9 +62,9 @@
                 android:layout_height="wrap_content"
                 android:padding="4dp"
                 android:layout_weight="1"
-                android:textColor="@color/black"
+                android:textColor="@color/almost_black"
                 android:drawableLeft="@drawable/ic_stars"
-                android:drawableTint="#FFE607"
+                android:drawableTint="#FFEB3B"
                 android:fontFamily="@font/gilroy_medium"
                 android:gravity="center_vertical"
                 tools:text="0.1234"/>
@@ -77,9 +77,9 @@
                 android:padding="4dp"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/ic_location"
-                android:drawableTint="@color/account_primary_dark"
+                android:drawableTint="#F44336"
                 android:fontFamily="@font/gilroy_medium"
-                android:textColor="@color/black"
+                android:textColor="@color/almost_black"
                 android:gravity="center_vertical"
                 tools:text="Jarak" />
 
