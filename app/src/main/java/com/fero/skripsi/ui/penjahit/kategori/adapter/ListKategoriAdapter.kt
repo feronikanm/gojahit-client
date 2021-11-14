@@ -1,4 +1,4 @@
-package com.fero.skripsi.ui.penjahit.kategori
+package com.fero.skripsi.ui.penjahit.kategori.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,14 +11,20 @@ import com.fero.skripsi.utils.Constant
 class ListKategoriAdapter : RecyclerView.Adapter<ListKategoriAdapter.ListKategoriViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
+    private lateinit var onDeleteClickCallback: OnDeleteClickCallback
+    private lateinit var onUpdateClickCallback: OnUpdateClickCallback
     var listDetailKategori = mutableListOf<ListDetailKategori>()
 
-    fun setOnDeleteBtnClickCallback(onItemClickCallback: OnItemClickCallback) {
+    fun setItemClickCallback(onItemClickCallback: OnItemClickCallback){
         this.onItemClickCallback = onItemClickCallback
     }
 
-    fun setOnEditBtnClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
+    fun setOnDeleteClickCallback(onDeleteClickCallback: OnDeleteClickCallback){
+        this.onDeleteClickCallback = onDeleteClickCallback
+    }
+
+    fun setOnUpdateClickCallback(onUpdateClickCallback: OnUpdateClickCallback){
+        this.onUpdateClickCallback = onUpdateClickCallback
     }
 
     fun setDetailKategori(kategoriList: List<ListDetailKategori>){
@@ -46,21 +52,22 @@ class ListKategoriAdapter : RecyclerView.Adapter<ListKategoriAdapter.ListKategor
 
                 tvKategori.text = data.nama_kategori
 
+                Glide.with(root.context)
+                    .load("${Constant.IMAGE_KATEGORI}${data.gambar_kategori}")
+                    .into(imgKategori)
+
                 btnDelete.setOnClickListener {
-                    onItemClickCallback.onItemClicked(listDetailKategori[adapterPosition])
+                    onDeleteClickCallback.onDeleteClicked(listDetailKategori[adapterPosition])
 //                    popupDelete(root.context)
 //                    deleteData(root.context, data)
                 }
 
                 btnEdit.setOnClickListener {
-                    onItemClickCallback.onItemClicked(listDetailKategori[adapterPosition])
+                    onUpdateClickCallback.onUpdateClikced(listDetailKategori[adapterPosition])
                 }
 
-                Glide.with(root.context)
-                    .load("${Constant.IMAGE_KATEGORI}${data.gambar_kategori}")
-                    .into(imgKategori)
-
                 root.setOnClickListener {
+                    onItemClickCallback.onItemClicked(listDetailKategori[adapterPosition])
 
                 }
             }
@@ -69,6 +76,14 @@ class ListKategoriAdapter : RecyclerView.Adapter<ListKategoriAdapter.ListKategor
 
     interface OnItemClickCallback {
         fun onItemClicked(data: ListDetailKategori)
+    }
+
+    interface OnDeleteClickCallback{
+        fun onDeleteClicked(data: ListDetailKategori)
+    }
+
+    interface OnUpdateClickCallback{
+        fun onUpdateClikced(data: ListDetailKategori)
     }
 
 

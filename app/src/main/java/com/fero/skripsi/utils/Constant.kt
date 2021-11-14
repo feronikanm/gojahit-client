@@ -14,6 +14,7 @@ object Constant {
     const val PATH_DETAIL_KATEGORI = "/detail_kategori"
     const val PATH_GET_PENJAHIT = "/get_penjahit"
     const val PATH_GET_KATEGORI = "/get_kategori"
+    const val PATH_GET_DETAIL_KATEGORI = "/get_detail_kategori"
     const val PATH_DETAIL_PESANAN = "/detail_pesanan"
     const val PATH_KATEGORI = "/kategori"
     const val PATH_PELANGGAN = "/pelanggan"
@@ -85,6 +86,8 @@ object Constant {
     const val URL_UTILITAS_DELETE = "$PATH_API$PATH_DETAIL_KATEGORI$PATH_DELETE"
 
     const val URL_UKURAN_DETAIL_KATEGORI_GET = "$PATH_API$PATH_UKURAN_DETAIL_KATEGORI"
+//    https://penjahitapi.000webhostapp.com/api/ukuran_detail_kategori/get_detail_kategori/9
+    const val URL_UKURAN_DETAIL_KATEGORI_GET_BY_DETAIL_KATEGORI = "$PATH_API$PATH_UKURAN_DETAIL_KATEGORI$PATH_GET_DETAIL_KATEGORI$PATH_ID_DETAIL_KATEGORI"
     const val URL_UKURAN_DETAIL_KATEGORI_INSERT = "$PATH_API$PATH_UKURAN_DETAIL_KATEGORI$PATH_INSERT_DATA"
     const val URL_UKURAN_DETAIL_KATEGORI_UPDATE = "$PATH_API$PATH_UKURAN_DETAIL_KATEGORI$PATH_UPDATE"
     const val URL_UKURAN_DETAIL_KATEGORI_DELETE = "$PATH_API$PATH_UKURAN_DETAIL_KATEGORI$PATH_DELETE"

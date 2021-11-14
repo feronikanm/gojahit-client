@@ -11,11 +11,9 @@ import com.fero.skripsi.R
 import com.fero.skripsi.core.BaseFragment
 import com.fero.skripsi.databinding.FragmentDashboardPenjahitBinding
 import com.fero.skripsi.model.DetailKategoriNilai
-import com.fero.skripsi.model.Kategori
-import com.fero.skripsi.model.Nilai
 import com.fero.skripsi.model.Penjahit
 import com.fero.skripsi.ui.pelanggan.dashboard.DetailKategoriFragment
-import com.fero.skripsi.ui.pelanggan.dashboard.KategoriPenjahitAdapter
+import com.fero.skripsi.ui.penjahit.dashboard.viewmodel.DashboardPenjahitViewModel
 import com.google.gson.Gson
 
 class DashboardPenjahitFragment : BaseFragment<FragmentDashboardPenjahitBinding>() {
@@ -125,5 +123,6 @@ class DashboardPenjahitFragment : BaseFragment<FragmentDashboardPenjahitBinding>
             DashboardPenjahitFragment().apply {
                 arguments = Bundle().apply {}
             }
+
     }
 }

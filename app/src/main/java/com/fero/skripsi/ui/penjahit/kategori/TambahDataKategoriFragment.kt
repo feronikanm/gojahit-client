@@ -13,6 +13,7 @@ import com.fero.skripsi.R
 import com.fero.skripsi.databinding.FragmentTambahDataKategoriBinding
 import com.fero.skripsi.model.DetailKategori
 import com.fero.skripsi.model.Penjahit
+import com.fero.skripsi.ui.penjahit.kategori.viewmodel.KategoriPenjahitViewModel
 import com.fero.skripsi.utils.ViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson

@@ -31,4 +31,8 @@ interface DataSource {
 
     fun getDataPenjahitByKategori(data: DetailKategoriNilai, callback: ResponseCallback<List<DetailKategoriNilai>>)
 
+    fun getDataUkuran(data: UkuranDetailKategori, callback: ResponseCallback<List<UkuranDetailKategori>>)
+
+    fun getUkuranByDetailKategori(data: UkuranDetailKategori, callback: ResponseCallback<List<UkuranDetailKategori>>)
+
 }

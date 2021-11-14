@@ -1,4 +1,4 @@
-package com.fero.skripsi.ui.penjahit.dashboard
+package com.fero.skripsi.ui.penjahit.dashboard.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.fero.skripsi.core.BaseViewModel

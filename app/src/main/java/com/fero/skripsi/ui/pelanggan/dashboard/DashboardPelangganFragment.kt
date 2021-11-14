@@ -14,9 +14,8 @@ import com.fero.skripsi.R
 import com.fero.skripsi.core.BaseFragment
 import com.fero.skripsi.databinding.FragmentDashboardPelangganBinding
 import com.fero.skripsi.model.DetailKategoriNilai
-import com.fero.skripsi.model.Kategori
-import com.fero.skripsi.model.Nilai
 import com.fero.skripsi.model.Pelanggan
+import com.fero.skripsi.ui.pelanggan.dashboard.viewmodel.DashboardPelangganViewModel
 import com.fero.skripsi.ui.pelanggan.transaksi.DetailPenjahitPelangganActivity
 import com.google.gson.Gson
 

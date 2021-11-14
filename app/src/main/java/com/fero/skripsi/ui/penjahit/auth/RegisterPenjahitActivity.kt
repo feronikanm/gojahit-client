@@ -9,6 +9,7 @@ import com.fero.skripsi.databinding.ActivityRegisterPenjahitBinding
 import com.fero.skripsi.model.Penjahit
 import com.fero.skripsi.ui.main.HomePenjahitActivity
 import com.fero.skripsi.ui.main.PilihUserActivity
+import com.fero.skripsi.ui.penjahit.auth.viewmodel.AuthPenjahitViewModel
 import com.fero.skripsi.utils.ViewModelFactory
 
 class RegisterPenjahitActivity : AppCompatActivity() {

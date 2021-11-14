@@ -61,9 +61,7 @@ class ProfilePenjahitFragment : Fragment() {
                     .load("${Constant.IMAGE_PENJAHIT}${dataPenjahit.foto_penjahit}")
                     .into(imgPenjahit)
             }
-
         }
-
 
         binding.btnEditProfil.setOnClickListener {
             val moveIntent = Intent(context, EditDataPenjahitActivity::class.java)

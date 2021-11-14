@@ -14,6 +14,8 @@ import com.fero.skripsi.utils.Constant.URL_PENJAHIT_GET
 import com.fero.skripsi.utils.Constant.URL_PENJAHIT_GET_BY_NILAI
 import com.fero.skripsi.utils.Constant.URL_PENJAHIT_INSERT
 import com.fero.skripsi.utils.Constant.URL_PENJAHIT_UPDATE
+import com.fero.skripsi.utils.Constant.URL_UKURAN_DETAIL_KATEGORI_GET_BY_DETAIL_KATEGORI
+import com.fero.skripsi.utils.Constant.URL_UKURAN_GET
 import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.http.*
@@ -157,6 +159,14 @@ interface ApiService {
         @Path("id_kategori") id_kategori_path: Int
     ): Observable<List<DetailKategoriNilai>>
 
+
+    @GET(URL_UKURAN_GET)
+    fun getDataUkuran() : Observable<List<UkuranDetailKategori>>
+
+    @GET(URL_UKURAN_DETAIL_KATEGORI_GET_BY_DETAIL_KATEGORI)
+    fun getUkuranByDetailKategori(
+        @Path("id_detail_kategori") id_detail_kategori_path: Int
+    ): Observable<List<UkuranDetailKategori>>
 
 
 //    @GET(URL_DETAIL_PESANAN_GET)

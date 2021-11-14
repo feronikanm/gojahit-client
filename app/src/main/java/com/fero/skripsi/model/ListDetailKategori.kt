@@ -13,7 +13,7 @@ data class ListDetailKategori(
     val email_penjahit: String?,
     val foto_penjahit: String?,
     val gambar_kategori: String?,
-    val harga_bahan: String,
+    val harga_bahan: String?,
     val hari_buka: String?,
     val jam_buka: String?,
     val jam_tutup: String?,
@@ -27,7 +27,7 @@ data class ListDetailKategori(
     val nama_kategori: String?,
     val nama_penjahit: String?,
     val nama_toko: String?,
-    val ongkos_penjahit: String,
+    val ongkos_penjahit: String?,
     val password_penjahit: String?,
     val telp_penjahit: String?
 ) : Parcelable

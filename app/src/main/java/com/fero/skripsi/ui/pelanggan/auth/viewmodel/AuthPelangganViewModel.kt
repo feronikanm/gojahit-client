@@ -1,4 +1,4 @@
-package com.fero.skripsi.ui.pelanggan.auth
+package com.fero.skripsi.ui.pelanggan.auth.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.fero.skripsi.data.Repository

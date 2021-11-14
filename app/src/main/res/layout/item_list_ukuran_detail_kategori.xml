@@ -10,8 +10,6 @@
     android:layout_marginTop="4dp"
     android:layout_marginBottom="4dp"
     android:padding="16dp"
-    android:clickable="true"
-    android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +19,7 @@
         android:padding="8dp">
 
         <ImageView
-            android:id="@+id/img_kategori"
+            android:id="@+id/img_ukuran"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="8dp"
@@ -30,7 +28,7 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/tv_kategori"
+            android:id="@+id/tv_ukuran"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -39,9 +37,9 @@
             android:textColor="@color/not_black"
             android:fontFamily="@font/gilroy_medium"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/img_kategori"
+            app:layout_constraintStart_toEndOf="@+id/img_ukuran"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Kategori" />
+            tools:text="Ukuran" />
 
         <RelativeLayout
             android:layout_width="match_parent"

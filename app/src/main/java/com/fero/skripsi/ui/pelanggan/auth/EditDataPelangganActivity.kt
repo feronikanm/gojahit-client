@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.fero.skripsi.R
 import com.fero.skripsi.databinding.ActivityEditDataPelangganBinding
 import com.fero.skripsi.model.Pelanggan
+import com.fero.skripsi.ui.pelanggan.auth.viewmodel.AuthPelangganViewModel
 import com.fero.skripsi.utils.PrefHelper
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_ID_PELANGGAN
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_NAMA_PELANGGAN

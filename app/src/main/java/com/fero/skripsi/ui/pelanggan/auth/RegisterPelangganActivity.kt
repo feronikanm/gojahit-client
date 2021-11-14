@@ -9,6 +9,7 @@ import com.fero.skripsi.databinding.ActivityRegisterPelangganBinding
 import com.fero.skripsi.model.Pelanggan
 import com.fero.skripsi.ui.main.HomePelangganActivity
 import com.fero.skripsi.ui.main.PilihUserActivity
+import com.fero.skripsi.ui.pelanggan.auth.viewmodel.AuthPelangganViewModel
 import com.fero.skripsi.utils.ViewModelFactory
 
 class RegisterPelangganActivity : AppCompatActivity() {

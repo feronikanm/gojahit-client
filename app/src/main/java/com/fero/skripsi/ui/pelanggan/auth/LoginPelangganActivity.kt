@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.fero.skripsi.databinding.ActivityLoginPelangganBinding
 import com.fero.skripsi.ui.main.HomePelangganActivity
 import com.fero.skripsi.ui.main.PilihUserActivity
+import com.fero.skripsi.ui.pelanggan.auth.viewmodel.AuthPelangganViewModel
 import com.fero.skripsi.utils.PrefHelper
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_EMAIL_PELANGGAN
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_ID_PELANGGAN

@@ -5,11 +5,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.fero.skripsi.data.Repository
 import com.fero.skripsi.di.Injection
-import com.fero.skripsi.ui.pelanggan.auth.AuthPelangganViewModel
-import com.fero.skripsi.ui.pelanggan.dashboard.DashboardPelangganViewModel
-import com.fero.skripsi.ui.penjahit.auth.AuthPenjahitViewModel
-import com.fero.skripsi.ui.penjahit.dashboard.DashboardPenjahitViewModel
-import com.fero.skripsi.ui.penjahit.kategori.KategoriPenjahitViewModel
+import com.fero.skripsi.ui.pelanggan.auth.viewmodel.AuthPelangganViewModel
+import com.fero.skripsi.ui.pelanggan.dashboard.viewmodel.DashboardPelangganViewModel
+import com.fero.skripsi.ui.penjahit.auth.viewmodel.AuthPenjahitViewModel
+import com.fero.skripsi.ui.penjahit.dashboard.viewmodel.DashboardPenjahitViewModel
+import com.fero.skripsi.ui.penjahit.kategori.viewmodel.KategoriPenjahitViewModel
+import com.fero.skripsi.ui.penjahit.ukuran.viewmodel.UkuranViewModel
 
 class ViewModelFactory private constructor(private val repository: Repository) : ViewModelProvider.NewInstanceFactory() {
 
@@ -46,6 +47,10 @@ class ViewModelFactory private constructor(private val repository: Repository) :
 
             modelClass.isAssignableFrom(KategoriPenjahitViewModel::class.java) -> {
                 return KategoriPenjahitViewModel(repository) as T
+            }
+
+            modelClass.isAssignableFrom(UkuranViewModel::class.java) -> {
+                return UkuranViewModel(repository) as T
             }
 
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)

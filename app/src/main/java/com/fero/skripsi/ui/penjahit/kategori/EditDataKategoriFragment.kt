@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.fero.skripsi.R
 import com.fero.skripsi.databinding.FragmentEditDataKategoriBinding
 import com.fero.skripsi.model.ListDetailKategori
+import com.fero.skripsi.ui.penjahit.kategori.viewmodel.KategoriPenjahitViewModel
 import com.fero.skripsi.utils.ViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
@@ -134,8 +135,6 @@ class EditDataKategoriFragment : DialogFragment() {
             data?.password_penjahit,
             data?.telp_penjahit,
         )
-
-
         viewModel.updateDataDetailKategori(dataDetailKategori)
     }
 

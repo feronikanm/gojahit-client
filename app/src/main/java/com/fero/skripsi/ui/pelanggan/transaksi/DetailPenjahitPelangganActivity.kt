@@ -57,10 +57,7 @@ class DetailPenjahitPelangganActivity : AppCompatActivity() {
 //                val moveIntent = Intent(this@DetailPenjahitPelangganActivity, PilihUserActivity::class.java)
 //                startActivity(moveIntent)
             }
-
         }
-
-
     }
 
 

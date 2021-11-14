@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.fero.skripsi.databinding.ActivityEditDataPenjahitBinding
 import com.fero.skripsi.model.Penjahit
 import com.fero.skripsi.ui.main.HomePenjahitActivity
+import com.fero.skripsi.ui.penjahit.auth.viewmodel.AuthPenjahitViewModel
 import com.fero.skripsi.utils.PrefHelper
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_ID_PENJAHIT
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_NAMA_PENJAHIT
@@ -159,7 +160,7 @@ class EditDataPenjahitActivity : AppCompatActivity() {
 
             val namaPenjahit = binding.etNama.text.toString().trim()
             val teleponPenjahit = binding.etTelepon.text.toString().trim()
-            val namaToko = binding.etTelepon.text.toString().trim()
+            val namaToko = binding.etNamaToko.text.toString().trim()
             val alamatPenjahit = binding.etAlamatToko.text.toString().trim()
             val lat = binding.etLatitude.text.toString().trim()
             val long = binding.etLongitude.text.toString().trim()
@@ -184,8 +185,8 @@ class EditDataPenjahitActivity : AppCompatActivity() {
                 alamatPenjahit,
                 "",
                 namaToko,
-                keterangan,
                 teleponPenjahit,
+                keterangan,
                 getHariBuka(),
                 jamBuka,
                 jamTutup,

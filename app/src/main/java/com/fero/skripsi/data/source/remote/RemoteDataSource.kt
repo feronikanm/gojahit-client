@@ -449,7 +449,8 @@ class RemoteDataSource(context: Context) : DataSource {
 
         responseCallback.onShowProgress()
 
-        apiService.updateDataDetailKategori(data.id_detail_kategori!!,
+        apiService.updateDataDetailKategori(
+            data.id_detail_kategori!!,
             id_penjahit = data.id_penjahit!!,
             id_kategori = data.id_kategori!!,
             keterangan_kategori = data.keterangan_kategori!!,
@@ -504,6 +505,63 @@ class RemoteDataSource(context: Context) : DataSource {
                     EspressoIdlingResource.decrement()
                 }
 
+            })
+    }
+
+    override fun getDataUkuran(
+        data: UkuranDetailKategori,
+        callback: ResponseCallback<List<UkuranDetailKategori>>
+    ) {
+        EspressoIdlingResource.increment()
+        apiService.getDataUkuran()
+            .subscribeOn(Schedulers.io())
+            .doOnSubscribe { callback.onShowProgress() }
+            .doOnTerminate { callback.onHideProgress() }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : ApiCallback<List<UkuranDetailKategori>>(){
+                override fun onSuccess(data: List<UkuranDetailKategori>) {
+                    if (data.isNotEmpty()) {
+                        callback.onSuccess(data)
+                        callback.isEmptyData(false)
+                    } else {
+                        callback.isEmptyData(true)
+                    }
+                    EspressoIdlingResource.decrement()
+                }
+
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
+                    EspressoIdlingResource.decrement()
+                }
+
+            })
+    }
+
+    override fun getUkuranByDetailKategori(
+        data: UkuranDetailKategori,
+        callback: ResponseCallback<List<UkuranDetailKategori>>
+    ) {
+        EspressoIdlingResource.increment()
+        apiService.getUkuranByDetailKategori(data.id_detail_kategori!!)
+            .subscribeOn(Schedulers.io())
+            .doOnSubscribe { callback.onShowProgress() }
+            .doOnTerminate { callback.onHideProgress() }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : ApiCallback<List<UkuranDetailKategori>>(){
+                override fun onSuccess(data: List<UkuranDetailKategori>) {
+                    if (data.isNotEmpty()) {
+                        callback.onSuccess(data)
+                        callback.isEmptyData(false)
+                    } else {
+                        callback.isEmptyData(true)
+                    }
+                    EspressoIdlingResource.decrement()
+                }
+
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
+                    EspressoIdlingResource.decrement()
+                }
             })
     }
 

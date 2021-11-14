@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.view.View
 import com.bumptech.glide.Glide
 import com.fero.skripsi.databinding.ActivityDetailPenjahitBinding
+import com.fero.skripsi.model.DetailKategoriNilai
 import com.fero.skripsi.model.Nilai
 import com.fero.skripsi.utils.Constant
 
@@ -31,7 +32,7 @@ class DetailPenjahitActivity : AppCompatActivity() {
 //        val penjahitId = dataNilai.id_penjahit
 
         // Using Parcelable
-        val extraData: Nilai? = intent.extras?.getParcelable(EXTRA_PENJAHIT)
+        val extraData: DetailKategoriNilai? = intent.extras?.getParcelable(EXTRA_PENJAHIT)
 
         binding.progressBar.visibility = View.VISIBLE
         binding.content.visibility = View.INVISIBLE

@@ -1,4 +1,4 @@
-package com.fero.skripsi.ui.penjahit.kategori
+package com.fero.skripsi.ui.penjahit.kategori.viewmodel
 
 import com.fero.skripsi.core.BaseViewModel
 import com.fero.skripsi.data.Repository
@@ -75,7 +75,7 @@ class KategoriPenjahitViewModel(private val repository: Repository) : BaseViewMo
         repository.deleteDataDetailKategori(data, object : ResponseCallback<ListDetailKategori>{
             override fun onSuccess(data: ListDetailKategori) {
                 dataListDetailKategori.postValue(data)
-                messageSuccess.postValue("Data ${data.nama_kategori} Berhasil Dihapus")
+                messageSuccess.postValue("Data Berhasil Dihapus")
                 onSuccessState.postValue(true)
             }
 

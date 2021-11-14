@@ -6,9 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fero.skripsi.databinding.ItemCardKategoriBinding
 import com.fero.skripsi.model.DetailKategoriNilai
-import com.fero.skripsi.model.Kategori
-import com.fero.skripsi.model.ListDetailKategori
-import com.fero.skripsi.ui.penjahit.kategori.ListKategoriAdapter
 import com.fero.skripsi.utils.Constant
 
 class KategoriPenjahitAdapter : RecyclerView.Adapter<KategoriPenjahitAdapter.KategoriPenjahitViewHolder>() {

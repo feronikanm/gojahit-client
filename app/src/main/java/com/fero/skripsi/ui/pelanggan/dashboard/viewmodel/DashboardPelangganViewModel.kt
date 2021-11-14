@@ -1,4 +1,4 @@
-package com.fero.skripsi.ui.pelanggan.dashboard
+package com.fero.skripsi.ui.pelanggan.dashboard.viewmodel
 
 import com.fero.skripsi.core.BaseViewModel
 import com.fero.skripsi.data.Repository

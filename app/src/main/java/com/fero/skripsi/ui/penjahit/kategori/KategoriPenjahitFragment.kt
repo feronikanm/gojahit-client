@@ -1,7 +1,9 @@
 package com.fero.skripsi.ui.penjahit.kategori
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
@@ -12,9 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.fero.skripsi.R
 import com.fero.skripsi.core.BaseFragment
 import com.fero.skripsi.databinding.FragmentKategoriPenjahitBinding
-import com.fero.skripsi.model.Kategori
 import com.fero.skripsi.model.ListDetailKategori
 import com.fero.skripsi.model.Penjahit
+import com.fero.skripsi.ui.penjahit.kategori.adapter.ListKategoriAdapter
+import com.fero.skripsi.ui.penjahit.kategori.viewmodel.KategoriPenjahitViewModel
+import com.fero.skripsi.ui.penjahit.ukuran.UkuranDetailKategoriActivity
 import com.fero.skripsi.utils.ViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
@@ -85,15 +89,14 @@ class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>()
             adapter = listKategoriAdapter
         }
 
-        listKategoriAdapter.setOnDeleteBtnClickCallback(object : ListKategoriAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: ListDetailKategori) {
+        listKategoriAdapter.setOnDeleteClickCallback(object : ListKategoriAdapter.OnDeleteClickCallback{
+            override fun onDeleteClicked(data: ListDetailKategori) {
                 popupDelete(context, data)
             }
-
         })
 
-        listKategoriAdapter.setOnEditBtnClickCallback(object : ListKategoriAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: ListDetailKategori) {
+        listKategoriAdapter.setOnUpdateClickCallback(object : ListKategoriAdapter.OnUpdateClickCallback{
+            override fun onUpdateClikced(data: ListDetailKategori) {
 
                 val editDataKategoriFragment = EditDataKategoriFragment()
 
@@ -105,8 +108,21 @@ class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>()
                 val fragmentManager = childFragmentManager //cara memunculkan dialog box(1)
                 editDataKategoriFragment.show(fragmentManager, EditDataKategoriFragment::class.java.simpleName) //cara memunculkan dialog box(2)
             }
-
         })
+
+        listKategoriAdapter.setItemClickCallback(object : ListKategoriAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: ListDetailKategori) {
+                selectedKategori(data)
+            }
+        })
+    }
+
+    private fun selectedKategori(data: ListDetailKategori) {
+        Toast.makeText(context, "Kamu memilih " + data.nama_kategori, Toast.LENGTH_SHORT).show()
+        Log.d("Test", "CLICK FROM ADAPTER")
+        val intent = Intent(binding.root.context, UkuranDetailKategoriActivity::class.java)
+        intent.putExtra(UkuranDetailKategoriActivity.EXTRA_DATA_KATEGORI, data)
+        startActivity(intent)
     }
 
     private fun popupDelete(context: Context?, data: ListDetailKategori) {
@@ -130,7 +146,6 @@ class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>()
 
         viewModel.apply {
             dataListDetailKategori.observe(this@KategoriPenjahitFragment, {
-                viewModel.deleteDataDetailKategori(data)
             })
 
             messageSuccess.observe(this@KategoriPenjahitFragment, {
@@ -141,6 +156,8 @@ class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>()
                 Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             })
         }
+
+        viewModel.deleteDataDetailKategori(data)
 
 //        var message = data.nama_kategori
 //        showMessage( "Data $message Berhasil dihapus", context)
