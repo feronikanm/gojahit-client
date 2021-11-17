@@ -15,6 +15,12 @@
     <string name="home">Home</string>
     <string name="profile">Profil</string>
     <string name="transaction">Transaksi</string>
+    <string name="kriteria_1">Kualitas Pekerjaan</string>
+    <string name="kriteria_2">Lama Waktu Pengerjaan</string>
+    <string name="kriteria_3">Layanan Penjahit</string>
+    <string name="kriteria_4">Harga Jasa Jahit</string>
+    <string name="sangat_buruk">Sangat Buruk</string>
+    <string name="sangat_baik">Sangat Baik</string>
 
 
     <!--    <string name="about">Designed by <a href="https://github.com/feronikanm">feronikanm</a></string>-->

@@ -88,10 +88,10 @@
                     android:background="@color/white"
                     android:fontFamily="@font/gilroy_medium"
                     android:hint="Email"
-                    android:textColor="@color/black"
-                    android:text="amir@amir.com"
                     android:inputType="textEmailAddress"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:text="amir@amir.com"
+                    android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -113,11 +113,11 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:fontFamily="@font/gilroy_medium"
-                    android:textColor="@color/black"
                     android:hint="Password"
-                    android:text="amir1234"
                     android:inputType="textPassword"
                     android:maxLines="1"
+                    android:text="amir1234"
+                    android:textColor="@color/black"
                     app:hintAnimationEnabled="true" />
             </com.google.android.material.textfield.TextInputLayout>
 

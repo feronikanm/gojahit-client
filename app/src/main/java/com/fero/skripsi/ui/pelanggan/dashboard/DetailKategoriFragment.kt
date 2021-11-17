@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.fero.skripsi.core.BaseFragment
 import com.fero.skripsi.databinding.FragmentDetailKategoriBinding
 import com.fero.skripsi.model.DetailKategoriNilai
+import com.fero.skripsi.ui.pelanggan.dashboard.adapter.DetailKetegoriAdapter
 import com.fero.skripsi.ui.pelanggan.dashboard.viewmodel.DashboardPelangganViewModel
 import com.fero.skripsi.ui.pelanggan.transaksi.DetailPenjahitPelangganActivity
 

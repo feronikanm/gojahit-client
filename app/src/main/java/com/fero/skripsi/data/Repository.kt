@@ -94,11 +94,8 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
         remoteDataSource.getDataPenjahitByKategori(data, callback)
     }
 
-    override fun getDataUkuran(
-        data: UkuranDetailKategori,
-        callback: ResponseCallback<List<UkuranDetailKategori>>
-    ) {
-        remoteDataSource.getDataUkuran(data, callback)
+    override fun getDataUkuran(callback: ResponseCallback<List<UkuranDetailKategori>>) {
+        remoteDataSource.getDataUkuran(callback)
     }
 
     override fun getUkuranByDetailKategori(
@@ -106,6 +103,24 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
         callback: ResponseCallback<List<UkuranDetailKategori>>
     ) {
         remoteDataSource.getUkuranByDetailKategori(data, callback)
+    }
+
+    override fun insertDataUkuranDetailKategori(
+        data: UkuranDetailKategori,
+        responseCallback: ResponseCallback<UkuranDetailKategori>
+    ) {
+        remoteDataSource.insertDataUkuranDetailKategori(data, responseCallback)
+    }
+
+    override fun deleteDataUkuranDetailKategori(
+        data: UkuranDetailKategori,
+        responseCallback: ResponseCallback<UkuranDetailKategori>
+    ) {
+        remoteDataSource.deleteDataUkuranDetailKategori(data, responseCallback)
+    }
+
+    override fun insertDataRating(data: Rating, responseCallback: ResponseCallback<Rating>) {
+        remoteDataSource.insertDataRating(data, responseCallback)
     }
 
 

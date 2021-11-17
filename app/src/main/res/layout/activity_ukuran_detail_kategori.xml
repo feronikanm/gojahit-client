@@ -1,51 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp"
     tools:context=".ui.penjahit.ukuran.UkuranDetailKategoriActivity">
 
-    <ImageView
-        android:id="@+id/img_kategori"
-        android:layout_width="100dp"
-        android:layout_height="100dp"/>
-
-    <TextView
-        android:id="@+id/tv_nama_kategori"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_ket_kategori"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_bahan_jahit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_nama_kategori"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/almost_black"/>
 
-    <TextView
-        android:id="@+id/tv_harga_bahan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/img_kategori"
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
 
-    <TextView
-        android:id="@+id/tv_ongkos_penjahit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_ket_kategori"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/not_black"/>
 
-    <TextView
-        android:id="@+id/tv_lama_waktu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_bahan_jahit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/not_black"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_ukuran"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_harga_bahan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/not_black"/>
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/tv_ongkos_penjahit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/not_black"/>
+
+            <TextView
+                android:id="@+id/tv_lama_waktu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/not_black"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_ukuran"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="64dp"
+                tools:listitem="@layout/item_list_ukuran_detail_kategori"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_add_ukuran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="16dp"
+        app:srcCompat="@drawable/ic_add2" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>

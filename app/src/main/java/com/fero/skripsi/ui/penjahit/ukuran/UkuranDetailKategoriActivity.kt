@@ -1,11 +1,15 @@
 package com.fero.skripsi.ui.penjahit.ukuran
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ContextThemeWrapper
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.fero.skripsi.R
 import com.fero.skripsi.databinding.ActivityUkuranDetailKategoriBinding
 import com.fero.skripsi.model.ListDetailKategori
 import com.fero.skripsi.model.UkuranDetailKategori
@@ -13,12 +17,15 @@ import com.fero.skripsi.ui.penjahit.ukuran.adapter.UkuranDetailKategoriAdapter
 import com.fero.skripsi.ui.penjahit.ukuran.viewmodel.UkuranViewModel
 import com.fero.skripsi.utils.Constant
 import com.fero.skripsi.utils.ViewModelFactory
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.gson.Gson
 
 class UkuranDetailKategoriActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUkuranDetailKategoriBinding
     companion object {
         const val EXTRA_DATA_KATEGORI = "EXTRA_DATA_KATEGORI"
+        private const val ADD_UKURAN_TAG = "AddUkuran"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +34,8 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val extraData: ListDetailKategori? = intent.extras?.getParcelable(EXTRA_DATA_KATEGORI)
+
+        supportActionBar?.title = extraData?.nama_kategori
 
         binding.apply {
             tvNamaKategori.text = extraData!!.nama_kategori
@@ -72,9 +81,9 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
 
             eventShowProgress.observe(this@UkuranDetailKategoriActivity, {
                 if (it) {
-                    // show progress
+                    binding.progressBar.visibility = View.VISIBLE
                 } else {
-                    // hide progress
+                    binding.progressBar.visibility = View.GONE
                 }
             })
 
@@ -85,6 +94,19 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
 
         viewModel.getUkuranByDetailKategori(dataUkuran)
 
+        binding.btnAddUkuran.setOnClickListener {
+
+            val tambahUkuranFragment = TambahUkuranFragment()
+
+            //send data using bundle argument from activity to fragment
+            val bundle = Bundle()
+            val bundleData = Gson().toJson(extraData)
+            bundle.putString("EXTRA_DETAIL_KATEGORI", bundleData)
+            tambahUkuranFragment.arguments = bundle
+
+            //show dialog fragment from activity
+            tambahUkuranFragment.show(supportFragmentManager, ADD_UKURAN_TAG)
+        }
     }
 
     private fun setupRvUkuranDetailKategori(data: List<UkuranDetailKategori>?) {
@@ -95,5 +117,51 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context)
             adapter = ukuranAdapter
         }
+
+        ukuranAdapter.setOnDeleteClickCallback(object : UkuranDetailKategoriAdapter.OnDeleteClickCallback{
+            override fun onDeleteClicked(data: UkuranDetailKategori) {
+                popupDelete(data)
+            }
+
+        })
+
+
+    }
+
+    private fun popupDelete(data: UkuranDetailKategori) {
+        val materialAlertDialogBuilder = MaterialAlertDialogBuilder(this)
+        materialAlertDialogBuilder.setTitle("Hapus Data")
+            .setMessage("Apa anda yakin ingin menghapus data ini?")
+            .setNegativeButton("Tidak", null)
+            .setPositiveButton(
+                "Hapus"
+            ) { dialogInterface, i ->
+                // panggil disini
+                deleteDataUkuran(data)
+            }
+            .show()
+    }
+
+    private fun deleteDataUkuran(data: UkuranDetailKategori) {
+
+        val factory = ViewModelFactory.getInstance(this)
+        val viewModel = ViewModelProvider(this, factory)[UkuranViewModel::class.java]
+
+        viewModel.apply {
+            dataUkuran.observe(this@UkuranDetailKategoriActivity, {
+            })
+            messageSuccess.observe(this@UkuranDetailKategoriActivity, {
+                Toast.makeText(this@UkuranDetailKategoriActivity, it, Toast.LENGTH_SHORT).show()
+            })
+
+            eventShowProgress.observe(this@UkuranDetailKategoriActivity, {
+                if (it) {
+                    binding.progressBar.visibility = View.VISIBLE
+                } else {
+                    binding.progressBar.visibility = View.GONE
+                }
+            })
+        }
+        viewModel.deleteDataUkuranDetailKategori(data)
     }
 }

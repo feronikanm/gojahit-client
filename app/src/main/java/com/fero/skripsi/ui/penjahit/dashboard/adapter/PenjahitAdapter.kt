@@ -1,4 +1,4 @@
-package com.fero.skripsi.ui.penjahit.dashboard
+package com.fero.skripsi.ui.penjahit.dashboard.adapter
 
 import android.content.Intent
 import android.util.Log
@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fero.skripsi.databinding.ItemListPenjahitBinding
 import com.fero.skripsi.model.DetailKategoriNilai
-import com.fero.skripsi.model.Nilai
 import com.fero.skripsi.model.Penjahit
 import com.fero.skripsi.ui.penjahit.transaksi.DetailPenjahitActivity
 import com.fero.skripsi.utils.Constant

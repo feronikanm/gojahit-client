@@ -1,16 +1,11 @@
-package com.fero.skripsi.ui.pelanggan.dashboard
+package com.fero.skripsi.ui.pelanggan.dashboard.adapter
 
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fero.skripsi.databinding.ItemListPenjahitBinding
 import com.fero.skripsi.model.DetailKategoriNilai
-import com.fero.skripsi.model.ListDetailKategori
-import com.fero.skripsi.ui.pelanggan.transaksi.DetailPenjahitPelangganActivity
 import com.fero.skripsi.utils.Constant
 
 class DetailKetegoriAdapter : RecyclerView.Adapter<DetailKetegoriAdapter.DetailKategoriViewHolder>() {
@@ -30,14 +25,14 @@ class DetailKetegoriAdapter : RecyclerView.Adapter<DetailKetegoriAdapter.DetailK
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): DetailKetegoriAdapter.DetailKategoriViewHolder {
+    ): DetailKategoriViewHolder {
         val itemListPenjahitBinding =
             ItemListPenjahitBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DetailKategoriViewHolder(itemListPenjahitBinding)
     }
 
     override fun onBindViewHolder(
-        holder: DetailKetegoriAdapter.DetailKategoriViewHolder,
+        holder: DetailKategoriViewHolder,
         position: Int
     ) {
         val data = listPenjahit[position]

@@ -10,7 +10,12 @@ import com.fero.skripsi.utils.Constant
 
 class UkuranDetailKategoriAdapter : RecyclerView.Adapter<UkuranDetailKategoriAdapter.UkuranDetailKategoriViewHolder>(){
 
+    private lateinit var onDeleteClickCallback: OnDeleteClickCallback
     var listUkuran = mutableListOf<UkuranDetailKategori>()
+
+    fun setOnDeleteClickCallback(onDeleteClickCallback: OnDeleteClickCallback){
+        this.onDeleteClickCallback = onDeleteClickCallback
+    }
 
     fun setUkuranDetailKategori(listUkuran: List<UkuranDetailKategori>){
         this.listUkuran.clear()
@@ -18,13 +23,13 @@ class UkuranDetailKategoriAdapter : RecyclerView.Adapter<UkuranDetailKategoriAda
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UkuranDetailKategoriViewHolder {
-        val itemListUkuranBinding = ItemListUkuranDetailKategoriBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return UkuranDetailKategoriViewHolder(itemListUkuranBinding)
+        val itemListUkuranDetailKategoriBinding = ItemListUkuranDetailKategoriBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return UkuranDetailKategoriViewHolder(itemListUkuranDetailKategoriBinding)
     }
 
-    override fun onBindViewHolder(holderDetailKategori: UkuranDetailKategoriViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: UkuranDetailKategoriViewHolder, position: Int) {
         val data = listUkuran[position]
-        holderDetailKategori.bind(data)
+        holder.bind(data)
     }
 
     override fun getItemCount(): Int {
@@ -32,7 +37,6 @@ class UkuranDetailKategoriAdapter : RecyclerView.Adapter<UkuranDetailKategoriAda
     }
 
     inner class UkuranDetailKategoriViewHolder(private var binding: ItemListUkuranDetailKategoriBinding) : RecyclerView.ViewHolder(binding.root){
-
         fun bind(data: UkuranDetailKategori){
             binding.apply {
                 tvUkuran.text = data.nama_ukuran
@@ -41,9 +45,17 @@ class UkuranDetailKategoriAdapter : RecyclerView.Adapter<UkuranDetailKategoriAda
                     .load("${Constant.IMAGE_UKURAN}${data.gambar_ukuran}")
                     .into(imgUkuran)
 
+                btnDelete.setOnClickListener {
+                    onDeleteClickCallback.onDeleteClicked(listUkuran[adapterPosition])
+                }
+
             }
         }
 
+    }
+
+    interface OnDeleteClickCallback{
+        fun onDeleteClicked(data: UkuranDetailKategori)
     }
 
 }

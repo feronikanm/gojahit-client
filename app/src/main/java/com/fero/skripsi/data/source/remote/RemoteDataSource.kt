@@ -479,10 +479,7 @@ class RemoteDataSource(context: Context) : DataSource {
 
     }
 
-    override fun getDataPenjahitByKategori(
-        data: DetailKategoriNilai,
-        callback: ResponseCallback<List<DetailKategoriNilai>>
-    ) {
+    override fun getDataPenjahitByKategori(data: DetailKategoriNilai, callback: ResponseCallback<List<DetailKategoriNilai>>) {
         EspressoIdlingResource.increment()
         apiService.getDataPenjahitByKategori(data.id_kategori!!)
             .subscribeOn(Schedulers.io())
@@ -508,10 +505,7 @@ class RemoteDataSource(context: Context) : DataSource {
             })
     }
 
-    override fun getDataUkuran(
-        data: UkuranDetailKategori,
-        callback: ResponseCallback<List<UkuranDetailKategori>>
-    ) {
+    override fun getDataUkuran(callback: ResponseCallback<List<UkuranDetailKategori>>) {
         EspressoIdlingResource.increment()
         apiService.getDataUkuran()
             .subscribeOn(Schedulers.io())
@@ -537,10 +531,7 @@ class RemoteDataSource(context: Context) : DataSource {
             })
     }
 
-    override fun getUkuranByDetailKategori(
-        data: UkuranDetailKategori,
-        callback: ResponseCallback<List<UkuranDetailKategori>>
-    ) {
+    override fun getUkuranByDetailKategori(data: UkuranDetailKategori, callback: ResponseCallback<List<UkuranDetailKategori>>) {
         EspressoIdlingResource.increment()
         apiService.getUkuranByDetailKategori(data.id_detail_kategori!!)
             .subscribeOn(Schedulers.io())
@@ -563,6 +554,91 @@ class RemoteDataSource(context: Context) : DataSource {
                     EspressoIdlingResource.decrement()
                 }
             })
+    }
+
+    override fun insertDataUkuranDetailKategori(data: UkuranDetailKategori, responseCallback: ResponseCallback<UkuranDetailKategori>) {
+        EspressoIdlingResource.increment()
+
+        responseCallback.onShowProgress()
+
+        apiService.insertDataUkuranDetailKategori(
+            id_detail_kategori = data.id_detail_kategori!!,
+            id_ukuran = data.id_ukuran!!
+        ).enqueue(object : Callback<Success<UkuranDetailKategori>>{
+            override fun onResponse(
+                call: Call<Success<UkuranDetailKategori>>,
+                response: Response<Success<UkuranDetailKategori>>
+            ) {
+                responseCallback.onHideProgress()
+                response.body()?.data?.let { responseCallback.onSuccess(it) }
+                Log.d("Repsonse Body", response.body().toString())
+                EspressoIdlingResource.decrement()
+            }
+
+            override fun onFailure(call: Call<Success<UkuranDetailKategori>>, t: Throwable) {
+                responseCallback.onHideProgress()
+                EspressoIdlingResource.decrement()
+                responseCallback.onFailed(500, t.localizedMessage)
+            }
+
+        })
+    }
+
+    override fun deleteDataUkuranDetailKategori(data: UkuranDetailKategori, responseCallback: ResponseCallback<UkuranDetailKategori>) {
+        EspressoIdlingResource.increment()
+
+        responseCallback.onShowProgress()
+
+        apiService.deleteDataUkuranDetailKategori(data.id_ukuran_detail_kategori!!).enqueue(object : Callback<Success<UkuranDetailKategori>>{
+            override fun onResponse(
+                call: Call<Success<UkuranDetailKategori>>,
+                response: Response<Success<UkuranDetailKategori>>
+            ) {
+                responseCallback.onHideProgress()
+                response.body()?.data?.let { responseCallback.onSuccess(it) }
+                Log.d("Repsonse Body", response.body().toString())
+                EspressoIdlingResource.decrement()
+            }
+
+            override fun onFailure(call: Call<Success<UkuranDetailKategori>>, t: Throwable) {
+                responseCallback.onHideProgress()
+                EspressoIdlingResource.decrement()
+                responseCallback.onFailed(500, t.localizedMessage)
+            }
+
+        })
+    }
+
+    override fun insertDataRating(data: Rating, responseCallback: ResponseCallback<Rating>) {
+        EspressoIdlingResource.increment()
+
+        responseCallback.onShowProgress()
+
+        apiService.insertDataRating(
+            id_penjahit = data.id_penjahit,
+            kriteria_1 = data.kriteria_1,
+            kriteria_2 = data.kriteria_2,
+            kriteria_3 = data.kriteria_3,
+            kriteria_4 = data.kriteria_4
+        ).enqueue(object : Callback<Success<Rating>>{
+            override fun onResponse(
+                call: Call<Success<Rating>>,
+                response: Response<Success<Rating>>
+            ) {
+                responseCallback.onHideProgress()
+                response.body()?.data?.let { responseCallback.onSuccess(it) }
+                Log.d("Repsonse Body", response.body().toString())
+                EspressoIdlingResource.decrement()
+            }
+
+            override fun onFailure(call: Call<Success<Rating>>, t: Throwable) {
+                responseCallback.onHideProgress()
+                EspressoIdlingResource.decrement()
+                responseCallback.onFailed(500, t.localizedMessage)
+            }
+
+        })
+
     }
 
 }

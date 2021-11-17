@@ -7,6 +7,7 @@ import com.fero.skripsi.data.Repository
 import com.fero.skripsi.di.Injection
 import com.fero.skripsi.ui.pelanggan.auth.viewmodel.AuthPelangganViewModel
 import com.fero.skripsi.ui.pelanggan.dashboard.viewmodel.DashboardPelangganViewModel
+import com.fero.skripsi.ui.pelanggan.rating.viewmodel.RatingPenjahitViewModel
 import com.fero.skripsi.ui.penjahit.auth.viewmodel.AuthPenjahitViewModel
 import com.fero.skripsi.ui.penjahit.dashboard.viewmodel.DashboardPenjahitViewModel
 import com.fero.skripsi.ui.penjahit.kategori.viewmodel.KategoriPenjahitViewModel
@@ -51,6 +52,10 @@ class ViewModelFactory private constructor(private val repository: Repository) :
 
             modelClass.isAssignableFrom(UkuranViewModel::class.java) -> {
                 return UkuranViewModel(repository) as T
+            }
+
+            modelClass.isAssignableFrom(RatingPenjahitViewModel::class.java) -> {
+                return RatingPenjahitViewModel(repository) as T
             }
 
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)

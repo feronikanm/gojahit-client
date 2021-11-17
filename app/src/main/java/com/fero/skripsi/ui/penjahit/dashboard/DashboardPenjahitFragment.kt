@@ -13,6 +13,8 @@ import com.fero.skripsi.databinding.FragmentDashboardPenjahitBinding
 import com.fero.skripsi.model.DetailKategoriNilai
 import com.fero.skripsi.model.Penjahit
 import com.fero.skripsi.ui.pelanggan.dashboard.DetailKategoriFragment
+import com.fero.skripsi.ui.penjahit.dashboard.adapter.KategoriAdapter
+import com.fero.skripsi.ui.penjahit.dashboard.adapter.PenjahitAdapter
 import com.fero.skripsi.ui.penjahit.dashboard.viewmodel.DashboardPenjahitViewModel
 import com.google.gson.Gson
 

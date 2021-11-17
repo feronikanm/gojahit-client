@@ -14,7 +14,10 @@ import com.fero.skripsi.utils.Constant.URL_PENJAHIT_GET
 import com.fero.skripsi.utils.Constant.URL_PENJAHIT_GET_BY_NILAI
 import com.fero.skripsi.utils.Constant.URL_PENJAHIT_INSERT
 import com.fero.skripsi.utils.Constant.URL_PENJAHIT_UPDATE
+import com.fero.skripsi.utils.Constant.URL_RATING_INSERT
+import com.fero.skripsi.utils.Constant.URL_UKURAN_DETAIL_KATEGORI_DELETE
 import com.fero.skripsi.utils.Constant.URL_UKURAN_DETAIL_KATEGORI_GET_BY_DETAIL_KATEGORI
+import com.fero.skripsi.utils.Constant.URL_UKURAN_DETAIL_KATEGORI_INSERT
 import com.fero.skripsi.utils.Constant.URL_UKURAN_GET
 import io.reactivex.Observable
 import retrofit2.Call
@@ -169,9 +172,36 @@ interface ApiService {
     ): Observable<List<UkuranDetailKategori>>
 
 
+    @FormUrlEncoded
+    @POST(URL_UKURAN_DETAIL_KATEGORI_INSERT)
+    fun insertDataUkuranDetailKategori(
+        @Field("idDetailKategori") id_detail_kategori: Int,
+        @Field("idUkuran") id_ukuran: Int,
+
+        ): Call<Success<UkuranDetailKategori>>
+
+
+    @POST(URL_UKURAN_DETAIL_KATEGORI_DELETE)
+    fun deleteDataUkuranDetailKategori(
+        @Path("id_ukuran_detail_kategori") id_ukuran_detail_kategori_path: Int
+    ): Call<Success<UkuranDetailKategori>>
+
+
+    @FormUrlEncoded
+    @POST(URL_RATING_INSERT)
+    fun insertDataRating(
+        @Field("idPenjahit") id_penjahit: Int,
+        @Field("kriteria1") kriteria_1: Int,
+        @Field("kriteria2") kriteria_2: Int,
+        @Field("kriteria3") kriteria_3: Int,
+        @Field("kriteria4") kriteria_4: Int,
+
+        ): Call<Success<Rating>>
+
+
 //    @GET(URL_DETAIL_PESANAN_GET)
 //    fun getDetailPesanan(): Call<List<DetailPesanan>>
-//
+
 //    @FormUrlEncoded
 //    @POST(ApiEndPoint.URL_DETAIL_PESANAN_INSERT)
 //    fun registerDetailPesanan(
@@ -190,10 +220,10 @@ interface ApiService {
 //        @Field("totalBiaya") total_biaya: Int,
 //
 //        ): Call<Success<DetailPesanan>>
-//
+
 //    @GET(URL_PESANAN_GET)
 //    fun getPesanan(): Call<List<Pesanan>>
-//
+
 //    @FormUrlEncoded
 //    @POST(ApiEndPoint.URL_PESANAN_INSERT)
 //    fun registerPesanan(
@@ -205,32 +235,7 @@ interface ApiService {
 //        @Field("statusPesanan") status_pesanan: String,
 //
 //        ): Call<Success<Pesanan>>
-//
-//    @GET(URL_RATING_GET)
-//    fun getRating(): Call<List<Rating>>
-//
-//    @FormUrlEncoded
-//    @POST(ApiEndPoint.URL_RATING_INSERT)
-//    fun registerRating(
-//        @Field("idPenjahit") id_penjahit: Int,
-//        @Field("idKriteria") id_kriteria: Int,
-//        @Field("ratingPenjahit") rating_penjahit: Int,
-//
-//        ): Call<Success<Rating>>
-//
-//
-//    @GET(URL_UKURAN_DETAIL_KATEGORI_GET)
-//    fun getUkuranDetailKategori(): Call<List<UkuranDetailKategori>>
-//
-//    @FormUrlEncoded
-//    @POST(ApiEndPoint.URL_UKURAN_DETAIL_KATEGORI_INSERT)
-//    fun registerUkuranDetailKategori(
-//        @Field("idDetailKategori") id_detail_kategori: Int,
-//        @Field("idUkuran") id_ukuran: Int,
-//
-//        ): Call<Success<UkuranDetailKategori>>
-//
-//
+
 //    @GET(URL_UKURAN_DETAIL_PESANAN_GET)
 //    fun getUkuranDetailPesanan(): Call<List<UkuranDetailPesanan>>
 //

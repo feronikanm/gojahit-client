@@ -1,4 +1,4 @@
-package com.fero.skripsi.ui.pelanggan.dashboard
+package com.fero.skripsi.ui.penjahit.dashboard.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,7 @@ import com.fero.skripsi.databinding.ItemCardKategoriBinding
 import com.fero.skripsi.model.DetailKategoriNilai
 import com.fero.skripsi.utils.Constant
 
-class KategoriPenjahitAdapter : RecyclerView.Adapter<KategoriPenjahitAdapter.KategoriPenjahitViewHolder>() {
+class KategoriAdapter : RecyclerView.Adapter<KategoriAdapter.KategoriViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
     var listKategori = mutableListOf<DetailKategoriNilai>()
@@ -18,22 +18,17 @@ class KategoriPenjahitAdapter : RecyclerView.Adapter<KategoriPenjahitAdapter.Kat
     }
 
     fun setKategori(kategori: List<DetailKategoriNilai>){
+//        if (kategori == null) return
         this.listKategori.clear()
         this.listKategori.addAll(kategori)
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): KategoriPenjahitViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KategoriViewHolder {
         val itemCardKategoriBinding = ItemCardKategoriBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return KategoriPenjahitViewHolder(itemCardKategoriBinding)
+        return KategoriViewHolder(itemCardKategoriBinding)
     }
 
-    override fun onBindViewHolder(
-        holder: KategoriPenjahitViewHolder,
-        position: Int
-    ) {
+    override fun onBindViewHolder(holder: KategoriViewHolder, position: Int) {
         val data = listKategori[position]
         holder.bind(data)
     }
@@ -42,7 +37,7 @@ class KategoriPenjahitAdapter : RecyclerView.Adapter<KategoriPenjahitAdapter.Kat
         return listKategori.size
     }
 
-    inner class KategoriPenjahitViewHolder(private var binding: ItemCardKategoriBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class KategoriViewHolder(private var binding: ItemCardKategoriBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: DetailKategoriNilai){
             binding.apply {
                 tvNamaKategori.text = data.nama_kategori
