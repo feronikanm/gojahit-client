@@ -92,7 +92,7 @@ class UkuranViewModel(private val repository: Repository) : BaseViewModel() {
             }
 
             override fun isEmptyData(check: Boolean) {
-                TODO("Not yet implemented")
+                eventIsEmpty.postValue(check)
             }
 
         })
@@ -121,7 +121,7 @@ class UkuranViewModel(private val repository: Repository) : BaseViewModel() {
             }
 
             override fun isEmptyData(check: Boolean) {
-                TODO("Not yet implemented")
+                eventIsEmpty.postValue(check)
             }
 
         })

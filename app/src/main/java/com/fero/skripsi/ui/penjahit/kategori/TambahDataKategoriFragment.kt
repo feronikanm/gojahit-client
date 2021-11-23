@@ -81,16 +81,16 @@ class TambahDataKategoriFragment : DialogFragment() {
         val factory = ViewModelFactory.getInstance(requireActivity())
         val viewModel = ViewModelProvider(this, factory)[KategoriPenjahitViewModel::class.java]
 
-        var value = 2
+        var value = 1
         when (binding.rgKategori.checkedRadioButtonId) {
-            R.id.rb_kategori_2 -> value = 2
-            R.id.rb_kategori_3 -> value = 3
-            R.id.rb_kategori_4 -> value = 4
-            R.id.rb_kategori_5 -> value = 5
-            R.id.rb_kategori_6 -> value = 6
-            R.id.rb_kategori_7 -> value = 7
-            R.id.rb_kategori_8 -> value = 8
-            R.id.rb_kategori_9 -> value = 9
+            R.id.rb_kategori_2 -> value = 1
+            R.id.rb_kategori_3 -> value = 2
+            R.id.rb_kategori_4 -> value = 3
+            R.id.rb_kategori_5 -> value = 4
+            R.id.rb_kategori_6 -> value = 5
+            R.id.rb_kategori_7 -> value = 6
+            R.id.rb_kategori_8 -> value = 7
+            R.id.rb_kategori_9 -> value = 8
         }
         val idKategori = value
 
