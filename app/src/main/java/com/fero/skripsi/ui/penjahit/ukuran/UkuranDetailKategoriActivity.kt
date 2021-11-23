@@ -1,17 +1,14 @@
 package com.fero.skripsi.ui.penjahit.ukuran
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.ContextThemeWrapper
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.fero.skripsi.R
 import com.fero.skripsi.databinding.ActivityUkuranDetailKategoriBinding
-import com.fero.skripsi.model.ListDetailKategori
+import com.fero.skripsi.model.DetailKategoriPenjahit
 import com.fero.skripsi.model.UkuranDetailKategori
 import com.fero.skripsi.ui.penjahit.ukuran.adapter.UkuranDetailKategoriAdapter
 import com.fero.skripsi.ui.penjahit.ukuran.viewmodel.UkuranViewModel
@@ -33,7 +30,7 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
         binding = ActivityUkuranDetailKategoriBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val extraData: ListDetailKategori? = intent.extras?.getParcelable(EXTRA_DATA_KATEGORI)
+        val extraData: DetailKategoriPenjahit? = intent.extras?.getParcelable(EXTRA_DATA_KATEGORI)
 
         supportActionBar?.title = extraData?.nama_kategori
 
@@ -122,10 +119,7 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
             override fun onDeleteClicked(data: UkuranDetailKategori) {
                 popupDelete(data)
             }
-
         })
-
-
     }
 
     private fun popupDelete(data: UkuranDetailKategori) {

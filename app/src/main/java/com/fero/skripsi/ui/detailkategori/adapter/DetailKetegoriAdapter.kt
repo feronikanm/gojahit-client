@@ -1,4 +1,4 @@
-package com.fero.skripsi.ui.pelanggan.dashboard.adapter
+package com.fero.skripsi.ui.detailkategori.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

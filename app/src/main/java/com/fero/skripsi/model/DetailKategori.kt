@@ -1,5 +1,6 @@
 package com.fero.skripsi.model
 
+import android.content.Intent
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 

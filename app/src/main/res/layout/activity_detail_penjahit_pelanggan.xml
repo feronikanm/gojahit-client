@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.pelanggan.transaksi.DetailPenjahitPelangganActivity">
+    tools:context=".ui.pelanggan.detail.DetailPenjahitPelangganActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -73,7 +73,7 @@
                         android:background="#5094FD"/>
 
                     <TextView
-                        android:id="@+id/tv_star"
+                        android:id="@+id/tv_rating"
                         android:text="Rating Penjahit"
                         android:textColor="@color/white"
                         style="@style/profileStyledBackButton" />

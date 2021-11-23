@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class ListDetailKategori(
+data class DetailKategoriPenjahit(
     val id_detail_kategori: Int?,
     val id_penjahit: Int?,
     val id_kategori: Int?,

@@ -11,7 +11,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.fero.skripsi.R
 import com.fero.skripsi.databinding.FragmentEditDataKategoriBinding
-import com.fero.skripsi.model.ListDetailKategori
+import com.fero.skripsi.model.DetailKategoriPenjahit
 import com.fero.skripsi.ui.penjahit.kategori.viewmodel.KategoriPenjahitViewModel
 import com.fero.skripsi.utils.ViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -33,7 +33,7 @@ class EditDataKategoriFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val bundleData = arguments?.getString(EXTRA_DETAIL_KATEGORI)
-        val extraData = Gson().fromJson(bundleData, ListDetailKategori::class.java)
+        val extraData = Gson().fromJson(bundleData, DetailKategoriPenjahit::class.java)
 
         val factory = ViewModelFactory.getInstance(requireActivity())
         val viewModel = ViewModelProvider(this, factory)[KategoriPenjahitViewModel::class.java]
@@ -69,7 +69,7 @@ class EditDataKategoriFragment : DialogFragment() {
 
     }
 
-    private fun popupSimpanData(context: Context?, data: ListDetailKategori?) {
+    private fun popupSimpanData(context: Context?, data: DetailKategoriPenjahit?) {
         val box: Context = ContextThemeWrapper(context, R.style.AppTheme)
         val materialAlertDialogBuilder = MaterialAlertDialogBuilder(box)
         materialAlertDialogBuilder.setTitle("Tambah Data")
@@ -79,7 +79,7 @@ class EditDataKategoriFragment : DialogFragment() {
             .show()
     }
 
-    private fun simpanData(data: ListDetailKategori?) {
+    private fun simpanData(data: DetailKategoriPenjahit?) {
 
         val factory = ViewModelFactory.getInstance(requireActivity())
         val viewModel = ViewModelProvider(this, factory)[KategoriPenjahitViewModel::class.java]
@@ -108,7 +108,7 @@ class EditDataKategoriFragment : DialogFragment() {
             return
         }
 
-        val dataDetailKategori = ListDetailKategori(
+        val dataDetailKategori = DetailKategoriPenjahit(
             data?.id_detail_kategori,
             data?.id_penjahit,
             idKategori,

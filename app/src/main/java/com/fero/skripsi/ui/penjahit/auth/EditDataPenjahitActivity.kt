@@ -123,13 +123,7 @@ class EditDataPenjahitActivity : AppCompatActivity() {
                 cal.set(Calendar.MINUTE, minute)
                 binding.tvJamTutup.text = SimpleDateFormat("HH:mm").format(cal.time)
             }
-            TimePickerDialog(
-                this,
-                timeSetListener,
-                cal.get(Calendar.HOUR_OF_DAY),
-                cal.get(Calendar.MINUTE),
-                true
-            ).show()
+            TimePickerDialog(this, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
         }
 
         binding.btnPickImage.setOnClickListener {

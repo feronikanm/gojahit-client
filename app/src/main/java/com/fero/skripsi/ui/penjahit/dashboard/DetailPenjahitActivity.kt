@@ -1,4 +1,4 @@
-package com.fero.skripsi.ui.penjahit.transaksi
+package com.fero.skripsi.ui.penjahit.dashboard
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +7,6 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.fero.skripsi.databinding.ActivityDetailPenjahitBinding
 import com.fero.skripsi.model.DetailKategoriNilai
-import com.fero.skripsi.model.Nilai
 import com.fero.skripsi.utils.Constant
 
 class DetailPenjahitActivity : AppCompatActivity() {

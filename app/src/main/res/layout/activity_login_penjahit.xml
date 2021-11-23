@@ -92,7 +92,7 @@
                     android:fontFamily="@font/gilroy_medium"
                     android:hint="Email"
                     android:textColor="@color/black"
-                    android:text="widyanatasha99@gmail.com"
+                    android:text="feronika@gmail.com"
                     android:inputType="textEmailAddress"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -118,7 +118,7 @@
                     android:fontFamily="@font/gilroy_medium"
                     android:textColor="@color/black"
                     android:hint="Password"
-                    android:text="widyanatasha123"
+                    android:text="fero1234"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     app:hintAnimationEnabled="true"

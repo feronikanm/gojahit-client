@@ -2,14 +2,20 @@ package com.fero.skripsi.utils
 
 object Constant {
 
-    const val BASE_URL = "https://penjahitapi.000webhostapp.com"
+//    const val BASE_URL = "https://penjahitapi.000webhostapp.com"
+    const val BASE_URL = "https://adminapipenjahit.000webhostapp.com/"
 //    const val BASE_URL = "http://gojahitapp.herokuapp.com"
     const val PATH_API = "api"
 
-    const val IMAGE_PENJAHIT = "https://penjahitapi.000webhostapp.com/img_penjahit/"
-    const val IMAGE_PELANGGAN = "https://penjahitapi.000webhostapp.com/img_pelanggan/"
-    const val IMAGE_KATEGORI = "https://penjahitapi.000webhostapp.com/img_kategori/"
-    const val IMAGE_UKURAN = "https://penjahitapi.000webhostapp.com/img_ukuran/"
+//    const val IMAGE_PENJAHIT = "https://penjahitapi.000webhostapp.com/img_penjahit/"
+//    const val IMAGE_PELANGGAN = "https://penjahitapi.000webhostapp.com/img_pelanggan/"
+//    const val IMAGE_KATEGORI = "https://penjahitapi.000webhostapp.com/img_kategori/"
+//    const val IMAGE_UKURAN = "https://penjahitapi.000webhostapp.com/img_ukuran/"
+
+    const val IMAGE_PENJAHIT = "https://adminapipenjahit.000webhostapp.com/img_penjahit/"
+    const val IMAGE_PELANGGAN = "https://adminapipenjahit.000webhostapp.com/img_pelanggan/"
+    const val IMAGE_KATEGORI = "https://adminapipenjahit.000webhostapp.com/img_kategori/"
+    const val IMAGE_UKURAN = "https://adminapipenjahit.000webhostapp.com/img_ukuran/"
 
     const val PATH_DETAIL_KATEGORI = "/detail_kategori"
     const val PATH_GET_PENJAHIT = "/get_penjahit"
@@ -24,6 +30,7 @@ object Constant {
     const val PATH_ID_KATEGORI = "/{id_kategori}"
     const val PATH_ID_DETAIL_KATEGORI = "/{id_detail_kategori}"
     const val PATH_ID_UKURAN_DETAIL_KATEGORI = "/{id_ukuran_detail_kategori}"
+    const val PATH_ID_PESANAN = "/{id_pesanan}"
     const val PATH_NILAI = "/nilai"
     const val PATH_PESANAN = "/pesanan"
     const val PATH_RATING = "/rating"
@@ -67,6 +74,7 @@ object Constant {
     const val URL_PENJAHIT_DELETE = "$PATH_API$PATH_PENJAHIT$PATH_DELETE"
 
     const val URL_PESANAN_GET = "$PATH_API$PATH_PESANAN"
+    const val URL_PESANAN_GET_BY_ID = "$PATH_API$PATH_PESANAN$PATH_ID_PESANAN"
     const val URL_PESANAN_INSERT = "$PATH_API$PATH_PESANAN$PATH_INSERT_DATA"
     const val URL_PESANAN_UPDATE = "$PATH_API$PATH_PESANAN$PATH_UPDATE"
     const val URL_PESANAN_DELETE = "$PATH_API$PATH_PESANAN$PATH_DELETE"

@@ -12,7 +12,7 @@ import com.fero.skripsi.core.BaseFragment
 import com.fero.skripsi.databinding.FragmentDashboardPenjahitBinding
 import com.fero.skripsi.model.DetailKategoriNilai
 import com.fero.skripsi.model.Penjahit
-import com.fero.skripsi.ui.pelanggan.dashboard.DetailKategoriFragment
+import com.fero.skripsi.ui.detailkategori.DetailKategoriFragment
 import com.fero.skripsi.ui.penjahit.dashboard.adapter.KategoriAdapter
 import com.fero.skripsi.ui.penjahit.dashboard.adapter.PenjahitAdapter
 import com.fero.skripsi.ui.penjahit.dashboard.viewmodel.DashboardPenjahitViewModel
@@ -95,6 +95,7 @@ class DashboardPenjahitFragment : BaseFragment<FragmentDashboardPenjahitBinding>
                 val bundle = Bundle()
                 val bundleData = Gson().toJson(data)
                 bundle.putString("EXTRA_PENJAHIT_BY_KATEGORI", bundleData)
+                bundle.putString("EXTRA_ACCOUNT_STATUS", "status_penjahit")
                 detailKategoriFragment.arguments = bundle
 
                 val fragmentManager = parentFragmentManager

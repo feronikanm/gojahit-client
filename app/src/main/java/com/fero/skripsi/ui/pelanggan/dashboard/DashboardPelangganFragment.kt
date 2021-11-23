@@ -15,10 +15,11 @@ import com.fero.skripsi.core.BaseFragment
 import com.fero.skripsi.databinding.FragmentDashboardPelangganBinding
 import com.fero.skripsi.model.DetailKategoriNilai
 import com.fero.skripsi.model.Pelanggan
+import com.fero.skripsi.ui.detailkategori.DetailKategoriFragment
 import com.fero.skripsi.ui.pelanggan.dashboard.adapter.KategoriPenjahitAdapter
 import com.fero.skripsi.ui.pelanggan.dashboard.adapter.RekomendasiPenjahitAdapter
 import com.fero.skripsi.ui.pelanggan.dashboard.viewmodel.DashboardPelangganViewModel
-import com.fero.skripsi.ui.pelanggan.transaksi.DetailPenjahitPelangganActivity
+import com.fero.skripsi.ui.pelanggan.detail.DetailPenjahitPelangganActivity
 import com.google.gson.Gson
 
 
@@ -113,6 +114,7 @@ class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBindin
                 val bundle = Bundle()
                 val bundleData = Gson().toJson(data)
                 bundle.putString("EXTRA_PENJAHIT_BY_KATEGORI", bundleData)
+                bundle.putString("EXTRA_ACCOUNT_STATUS", "status_pelanggan")
                 detailKategoriFragment.arguments = bundle
 
                 val fragmentManager = parentFragmentManager

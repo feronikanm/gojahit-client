@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fero.skripsi.databinding.ItemListKategoriBinding
-import com.fero.skripsi.model.ListDetailKategori
+import com.fero.skripsi.model.DetailKategoriPenjahit
 import com.fero.skripsi.utils.Constant
 
 class ListKategoriAdapter : RecyclerView.Adapter<ListKategoriAdapter.ListKategoriViewHolder>() {
@@ -13,9 +13,9 @@ class ListKategoriAdapter : RecyclerView.Adapter<ListKategoriAdapter.ListKategor
     private lateinit var onItemClickCallback: OnItemClickCallback
     private lateinit var onDeleteClickCallback: OnDeleteClickCallback
     private lateinit var onUpdateClickCallback: OnUpdateClickCallback
-    var listDetailKategori = mutableListOf<ListDetailKategori>()
+    var listDetailKategori = mutableListOf<DetailKategoriPenjahit>()
 
-    fun setItemClickCallback(onItemClickCallback: OnItemClickCallback){
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
         this.onItemClickCallback = onItemClickCallback
     }
 
@@ -27,9 +27,9 @@ class ListKategoriAdapter : RecyclerView.Adapter<ListKategoriAdapter.ListKategor
         this.onUpdateClickCallback = onUpdateClickCallback
     }
 
-    fun setDetailKategori(kategoriList: List<ListDetailKategori>){
+    fun setDetailKategori(kategoriPenjahit: List<DetailKategoriPenjahit>){
         this.listDetailKategori.clear()
-        this.listDetailKategori.addAll(kategoriList)
+        this.listDetailKategori.addAll(kategoriPenjahit)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListKategoriViewHolder {
@@ -47,7 +47,7 @@ class ListKategoriAdapter : RecyclerView.Adapter<ListKategoriAdapter.ListKategor
     }
 
     inner class ListKategoriViewHolder(private var binding: ItemListKategoriBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: ListDetailKategori){
+        fun bind(data: DetailKategoriPenjahit){
             binding.apply {
 
                 tvKategori.text = data.nama_kategori
@@ -75,15 +75,15 @@ class ListKategoriAdapter : RecyclerView.Adapter<ListKategoriAdapter.ListKategor
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: ListDetailKategori)
+        fun onItemClicked(data: DetailKategoriPenjahit)
     }
 
     interface OnDeleteClickCallback{
-        fun onDeleteClicked(data: ListDetailKategori)
+        fun onDeleteClicked(data: DetailKategoriPenjahit)
     }
 
     interface OnUpdateClickCallback{
-        fun onUpdateClikced(data: ListDetailKategori)
+        fun onUpdateClikced(data: DetailKategoriPenjahit)
     }
 
 

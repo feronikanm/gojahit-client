@@ -14,6 +14,10 @@ import com.fero.skripsi.utils.Constant.URL_PENJAHIT_GET
 import com.fero.skripsi.utils.Constant.URL_PENJAHIT_GET_BY_NILAI
 import com.fero.skripsi.utils.Constant.URL_PENJAHIT_INSERT
 import com.fero.skripsi.utils.Constant.URL_PENJAHIT_UPDATE
+import com.fero.skripsi.utils.Constant.URL_PESANAN_DELETE
+import com.fero.skripsi.utils.Constant.URL_PESANAN_GET_BY_ID
+import com.fero.skripsi.utils.Constant.URL_PESANAN_INSERT
+import com.fero.skripsi.utils.Constant.URL_PESANAN_UPDATE
 import com.fero.skripsi.utils.Constant.URL_RATING_INSERT
 import com.fero.skripsi.utils.Constant.URL_UKURAN_DETAIL_KATEGORI_DELETE
 import com.fero.skripsi.utils.Constant.URL_UKURAN_DETAIL_KATEGORI_GET_BY_DETAIL_KATEGORI
@@ -119,7 +123,13 @@ interface ApiService {
     @GET(URL_DETAIL_KATEGORI_GET_BY_PENJAHIT)
     fun getDetailKategori(
         @Path("id_penjahit") id_penjahit_path: Int
-    ): Observable<List<ListDetailKategori>>
+    ): Observable<List<DetailKategoriPenjahit>>
+
+
+    @GET(URL_DETAIL_KATEGORI_GET_BY_PENJAHIT)
+    fun getDetailKategoriInPelanggan(
+        @Path("id_penjahit") id_penjahit_path: Int
+    ): Observable<List<DetailKategoriNilai>>
 
 
     @FormUrlEncoded
@@ -139,7 +149,7 @@ interface ApiService {
     @POST(URL_DETAIL_KATEGORI_DELETE)
     fun deleteDataDetailKategori(
         @Path("id_detail_kategori") id_detail_kategori_path: Int
-    ): Call<Success<ListDetailKategori>>
+    ): Call<Success<DetailKategoriPenjahit>>
 
 
     @FormUrlEncoded
@@ -154,7 +164,7 @@ interface ApiService {
         @Field("ongkosPenjahit") ongkos_penjahit: String?,
         @Field("perkiraanLamaWaktuPengerjaan") perkiraan_lama_waktu_pengerjaan: String,
 
-        ): Call<Success<ListDetailKategori>>
+        ): Call<Success<DetailKategoriPenjahit>>
 
 
     @GET(URL_DETAIL_KATEGORI_GET_BY_KATEGORI)
@@ -199,6 +209,45 @@ interface ApiService {
         ): Call<Success<Rating>>
 
 
+    @GET(URL_PESANAN_GET_BY_ID)
+    fun getDataPesananById(
+        @Path("id_pesanan") id_pesanan_path: Int
+    ): Observable<Pesanan>
+
+
+    @FormUrlEncoded
+    @POST(URL_PESANAN_INSERT)
+    fun insertDataPesanan(
+        @Field("idPelanggan") id_pelanggan: Int,
+        @Field("idPenjahit") id_penjahit: Int,
+        @Field("tanggalPesanan") tanggal_pesanan: String,
+        @Field("tanggalPesananSelesai") tanggal_pesanan_selesai: String,
+        @Field("lamaWaktuPengerjaan") lama_waktu_pengerjaan: String,
+        @Field("statusPesanan") status_pesanan: String,
+
+        ): Call<Success<Pesanan>>
+
+
+    @FormUrlEncoded
+    @POST(URL_PESANAN_UPDATE)
+    fun updateDataPesanan(
+        @Path("id_pesanan") id_pesanan_path: Int,
+        @Field("idPelanggan") id_pelanggan: Int,
+        @Field("idPenjahit") id_penjahit: Int,
+        @Field("tanggalPesanan") tanggal_pesanan: String,
+        @Field("tanggalPesananSelesai") tanggal_pesanan_selesai: String,
+        @Field("lamaWaktuPengerjaan") lama_waktu_pengerjaan: String,
+        @Field("statusPesanan") status_pesanan: String,
+
+        ): Call<Success<Pesanan>>
+
+
+    @POST(URL_PESANAN_DELETE)
+    fun deleteDataPesanan(
+        @Path("id_pesanan") id_pesanan_path: Int
+    ): Call<Success<Pesanan>>
+
+
 //    @GET(URL_DETAIL_PESANAN_GET)
 //    fun getDetailPesanan(): Call<List<DetailPesanan>>
 
@@ -220,21 +269,6 @@ interface ApiService {
 //        @Field("totalBiaya") total_biaya: Int,
 //
 //        ): Call<Success<DetailPesanan>>
-
-//    @GET(URL_PESANAN_GET)
-//    fun getPesanan(): Call<List<Pesanan>>
-
-//    @FormUrlEncoded
-//    @POST(ApiEndPoint.URL_PESANAN_INSERT)
-//    fun registerPesanan(
-//        @Field("idPelanggan") id_pelanggan: Int,
-//        @Field("idPenjahit") id_penjahit: Int,
-//        @Field("tanggalPesanan") tanggal_pesanan: String,
-//        @Field("tanggalPesananSelesai") tanggal_pesanan_selesai: String,
-//        @Field("lamaWaktuPengerjaan") lama_waktu_pengerjaan: String,
-//        @Field("statusPesanan") status_pesanan: String,
-//
-//        ): Call<Success<Pesanan>>
 
 //    @GET(URL_UKURAN_DETAIL_PESANAN_GET)
 //    fun getUkuranDetailPesanan(): Call<List<UkuranDetailPesanan>>

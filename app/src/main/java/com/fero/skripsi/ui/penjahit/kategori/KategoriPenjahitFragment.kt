@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.fero.skripsi.R
 import com.fero.skripsi.core.BaseFragment
 import com.fero.skripsi.databinding.FragmentKategoriPenjahitBinding
-import com.fero.skripsi.model.ListDetailKategori
+import com.fero.skripsi.model.DetailKategoriPenjahit
 import com.fero.skripsi.model.Penjahit
 import com.fero.skripsi.ui.penjahit.kategori.adapter.ListKategoriAdapter
 import com.fero.skripsi.ui.penjahit.kategori.viewmodel.KategoriPenjahitViewModel
@@ -80,7 +80,7 @@ class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>()
 
     }
 
-    private fun setupRvDetailKategori(data: List<ListDetailKategori>?) {
+    private fun setupRvDetailKategori(data: List<DetailKategoriPenjahit>?) {
         val listKategoriAdapter = ListKategoriAdapter()
         listKategoriAdapter.setDetailKategori(data!!)
 
@@ -90,13 +90,13 @@ class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>()
         }
 
         listKategoriAdapter.setOnDeleteClickCallback(object : ListKategoriAdapter.OnDeleteClickCallback{
-            override fun onDeleteClicked(data: ListDetailKategori) {
+            override fun onDeleteClicked(data: DetailKategoriPenjahit) {
                 popupDelete(context, data)
             }
         })
 
         listKategoriAdapter.setOnUpdateClickCallback(object : ListKategoriAdapter.OnUpdateClickCallback{
-            override fun onUpdateClikced(data: ListDetailKategori) {
+            override fun onUpdateClikced(data: DetailKategoriPenjahit) {
 
                 val editDataKategoriFragment = EditDataKategoriFragment()
 
@@ -110,14 +110,14 @@ class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>()
             }
         })
 
-        listKategoriAdapter.setItemClickCallback(object : ListKategoriAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: ListDetailKategori) {
+        listKategoriAdapter.setOnItemClickCallback(object : ListKategoriAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: DetailKategoriPenjahit) {
                 selectedKategori(data)
             }
         })
     }
 
-    private fun selectedKategori(data: ListDetailKategori) {
+    private fun selectedKategori(data: DetailKategoriPenjahit) {
         Toast.makeText(context, "Kamu memilih " + data.nama_kategori, Toast.LENGTH_SHORT).show()
         Log.d("Test", "CLICK FROM ADAPTER")
         val intent = Intent(binding.root.context, UkuranDetailKategoriActivity::class.java)
@@ -125,7 +125,7 @@ class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>()
         startActivity(intent)
     }
 
-    private fun popupDelete(context: Context?, data: ListDetailKategori) {
+    private fun popupDelete(context: Context?, data: DetailKategoriPenjahit) {
         val box: Context = ContextThemeWrapper(context, R.style.AppTheme)
         val materialAlertDialogBuilder = MaterialAlertDialogBuilder(box)
         materialAlertDialogBuilder.setTitle("Hapus Data")
@@ -140,7 +140,7 @@ class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>()
             .show()
     }
 
-    private fun deleteDataKategori(data: ListDetailKategori){
+    private fun deleteDataKategori(data: DetailKategoriPenjahit){
         val factory = ViewModelFactory.getInstance(requireActivity())
         val viewModel = ViewModelProvider(this, factory)[KategoriPenjahitViewModel::class.java]
 

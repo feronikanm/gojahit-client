@@ -22,10 +22,7 @@ class KategoriPenjahitAdapter : RecyclerView.Adapter<KategoriPenjahitAdapter.Kat
         this.listKategori.addAll(kategori)
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): KategoriPenjahitViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KategoriPenjahitViewHolder {
         val itemCardKategoriBinding = ItemCardKategoriBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return KategoriPenjahitViewHolder(itemCardKategoriBinding)
     }

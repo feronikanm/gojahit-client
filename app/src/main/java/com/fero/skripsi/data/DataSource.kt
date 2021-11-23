@@ -21,13 +21,15 @@ interface DataSource {
 
     fun updatePenjahit(data: Penjahit, responseCallback: ResponseCallback<Penjahit>)
 
-    fun getListDetailKategori(data: Penjahit, callback: ResponseCallback<List<ListDetailKategori>>)
+    fun getListDetailKategori(data: Penjahit, callback: ResponseCallback<List<DetailKategoriPenjahit>>)
+
+    fun getListDetailKategoriInPelanggan(data: DetailKategoriNilai, callback: ResponseCallback<List<DetailKategoriNilai>>)
 
     fun insertDataDetailKategoriPenjahit(data: DetailKategori, responseCallback: ResponseCallback<DetailKategori>)
 
-    fun deleteDataDetailKategori(data: ListDetailKategori, responseCallback: ResponseCallback<ListDetailKategori>)
+    fun deleteDataDetailKategori(data: DetailKategoriPenjahit, responseCallback: ResponseCallback<DetailKategoriPenjahit>)
 
-    fun updateDataDetailKategori(data: ListDetailKategori, responseCallback: ResponseCallback<ListDetailKategori>)
+    fun updateDataDetailKategori(data: DetailKategoriPenjahit, responseCallback: ResponseCallback<DetailKategoriPenjahit>)
 
     fun getDataPenjahitByKategori(data: DetailKategoriNilai, callback: ResponseCallback<List<DetailKategoriNilai>>)
 
@@ -41,7 +43,12 @@ interface DataSource {
 
     fun insertDataRating(data: Rating, responseCallback: ResponseCallback<Rating>)
 
+    fun getDataPesananById(data: Pesanan, responseCallback: ResponseCallback<Pesanan>)
 
+    fun insertDataPesanan(data: Pesanan, responseCallback: ResponseCallback<Pesanan>)
 
+    fun updateDataPesanan(data: Pesanan, responseCallback: ResponseCallback<Pesanan>)
+
+    fun deleteDataPesanan(data: Pesanan, responseCallback: ResponseCallback<Pesanan>)
 
 }

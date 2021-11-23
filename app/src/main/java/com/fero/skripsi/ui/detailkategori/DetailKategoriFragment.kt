@@ -1,4 +1,4 @@
-package com.fero.skripsi.ui.pelanggan.dashboard
+package com.fero.skripsi.ui.detailkategori
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.fero.skripsi.core.BaseFragment
 import com.fero.skripsi.databinding.FragmentDetailKategoriBinding
 import com.fero.skripsi.model.DetailKategoriNilai
-import com.fero.skripsi.ui.pelanggan.dashboard.adapter.DetailKetegoriAdapter
+import com.fero.skripsi.ui.detailkategori.adapter.DetailKetegoriAdapter
 import com.fero.skripsi.ui.pelanggan.dashboard.viewmodel.DashboardPelangganViewModel
-import com.fero.skripsi.ui.pelanggan.transaksi.DetailPenjahitPelangganActivity
+import com.fero.skripsi.ui.pelanggan.detail.DetailPenjahitPelangganActivity
+import com.fero.skripsi.ui.penjahit.dashboard.DetailPenjahitActivity
 
 
 class DetailKategoriFragment : BaseFragment<FragmentDetailKategoriBinding>() {
@@ -21,6 +22,10 @@ class DetailKategoriFragment : BaseFragment<FragmentDetailKategoriBinding>() {
     private lateinit var dashboardPelangganViewModel: DashboardPelangganViewModel
     private val data by lazy {
         baseGetInstance<DetailKategoriNilai>("EXTRA_PENJAHIT_BY_KATEGORI")
+    }
+
+    private val statusAccount by lazy {
+        baseGetInstance<String>("EXTRA_ACCOUNT_STATUS")
     }
 
     override fun setupViewBinding(
@@ -33,7 +38,7 @@ class DetailKategoriFragment : BaseFragment<FragmentDetailKategoriBinding>() {
     override fun setupViewModel() {
         dashboardPelangganViewModel = obtainViewModel<DashboardPelangganViewModel>().apply {
 
-            listDataPenjahitByKategori.observe(viewLifecycleOwner,{
+            listDataPenjahitByKategori.observe(viewLifecycleOwner, {
                 setupRvPenjahitByKategori(it)
             })
 
@@ -62,17 +67,26 @@ class DetailKategoriFragment : BaseFragment<FragmentDetailKategoriBinding>() {
             adapter = detailKetegoriAdapter
         }
 
-        detailKetegoriAdapter.setOnItemClickCallback(object : DetailKetegoriAdapter.OnItemClickCallback{
+        detailKetegoriAdapter.setOnItemClickCallback(object :
+            DetailKetegoriAdapter.OnItemClickCallback {
             override fun onItemClicked(data: DetailKategoriNilai) {
 
 
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
-                Toast.makeText(context, "Kamu memilih " + data.nama_penjahit, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Kamu memilih " + data.nama_penjahit, Toast.LENGTH_SHORT)
+                    .show()
                 Log.d("Test", "CLICK FROM ADAPTER")
 
-                val intent = Intent(binding.root.context, DetailPenjahitPelangganActivity::class.java)
-                intent.putExtra(DetailPenjahitPelangganActivity.EXTRA_DATA_PENJAHIT, data)
-                startActivity(intent)
+                if (statusAccount == "status_penjahit") {
+                    val intent = Intent(binding.root.context, DetailPenjahitActivity::class.java)
+                    intent.putExtra(DetailPenjahitActivity.EXTRA_PENJAHIT, data)
+                    startActivity(intent)
+                } else if (statusAccount == "status_pelanggan") {
+                    val intent =
+                        Intent(binding.root.context, DetailPenjahitPelangganActivity::class.java)
+                    intent.putExtra(DetailPenjahitPelangganActivity.EXTRA_DATA_PENJAHIT, data)
+                    startActivity(intent)
+                }
             }
 
         })
@@ -80,7 +94,8 @@ class DetailKategoriFragment : BaseFragment<FragmentDetailKategoriBinding>() {
 
     override fun setupUI(view: View, savedInstanceState: Bundle?) {
 
-        binding.tvPenjahitByKategori.text = "Data Penjahit yang memiliki kategori " +data.nama_kategori
+        binding.tvPenjahitByKategori.text =
+            "Data Penjahit yang memiliki kategori " + data.nama_kategori
     }
 
     companion object {

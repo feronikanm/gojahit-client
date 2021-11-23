@@ -62,8 +62,13 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
         remoteDataSource.updatePenjahit(data, responseCallback)
     }
 
-    override fun getListDetailKategori(data: Penjahit, callback: ResponseCallback<List<ListDetailKategori>>) {
+    override fun getListDetailKategori(data: Penjahit, callback: ResponseCallback<List<DetailKategoriPenjahit>>) {
         remoteDataSource.getListDetailKategori(data, callback)
+    }
+
+    override fun getListDetailKategoriInPelanggan(data: DetailKategoriNilai, callback: ResponseCallback<List<DetailKategoriNilai>>
+    ) {
+        remoteDataSource.getListDetailKategoriInPelanggan(data, callback)
     }
 
     override fun insertDataDetailKategoriPenjahit(
@@ -74,15 +79,15 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
     }
 
     override fun deleteDataDetailKategori(
-        data: ListDetailKategori,
-        responseCallback: ResponseCallback<ListDetailKategori>
+        data: DetailKategoriPenjahit,
+        responseCallback: ResponseCallback<DetailKategoriPenjahit>
     ) {
         remoteDataSource.deleteDataDetailKategori(data, responseCallback)
     }
 
     override fun updateDataDetailKategori(
-        data: ListDetailKategori,
-        responseCallback: ResponseCallback<ListDetailKategori>
+        data: DetailKategoriPenjahit,
+        responseCallback: ResponseCallback<DetailKategoriPenjahit>
     ) {
         remoteDataSource.updateDataDetailKategori(data, responseCallback)
     }
@@ -121,6 +126,22 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
 
     override fun insertDataRating(data: Rating, responseCallback: ResponseCallback<Rating>) {
         remoteDataSource.insertDataRating(data, responseCallback)
+    }
+
+    override fun getDataPesananById(data: Pesanan, responseCallback: ResponseCallback<Pesanan>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun insertDataPesanan(data: Pesanan, responseCallback: ResponseCallback<Pesanan>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun updateDataPesanan(data: Pesanan, responseCallback: ResponseCallback<Pesanan>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun deleteDataPesanan(data: Pesanan, responseCallback: ResponseCallback<Pesanan>) {
+        TODO("Not yet implemented")
     }
 
 

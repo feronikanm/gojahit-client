@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Skripsi">
-
+        <activity
+            android:name=".ui.pelanggan.pesanan.PesananActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.penjahit.ukuran.UkuranDetailKategoriActivity"
             android:exported="false" />
@@ -21,14 +23,14 @@
             android:name=".ui.pelanggan.auth.EditDataPelangganActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.pelanggan.transaksi.DetailPenjahitPelangganActivity"
+            android:name=".ui.pelanggan.detail.DetailPenjahitPelangganActivity"
             android:exported="true"
             android:theme="@style/Theme.Intro" />
         <activity
             android:name=".ui.penjahit.auth.EditDataPenjahitActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.penjahit.transaksi.DetailPenjahitActivity"
+            android:name=".ui.penjahit.dashboard.DetailPenjahitActivity"
             android:exported="true" />
         <activity
             android:name=".ui.pelanggan.auth.RegisterPelangganActivity"
@@ -61,18 +63,14 @@
         <activity
             android:name=".ui.main.PilihUserActivity"
             android:exported="true" />
-
-<!--        <activity-->
-<!--            android:name=".ui.pelanggan.rating.RatingPenjahitActivity"-->
-<!--            android:exported="false" />-->
-
-         <activity
-         android:name=".ui.splashscreen.SplashScreenActivity"
-         android:exported="true"
-         android:theme="@style/Theme.Intro"/>
-
         <activity
             android:name=".ui.pelanggan.rating.RatingPenjahitActivity"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".ui.splashscreen.SplashScreenActivity" -->
+        <!-- android:exported="true" -->
+        <!-- android:theme="@style/Theme.Intro"/> -->
+        <activity
+            android:name=".ui.splashscreen.SplashScreenActivity"
             android:theme="@style/Theme.Intro">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.fero.skripsi.databinding.ItemListPenjahitBinding
 import com.fero.skripsi.model.DetailKategoriNilai
 import com.fero.skripsi.model.Penjahit
-import com.fero.skripsi.ui.penjahit.transaksi.DetailPenjahitActivity
+import com.fero.skripsi.ui.penjahit.dashboard.DetailPenjahitActivity
 import com.fero.skripsi.utils.Constant
 import java.text.DecimalFormat
 
