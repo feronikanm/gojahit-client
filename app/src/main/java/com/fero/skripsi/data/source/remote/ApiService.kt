@@ -16,6 +16,8 @@ import com.fero.skripsi.utils.Constant.URL_PENJAHIT_INSERT
 import com.fero.skripsi.utils.Constant.URL_PENJAHIT_UPDATE
 import com.fero.skripsi.utils.Constant.URL_PESANAN_DELETE
 import com.fero.skripsi.utils.Constant.URL_PESANAN_GET_BY_ID
+import com.fero.skripsi.utils.Constant.URL_PESANAN_GET_BY_PELANGGAN
+import com.fero.skripsi.utils.Constant.URL_PESANAN_GET_BY_PENJAHIT
 import com.fero.skripsi.utils.Constant.URL_PESANAN_INSERT
 import com.fero.skripsi.utils.Constant.URL_PESANAN_UPDATE
 import com.fero.skripsi.utils.Constant.URL_RATING_INSERT
@@ -200,11 +202,11 @@ interface ApiService {
     @FormUrlEncoded
     @POST(URL_RATING_INSERT)
     fun insertDataRating(
-        @Field("idPenjahit") id_penjahit: Int,
-        @Field("kriteria1") kriteria_1: Int,
-        @Field("kriteria2") kriteria_2: Int,
-        @Field("kriteria3") kriteria_3: Int,
-        @Field("kriteria4") kriteria_4: Int,
+        @Field("idPenjahit") id_penjahit: Int?,
+        @Field("kriteria1") kriteria_1: Int?,
+        @Field("kriteria2") kriteria_2: Int?,
+        @Field("kriteria3") kriteria_3: Int?,
+        @Field("kriteria4") kriteria_4: Int?,
 
         ): Call<Success<Rating>>
 
@@ -215,15 +217,40 @@ interface ApiService {
     ): Observable<Pesanan>
 
 
+    @GET(URL_PESANAN_GET_BY_PELANGGAN)
+    fun getDataPesananByPelanggan(
+        @Path("id_pelanggan") id_pelanggan_path: Int
+    ): Observable<List<Pesanan>>
+
+
+    @GET(URL_PESANAN_GET_BY_PENJAHIT)
+    fun getDataPesananByPenjahit(
+        @Path("id_penjahit") id_penjahit_path: Int
+    ): Observable<List<Pesanan>>
+
+
     @FormUrlEncoded
     @POST(URL_PESANAN_INSERT)
     fun insertDataPesanan(
-        @Field("idPelanggan") id_pelanggan: Int,
-        @Field("idPenjahit") id_penjahit: Int,
-        @Field("tanggalPesanan") tanggal_pesanan: String,
-        @Field("tanggalPesananSelesai") tanggal_pesanan_selesai: String,
-        @Field("lamaWaktuPengerjaan") lama_waktu_pengerjaan: String,
-        @Field("statusPesanan") status_pesanan: String,
+        @Field("idPelanggan") id_pelanggan: Int?,
+        @Field("idPenjahit") id_penjahit: Int?,
+        @Field("idDetailKategori") id_detail_kategori: Int?,
+        @Field("tanggalPesanan") tanggal_pesanan: String?,
+        @Field("tanggalPesananSelesai") tanggal_pesanan_selesai: String?,
+        @Field("lamaWaktuPengerjaan") lama_waktu_pengerjaan: String?,
+        @Field("catatanPesanan") catatan_pesanan: String?,
+        @Field("desainJahitan") desain_jahitan: String?,
+        @Field("bahanJahit") bahan_jahit: String?,
+        @Field("asalBahan") asal_bahan: String?,
+        @Field("panjangBahan") panjang_bahan: Int?,
+        @Field("lebarBahan") lebar_bahan: Int?,
+        @Field("statusBahan") status_bahan: String?,
+        @Field("hargaBahan") harga_bahan: Int?,
+        @Field("ongkosPenjahit") ongkos_penjahit: Int?,
+        @Field("jumlahJahitan") jumlah_jahitan: Int?,
+        @Field("biayaJahitan") biaya_jahitan: Int?,
+        @Field("totalBiaya") total_biaya: Int?,
+        @Field("statusPesanan") status_pesanan: String?,
 
         ): Call<Success<Pesanan>>
 
@@ -231,13 +258,26 @@ interface ApiService {
     @FormUrlEncoded
     @POST(URL_PESANAN_UPDATE)
     fun updateDataPesanan(
-        @Path("id_pesanan") id_pesanan_path: Int,
-        @Field("idPelanggan") id_pelanggan: Int,
-        @Field("idPenjahit") id_penjahit: Int,
-        @Field("tanggalPesanan") tanggal_pesanan: String,
-        @Field("tanggalPesananSelesai") tanggal_pesanan_selesai: String,
-        @Field("lamaWaktuPengerjaan") lama_waktu_pengerjaan: String,
-        @Field("statusPesanan") status_pesanan: String,
+        @Path("id_pesanan") id_pesanan_path: Int?,
+        @Field("idPelanggan") id_pelanggan: Int?,
+        @Field("idPenjahit") id_penjahit: Int?,
+        @Field("idDetailKategori") id_detail_kategori: Int?,
+        @Field("tanggalPesanan") tanggal_pesanan: String?,
+        @Field("tanggalPesananSelesai") tanggal_pesanan_selesai: String?,
+        @Field("lamaWaktuPengerjaan") lama_waktu_pengerjaan: String?,
+        @Field("catatanPesanan") catatan_pesanan: String?,
+        @Field("desainJahitan") desain_jahitan: String?,
+        @Field("bahanJahit") bahan_jahit: String?,
+        @Field("asalBahan") asal_bahan: String?,
+        @Field("panjangBahan") panjang_bahan: Int?,
+        @Field("lebarBahan") lebar_bahan: Int?,
+        @Field("statusBahan") status_bahan: String?,
+        @Field("hargaBahan") harga_bahan: Int?,
+        @Field("ongkosPenjahit") ongkos_penjahit: Int?,
+        @Field("jumlahJahitan") jumlah_jahitan: Int?,
+        @Field("biayaJahitan") biaya_jahitan: Int?,
+        @Field("totalBiaya") total_biaya: Int?,
+        @Field("statusPesanan") status_pesanan: String?,
 
         ): Call<Success<Pesanan>>
 
@@ -247,28 +287,6 @@ interface ApiService {
         @Path("id_pesanan") id_pesanan_path: Int
     ): Call<Success<Pesanan>>
 
-
-//    @GET(URL_DETAIL_PESANAN_GET)
-//    fun getDetailPesanan(): Call<List<DetailPesanan>>
-
-//    @FormUrlEncoded
-//    @POST(ApiEndPoint.URL_DETAIL_PESANAN_INSERT)
-//    fun registerDetailPesanan(
-//        @Field("idPesanan") id_pesanan: Int,
-//        @Field("catatanPesanan") catatan_pesanan: String,
-//        @Field("kategori") kategori: String,
-//        @Field("bahanJahit") bahan_jahit: String,
-//        @Field("asalBahan") asal_bahan: String,
-//        @Field("panjangBahan") panjang_bahan: Int,
-//        @Field("lebarBahan") lebar_bahan: Int,
-//        @Field("statusBahan") status_bahan: String,
-//        @Field("hargaBahan") harga_bahan: Int,
-//        @Field("ongkosPenjahit") ongkos_penjahit: Int,
-//        @Field("jumlahJahitan") jumlah_jahitan: Int,
-//        @Field("biayaJahitan") biaya_jahitan: Int,
-//        @Field("totalBiaya") total_biaya: Int,
-//
-//        ): Call<Success<DetailPesanan>>
 
 //    @GET(URL_UKURAN_DETAIL_PESANAN_GET)
 //    fun getUkuranDetailPesanan(): Call<List<UkuranDetailPesanan>>

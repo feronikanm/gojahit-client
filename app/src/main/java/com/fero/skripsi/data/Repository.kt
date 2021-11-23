@@ -129,20 +129,33 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
     }
 
     override fun getDataPesananById(data: Pesanan, responseCallback: ResponseCallback<Pesanan>) {
-        TODO("Not yet implemented")
+        remoteDataSource.getDataPesananById(data, responseCallback)
+    }
+
+    override fun getDataPesananByPelanggan(
+        data: Pesanan,
+        callback: ResponseCallback<List<Pesanan>>
+    ) {
+        remoteDataSource.getDataPesananByPelanggan(data, callback)
+    }
+
+    override fun getDataPesananByPenjahit(
+        data: Pesanan,
+        callback: ResponseCallback<List<Pesanan>>
+    ) {
+        remoteDataSource.getDataPesananByPenjahit(data, callback)
     }
 
     override fun insertDataPesanan(data: Pesanan, responseCallback: ResponseCallback<Pesanan>) {
-        TODO("Not yet implemented")
+        remoteDataSource.insertDataPesanan(data, responseCallback)
     }
 
     override fun updateDataPesanan(data: Pesanan, responseCallback: ResponseCallback<Pesanan>) {
-        TODO("Not yet implemented")
+        remoteDataSource.updateDataPesanan(data, responseCallback)
     }
 
     override fun deleteDataPesanan(data: Pesanan, responseCallback: ResponseCallback<Pesanan>) {
-        TODO("Not yet implemented")
+        remoteDataSource.deleteDataPesanan(data, responseCallback)
     }
-
 
 }

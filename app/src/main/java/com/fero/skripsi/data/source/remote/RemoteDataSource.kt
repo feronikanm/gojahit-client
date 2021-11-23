@@ -671,32 +671,189 @@ class RemoteDataSource(context: Context) : DataSource {
 
     override fun getDataPesananById(data: Pesanan, responseCallback: ResponseCallback<Pesanan>) {
         EspressoIdlingResource.increment()
-        apiService.getDataPesananById(data.id_pesanan)
+        apiService.getDataPesananById(data.id_pesanan!!)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : ApiCallback<Pesanan>(){
                 override fun onSuccess(data: Pesanan) {
+                    responseCallback.onSuccess(data)
                     EspressoIdlingResource.decrement()
                 }
-
                 override fun onFailure(code: Int, errorMessage: String) {
-                    TODO("Not yet implemented")
+                    responseCallback.onFailed(code, errorMessage)
+                    EspressoIdlingResource.decrement()
                 }
 
             })
 
     }
 
+    override fun getDataPesananByPelanggan(data: Pesanan, callback: ResponseCallback<List<Pesanan>>) {
+        EspressoIdlingResource.increment()
+        apiService.getDataPesananByPelanggan(data.id_pelanggan!!)
+            .subscribeOn(Schedulers.io())
+            .doOnSubscribe { callback.onShowProgress() }
+            .doOnTerminate { callback.onHideProgress() }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : ApiCallback<List<Pesanan>>(){
+                override fun onSuccess(data: List<Pesanan>) {
+                    if (data.isNotEmpty()) {
+                        callback.onSuccess(data)
+                        callback.isEmptyData(false)
+                    } else {
+                        callback.isEmptyData(true)
+                    }
+                    EspressoIdlingResource.decrement()
+                }
+
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
+                    EspressoIdlingResource.decrement()
+                }
+
+            })
+    }
+
+    override fun getDataPesananByPenjahit(data: Pesanan, callback: ResponseCallback<List<Pesanan>>) {
+        EspressoIdlingResource.increment()
+        apiService.getDataPesananByPenjahit(data.id_penjahit!!)
+            .subscribeOn(Schedulers.io())
+            .doOnSubscribe { callback.onShowProgress() }
+            .doOnTerminate { callback.onHideProgress() }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : ApiCallback<List<Pesanan>>(){
+                override fun onSuccess(data: List<Pesanan>) {
+                    if (data.isNotEmpty()) {
+                        callback.onSuccess(data)
+                        callback.isEmptyData(false)
+                    } else {
+                        callback.isEmptyData(true)
+                    }
+                    EspressoIdlingResource.decrement()
+                }
+
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
+                    EspressoIdlingResource.decrement()
+                }
+
+            })
+    }
+
     override fun insertDataPesanan(data: Pesanan, responseCallback: ResponseCallback<Pesanan>) {
-        TODO("Not yet implemented")
+        EspressoIdlingResource.increment()
+
+        responseCallback.onShowProgress()
+
+        apiService.insertDataPesanan(
+            id_pelanggan = data.id_pelanggan,
+            id_penjahit = data.id_penjahit,
+            id_detail_kategori = data.id_detail_kategori,
+            tanggal_pesanan = data.tanggal_pesanan,
+            tanggal_pesanan_selesai = data.tanggal_pesanan_selesai,
+            lama_waktu_pengerjaan = data.lama_waktu_pengerjaan,
+            catatan_pesanan = data.catatan_pesanan,
+            desain_jahitan = data.desain_jahitan,
+            bahan_jahit = data.bahan_jahit,
+            asal_bahan = data.asal_bahan,
+            panjang_bahan = data.panjang_bahan,
+            lebar_bahan = data.lebar_bahan,
+            status_bahan = data.status_bahan,
+            harga_bahan = data.harga_bahan,
+            ongkos_penjahit = data.ongkos_penjahit,
+            jumlah_jahitan = data.jumlah_jahitan,
+            biaya_jahitan = data.biaya_jahitan,
+            total_biaya = data.total_biaya,
+            status_pesanan = data.status_pesanan,
+        ).enqueue(object : Callback<Success<Pesanan>>{
+            override fun onResponse(
+                call: Call<Success<Pesanan>>,
+                response: Response<Success<Pesanan>>
+            ) {
+                responseCallback.onHideProgress()
+                response.body()?.data?.let { responseCallback.onSuccess(it) }
+                Log.d("Repsonse Body", response.body().toString())
+                EspressoIdlingResource.decrement()
+            }
+
+            override fun onFailure(call: Call<Success<Pesanan>>, t: Throwable) {
+                responseCallback.onHideProgress()
+                EspressoIdlingResource.decrement()
+                responseCallback.onFailed(500, t.localizedMessage)
+            }
+
+        })
     }
 
     override fun updateDataPesanan(data: Pesanan, responseCallback: ResponseCallback<Pesanan>) {
-        TODO("Not yet implemented")
+        EspressoIdlingResource.increment()
+
+        responseCallback.onShowProgress()
+
+        apiService.updateDataPesanan(
+            data.id_pesanan,
+            id_pelanggan = data.id_pelanggan,
+            id_penjahit = data.id_penjahit,
+            id_detail_kategori = data.id_detail_kategori,
+            tanggal_pesanan = data.tanggal_pesanan,
+            tanggal_pesanan_selesai = data.tanggal_pesanan_selesai,
+            lama_waktu_pengerjaan = data.lama_waktu_pengerjaan,
+            catatan_pesanan = data.catatan_pesanan,
+            desain_jahitan = data.desain_jahitan,
+            bahan_jahit = data.bahan_jahit,
+            asal_bahan = data.asal_bahan,
+            panjang_bahan = data.panjang_bahan,
+            lebar_bahan = data.lebar_bahan,
+            status_bahan = data.status_bahan,
+            harga_bahan = data.harga_bahan,
+            ongkos_penjahit = data.ongkos_penjahit,
+            jumlah_jahitan = data.jumlah_jahitan,
+            biaya_jahitan = data.biaya_jahitan,
+            total_biaya = data.total_biaya,
+            status_pesanan = data.status_pesanan,
+        ).enqueue(object : Callback<Success<Pesanan>>{
+            override fun onResponse(
+                call: Call<Success<Pesanan>>,
+                response: Response<Success<Pesanan>>
+            ) {
+                responseCallback.onHideProgress()
+                response.body()?.data?.let { responseCallback.onSuccess(it) }
+                Log.d("Repsonse Body", response.body().toString())
+                EspressoIdlingResource.decrement()
+            }
+
+            override fun onFailure(call: Call<Success<Pesanan>>, t: Throwable) {
+                responseCallback.onHideProgress()
+                EspressoIdlingResource.decrement()
+                responseCallback.onFailed(500, t.localizedMessage)
+            }
+
+        })
     }
 
     override fun deleteDataPesanan(data: Pesanan, responseCallback: ResponseCallback<Pesanan>) {
-        TODO("Not yet implemented")
+        EspressoIdlingResource.increment()
+
+        responseCallback.onShowProgress()
+
+        apiService.deleteDataPesanan(data.id_pesanan!!).enqueue(object : Callback<Success<Pesanan>>{
+            override fun onResponse(
+                call: Call<Success<Pesanan>>,
+                response: Response<Success<Pesanan>>
+            ) {
+                responseCallback.onHideProgress()
+                response.body()?.data?.let { responseCallback.onSuccess(it) }
+                Log.d("Repsonse Body", response.body().toString())
+                EspressoIdlingResource.decrement()
+            }
+
+            override fun onFailure(call: Call<Success<Pesanan>>, t: Throwable) {
+                responseCallback.onHideProgress()
+                EspressoIdlingResource.decrement()
+                responseCallback.onFailed(500, t.localizedMessage)
+            }
+
+        })
     }
 
 }
