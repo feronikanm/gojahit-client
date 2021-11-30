@@ -45,9 +45,9 @@ interface DataSource {
 
     fun getDataPesananById(data: Pesanan, responseCallback: ResponseCallback<Pesanan>)
 
-    fun getDataPesananByPelanggan(data: Pesanan, callback: ResponseCallback<List<Pesanan>>)
+    fun getDataPesananByPelanggan(data: Pelanggan, callback: ResponseCallback<List<Pesanan>>)
 
-    fun getDataPesananByPenjahit(data: Pesanan, callback: ResponseCallback<List<Pesanan>>)
+    fun getDataPesananByPenjahit(data: Penjahit, callback: ResponseCallback<List<Pesanan>>)
 
     fun insertDataPesanan(data: Pesanan, responseCallback: ResponseCallback<Pesanan>)
 

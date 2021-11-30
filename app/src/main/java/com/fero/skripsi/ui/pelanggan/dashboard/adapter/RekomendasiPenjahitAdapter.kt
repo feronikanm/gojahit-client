@@ -108,29 +108,31 @@ class RekomendasiPenjahitAdapter : RecyclerView.Adapter<RekomendasiPenjahitAdapt
         Log.d("Lat2 : ", lat2.toString())
         Log.d("Long2 : ", long2.toString())
 
-        val lati1 : Double = lat1!!.toDouble()
-        val longi1 : Double = long1!!.toDouble()
-        val lati2 : Double = lat2!!.toDouble()
-        val longi2 : Double = long2!!.toDouble()
 
-        Log.d("Lati1 : ", lati1.toString())
-        Log.d("Longi1 : ", longi1.toString())
-        Log.d("Lati2 : ", lati2.toString())
-        Log.d("Longi2 : ", longi2.toString())
+        if (lat1 != null && long2 != null){
+            val lati1 : Double = lat1!!.toDouble()
+            val longi1 : Double = long1!!.toDouble()
+            val lati2 : Double = lat2!!.toDouble()
+            val longi2 : Double = long2!!.toDouble()
 
-        val longDiff : Double = longi1 - longi2
-        Log.d("Different Longitude", longDiff.toString())
+            Log.d("Lati1 : ", lati1.toString())
+            Log.d("Longi1 : ", longi1.toString())
+            Log.d("Lati2 : ", lati2.toString())
+            Log.d("Longi2 : ", longi2.toString())
 
-        var distance: Double = (Math.sin(deg2rad(lati1)) * Math.sin(deg2rad(lati2))) + (Math.cos(deg2rad(lati1)) * Math.cos(deg2rad(lati2)) * Math.cos(deg2rad(longDiff)))
+            val longDiff : Double = longi1 - longi2
+            Log.d("Different Longitude", longDiff.toString())
 
-        distance = Math.acos(distance)
-        distance = rad2deg(distance)
-        distance = distance * 60 * 1.1515
-        distance = distance * 1.609344
-        Log.d("in meter : ", distance.toString())
+            var distance: Double = (Math.sin(deg2rad(lati1)) * Math.sin(deg2rad(lati2))) + (Math.cos(deg2rad(lati1)) * Math.cos(deg2rad(lati2)) * Math.cos(deg2rad(longDiff)))
 
-        val df = DecimalFormat("#.#")
-        Log.d("with decimal format: ", (df.format(distance)).toString())
+            distance = Math.acos(distance)
+            distance = rad2deg(distance)
+            distance = distance * 60 * 1.1515
+            distance = distance * 1.609344
+            Log.d("in meter : ", distance.toString())
+
+            val df = DecimalFormat("#.#")
+            Log.d("with decimal format: ", (df.format(distance)).toString())
 
 //        val x = 0.92837
 //        val df = DecimalFormat("#.##")
@@ -138,7 +140,13 @@ class RekomendasiPenjahitAdapter : RecyclerView.Adapter<RekomendasiPenjahitAdapt
 
 //        val hasilOlah = latPelanggan!! + longPelanggan!! + latPenjahit!! + longPenjahit!!
 
-        return (df.format(distance)).toString()
+            return (df.format(distance)).toString()
+        } else{
+
+            var hasil = 0
+
+            return hasil.toString()
+        }
 
     }
 

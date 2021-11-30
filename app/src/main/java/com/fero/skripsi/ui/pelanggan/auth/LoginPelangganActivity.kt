@@ -10,11 +10,17 @@ import com.fero.skripsi.ui.main.HomePelangganActivity
 import com.fero.skripsi.ui.main.PilihUserActivity
 import com.fero.skripsi.ui.pelanggan.auth.viewmodel.AuthPelangganViewModel
 import com.fero.skripsi.utils.PrefHelper
+import com.fero.skripsi.utils.PrefHelper.Companion.PREF_ALAMAT_PELANGGAN
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_EMAIL_PELANGGAN
+import com.fero.skripsi.utils.PrefHelper.Companion.PREF_FOTO_PELANGGAN
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_ID_PELANGGAN
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_IS_LOGIN_PELANGGAN
+import com.fero.skripsi.utils.PrefHelper.Companion.PREF_JK_PELANGGAN
+import com.fero.skripsi.utils.PrefHelper.Companion.PREF_LATITUDE_PELANGGAN
+import com.fero.skripsi.utils.PrefHelper.Companion.PREF_LONGITUDE_PELANGGAN
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_NAMA_PELANGGAN
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_PASSWORD_PELANGGAN
+import com.fero.skripsi.utils.PrefHelper.Companion.PREF_TELP_PELANGGAN
 import com.fero.skripsi.utils.ViewModelFactory
 
 class LoginPelangganActivity : AppCompatActivity() {
@@ -40,9 +46,21 @@ class LoginPelangganActivity : AppCompatActivity() {
 
                     val idPelanggan = it.id_pelanggan.toString()
                     val namaPelanggan = it.nama_pelanggan
+                    val teleponPelanggan = it.telp_pelanggan
+                    val latPelanggan = it.latitude_pelanggan
+                    val longPelanggan = it.longitude_pelanggan
+                    val alamatPelanggan = it.alamat_pelanggan
+                    val jkPelanggan = it.jk_pelanggan
+                    val fotoPelanggan = it.foto_pelanggan
 
                     prefHelper.put(PREF_ID_PELANGGAN, idPelanggan)
                     prefHelper.put(PREF_NAMA_PELANGGAN, namaPelanggan!!)
+                    prefHelper.put(PREF_TELP_PELANGGAN, teleponPelanggan!!)
+                    prefHelper.put(PREF_LATITUDE_PELANGGAN, latPelanggan!!)
+                    prefHelper.put(PREF_LONGITUDE_PELANGGAN, longPelanggan!!)
+                    prefHelper.put(PREF_ALAMAT_PELANGGAN, alamatPelanggan!!)
+                    prefHelper.put(PREF_JK_PELANGGAN, jkPelanggan!!)
+                    prefHelper.put(PREF_FOTO_PELANGGAN, fotoPelanggan!!)
 
                     val moveIntent = Intent(this@LoginPelangganActivity, HomePelangganActivity::class.java)
                     moveIntent.putExtra("EXTRA_LOGIN_PELANGGAN", it)

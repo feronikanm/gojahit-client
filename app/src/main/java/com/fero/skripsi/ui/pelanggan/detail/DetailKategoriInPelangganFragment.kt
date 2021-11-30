@@ -1,17 +1,22 @@
 package com.fero.skripsi.ui.pelanggan.detail
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.bumptech.glide.Glide
 import com.fero.skripsi.R
 import com.fero.skripsi.databinding.FragmentDetailKategoriInPelangganBinding
 import com.fero.skripsi.model.DetailKategoriNilai
 import com.fero.skripsi.model.UkuranDetailKategori
+import com.fero.skripsi.ui.pelanggan.auth.EditDataPelangganActivity
+import com.fero.skripsi.ui.pelanggan.pesanan.PesananActivity
+import com.fero.skripsi.ui.pelanggan.pesanan.PesananActivity.Companion.EXTRA_DATA_DETAIL_KATEGORI_NILAI
 import com.fero.skripsi.utils.Constant
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_detail_kategori_in_pelanggan.*
@@ -38,6 +43,8 @@ class DetailKategoriInPelangganFragment : DialogFragment() {
         binding.apply {
 
             tvNamaKategori.text = data.nama_kategori
+            tvNamaPenjahit.text = data.nama_penjahit
+            tvIdPenjahit.text = data.id_penjahit.toString()
             tvBahanJahit.text = "Bahan Jahit : " + data.bahan_jahit
             tvHargaBahan.text = "Harga Bahan : " + data.harga_bahan
             tvOngkosPenjahit.text = "Ongkos Penjahit : " + data.ongkos_penjahit
@@ -47,6 +54,13 @@ class DetailKategoriInPelangganFragment : DialogFragment() {
             Glide.with(this@DetailKategoriInPelangganFragment)
                 .load("${Constant.IMAGE_KATEGORI}${data.gambar_kategori}")
                 .into(imgKategori)
+        }
+
+        binding.btnLakukanJahit.setOnClickListener {
+            Toast.makeText(context, "Melakukan Pesanan" , Toast.LENGTH_SHORT).show()
+            val moveIntent = Intent(context, PesananActivity::class.java)
+            moveIntent.putExtra(EXTRA_DATA_DETAIL_KATEGORI_NILAI, data)
+            startActivity(moveIntent)
         }
 
     }

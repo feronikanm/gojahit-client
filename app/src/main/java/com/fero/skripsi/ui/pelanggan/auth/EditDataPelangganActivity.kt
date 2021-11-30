@@ -20,8 +20,14 @@ import com.fero.skripsi.databinding.ActivityEditDataPelangganBinding
 import com.fero.skripsi.model.Pelanggan
 import com.fero.skripsi.ui.pelanggan.auth.viewmodel.AuthPelangganViewModel
 import com.fero.skripsi.utils.PrefHelper
+import com.fero.skripsi.utils.PrefHelper.Companion.PREF_ALAMAT_PELANGGAN
+import com.fero.skripsi.utils.PrefHelper.Companion.PREF_FOTO_PELANGGAN
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_ID_PELANGGAN
+import com.fero.skripsi.utils.PrefHelper.Companion.PREF_JK_PELANGGAN
+import com.fero.skripsi.utils.PrefHelper.Companion.PREF_LATITUDE_PELANGGAN
+import com.fero.skripsi.utils.PrefHelper.Companion.PREF_LONGITUDE_PELANGGAN
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_NAMA_PELANGGAN
+import com.fero.skripsi.utils.PrefHelper.Companion.PREF_TELP_PELANGGAN
 import com.fero.skripsi.utils.ViewModelFactory
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -58,7 +64,7 @@ class EditDataPelangganActivity : AppCompatActivity() {
 
         viewModel.apply {
             dataPelanggan.observe(this@EditDataPelangganActivity, {
-                prefHelper.clear()
+//                prefHelper.clear()
 //                val moveIntent = Intent(this@EditDataPelangganActivity, HomePelangganActivity::class.java)
 //                intent.putExtra("EXTRA_LOGIN_PELANGGAN", it)
 //                startActivity(moveIntent)

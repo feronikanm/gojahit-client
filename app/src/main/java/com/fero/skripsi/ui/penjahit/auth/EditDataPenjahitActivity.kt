@@ -61,7 +61,7 @@ class EditDataPenjahitActivity : AppCompatActivity() {
 
         viewModel.apply {
             dataPenjahit.observe(this@EditDataPenjahitActivity, {
-                prefHelper.clear()
+//                prefHelper.clear()
                 finish()
             })
 

@@ -8,7 +8,6 @@
     android:focusableInTouchMode="true"
     tools:context=".ui.pelanggan.auth.EditDataPelangganActivity">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

@@ -19,6 +19,9 @@ import com.fero.skripsi.ui.pelanggan.detail.adapter.ListKategoriInDetailAdapter
 import com.fero.skripsi.ui.pelanggan.detail.viewmodel.KategoriPenjahitInPelangganViewModel
 import com.fero.skripsi.ui.pelanggan.pesanan.PesananActivity
 import com.fero.skripsi.utils.Constant
+import com.fero.skripsi.utils.PrefHelper
+import com.fero.skripsi.utils.PrefHelper.Companion.PREF_ID_PELANGGAN
+import com.fero.skripsi.utils.PrefHelper.Companion.PREF_NAMA_PELANGGAN
 import com.fero.skripsi.utils.ViewModelFactory
 import com.google.gson.Gson
 
@@ -26,6 +29,8 @@ class DetailPenjahitPelangganActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailPenjahitPelangganBinding
     private lateinit var contentBinding: ContentDataPenjahitBinding
+
+    lateinit var prefHelper: PrefHelper
 
     companion object {
         const val EXTRA_DATA_PENJAHIT = "EXTRA_DATA_PENJAHIT"
@@ -42,6 +47,13 @@ class DetailPenjahitPelangganActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.collapsingToolbar.setTitle("Data Penjahit")
         toolbarTextAppernce()
+
+        prefHelper = PrefHelper(this)
+        val namaPelanggan = prefHelper.getString(PREF_NAMA_PELANGGAN)
+        val idPelanggan = prefHelper.getString(PREF_ID_PELANGGAN)
+
+        contentBinding.tvNamaPelanggan.text = namaPelanggan
+        contentBinding.tvIdPelanggan.text = idPelanggan
 
         val extraData: DetailKategoriNilai? = intent.extras?.getParcelable(EXTRA_DATA_PENJAHIT)
 
@@ -90,12 +102,6 @@ class DetailPenjahitPelangganActivity : AppCompatActivity() {
             tvEmailPenjahit.text = extraData.email_penjahit
             tvTeleponPenjahit.text = extraData.telp_penjahit
             tvAlamatPenjahit.text = extraData.alamat_penjahit
-
-            btnLakukanJahit.setOnClickListener {
-                Toast.makeText(this@DetailPenjahitPelangganActivity, "Melakukan Jahitan" , Toast.LENGTH_SHORT).show()
-                val moveIntent = Intent(this@DetailPenjahitPelangganActivity, PesananActivity::class.java)
-                startActivity(moveIntent)
-            }
         }
     }
 

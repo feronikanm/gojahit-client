@@ -1,4 +1,4 @@
-package com.fero.skripsi.ui.detailkategori.adapter
+package com.fero.skripsi.ui.detailkategoriInGridViewKategori.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

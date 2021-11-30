@@ -110,7 +110,11 @@ dependencies {
     implementation 'com.etebarian:meow-bottom-navigation:1.0.4'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
-    implementation "com.readystatesoftware.chuck:library:1.1.0"
+    implementation "io.insert-koin:koin-core:3.1.1"  // Koin core features
+    implementation "io.insert-koin:koin-android:3.1.1" // Koin main features for Android (Scope,ViewModel ...)
+    implementation "io.insert-koin:koin-android-compat:3.1.1" // Koin Java Compatibility
+    implementation "io.insert-koin:koin-androidx-workmanager:3.1.1" // Koin for Jetpack WorkManager
+    implementation "io.insert-koin:koin-androidx-compose:3.1.1" // Koin for Jetpack Compose
 
     implementation 'com.google.android.gms:play-services-location:18.0.0'
     implementation "androidx.palette:palette:1.0.0"

@@ -688,7 +688,7 @@ class RemoteDataSource(context: Context) : DataSource {
 
     }
 
-    override fun getDataPesananByPelanggan(data: Pesanan, callback: ResponseCallback<List<Pesanan>>) {
+    override fun getDataPesananByPelanggan(data: Pelanggan, callback: ResponseCallback<List<Pesanan>>) {
         EspressoIdlingResource.increment()
         apiService.getDataPesananByPelanggan(data.id_pelanggan!!)
             .subscribeOn(Schedulers.io())
@@ -714,7 +714,7 @@ class RemoteDataSource(context: Context) : DataSource {
             })
     }
 
-    override fun getDataPesananByPenjahit(data: Pesanan, callback: ResponseCallback<List<Pesanan>>) {
+    override fun getDataPesananByPenjahit(data: Penjahit, callback: ResponseCallback<List<Pesanan>>) {
         EspressoIdlingResource.increment()
         apiService.getDataPesananByPenjahit(data.id_penjahit!!)
             .subscribeOn(Schedulers.io())

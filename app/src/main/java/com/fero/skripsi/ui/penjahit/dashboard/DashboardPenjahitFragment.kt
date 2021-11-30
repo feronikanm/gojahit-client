@@ -12,7 +12,7 @@ import com.fero.skripsi.core.BaseFragment
 import com.fero.skripsi.databinding.FragmentDashboardPenjahitBinding
 import com.fero.skripsi.model.DetailKategoriNilai
 import com.fero.skripsi.model.Penjahit
-import com.fero.skripsi.ui.detailkategori.DetailKategoriFragment
+import com.fero.skripsi.ui.detailkategoriInGridViewKategori.DetailKategoriFragment
 import com.fero.skripsi.ui.penjahit.dashboard.adapter.KategoriAdapter
 import com.fero.skripsi.ui.penjahit.dashboard.adapter.PenjahitAdapter
 import com.fero.skripsi.ui.penjahit.dashboard.viewmodel.DashboardPenjahitViewModel
@@ -83,7 +83,7 @@ class DashboardPenjahitFragment : BaseFragment<FragmentDashboardPenjahitBinding>
         data?.let { kategoriAdapter.setKategori(it) }
 
         binding.rvKategori.apply {
-            layoutManager = GridLayoutManager(context, 4)
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = kategoriAdapter
         }
 

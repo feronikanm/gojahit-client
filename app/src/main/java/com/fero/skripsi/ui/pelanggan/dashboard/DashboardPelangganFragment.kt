@@ -15,12 +15,13 @@ import com.fero.skripsi.core.BaseFragment
 import com.fero.skripsi.databinding.FragmentDashboardPelangganBinding
 import com.fero.skripsi.model.DetailKategoriNilai
 import com.fero.skripsi.model.Pelanggan
-import com.fero.skripsi.ui.detailkategori.DetailKategoriFragment
+import com.fero.skripsi.ui.detailkategoriInGridViewKategori.DetailKategoriFragment
 import com.fero.skripsi.ui.pelanggan.dashboard.adapter.KategoriPenjahitAdapter
 import com.fero.skripsi.ui.pelanggan.dashboard.adapter.RekomendasiPenjahitAdapter
 import com.fero.skripsi.ui.pelanggan.dashboard.viewmodel.DashboardPelangganViewModel
 import com.fero.skripsi.ui.pelanggan.detail.DetailPenjahitPelangganActivity
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_detail_penjahit_pelanggan.view.*
 
 
 class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBinding>() {
@@ -102,7 +103,7 @@ class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBindin
         data?.let { kategoriPenjahitAdapter.setKategori(it) }
 
         binding.rvKategori.apply {
-            layoutManager = GridLayoutManager(context, 4)
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = kategoriPenjahitAdapter
         }
 

@@ -1,34 +1,119 @@
 package com.fero.skripsi.ui.pelanggan.transaksi
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
+import android.view.ContextThemeWrapper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.fero.skripsi.R
+import com.fero.skripsi.core.BaseFragment
 import com.fero.skripsi.databinding.FragmentTransaksiPelangganBinding
 import com.fero.skripsi.model.Pelanggan
+import com.fero.skripsi.model.Pesanan
+import com.fero.skripsi.ui.pelanggan.pesanan.viewmodel.PesananViewModel
+import com.fero.skripsi.ui.pelanggan.transaksi.adapter.TransaksiPelangganAdapter
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
 
-class TransaksiPelangganFragment : Fragment() {
+class TransaksiPelangganFragment : BaseFragment<FragmentTransaksiPelangganBinding>() {
 
-    private lateinit var binding: FragmentTransaksiPelangganBinding
-    val EXTRA_PELANGGAN = "EXTRA_PELANGGAN"
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentTransaksiPelangganBinding.inflate(inflater, container, false)
-        return binding.root
+    private lateinit var pesananViewModel: PesananViewModel
+    private val dataPelanggan by lazy{
+        baseGetInstance<Pelanggan>("EXTRA_PELANGGAN")
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun setupViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentTransaksiPelangganBinding {
+        return FragmentTransaksiPelangganBinding.inflate(inflater, container, false)
+    }
 
-        val bundleData = arguments?.getString(EXTRA_PELANGGAN)
-        val dataPelanggan = Gson().fromJson(bundleData, Pelanggan::class.java)
+    override fun setupViewModel() {
+        pesananViewModel = obtainViewModel<PesananViewModel>().apply {
+            listPesanan.observe(viewLifecycleOwner, {
+                setupRvPesanan(it)
+            })
 
-        binding.tvNamaPelanggan.text = "Halo " + dataPelanggan.nama_pelanggan.toString()
+            eventShowProgress.observe(viewLifecycleOwner, {
+                setupEventProgressView(binding.progressBar, it)
+            })
+
+            eventErrorMessage.observe(viewLifecycleOwner, {
+                showToast(it)
+
+            })
+
+            eventIsEmpty.observe(viewLifecycleOwner, {
+                // setupEventEmptyView(binding?.{EMPTY_VIEW MU}!! ,it)
+            })
+        }
+        pesananViewModel.getDataPesananByPelanggan(dataPelanggan)
+    }
+
+    private fun setupRvPesanan(data: List<Pesanan>?) {
+
+        val transaksiPelangganAdapter = TransaksiPelangganAdapter()
+        transaksiPelangganAdapter.setListPesanan(data!!)
+
+        binding.rvPesanan.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = transaksiPelangganAdapter
+        }
+
+        transaksiPelangganAdapter.setOnDeleteClickCallback(object : TransaksiPelangganAdapter.OnDeleteClickCallback{
+            override fun onDeleteClicked(data: Pesanan) {
+                popupDelete(context, data)
+            }
+
+        })
+
+        transaksiPelangganAdapter.setOnUpdateClickCallback(object : TransaksiPelangganAdapter.OnUpdateClickCallback{
+            override fun onUpdateClikced(data: Pesanan) {
+                Toast.makeText(context, "Kamu mengupdate " + data.id_pesanan, Toast.LENGTH_SHORT).show()
+
+            }
+
+        })
+
+        transaksiPelangganAdapter.setOnItemClickCallback(object : TransaksiPelangganAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: Pesanan) {
+                selectedPesanan(data)
+            }
+
+        })
+
+    }
+
+    private fun popupDelete(context: Context?, data: Pesanan) {
+        val box: Context = ContextThemeWrapper(context, R.style.AppTheme)
+        val materialAlertDialogBuilder = MaterialAlertDialogBuilder(box)
+        materialAlertDialogBuilder.setTitle("Hapus Data")
+            .setMessage("Apa anda yakin ingin membatalkan data ini?")
+            .setNegativeButton("Batalkan", null)
+            .setPositiveButton(
+                "Hapus"
+            ) { dialogInterface, i ->
+                // panggil disini
+                deleteDataPesanan(data)
+            }
+            .show()
+    }
+
+    private fun deleteDataPesanan(data: Pesanan) {
+        Toast.makeText(context, "Kamu menghapus " + data.id_pesanan, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun selectedPesanan(data: Pesanan) {
+        Toast.makeText(context, "Kamu memilih " + data.id_pesanan, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun setupUI(view: View, savedInstanceState: Bundle?) {
 
     }
 
@@ -39,4 +124,5 @@ class TransaksiPelangganFragment : Fragment() {
                 arguments = Bundle().apply {}
             }
     }
+
 }

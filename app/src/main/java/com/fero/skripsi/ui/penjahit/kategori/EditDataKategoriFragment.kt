@@ -73,7 +73,7 @@ class EditDataKategoriFragment : DialogFragment() {
         val box: Context = ContextThemeWrapper(context, R.style.AppTheme)
         val materialAlertDialogBuilder = MaterialAlertDialogBuilder(box)
         materialAlertDialogBuilder.setTitle("Tambah Data")
-            .setMessage("Apa anda yakin ingin mengubah data ini?")
+            .setMessage("Apa Anda yakin ingin mengubah data ini?")
             .setNegativeButton("Batalkan", null)
             .setPositiveButton("Tambah") { dialogInterface, i -> simpanData(data) }
             .show()
@@ -86,14 +86,14 @@ class EditDataKategoriFragment : DialogFragment() {
 
         var value = 1
         when (binding.rgKategori.checkedRadioButtonId) {
-            R.id.rb_kategori_2 -> value = 1
-            R.id.rb_kategori_3 -> value = 2
-            R.id.rb_kategori_4 -> value = 3
-            R.id.rb_kategori_5 -> value = 4
-            R.id.rb_kategori_6 -> value = 5
-            R.id.rb_kategori_7 -> value = 6
-            R.id.rb_kategori_8 -> value = 7
-            R.id.rb_kategori_9 -> value = 8
+            R.id.rb_kategori_1 -> value = 1
+            R.id.rb_kategori_2 -> value = 2
+            R.id.rb_kategori_3 -> value = 3
+            R.id.rb_kategori_4 -> value = 4
+            R.id.rb_kategori_5 -> value = 5
+            R.id.rb_kategori_6 -> value = 6
+            R.id.rb_kategori_7 -> value = 7
+            R.id.rb_kategori_8 -> value = 8
         }
         val idKategori = value
 

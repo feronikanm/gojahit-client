@@ -226,22 +226,17 @@
                 android:layout_marginTop="16dp"
                 android:clipToPadding="false" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_lakukan_jahit"
+            <TextView
+                android:id="@+id/tv_nama_pelanggan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/custom_button"
-                android:layout_gravity="center"
-                android:clickable="true"
-                android:focusable="true"
-                android:fontFamily="@font/gilroy_medium"
-                android:gravity="center_horizontal|center"
-                android:paddingLeft="32dp"
-                android:paddingRight="32dp"
-                android:text="Pilih Penjahit Ini"
-                android:textAppearance="@style/button_login_register" />
+                android:text="nama pelanggan"/>
+
+            <TextView
+                android:id="@+id/tv_id_pelanggan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="id pelanggan"/>
 
         </LinearLayout>
 

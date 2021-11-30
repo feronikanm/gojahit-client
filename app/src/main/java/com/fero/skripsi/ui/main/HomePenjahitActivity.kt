@@ -51,6 +51,7 @@ class HomePenjahitActivity : BaseActivity<ActivityHomePenjahitBinding>() {
         val bundleData = Gson().toJson(extraData)
         bundle.putString("EXTRA_PENJAHIT", bundleData)
         profilePenjahitFragment.arguments = bundle
+        transaksiPenjahitFragment.arguments = bundle
 
         dashboardPenjahitFragment.baseNewInstance("EXTRA_PENJAHIT_DASHBOARD", extraData)
         kategoriPenjahitFragment.baseNewInstance("EXTRA_PENJAHIT_KATEGORI", extraData)

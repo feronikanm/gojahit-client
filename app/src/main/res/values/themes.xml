@@ -11,6 +11,8 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+        <item name="fontFamily">@font/gilroy_medium</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -32,6 +34,7 @@
         <item name="android:textSize">24sp</item>
         <item name="android:letterSpacing">-0.02</item>
         <item name="android:textColor">#3C3A36</item>
+
     </style>
 
     <style name="skip_intro">

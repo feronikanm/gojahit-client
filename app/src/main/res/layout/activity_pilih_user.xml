@@ -59,8 +59,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gilroy_bold"
                 android:lineSpacingExtra="4sp"
+                android:textStyle="bold"
                 android:text="Pengguna"
                 android:textAppearance="@style/intro_title"
                 android:textSize="20sp"
@@ -125,8 +125,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gilroy_bold"
                 android:lineSpacingExtra="4sp"
+                android:textStyle="bold"
                 android:text="Penjahit"
                 android:textAppearance="@style/intro_title"
                 android:textSize="20sp"

@@ -1,4 +1,4 @@
-package com.fero.skripsi.ui.detailkategori
+package com.fero.skripsi.ui.detailkategoriInGridViewKategori
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.fero.skripsi.core.BaseFragment
 import com.fero.skripsi.databinding.FragmentDetailKategoriBinding
 import com.fero.skripsi.model.DetailKategoriNilai
-import com.fero.skripsi.ui.detailkategori.adapter.DetailKetegoriAdapter
+import com.fero.skripsi.ui.detailkategoriInGridViewKategori.adapter.DetailKetegoriAdapter
 import com.fero.skripsi.ui.pelanggan.dashboard.viewmodel.DashboardPelangganViewModel
 import com.fero.skripsi.ui.pelanggan.detail.DetailPenjahitPelangganActivity
 import com.fero.skripsi.ui.penjahit.dashboard.DetailPenjahitActivity
@@ -82,8 +82,7 @@ class DetailKategoriFragment : BaseFragment<FragmentDetailKategoriBinding>() {
                     intent.putExtra(DetailPenjahitActivity.EXTRA_PENJAHIT, data)
                     startActivity(intent)
                 } else if (statusAccount == "status_pelanggan") {
-                    val intent =
-                        Intent(binding.root.context, DetailPenjahitPelangganActivity::class.java)
+                    val intent = Intent(binding.root.context, DetailPenjahitPelangganActivity::class.java)
                     intent.putExtra(DetailPenjahitPelangganActivity.EXTRA_DATA_PENJAHIT, data)
                     startActivity(intent)
                 }

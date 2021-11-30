@@ -15,6 +15,7 @@ class ListKategoriAdapter : RecyclerView.Adapter<ListKategoriAdapter.ListKategor
     private lateinit var onUpdateClickCallback: OnUpdateClickCallback
     var listDetailKategori = mutableListOf<DetailKategoriPenjahit>()
 
+
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
         this.onItemClickCallback = onItemClickCallback
     }

@@ -48,7 +48,7 @@
             android:orientation="vertical">
 
             <RadioButton
-                android:id="@+id/rb_kategori_2"
+                android:id="@+id/rb_kategori_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_2_kemeja"
@@ -58,7 +58,7 @@
                 android:text=" Kemeja" />
 
             <RadioButton
-                android:id="@+id/rb_kategori_3"
+                android:id="@+id/rb_kategori_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_3_kaos"
@@ -68,7 +68,7 @@
                 android:text=" Kaos" />
 
             <RadioButton
-                android:id="@+id/rb_kategori_4"
+                android:id="@+id/rb_kategori_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_4_celana"
@@ -78,7 +78,7 @@
                 android:text="Celana" />
 
             <RadioButton
-                android:id="@+id/rb_kategori_5"
+                android:id="@+id/rb_kategori_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_5_rok"
@@ -88,7 +88,7 @@
                 android:text="  Rok" />
 
             <RadioButton
-                android:id="@+id/rb_kategori_6"
+                android:id="@+id/rb_kategori_5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_6_dress"
@@ -98,7 +98,7 @@
                 android:text=" Dress" />
 
             <RadioButton
-                android:id="@+id/rb_kategori_7"
+                android:id="@+id/rb_kategori_6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_7_seragam_laki2"
@@ -108,7 +108,7 @@
                 android:text="Seragam\nLaki-laki" />
 
             <RadioButton
-                android:id="@+id/rb_kategori_8"
+                android:id="@+id/rb_kategori_7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_8_seragam_perempuan"
@@ -118,7 +118,7 @@
                 android:text="Seragam\nPerempuan" />
 
             <RadioButton
-                android:id="@+id/rb_kategori_9"
+                android:id="@+id/rb_kategori_8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_9_jaket"

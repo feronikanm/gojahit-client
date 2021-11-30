@@ -42,7 +42,7 @@
             android:drawableTint="@color/purple_500"
             android:gravity="center_vertical"
             android:textSize="12sp"
-            tools:text="Feronika Nut Maghfiro" />
+            tools:text="Feronika Nur Maghfiro" />
 
         <TextView
             android:id="@+id/tv_star"
