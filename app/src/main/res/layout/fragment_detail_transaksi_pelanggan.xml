@@ -1,14 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="8dp"
     tools:context=".ui.pelanggan.transaksi.DetailTransaksiPelangganFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_detail_pesanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Detail Pesanan" />
+
+            <TextView
+                android:id="@+id/tv_id_pesanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kode pesanan" />
+
+            <TextView
+                android:id="@+id/tv_id_penjahit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Id Penjahit" />
+
+            <TextView
+                android:id="@+id/tv_id_pelanggan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Id Pelanggan" />
+
+            <TextView
+                android:id="@+id/tv_id_detail_kategori"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Id Detail Kategori" />
+
+            <TextView
+                android:id="@+id/tv_tanggal_pesanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Pesanan" />
+
+            <TextView
+                android:id="@+id/tv_tanggal_pesanan_selesai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Pesanan Selesai" />
+
+            <TextView
+                android:id="@+id/tv_ket_pesanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Keterangan Pesanan"/>
+
+            <TextView
+                android:id="@+id/tv_status_pesanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Status Pesanan" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_input_ukuran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/login_button_bk"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="Masukkan Ukuran"
+                android:textAppearance="@style/button_login_register"
+                android:textColor="@color/white" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_ukuran"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:clipToPadding="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detail_kategori" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+</RelativeLayout>

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fero.skripsi.R
 import com.fero.skripsi.core.BaseFragment
@@ -19,6 +20,7 @@ import com.fero.skripsi.ui.pelanggan.pesanan.viewmodel.PesananViewModel
 import com.fero.skripsi.ui.pelanggan.transaksi.adapter.TransaksiPelangganAdapter
 import com.fero.skripsi.utils.FunctionKu
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.gson.Gson
 
 class TransaksiPenjahitFragment : BaseFragment<FragmentTransaksiPenjahitBinding>() {
 
@@ -110,6 +112,21 @@ class TransaksiPenjahitFragment : BaseFragment<FragmentTransaksiPenjahitBinding>
 
     private fun selectedPesanan(data: Pesanan) {
         Toast.makeText(context, "Kamu memilih " + data.id_pesanan, Toast.LENGTH_SHORT).show()
+
+        val detailTransaksiPenjahitFragment = DetailTransaksiPenjahitFragment()
+
+        val bundle = Bundle()
+        val bundleData = Gson().toJson(data)
+        bundle.putString("DETAIL_PESANAN_PENJAHIT", bundleData)
+
+        detailTransaksiPenjahitFragment.arguments = bundle
+
+        val fragmentManager = parentFragmentManager
+        fragmentManager.beginTransaction().apply {
+            replace(R.id.fragment_container, detailTransaksiPenjahitFragment, DetailTransaksiPenjahitFragment::class.java.simpleName)
+            addToBackStack(null)
+            commit()
+        }
     }
 
     override fun setupUI(view: View, savedInstanceState: Bundle?) {

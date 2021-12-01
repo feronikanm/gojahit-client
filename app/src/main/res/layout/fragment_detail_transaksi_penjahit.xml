@@ -1,14 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="8dp"
     tools:context=".ui.penjahit.transaksi.DetailTransaksiPenjahitFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_detail_pesanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Detail Pesanan" />
+
+            <TextView
+                android:id="@+id/tv_id_pesanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kode pesanan"/>
+
+            <TextView
+                android:id="@+id/tv_id_penjahit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Id Penjahit"/>
+
+            <TextView
+                android:id="@+id/tv_id_pelanggan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Id Pelanggan"/>
+
+            <TextView
+                android:id="@+id/tv_id_detail_kategori"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Id Detail Kategori"/>
+
+            <TextView
+                android:id="@+id/tv_tanggal_pesanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Pesanan"/>
+
+            <TextView
+                android:id="@+id/tv_tanggal_pesanan_selesai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Pesanan Selesai"/>
+
+            <TextView
+                android:id="@+id/tv_ket_pesanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Keterangan Pesanan"/>
+
+            <TextView
+                android:id="@+id/tv_status_pesanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Status Pesanan"/>
+
+            <LinearLayout
+                android:id="@+id/layout_terima_tolak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:visibility="invisible"
+                android:padding="16dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_tolak"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_button_accept"
+                    android:drawableStart="@drawable/ic_reject"
+                    android:padding="8dp"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:text="Tolak"
+                    android:textAppearance="@style/button_login_register"
+                    android:textColor="@color/account_primary_dark" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_terima"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_button_accept"
+                    android:drawableStart="@drawable/ic_accept"
+                    android:padding="8dp"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:text="Terima"
+                    android:textAppearance="@style/button_login_register"
+                    android:textColor="@color/teal_200" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_proses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/custom_button_accept"
+                android:padding="8dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="Beritahu Pelanggan Jika Jahitan sedang di Proses"
+                android:textAppearance="@style/button_login_register"
+                android:visibility="invisible"
+                android:textColor="@color/teal_200" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_selesai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/custom_button_accept"
+                android:drawableStart="@drawable/ic_accept"
+                android:padding="8dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="Selesai"
+                android:visibility="invisible"
+                android:textAppearance="@style/button_login_register"
+                android:textColor="@color/teal_200" />
+
+
+
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+</RelativeLayout>

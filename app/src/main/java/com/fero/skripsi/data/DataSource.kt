@@ -55,4 +55,15 @@ interface DataSource {
 
     fun deleteDataPesanan(data: Pesanan, responseCallback: ResponseCallback<Pesanan>)
 
+    fun getDataUkuranByPesanan(data: Pesanan, callback: ResponseCallback<List<UkuranDetailPesanan>>)
+
+    fun getDataUkuranPesananByDetailKategori(data: Pesanan, callback: ResponseCallback<List<UkuranDetailPesanan>>)
+
+    fun insertDataUkuranDetailPesanan(data: UkuranDetailPesanan, responseCallback: ResponseCallback<UkuranDetailPesanan>)
+
+    fun updateDatakuranDetailPesanan(data: UkuranDetailPesanan, responseCallback: ResponseCallback<UkuranDetailPesanan>)
+
+    fun deleteDatakuranDetailPesanan(data: UkuranDetailPesanan, responseCallback: ResponseCallback<UkuranDetailPesanan>)
+
+
 }

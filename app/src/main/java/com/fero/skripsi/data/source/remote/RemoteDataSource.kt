@@ -669,23 +669,41 @@ class RemoteDataSource(context: Context) : DataSource {
 
     }
 
+//    override fun getDataPesananById(data: Pesanan, responseCallback: ResponseCallback<Pesanan>) {
+//        EspressoIdlingResource.increment()
+//        apiService.getDataPesananById(data.id_pesanan!!)
+//            .subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribe(object : ApiCallback<Pesanan>(){
+//                override fun onSuccess(data: Pesanan) {
+//                    responseCallback.onSuccess(data)
+//                    EspressoIdlingResource.decrement()
+//                }
+//                override fun onFailure(code: Int, errorMessage: String) {
+//                    responseCallback.onFailed(code, errorMessage)
+//                    EspressoIdlingResource.decrement()
+//                }
+//
+//            })
+//
+//    }
+
     override fun getDataPesananById(data: Pesanan, responseCallback: ResponseCallback<Pesanan>) {
         EspressoIdlingResource.increment()
-        apiService.getDataPesananById(data.id_pesanan!!)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : ApiCallback<Pesanan>(){
-                override fun onSuccess(data: Pesanan) {
-                    responseCallback.onSuccess(data)
-                    EspressoIdlingResource.decrement()
-                }
-                override fun onFailure(code: Int, errorMessage: String) {
-                    responseCallback.onFailed(code, errorMessage)
-                    EspressoIdlingResource.decrement()
-                }
+        apiService.getDataPesananById(data.id_pesanan!!).enqueue(object : Callback<Pesanan>{
+            override fun onFailure(call: Call<Pesanan>, t: Throwable) {
+                responseCallback.onHideProgress()
+                responseCallback.onSuccess(data)
+                Log.d("Repsonse : ", data.toString())
+                EspressoIdlingResource.decrement()
+            }
 
-            })
-
+            override fun onResponse(call: Call<Pesanan>, response: Response<Pesanan>) {
+                responseCallback.onHideProgress()
+                responseCallback.onFailed(500)
+                EspressoIdlingResource.decrement()
+            }
+        })
     }
 
     override fun getDataPesananByPelanggan(data: Pelanggan, callback: ResponseCallback<List<Pesanan>>) {
@@ -848,6 +866,147 @@ class RemoteDataSource(context: Context) : DataSource {
             }
 
             override fun onFailure(call: Call<Success<Pesanan>>, t: Throwable) {
+                responseCallback.onHideProgress()
+                EspressoIdlingResource.decrement()
+                responseCallback.onFailed(500, t.localizedMessage)
+            }
+
+        })
+    }
+
+    override fun getDataUkuranByPesanan(data: Pesanan, callback: ResponseCallback<List<UkuranDetailPesanan>>) {
+        EspressoIdlingResource.increment()
+
+        apiService.getDataUkuranByPesanan(data.id_pesanan!!)
+            .subscribeOn(Schedulers.io())
+            .doOnSubscribe { callback.onShowProgress() }
+            .doOnTerminate { callback.onHideProgress() }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : ApiCallback<List<UkuranDetailPesanan>>(){
+                override fun onSuccess(data: List<UkuranDetailPesanan>) {
+                    if (data.isNotEmpty()) {
+                        callback.onSuccess(data)
+                        callback.isEmptyData(false)
+                    } else {
+                        callback.isEmptyData(true)
+                    }
+                    EspressoIdlingResource.decrement()
+                }
+
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
+                    EspressoIdlingResource.decrement()
+                }
+
+            })
+
+    }
+
+    override fun getDataUkuranPesananByDetailKategori(
+        data: Pesanan,
+        callback: ResponseCallback<List<UkuranDetailPesanan>>
+    ) {
+        EspressoIdlingResource.increment()
+        apiService.getDataUkuranPesananByDetailKategori(data.id_detail_kategori!!)
+            .subscribeOn(Schedulers.io())
+            .doOnSubscribe { callback.onShowProgress() }
+            .doOnTerminate { callback.onHideProgress() }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : ApiCallback<List<UkuranDetailPesanan>>(){
+                override fun onSuccess(data: List<UkuranDetailPesanan>) {
+                    if (data.isNotEmpty()) {
+                        callback.onSuccess(data)
+                        callback.isEmptyData(false)
+                    } else {
+                        callback.isEmptyData(true)
+                    }
+                    EspressoIdlingResource.decrement()
+                }
+
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
+                    EspressoIdlingResource.decrement()
+                }
+            })
+    }
+
+    override fun insertDataUkuranDetailPesanan(data: UkuranDetailPesanan, responseCallback: ResponseCallback<UkuranDetailPesanan>) {
+        EspressoIdlingResource.increment()
+
+        responseCallback.onShowProgress()
+
+        apiService.insertDataUkuranDetailPesanan(
+            id_pesanan = data.id_pesanan,
+            id_ukuran = data.id_ukuran,
+            ukuran_pesanan = data.ukuran_pesanan,
+        ).enqueue(object : Callback<Success<UkuranDetailPesanan>>{
+            override fun onResponse(
+                call: Call<Success<UkuranDetailPesanan>>,
+                response: Response<Success<UkuranDetailPesanan>>
+            ) {
+                responseCallback.onHideProgress()
+                response.body()?.data?.let { responseCallback.onSuccess(it) }
+                Log.d("Repsonse Body", response.body().toString())
+                EspressoIdlingResource.decrement()
+            }
+
+            override fun onFailure(call: Call<Success<UkuranDetailPesanan>>, t: Throwable) {
+                responseCallback.onHideProgress()
+                EspressoIdlingResource.decrement()
+                responseCallback.onFailed(500, t.localizedMessage)
+            }
+
+        })
+    }
+
+    override fun updateDatakuranDetailPesanan(data: UkuranDetailPesanan, responseCallback: ResponseCallback<UkuranDetailPesanan>) {
+        EspressoIdlingResource.increment()
+
+        responseCallback.onShowProgress()
+
+        apiService.updateDataUkuranDetailPesanan(
+            data.id_ukuran_detail_pesanan,
+            id_pesanan = data.id_pesanan,
+            id_ukuran = data.id_ukuran,
+            ukuran_pesanan = data.ukuran_pesanan
+        ).enqueue(object : Callback<Success<UkuranDetailPesanan>>{
+            override fun onResponse(
+                call: Call<Success<UkuranDetailPesanan>>,
+                response: Response<Success<UkuranDetailPesanan>>
+            ) {
+                responseCallback.onHideProgress()
+                response.body()?.data?.let { responseCallback.onSuccess(it) }
+                Log.d("Repsonse Body", response.body().toString())
+                EspressoIdlingResource.decrement()
+            }
+
+            override fun onFailure(call: Call<Success<UkuranDetailPesanan>>, t: Throwable) {
+                responseCallback.onHideProgress()
+                EspressoIdlingResource.decrement()
+                responseCallback.onFailed(500, t.localizedMessage)
+            }
+
+        })
+
+    }
+
+    override fun deleteDatakuranDetailPesanan(data: UkuranDetailPesanan, responseCallback: ResponseCallback<UkuranDetailPesanan>) {
+        EspressoIdlingResource.increment()
+
+        responseCallback.onShowProgress()
+
+        apiService.deleteDataUkuranDetailPesanan(data.id_ukuran_detail_pesanan!!).enqueue(object : Callback<Success<UkuranDetailPesanan>>{
+            override fun onResponse(
+                call: Call<Success<UkuranDetailPesanan>>,
+                response: Response<Success<UkuranDetailPesanan>>
+            ) {
+                responseCallback.onHideProgress()
+                response.body()?.data?.let { responseCallback.onSuccess(it) }
+                Log.d("Repsonse Body", response.body().toString())
+                EspressoIdlingResource.decrement()
+            }
+
+            override fun onFailure(call: Call<Success<UkuranDetailPesanan>>, t: Throwable) {
                 responseCallback.onHideProgress()
                 EspressoIdlingResource.decrement()
                 responseCallback.onFailed(500, t.localizedMessage)

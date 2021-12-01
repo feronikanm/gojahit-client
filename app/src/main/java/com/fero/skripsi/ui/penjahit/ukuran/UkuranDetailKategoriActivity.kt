@@ -2,14 +2,18 @@ package com.fero.skripsi.ui.penjahit.ukuran
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.fero.skripsi.R
 import com.fero.skripsi.databinding.ActivityUkuranDetailKategoriBinding
 import com.fero.skripsi.model.DetailKategoriPenjahit
 import com.fero.skripsi.model.UkuranDetailKategori
+import com.fero.skripsi.ui.penjahit.kategori.EditDataKategoriFragment
 import com.fero.skripsi.ui.penjahit.ukuran.adapter.UkuranDetailKategoriAdapter
 import com.fero.skripsi.ui.penjahit.ukuran.viewmodel.UkuranViewModel
 import com.fero.skripsi.utils.Constant
@@ -158,4 +162,33 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
         }
         viewModel.deleteDataUkuranDetailKategori(data)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.option_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.btn_edit -> {
+
+                val editDataKategoriFragment = EditDataKategoriFragment()
+                val extraData: DetailKategoriPenjahit? = intent.extras?.getParcelable(EXTRA_DATA_KATEGORI)
+
+                val bundle = Bundle()
+                val bundleData = Gson().toJson(extraData)
+                bundle.putString("EXTRA_DETAIL_KATEGORI", bundleData)
+                editDataKategoriFragment.arguments = bundle
+
+                editDataKategoriFragment.show(
+                    supportFragmentManager,
+                    EditDataKategoriFragment::class.java.simpleName
+                ) //cara memunculkan dialog box(2)
+                return true
+            }
+            else -> {}
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 }

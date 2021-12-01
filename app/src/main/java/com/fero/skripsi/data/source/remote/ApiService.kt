@@ -24,6 +24,10 @@ import com.fero.skripsi.utils.Constant.URL_RATING_INSERT
 import com.fero.skripsi.utils.Constant.URL_UKURAN_DETAIL_KATEGORI_DELETE
 import com.fero.skripsi.utils.Constant.URL_UKURAN_DETAIL_KATEGORI_GET_BY_DETAIL_KATEGORI
 import com.fero.skripsi.utils.Constant.URL_UKURAN_DETAIL_KATEGORI_INSERT
+import com.fero.skripsi.utils.Constant.URL_UKURAN_DETAIL_PESANAN_DELETE
+import com.fero.skripsi.utils.Constant.URL_UKURAN_DETAIL_PESANAN_GET_BY_PESANAN
+import com.fero.skripsi.utils.Constant.URL_UKURAN_DETAIL_PESANAN_INSERT
+import com.fero.skripsi.utils.Constant.URL_UKURAN_DETAIL_PESANAN_UPDATE
 import com.fero.skripsi.utils.Constant.URL_UKURAN_GET
 import io.reactivex.Observable
 import retrofit2.Call
@@ -178,6 +182,7 @@ interface ApiService {
     @GET(URL_UKURAN_GET)
     fun getDataUkuran() : Observable<List<UkuranDetailKategori>>
 
+
     @GET(URL_UKURAN_DETAIL_KATEGORI_GET_BY_DETAIL_KATEGORI)
     fun getUkuranByDetailKategori(
         @Path("id_detail_kategori") id_detail_kategori_path: Int
@@ -211,10 +216,15 @@ interface ApiService {
         ): Call<Success<Rating>>
 
 
+//    @GET(URL_PESANAN_GET_BY_ID)
+//    fun getDataPesananById(
+//        @Path("id_pesanan") id_pesanan_path: Int
+//    ): Observable<Pesanan>
+
     @GET(URL_PESANAN_GET_BY_ID)
     fun getDataPesananById(
         @Path("id_pesanan") id_pesanan_path: Int
-    ): Observable<Pesanan>
+    ): Call<Pesanan>
 
 
     @GET(URL_PESANAN_GET_BY_PELANGGAN)
@@ -288,16 +298,41 @@ interface ApiService {
     ): Call<Success<Pesanan>>
 
 
-//    @GET(URL_UKURAN_DETAIL_PESANAN_GET)
-//    fun getUkuranDetailPesanan(): Call<List<UkuranDetailPesanan>>
-//
-//    @FormUrlEncoded
-//    @POST(ApiEndPoint.URL_UKURAN_DETAIL_PESANAN_INSERT)
-//    fun registerUkuranDetailPesanan(
-//        @Field("idDetailPesanan") id_detail_pesanan: Int,
-//        @Field("namaUkuran") nama_ukuran: String,
-//        @Field("ukuranPesanan") ukuran_pesanan: Int,
-//
-//        ): Call<Success<UkuranDetailPesanan>>
+    @GET(URL_UKURAN_DETAIL_PESANAN_GET_BY_PESANAN)
+    fun getDataUkuranByPesanan(
+        @Path("id_pesanan") id_pesanan_path: Int
+    ): Observable<List<UkuranDetailPesanan>>
 
+
+    @GET(URL_UKURAN_DETAIL_KATEGORI_GET_BY_DETAIL_KATEGORI)
+    fun getDataUkuranPesananByDetailKategori(
+        @Path("id_detail_kategori") id_detail_kategori_path: Int
+    ): Observable<List<UkuranDetailPesanan>>
+
+
+    @FormUrlEncoded
+    @POST(URL_UKURAN_DETAIL_PESANAN_INSERT)
+    fun insertDataUkuranDetailPesanan(
+        @Field("idPesanan") id_pesanan: Int?,
+        @Field("idUkuran") id_ukuran: Int?,
+        @Field("ukuranPesanan") ukuran_pesanan: Int?,
+
+        ): Call<Success<UkuranDetailPesanan>>
+
+
+    @FormUrlEncoded
+    @POST(URL_UKURAN_DETAIL_PESANAN_UPDATE)
+    fun updateDataUkuranDetailPesanan(
+        @Path("id_ukuran_detail_pesanan") id_ukuran_detail_pesanan_path: Int?,
+        @Field("idPesanan") id_pesanan: Int?,
+        @Field("idUkuran") id_ukuran: Int?,
+        @Field("ukuranPesanan") ukuran_pesanan: Int?,
+
+        ): Call<Success<UkuranDetailPesanan>>
+
+
+    @POST(URL_UKURAN_DETAIL_PESANAN_DELETE)
+    fun deleteDataUkuranDetailPesanan(
+        @Path("id_ukuran_detail_pesanan") id_ukuran_detail_pesanan_path: Int
+    ): Call<Success<UkuranDetailPesanan>>
 }

@@ -4,7 +4,7 @@ import com.fero.skripsi.data.source.ResponseCallback
 import com.fero.skripsi.data.source.remote.RemoteDataSource
 import com.fero.skripsi.model.*
 
-class Repository private constructor(private val remoteDataSource: RemoteDataSource) : DataSource{
+class Repository private constructor(private val remoteDataSource: RemoteDataSource) : DataSource {
 
     companion object {
         @Volatile
@@ -62,11 +62,15 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
         remoteDataSource.updatePenjahit(data, responseCallback)
     }
 
-    override fun getListDetailKategori(data: Penjahit, callback: ResponseCallback<List<DetailKategoriPenjahit>>) {
+    override fun getListDetailKategori(
+        data: Penjahit,
+        callback: ResponseCallback<List<DetailKategoriPenjahit>>
+    ) {
         remoteDataSource.getListDetailKategori(data, callback)
     }
 
-    override fun getListDetailKategoriInPelanggan(data: DetailKategoriNilai, callback: ResponseCallback<List<DetailKategoriNilai>>
+    override fun getListDetailKategoriInPelanggan(
+        data: DetailKategoriNilai, callback: ResponseCallback<List<DetailKategoriNilai>>
     ) {
         remoteDataSource.getListDetailKategoriInPelanggan(data, callback)
     }
@@ -156,6 +160,41 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
 
     override fun deleteDataPesanan(data: Pesanan, responseCallback: ResponseCallback<Pesanan>) {
         remoteDataSource.deleteDataPesanan(data, responseCallback)
+    }
+
+    override fun getDataUkuranByPesanan(
+        data: Pesanan,
+        callback: ResponseCallback<List<UkuranDetailPesanan>>
+    ) {
+        remoteDataSource.getDataUkuranByPesanan(data, callback)
+    }
+
+    override fun getDataUkuranPesananByDetailKategori(
+        data: Pesanan,
+        callback: ResponseCallback<List<UkuranDetailPesanan>>
+    ) {
+        remoteDataSource.getDataUkuranPesananByDetailKategori(data, callback)
+    }
+
+    override fun insertDataUkuranDetailPesanan(
+        data: UkuranDetailPesanan,
+        responseCallback: ResponseCallback<UkuranDetailPesanan>
+    ) {
+        remoteDataSource.insertDataUkuranDetailPesanan(data, responseCallback)
+    }
+
+    override fun updateDatakuranDetailPesanan(
+        data: UkuranDetailPesanan,
+        responseCallback: ResponseCallback<UkuranDetailPesanan>
+    ) {
+        remoteDataSource.updateDatakuranDetailPesanan(data, responseCallback)
+    }
+
+    override fun deleteDatakuranDetailPesanan(
+        data: UkuranDetailPesanan,
+        responseCallback: ResponseCallback<UkuranDetailPesanan>
+    ) {
+        remoteDataSource.deleteDatakuranDetailPesanan(data, responseCallback)
     }
 
 }
