@@ -23,35 +23,32 @@ import com.google.gson.Gson
 
 class UkuranDetailKategoriActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityUkuranDetailKategoriBinding
     companion object {
         const val EXTRA_DATA_KATEGORI = "EXTRA_DATA_KATEGORI"
         private const val ADD_UKURAN_TAG = "AddUkuran"
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityUkuranDetailKategoriBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    private val binding: ActivityUkuranDetailKategoriBinding by lazy {
+        ActivityUkuranDetailKategoriBinding.inflate(layoutInflater)
+    }
 
-        val extraData: DetailKategoriPenjahit? = intent.extras?.getParcelable(EXTRA_DATA_KATEGORI)
+    private val ukuranAdapter = UkuranDetailKategoriAdapter()
 
-        supportActionBar?.title = extraData?.nama_kategori
+    private val factory by lazy {
+        ViewModelFactory.getInstance(this)
+    }
 
-        binding.apply {
-            tvNamaKategori.text = extraData!!.nama_kategori
-            tvKetKategori.text = extraData.keterangan_kategori
-            tvBahanJahit.text = extraData.bahan_jahit
-            tvHargaBahan.text = extraData.harga_bahan
-            tvOngkosPenjahit.text = extraData.ongkos_penjahit
-            tvLamaWaktu.text = extraData.perkiraan_lama_waktu_pengerjaan
+    private val viewModel by lazy {
+        ViewModelProvider(this, factory)[UkuranViewModel::class.java]
+    }
 
-            Glide.with(this@UkuranDetailKategoriActivity)
-                .load("${Constant.IMAGE_KATEGORI}${extraData.gambar_kategori}")
-                .into(imgKategori)
-        }
 
-        val dataUkuran = UkuranDetailKategori(
+    private val extraData: DetailKategoriPenjahit? by lazy {
+        intent.getParcelableExtra(EXTRA_DATA_KATEGORI)
+    }
+
+    private val dataUkuran by lazy {
+        UkuranDetailKategori(
             0,
             extraData?.id_detail_kategori,
             0,
@@ -67,10 +64,9 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
             "",
             "",
         )
+    }
 
-        val factory = ViewModelFactory.getInstance(this)
-        val viewModel = ViewModelProvider(this, factory)[UkuranViewModel::class.java]
-
+    private fun setupViewModel() {
         viewModel.apply {
             listUkuran.observe(this@UkuranDetailKategoriActivity, {
                 setupRvUkuranDetailKategori(it)
@@ -91,35 +87,79 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
             messageFailed.observe(this@UkuranDetailKategoriActivity, {
                 Toast.makeText(this@UkuranDetailKategoriActivity, it, Toast.LENGTH_SHORT).show()
             })
+
+            vmDataUkuran.observe(this@UkuranDetailKategoriActivity, {
+
+            })
+
+            messageSuccess.observe(this@UkuranDetailKategoriActivity, {
+                Toast.makeText(this@UkuranDetailKategoriActivity, it, Toast.LENGTH_SHORT).show()
+            })
+
+            eventShowProgress.observe(this@UkuranDetailKategoriActivity, {
+                if (it) {
+                    binding.progressBar.visibility = View.VISIBLE
+                } else {
+                    binding.progressBar.visibility = View.GONE
+                }
+            })
+
+            onSuccessDeleteState.observe(this@UkuranDetailKategoriActivity, {
+                viewModel.getUkuranByDetailKategori(dataUkuran)
+            })
+
         }
 
         viewModel.getUkuranByDetailKategori(dataUkuran)
 
-        binding.btnAddUkuran.setOnClickListener {
+    }
 
-            val tambahUkuranFragment = TambahUkuranFragment()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(binding.root)
+        supportActionBar?.title = extraData?.nama_kategori
 
-            //send data using bundle argument from activity to fragment
-            val bundle = Bundle()
-            val bundleData = Gson().toJson(extraData)
-            bundle.putString("EXTRA_DETAIL_KATEGORI", bundleData)
-            tambahUkuranFragment.arguments = bundle
+        setupViewModel()
 
-            //show dialog fragment from activity
-            tambahUkuranFragment.show(supportFragmentManager, ADD_UKURAN_TAG)
+        binding.apply {
+            tvNamaKategori.text = extraData!!.nama_kategori
+            tvKetKategori.text = extraData?.keterangan_kategori
+            tvBahanJahit.text = extraData?.bahan_jahit
+            tvHargaBahan.text = extraData?.harga_bahan
+            tvOngkosPenjahit.text = extraData?.ongkos_penjahit
+            tvLamaWaktu.text = extraData?.perkiraan_lama_waktu_pengerjaan
+
+            Glide.with(this@UkuranDetailKategoriActivity)
+                .load("${Constant.IMAGE_KATEGORI}${extraData?.gambar_kategori}")
+                .into(imgKategori)
+
+            btnAddUkuran.setOnClickListener {
+
+                val tambahUkuranFragment = TambahUkuranFragment()
+
+                //send data using bundle argument from activity to fragment
+                val bundle = Bundle()
+                val bundleData = Gson().toJson(extraData)
+                bundle.putString("EXTRA_DETAIL_KATEGORI", bundleData)
+                tambahUkuranFragment.arguments = bundle
+
+                //show dialog fragment from activity
+                tambahUkuranFragment.show(supportFragmentManager, ADD_UKURAN_TAG)
+            }
+
+            rvUkuran.apply {
+                layoutManager = LinearLayoutManager(context)
+                adapter = ukuranAdapter
+            }
+
         }
+
     }
 
     private fun setupRvUkuranDetailKategori(data: List<UkuranDetailKategori>?) {
-        val ukuranAdapter = UkuranDetailKategoriAdapter()
         ukuranAdapter.setUkuranDetailKategori(data!!)
-
-        binding.rvUkuran.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = ukuranAdapter
-        }
-
-        ukuranAdapter.setOnDeleteClickCallback(object : UkuranDetailKategoriAdapter.OnDeleteClickCallback{
+        ukuranAdapter.setOnDeleteClickCallback(object :
+            UkuranDetailKategoriAdapter.OnDeleteClickCallback {
             override fun onDeleteClicked(data: UkuranDetailKategori) {
                 popupDelete(data)
             }
@@ -141,25 +181,6 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
     }
 
     private fun deleteDataUkuran(data: UkuranDetailKategori) {
-
-        val factory = ViewModelFactory.getInstance(this)
-        val viewModel = ViewModelProvider(this, factory)[UkuranViewModel::class.java]
-
-        viewModel.apply {
-            dataUkuran.observe(this@UkuranDetailKategoriActivity, {
-            })
-            messageSuccess.observe(this@UkuranDetailKategoriActivity, {
-                Toast.makeText(this@UkuranDetailKategoriActivity, it, Toast.LENGTH_SHORT).show()
-            })
-
-            eventShowProgress.observe(this@UkuranDetailKategoriActivity, {
-                if (it) {
-                    binding.progressBar.visibility = View.VISIBLE
-                } else {
-                    binding.progressBar.visibility = View.GONE
-                }
-            })
-        }
         viewModel.deleteDataUkuranDetailKategori(data)
     }
 
@@ -173,7 +194,6 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
             R.id.btn_edit -> {
 
                 val editDataKategoriFragment = EditDataKategoriFragment()
-                val extraData: DetailKategoriPenjahit? = intent.extras?.getParcelable(EXTRA_DATA_KATEGORI)
 
                 val bundle = Bundle()
                 val bundleData = Gson().toJson(extraData)
@@ -189,6 +209,10 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
             else -> {}
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    fun refreshGetDataViewModel() {
+        viewModel.getUkuranByDetailKategori(dataUkuran)
     }
 
 }

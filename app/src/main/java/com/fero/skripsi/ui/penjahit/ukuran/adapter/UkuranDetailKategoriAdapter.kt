@@ -20,6 +20,7 @@ class UkuranDetailKategoriAdapter : RecyclerView.Adapter<UkuranDetailKategoriAda
     fun setUkuranDetailKategori(listUkuran: List<UkuranDetailKategori>){
         this.listUkuran.clear()
         this.listUkuran.addAll(listUkuran)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UkuranDetailKategoriViewHolder {

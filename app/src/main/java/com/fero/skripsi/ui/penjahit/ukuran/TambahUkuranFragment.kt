@@ -9,7 +9,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fero.skripsi.databinding.FragmentTambahUkuranBinding
-import com.fero.skripsi.model.Pelanggan
 import com.fero.skripsi.model.UkuranDetailKategori
 import com.fero.skripsi.ui.penjahit.ukuran.adapter.TambahUkuranAdapter
 import com.fero.skripsi.ui.penjahit.ukuran.viewmodel.UkuranViewModel
@@ -30,6 +29,10 @@ class TambahUkuranFragment : DialogFragment() {
         return binding.root
     }
 
+    private val parentActivity: UkuranDetailKategoriActivity by lazy {
+        (activity as UkuranDetailKategoriActivity)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -47,8 +50,9 @@ class TambahUkuranFragment : DialogFragment() {
                 setupRvUkuran(it)
             })
 
-            dataUkuran.observe(this@TambahUkuranFragment, {
+            vmDataUkuran.observe(this@TambahUkuranFragment, {
                 dialog?.dismiss()
+                parentActivity.refreshGetDataViewModel()
             })
 
             messageSuccess.observe(this@TambahUkuranFragment, {

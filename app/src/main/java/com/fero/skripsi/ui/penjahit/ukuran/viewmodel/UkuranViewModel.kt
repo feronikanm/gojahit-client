@@ -9,10 +9,12 @@ import com.fero.skripsi.utils.SingleLiveEvent
 class UkuranViewModel(private val repository: Repository) : BaseViewModel() {
 
     var listUkuran = SingleLiveEvent<List<UkuranDetailKategori>>()
-    var dataUkuran = SingleLiveEvent<UkuranDetailKategori>()
+    var vmDataUkuran = SingleLiveEvent<UkuranDetailKategori>()
     var messageFailed = SingleLiveEvent<String>()
     var messageSuccess = SingleLiveEvent<String>()
-    var onSuccessState = SingleLiveEvent<Boolean>()
+    var onSuccessGetState = SingleLiveEvent<Boolean>()
+    var onSuccessDeleteState = SingleLiveEvent<Boolean>()
+    var onSuccessInsertState = SingleLiveEvent<Boolean>()
 
 
     fun getDataUkuran(){
@@ -20,12 +22,12 @@ class UkuranViewModel(private val repository: Repository) : BaseViewModel() {
         repository.getDataUkuran(object : ResponseCallback<List<UkuranDetailKategori>>{
             override fun onSuccess(data: List<UkuranDetailKategori>) {
                 listUkuran.postValue(data)
-                onSuccessState.postValue(true)
+                onSuccessGetState.postValue(true)
             }
 
             override fun onFailed(statusCode: Int, errorMessage: String?) {
                 eventErrorMessage.postValue(errorMessage)
-                onSuccessState.postValue(false)
+                onSuccessGetState.postValue(false)
             }
 
             override fun onShowProgress() {
@@ -73,14 +75,14 @@ class UkuranViewModel(private val repository: Repository) : BaseViewModel() {
 
         repository.insertDataUkuranDetailKategori(data, object : ResponseCallback<UkuranDetailKategori>{
             override fun onSuccess(data: UkuranDetailKategori) {
-                dataUkuran.postValue(data)
+                vmDataUkuran.postValue(data)
                 messageSuccess.postValue("Data Berhasil Ditambahkan")
-                onSuccessState.postValue(true)
+                onSuccessInsertState.postValue(true)
             }
 
             override fun onFailed(statusCode: Int, errorMessage: String?) {
                 messageFailed.postValue(errorMessage)
-                onSuccessState.postValue(false)
+                onSuccessInsertState.postValue(false)
             }
 
             override fun onShowProgress() {
@@ -102,14 +104,14 @@ class UkuranViewModel(private val repository: Repository) : BaseViewModel() {
 
         repository.deleteDataUkuranDetailKategori(data, object : ResponseCallback<UkuranDetailKategori>{
             override fun onSuccess(data: UkuranDetailKategori) {
-                dataUkuran.postValue(data)
+                vmDataUkuran.postValue(data)
                 messageSuccess.postValue("Data Berhasil Dihapus\nKembali untuk melihat data yang telah dihapus")
-                onSuccessState.postValue(true)
+                onSuccessDeleteState.postValue(true)
             }
 
             override fun onFailed(statusCode: Int, errorMessage: String?) {
                 messageFailed.postValue(errorMessage)
-                onSuccessState.postValue(false)
+                onSuccessDeleteState.postValue(false)
             }
 
             override fun onShowProgress() {
