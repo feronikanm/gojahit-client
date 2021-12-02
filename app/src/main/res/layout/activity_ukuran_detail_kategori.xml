@@ -21,50 +21,50 @@
                 android:id="@+id/tv_nama_kategori"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/almost_black"/>
+                android:textColor="@color/almost_black" />
 
             <ImageView
                 android:id="@+id/img_kategori"
                 android:layout_width="100dp"
-                android:layout_height="100dp"/>
+                android:layout_height="100dp" />
 
             <TextView
                 android:id="@+id/tv_ket_kategori"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/not_black"/>
+                android:textColor="@color/not_black" />
 
             <TextView
                 android:id="@+id/tv_bahan_jahit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/not_black"/>
+                android:textColor="@color/not_black" />
 
             <TextView
                 android:id="@+id/tv_harga_bahan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/not_black"/>
+                android:textColor="@color/not_black" />
 
             <TextView
                 android:id="@+id/tv_ongkos_penjahit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/not_black"/>
+                android:textColor="@color/not_black" />
 
             <TextView
                 android:id="@+id/tv_lama_waktu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/not_black"/>
+                android:textColor="@color/not_black" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_ukuran"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_list_ukuran_detail_kategori"/>
-
+                tools:listitem="@layout/item_list_ukuran_detail_kategori" />
         </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -82,6 +82,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true" />
 
 </RelativeLayout>

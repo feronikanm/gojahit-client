@@ -1,8 +1,5 @@
 package com.fero.skripsi.ui.penjahit.ukuran
 
-
-// TODO AMIR
-
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -35,7 +32,9 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
         ActivityUkuranDetailKategoriBinding.inflate(layoutInflater)
     }
 
-    private val ukuranAdapter = UkuranDetailKategoriAdapter()
+    private val ukuranAdapter by lazy {
+        UkuranDetailKategoriAdapter()
+    }
 
     private val factory by lazy {
         ViewModelFactory.getInstance(this)
@@ -44,7 +43,6 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
     private val viewModel by lazy {
         ViewModelProvider(this, factory)[UkuranViewModel::class.java]
     }
-
 
     private val extraData: DetailKategoriPenjahit? by lazy {
         intent.getParcelableExtra(EXTRA_DATA_KATEGORI)
@@ -71,8 +69,9 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
 
     private fun setupViewModel() {
         viewModel.apply {
+
             listUkuran.observe(this@UkuranDetailKategoriActivity, {
-                setupRvUkuranDetailKategori(it)
+                setupRV(it)
             })
 
             messageSuccess.observe(this@UkuranDetailKategoriActivity, {
@@ -108,7 +107,13 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
             })
 
             onSuccessDeleteState.observe(this@UkuranDetailKategoriActivity, {
-                viewModel.getUkuranByDetailKategori(dataUkuran)
+                if (it) {
+
+                    deleteItemPosition.observe(this@UkuranDetailKategoriActivity, {
+                        ukuranAdapter.deleteItem(it)
+                    })
+
+                }
             })
 
         }
@@ -150,26 +155,24 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
                 tambahUkuranFragment.show(supportFragmentManager, ADD_UKURAN_TAG)
             }
 
-            rvUkuran.apply {
-                layoutManager = LinearLayoutManager(context)
-                adapter = ukuranAdapter
-            }
+            rvUkuran.layoutManager = LinearLayoutManager(this@UkuranDetailKategoriActivity, LinearLayoutManager.VERTICAL, false)
+
 
         }
 
     }
 
-    private fun setupRvUkuranDetailKategori(data: List<UkuranDetailKategori>?) {
+    private fun setupRV(data: List<UkuranDetailKategori>?) {
         ukuranAdapter.setUkuranDetailKategori(data!!)
-        ukuranAdapter.setOnDeleteClickCallback(object :
-            UkuranDetailKategoriAdapter.OnDeleteClickCallback {
-            override fun onDeleteClicked(data: UkuranDetailKategori) {
-                popupDelete(data)
+        ukuranAdapter.setOnDeleteClickCallback(object : UkuranDetailKategoriAdapter.OnDeleteClickCallback {
+            override fun onDeleteClicked(data: UkuranDetailKategori, position: Int) {
+                popupDelete(data, position)
             }
         })
+        binding.rvUkuran.adapter = ukuranAdapter
     }
 
-    private fun popupDelete(data: UkuranDetailKategori) {
+    private fun popupDelete(data: UkuranDetailKategori, position: Int) {
         val materialAlertDialogBuilder = MaterialAlertDialogBuilder(this)
         materialAlertDialogBuilder.setTitle("Hapus Data")
             .setMessage("Apa anda yakin ingin menghapus data ini?")
@@ -178,13 +181,13 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
                 "Hapus"
             ) { dialogInterface, i ->
                 // panggil disini
-                deleteDataUkuran(data)
+                deleteDataUkuran(data, position)
             }
             .show()
     }
 
-    private fun deleteDataUkuran(data: UkuranDetailKategori) {
-        viewModel.deleteDataUkuranDetailKategori(data)
+    private fun deleteDataUkuran(data: UkuranDetailKategori, position: Int) {
+        viewModel.deleteDataUkuranDetailKategori(data, position)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

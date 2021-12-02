@@ -39,7 +39,7 @@ interface DataSource {
 
     fun insertDataUkuranDetailKategori(data: UkuranDetailKategori, responseCallback: ResponseCallback<UkuranDetailKategori>)
 
-    fun deleteDataUkuranDetailKategori(data: UkuranDetailKategori, responseCallback: ResponseCallback<UkuranDetailKategori>)
+    fun deleteDataUkuranDetailKategori(data: UkuranDetailKategori, responseCallback: ResponseCallback<ResponseDeleteSuccess>)
 
     fun insertDataRating(data: Rating, responseCallback: ResponseCallback<Rating>)
 

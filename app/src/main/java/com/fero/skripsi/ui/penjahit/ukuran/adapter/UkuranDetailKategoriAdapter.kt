@@ -1,5 +1,6 @@
 package com.fero.skripsi.ui.penjahit.ukuran.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,37 +9,51 @@ import com.fero.skripsi.databinding.ItemListUkuranDetailKategoriBinding
 import com.fero.skripsi.model.UkuranDetailKategori
 import com.fero.skripsi.utils.Constant
 
-class UkuranDetailKategoriAdapter : RecyclerView.Adapter<UkuranDetailKategoriAdapter.UkuranDetailKategoriViewHolder>(){
+class UkuranDetailKategoriAdapter :
+    RecyclerView.Adapter<UkuranDetailKategoriAdapter.UkuranDetailKategoriViewHolder>() {
 
     private lateinit var onDeleteClickCallback: OnDeleteClickCallback
     var listUkuran = mutableListOf<UkuranDetailKategori>()
 
-    fun setOnDeleteClickCallback(onDeleteClickCallback: OnDeleteClickCallback){
+    fun setOnDeleteClickCallback(onDeleteClickCallback: OnDeleteClickCallback) {
         this.onDeleteClickCallback = onDeleteClickCallback
     }
 
-    fun setUkuranDetailKategori(listUkuran: List<UkuranDetailKategori>){
+    fun setUkuranDetailKategori(listUkuran: List<UkuranDetailKategori>) {
         this.listUkuran.clear()
         this.listUkuran.addAll(listUkuran)
-        notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UkuranDetailKategoriViewHolder {
-        val itemListUkuranDetailKategoriBinding = ItemListUkuranDetailKategoriBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    fun deleteItem(position: Int) {
+        Log.d("Position Removed", position.toString())
+        this.listUkuran.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): UkuranDetailKategoriViewHolder {
+        val itemListUkuranDetailKategoriBinding = ItemListUkuranDetailKategoriBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return UkuranDetailKategoriViewHolder(itemListUkuranDetailKategoriBinding)
     }
 
     override fun onBindViewHolder(holder: UkuranDetailKategoriViewHolder, position: Int) {
         val data = listUkuran[position]
-        holder.bind(data)
+        holder.bind(data, position)
     }
 
     override fun getItemCount(): Int {
         return listUkuran.size
     }
 
-    inner class UkuranDetailKategoriViewHolder(private var binding: ItemListUkuranDetailKategoriBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(data: UkuranDetailKategori){
+    inner class UkuranDetailKategoriViewHolder(private var binding: ItemListUkuranDetailKategoriBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: UkuranDetailKategori, position: Int) {
             binding.apply {
                 tvUkuran.text = data.nama_ukuran
 
@@ -47,16 +62,15 @@ class UkuranDetailKategoriAdapter : RecyclerView.Adapter<UkuranDetailKategoriAda
                     .into(imgUkuran)
 
                 btnDelete.setOnClickListener {
-                    onDeleteClickCallback.onDeleteClicked(listUkuran[adapterPosition])
+                    onDeleteClickCallback.onDeleteClicked(data, position)
                 }
 
             }
         }
-
     }
 
-    interface OnDeleteClickCallback{
-        fun onDeleteClicked(data: UkuranDetailKategori)
+    interface OnDeleteClickCallback {
+        fun onDeleteClicked(data: UkuranDetailKategori, position: Int)
     }
 
 }
