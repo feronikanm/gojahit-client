@@ -201,7 +201,7 @@ interface ApiService {
     @POST(URL_UKURAN_DETAIL_KATEGORI_DELETE)
     fun deleteDataUkuranDetailKategori(
         @Path("id_ukuran_detail_kategori") id_ukuran_detail_kategori_path: Int
-    ): Call<Success<UkuranDetailKategori>>
+    ): Call<ResponseDeleteSuccess>
 
 
     @FormUrlEncoded

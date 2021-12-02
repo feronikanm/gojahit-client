@@ -43,6 +43,7 @@ class RemoteDataSource(context: Context) : DataSource {
                     }
                     EspressoIdlingResource.decrement()
                 }
+
                 override fun onFailure(code: Int, errorMessage: String) {
                     callback.onFailed(code, errorMessage)
                     EspressoIdlingResource.decrement()
@@ -136,7 +137,11 @@ class RemoteDataSource(context: Context) : DataSource {
 
     }
 
-    override fun loginPelanggan(email: String, password: String, responseCallback: ResponseCallback<Pelanggan>) {
+    override fun loginPelanggan(
+        email: String,
+        password: String,
+        responseCallback: ResponseCallback<Pelanggan>
+    ) {
 
         EspressoIdlingResource.increment()
 
@@ -245,7 +250,11 @@ class RemoteDataSource(context: Context) : DataSource {
         })
     }
 
-    override fun loginPenjahit(email: String, password: String, responseCallback: ResponseCallback<Penjahit>) {
+    override fun loginPenjahit(
+        email: String,
+        password: String,
+        responseCallback: ResponseCallback<Penjahit>
+    ) {
         EspressoIdlingResource.increment()
 
         responseCallback.onShowProgress()
@@ -271,7 +280,7 @@ class RemoteDataSource(context: Context) : DataSource {
                     }
                 }
 
-                if(!valid){
+                if (!valid) {
                     responseCallback.onFailed(500, "Data yang anda masukkan tidak valid")
                 }
             }
@@ -364,28 +373,32 @@ class RemoteDataSource(context: Context) : DataSource {
         })
     }
 
-    override fun getListDetailKategori(data: Penjahit, callback: ResponseCallback<List<DetailKategoriPenjahit>>){
+    override fun getListDetailKategori(
+        data: Penjahit,
+        callback: ResponseCallback<List<DetailKategoriPenjahit>>
+    ) {
         EspressoIdlingResource.increment()
         apiService.getDetailKategori(data.id_penjahit!!)
             .subscribeOn(Schedulers.io())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : ApiCallback<List<DetailKategoriPenjahit>>(){
-            override fun onSuccess(data: List<DetailKategoriPenjahit>) {
-                if (data.isNotEmpty()) {
-                    callback.onSuccess(data)
-                    callback.isEmptyData(false)
-                } else {
-                    callback.isEmptyData(true)
+            .subscribe(object : ApiCallback<List<DetailKategoriPenjahit>>() {
+                override fun onSuccess(data: List<DetailKategoriPenjahit>) {
+                    if (data.isNotEmpty()) {
+                        callback.onSuccess(data)
+                        callback.isEmptyData(false)
+                    } else {
+                        callback.isEmptyData(true)
+                    }
+                    EspressoIdlingResource.decrement()
                 }
-                EspressoIdlingResource.decrement()
-            }
-            override fun onFailure(code: Int, errorMessage: String) {
-                callback.onFailed(code, errorMessage)
-                EspressoIdlingResource.decrement()
-            }
-        })
+
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
+                    EspressoIdlingResource.decrement()
+                }
+            })
     }
 
     override fun getListDetailKategoriInPelanggan(
@@ -398,7 +411,7 @@ class RemoteDataSource(context: Context) : DataSource {
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : ApiCallback<List<DetailKategoriNilai>>(){
+            .subscribe(object : ApiCallback<List<DetailKategoriNilai>>() {
                 override fun onSuccess(data: List<DetailKategoriNilai>) {
                     if (data.isNotEmpty()) {
                         callback.onSuccess(data)
@@ -416,7 +429,10 @@ class RemoteDataSource(context: Context) : DataSource {
             })
     }
 
-    override fun insertDataDetailKategoriPenjahit(data: DetailKategori, responseCallback: ResponseCallback<DetailKategori>) {
+    override fun insertDataDetailKategoriPenjahit(
+        data: DetailKategori,
+        responseCallback: ResponseCallback<DetailKategori>
+    ) {
         EspressoIdlingResource.increment()
 
         responseCallback.onShowProgress()
@@ -429,7 +445,7 @@ class RemoteDataSource(context: Context) : DataSource {
             harga_bahan = data.harga_bahan,
             ongkos_penjahit = data.ongkos_penjahit,
             perkiraan_lama_waktu_pengerjaan = data.perkiraan_lama_waktu_pengerjaan!!,
-        ).enqueue(object : Callback<Success<DetailKategori>>{
+        ).enqueue(object : Callback<Success<DetailKategori>> {
             override fun onResponse(
                 call: Call<Success<DetailKategori>>,
                 response: Response<Success<DetailKategori>>
@@ -450,29 +466,39 @@ class RemoteDataSource(context: Context) : DataSource {
 
     }
 
-    override fun deleteDataDetailKategori(data: DetailKategoriPenjahit, responseCallback: ResponseCallback<DetailKategoriPenjahit>) {
+    override fun deleteDataDetailKategori(
+        data: DetailKategoriPenjahit,
+        responseCallback: ResponseCallback<DetailKategoriPenjahit>
+    ) {
         EspressoIdlingResource.increment()
 
         responseCallback.onShowProgress()
 
-        apiService.deleteDataDetailKategori(data.id_detail_kategori!!).enqueue(object : Callback<Success<DetailKategoriPenjahit>>{
-            override fun onResponse(call: Call<Success<DetailKategoriPenjahit>>, response: Response<Success<DetailKategoriPenjahit>>) {
-                responseCallback.onHideProgress()
-                response.body()?.data?.let { responseCallback.onSuccess(it) }
-                Log.d("Repsonse Body", response.body().toString())
-                EspressoIdlingResource.decrement()
-            }
+        apiService.deleteDataDetailKategori(data.id_detail_kategori!!)
+            .enqueue(object : Callback<Success<DetailKategoriPenjahit>> {
+                override fun onResponse(
+                    call: Call<Success<DetailKategoriPenjahit>>,
+                    response: Response<Success<DetailKategoriPenjahit>>
+                ) {
+                    responseCallback.onHideProgress()
+                    response.body()?.data?.let { responseCallback.onSuccess(it) }
+                    Log.d("Repsonse Body", response.body().toString())
+                    EspressoIdlingResource.decrement()
+                }
 
-            override fun onFailure(call: Call<Success<DetailKategoriPenjahit>>, t: Throwable) {
-                responseCallback.onHideProgress()
-                EspressoIdlingResource.decrement()
-                responseCallback.onFailed(500, t.localizedMessage)
-            }
+                override fun onFailure(call: Call<Success<DetailKategoriPenjahit>>, t: Throwable) {
+                    responseCallback.onHideProgress()
+                    EspressoIdlingResource.decrement()
+                    responseCallback.onFailed(500, t.localizedMessage)
+                }
 
-        })
+            })
     }
 
-    override fun updateDataDetailKategori(data: DetailKategoriPenjahit, responseCallback: ResponseCallback<DetailKategoriPenjahit>) {
+    override fun updateDataDetailKategori(
+        data: DetailKategoriPenjahit,
+        responseCallback: ResponseCallback<DetailKategoriPenjahit>
+    ) {
         EspressoIdlingResource.increment()
 
         responseCallback.onShowProgress()
@@ -486,7 +512,7 @@ class RemoteDataSource(context: Context) : DataSource {
             harga_bahan = data.harga_bahan,
             ongkos_penjahit = data.ongkos_penjahit,
             perkiraan_lama_waktu_pengerjaan = data.perkiraan_lama_waktu_pengerjaan!!,
-        ).enqueue(object : Callback<Success<DetailKategoriPenjahit>>{
+        ).enqueue(object : Callback<Success<DetailKategoriPenjahit>> {
             override fun onResponse(
                 call: Call<Success<DetailKategoriPenjahit>>,
                 response: Response<Success<DetailKategoriPenjahit>>
@@ -507,14 +533,17 @@ class RemoteDataSource(context: Context) : DataSource {
 
     }
 
-    override fun getDataPenjahitByKategori(data: DetailKategoriNilai, callback: ResponseCallback<List<DetailKategoriNilai>>) {
+    override fun getDataPenjahitByKategori(
+        data: DetailKategoriNilai,
+        callback: ResponseCallback<List<DetailKategoriNilai>>
+    ) {
         EspressoIdlingResource.increment()
         apiService.getDataPenjahitByKategori(data.id_kategori!!)
             .subscribeOn(Schedulers.io())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : ApiCallback<List<DetailKategoriNilai>>(){
+            .subscribe(object : ApiCallback<List<DetailKategoriNilai>>() {
                 override fun onSuccess(data: List<DetailKategoriNilai>) {
                     if (data.isNotEmpty()) {
                         callback.onSuccess(data)
@@ -540,7 +569,7 @@ class RemoteDataSource(context: Context) : DataSource {
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : ApiCallback<List<UkuranDetailKategori>>(){
+            .subscribe(object : ApiCallback<List<UkuranDetailKategori>>() {
                 override fun onSuccess(data: List<UkuranDetailKategori>) {
                     if (data.isNotEmpty()) {
                         callback.onSuccess(data)
@@ -559,14 +588,17 @@ class RemoteDataSource(context: Context) : DataSource {
             })
     }
 
-    override fun getUkuranByDetailKategori(data: UkuranDetailKategori, callback: ResponseCallback<List<UkuranDetailKategori>>) {
+    override fun getUkuranByDetailKategori(
+        data: UkuranDetailKategori,
+        callback: ResponseCallback<List<UkuranDetailKategori>>
+    ) {
         EspressoIdlingResource.increment()
         apiService.getUkuranByDetailKategori(data.id_detail_kategori!!)
             .subscribeOn(Schedulers.io())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : ApiCallback<List<UkuranDetailKategori>>(){
+            .subscribe(object : ApiCallback<List<UkuranDetailKategori>>() {
                 override fun onSuccess(data: List<UkuranDetailKategori>) {
                     if (data.isNotEmpty()) {
                         callback.onSuccess(data)
@@ -584,7 +616,10 @@ class RemoteDataSource(context: Context) : DataSource {
             })
     }
 
-    override fun insertDataUkuranDetailKategori(data: UkuranDetailKategori, responseCallback: ResponseCallback<UkuranDetailKategori>) {
+    override fun insertDataUkuranDetailKategori(
+        data: UkuranDetailKategori,
+        responseCallback: ResponseCallback<UkuranDetailKategori>
+    ) {
         EspressoIdlingResource.increment()
 
         responseCallback.onShowProgress()
@@ -592,7 +627,7 @@ class RemoteDataSource(context: Context) : DataSource {
         apiService.insertDataUkuranDetailKategori(
             id_detail_kategori = data.id_detail_kategori!!,
             id_ukuran = data.id_ukuran!!
-        ).enqueue(object : Callback<Success<UkuranDetailKategori>>{
+        ).enqueue(object : Callback<Success<UkuranDetailKategori>> {
             override fun onResponse(
                 call: Call<Success<UkuranDetailKategori>>,
                 response: Response<Success<UkuranDetailKategori>>
@@ -612,29 +647,32 @@ class RemoteDataSource(context: Context) : DataSource {
         })
     }
 
-    override fun deleteDataUkuranDetailKategori(data: UkuranDetailKategori, responseCallback: ResponseCallback<UkuranDetailKategori>) {
+    override fun deleteDataUkuranDetailKategori(
+        data: UkuranDetailKategori,
+        responseCallback: ResponseCallback<ResponseDeleteSuccess>
+    ) {
         EspressoIdlingResource.increment()
 
         responseCallback.onShowProgress()
 
-        apiService.deleteDataUkuranDetailKategori(data.id_ukuran_detail_kategori!!).enqueue(object : Callback<Success<UkuranDetailKategori>>{
-            override fun onResponse(
-                call: Call<Success<UkuranDetailKategori>>,
-                response: Response<Success<UkuranDetailKategori>>
-            ) {
-                responseCallback.onHideProgress()
-                response.body()?.data?.let { responseCallback.onSuccess(it) }
-                Log.d("Repsonse Body", response.body().toString())
-                EspressoIdlingResource.decrement()
-            }
+        apiService.deleteDataUkuranDetailKategori(data.id_ukuran_detail_kategori!!)
+            .enqueue(object : Callback<ResponseDeleteSuccess> {
+                override fun onResponse(
+                    call: Call<ResponseDeleteSuccess>,
+                    response: Response<ResponseDeleteSuccess>
+                ) {
+                    responseCallback.onHideProgress()
+                    response.body()?.let { responseCallback.onSuccess(it) }
+                    EspressoIdlingResource.decrement()
+                    Log.d("Repsonse Body", response.body().toString())
+                }
 
-            override fun onFailure(call: Call<Success<UkuranDetailKategori>>, t: Throwable) {
-                responseCallback.onHideProgress()
-                EspressoIdlingResource.decrement()
-                responseCallback.onFailed(500, t.localizedMessage)
-            }
-
-        })
+                override fun onFailure(call: Call<ResponseDeleteSuccess>, t: Throwable) {
+                    responseCallback.onHideProgress()
+                    EspressoIdlingResource.decrement()
+                    responseCallback.onFailed(500, t.localizedMessage)
+                }
+            })
     }
 
     override fun insertDataRating(data: Rating, responseCallback: ResponseCallback<Rating>) {
@@ -648,7 +686,7 @@ class RemoteDataSource(context: Context) : DataSource {
             kriteria_2 = data.kriteria_2,
             kriteria_3 = data.kriteria_3,
             kriteria_4 = data.kriteria_4
-        ).enqueue(object : Callback<Success<Rating>>{
+        ).enqueue(object : Callback<Success<Rating>> {
             override fun onResponse(
                 call: Call<Success<Rating>>,
                 response: Response<Success<Rating>>
@@ -690,7 +728,7 @@ class RemoteDataSource(context: Context) : DataSource {
 
     override fun getDataPesananById(data: Pesanan, responseCallback: ResponseCallback<Pesanan>) {
         EspressoIdlingResource.increment()
-        apiService.getDataPesananById(data.id_pesanan!!).enqueue(object : Callback<Pesanan>{
+        apiService.getDataPesananById(data.id_pesanan!!).enqueue(object : Callback<Pesanan> {
             override fun onFailure(call: Call<Pesanan>, t: Throwable) {
                 responseCallback.onHideProgress()
                 responseCallback.onSuccess(data)
@@ -706,14 +744,17 @@ class RemoteDataSource(context: Context) : DataSource {
         })
     }
 
-    override fun getDataPesananByPelanggan(data: Pelanggan, callback: ResponseCallback<List<Pesanan>>) {
+    override fun getDataPesananByPelanggan(
+        data: Pelanggan,
+        callback: ResponseCallback<List<Pesanan>>
+    ) {
         EspressoIdlingResource.increment()
         apiService.getDataPesananByPelanggan(data.id_pelanggan!!)
             .subscribeOn(Schedulers.io())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : ApiCallback<List<Pesanan>>(){
+            .subscribe(object : ApiCallback<List<Pesanan>>() {
                 override fun onSuccess(data: List<Pesanan>) {
                     if (data.isNotEmpty()) {
                         callback.onSuccess(data)
@@ -732,14 +773,17 @@ class RemoteDataSource(context: Context) : DataSource {
             })
     }
 
-    override fun getDataPesananByPenjahit(data: Penjahit, callback: ResponseCallback<List<Pesanan>>) {
+    override fun getDataPesananByPenjahit(
+        data: Penjahit,
+        callback: ResponseCallback<List<Pesanan>>
+    ) {
         EspressoIdlingResource.increment()
         apiService.getDataPesananByPenjahit(data.id_penjahit!!)
             .subscribeOn(Schedulers.io())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : ApiCallback<List<Pesanan>>(){
+            .subscribe(object : ApiCallback<List<Pesanan>>() {
                 override fun onSuccess(data: List<Pesanan>) {
                     if (data.isNotEmpty()) {
                         callback.onSuccess(data)
@@ -783,7 +827,7 @@ class RemoteDataSource(context: Context) : DataSource {
             biaya_jahitan = data.biaya_jahitan,
             total_biaya = data.total_biaya,
             status_pesanan = data.status_pesanan,
-        ).enqueue(object : Callback<Success<Pesanan>>{
+        ).enqueue(object : Callback<Success<Pesanan>> {
             override fun onResponse(
                 call: Call<Success<Pesanan>>,
                 response: Response<Success<Pesanan>>
@@ -829,7 +873,7 @@ class RemoteDataSource(context: Context) : DataSource {
             biaya_jahitan = data.biaya_jahitan,
             total_biaya = data.total_biaya,
             status_pesanan = data.status_pesanan,
-        ).enqueue(object : Callback<Success<Pesanan>>{
+        ).enqueue(object : Callback<Success<Pesanan>> {
             override fun onResponse(
                 call: Call<Success<Pesanan>>,
                 response: Response<Success<Pesanan>>
@@ -854,27 +898,31 @@ class RemoteDataSource(context: Context) : DataSource {
 
         responseCallback.onShowProgress()
 
-        apiService.deleteDataPesanan(data.id_pesanan!!).enqueue(object : Callback<Success<Pesanan>>{
-            override fun onResponse(
-                call: Call<Success<Pesanan>>,
-                response: Response<Success<Pesanan>>
-            ) {
-                responseCallback.onHideProgress()
-                response.body()?.data?.let { responseCallback.onSuccess(it) }
-                Log.d("Repsonse Body", response.body().toString())
-                EspressoIdlingResource.decrement()
-            }
+        apiService.deleteDataPesanan(data.id_pesanan!!)
+            .enqueue(object : Callback<Success<Pesanan>> {
+                override fun onResponse(
+                    call: Call<Success<Pesanan>>,
+                    response: Response<Success<Pesanan>>
+                ) {
+                    responseCallback.onHideProgress()
+                    response.body()?.data?.let { responseCallback.onSuccess(it) }
+                    Log.d("Repsonse Body", response.body().toString())
+                    EspressoIdlingResource.decrement()
+                }
 
-            override fun onFailure(call: Call<Success<Pesanan>>, t: Throwable) {
-                responseCallback.onHideProgress()
-                EspressoIdlingResource.decrement()
-                responseCallback.onFailed(500, t.localizedMessage)
-            }
+                override fun onFailure(call: Call<Success<Pesanan>>, t: Throwable) {
+                    responseCallback.onHideProgress()
+                    EspressoIdlingResource.decrement()
+                    responseCallback.onFailed(500, t.localizedMessage)
+                }
 
-        })
+            })
     }
 
-    override fun getDataUkuranByPesanan(data: Pesanan, callback: ResponseCallback<List<UkuranDetailPesanan>>) {
+    override fun getDataUkuranByPesanan(
+        data: Pesanan,
+        callback: ResponseCallback<List<UkuranDetailPesanan>>
+    ) {
         EspressoIdlingResource.increment()
 
         apiService.getDataUkuranByPesanan(data.id_pesanan!!)
@@ -882,7 +930,7 @@ class RemoteDataSource(context: Context) : DataSource {
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : ApiCallback<List<UkuranDetailPesanan>>(){
+            .subscribe(object : ApiCallback<List<UkuranDetailPesanan>>() {
                 override fun onSuccess(data: List<UkuranDetailPesanan>) {
                     if (data.isNotEmpty()) {
                         callback.onSuccess(data)
@@ -912,7 +960,7 @@ class RemoteDataSource(context: Context) : DataSource {
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : ApiCallback<List<UkuranDetailPesanan>>(){
+            .subscribe(object : ApiCallback<List<UkuranDetailPesanan>>() {
                 override fun onSuccess(data: List<UkuranDetailPesanan>) {
                     if (data.isNotEmpty()) {
                         callback.onSuccess(data)
@@ -930,7 +978,10 @@ class RemoteDataSource(context: Context) : DataSource {
             })
     }
 
-    override fun insertDataUkuranDetailPesanan(data: UkuranDetailPesanan, responseCallback: ResponseCallback<UkuranDetailPesanan>) {
+    override fun insertDataUkuranDetailPesanan(
+        data: UkuranDetailPesanan,
+        responseCallback: ResponseCallback<UkuranDetailPesanan>
+    ) {
         EspressoIdlingResource.increment()
 
         responseCallback.onShowProgress()
@@ -939,7 +990,7 @@ class RemoteDataSource(context: Context) : DataSource {
             id_pesanan = data.id_pesanan,
             id_ukuran = data.id_ukuran,
             ukuran_pesanan = data.ukuran_pesanan,
-        ).enqueue(object : Callback<Success<UkuranDetailPesanan>>{
+        ).enqueue(object : Callback<Success<UkuranDetailPesanan>> {
             override fun onResponse(
                 call: Call<Success<UkuranDetailPesanan>>,
                 response: Response<Success<UkuranDetailPesanan>>
@@ -959,7 +1010,10 @@ class RemoteDataSource(context: Context) : DataSource {
         })
     }
 
-    override fun updateDatakuranDetailPesanan(data: UkuranDetailPesanan, responseCallback: ResponseCallback<UkuranDetailPesanan>) {
+    override fun updateDatakuranDetailPesanan(
+        data: UkuranDetailPesanan,
+        responseCallback: ResponseCallback<UkuranDetailPesanan>
+    ) {
         EspressoIdlingResource.increment()
 
         responseCallback.onShowProgress()
@@ -969,7 +1023,7 @@ class RemoteDataSource(context: Context) : DataSource {
             id_pesanan = data.id_pesanan,
             id_ukuran = data.id_ukuran,
             ukuran_pesanan = data.ukuran_pesanan
-        ).enqueue(object : Callback<Success<UkuranDetailPesanan>>{
+        ).enqueue(object : Callback<Success<UkuranDetailPesanan>> {
             override fun onResponse(
                 call: Call<Success<UkuranDetailPesanan>>,
                 response: Response<Success<UkuranDetailPesanan>>
@@ -990,29 +1044,33 @@ class RemoteDataSource(context: Context) : DataSource {
 
     }
 
-    override fun deleteDatakuranDetailPesanan(data: UkuranDetailPesanan, responseCallback: ResponseCallback<UkuranDetailPesanan>) {
+    override fun deleteDatakuranDetailPesanan(
+        data: UkuranDetailPesanan,
+        responseCallback: ResponseCallback<UkuranDetailPesanan>
+    ) {
         EspressoIdlingResource.increment()
 
         responseCallback.onShowProgress()
 
-        apiService.deleteDataUkuranDetailPesanan(data.id_ukuran_detail_pesanan!!).enqueue(object : Callback<Success<UkuranDetailPesanan>>{
-            override fun onResponse(
-                call: Call<Success<UkuranDetailPesanan>>,
-                response: Response<Success<UkuranDetailPesanan>>
-            ) {
-                responseCallback.onHideProgress()
-                response.body()?.data?.let { responseCallback.onSuccess(it) }
-                Log.d("Repsonse Body", response.body().toString())
-                EspressoIdlingResource.decrement()
-            }
+        apiService.deleteDataUkuranDetailPesanan(data.id_ukuran_detail_pesanan!!)
+            .enqueue(object : Callback<Success<UkuranDetailPesanan>> {
+                override fun onResponse(
+                    call: Call<Success<UkuranDetailPesanan>>,
+                    response: Response<Success<UkuranDetailPesanan>>
+                ) {
+                    responseCallback.onHideProgress()
+                    response.body()?.data?.let { responseCallback.onSuccess(it) }
+                    Log.d("Repsonse Body", response.body().toString())
+                    EspressoIdlingResource.decrement()
+                }
 
-            override fun onFailure(call: Call<Success<UkuranDetailPesanan>>, t: Throwable) {
-                responseCallback.onHideProgress()
-                EspressoIdlingResource.decrement()
-                responseCallback.onFailed(500, t.localizedMessage)
-            }
+                override fun onFailure(call: Call<Success<UkuranDetailPesanan>>, t: Throwable) {
+                    responseCallback.onHideProgress()
+                    EspressoIdlingResource.decrement()
+                    responseCallback.onFailed(500, t.localizedMessage)
+                }
 
-        })
+            })
     }
 
 }
