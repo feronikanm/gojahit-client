@@ -109,6 +109,7 @@ dependencies {
     implementation "com.readystatesoftware.chuck:library:1.1.0"
     implementation 'com.etebarian:meow-bottom-navigation:1.0.4'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
 
     implementation "io.insert-koin:koin-core:3.1.1"  // Koin core features
     implementation "io.insert-koin:koin-android:3.1.1" // Koin main features for Android (Scope,ViewModel ...)

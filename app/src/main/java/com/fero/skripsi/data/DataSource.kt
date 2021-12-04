@@ -9,6 +9,10 @@ interface DataSource {
 
     fun getDataKategori(callback: ResponseCallback<List<DetailKategoriNilai>>)
 
+    fun getDataPelangganById(data: Pelanggan, responseCallback: ResponseCallback<Pelanggan>)
+
+    fun getDataPenjahitById(data: Penjahit, responseCallback: ResponseCallback<Penjahit>)
+
     fun registerPelanggan(data: Pelanggan, responseCallback: ResponseCallback<Pelanggan>)
 
     fun loginPelanggan(email: String, password: String, responseCallback: ResponseCallback<Pelanggan>)

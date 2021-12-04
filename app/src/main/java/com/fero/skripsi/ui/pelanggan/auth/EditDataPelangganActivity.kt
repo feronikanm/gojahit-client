@@ -7,12 +7,15 @@ import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import com.fero.skripsi.R
@@ -29,6 +32,7 @@ import com.fero.skripsi.utils.PrefHelper.Companion.PREF_LONGITUDE_PELANGGAN
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_NAMA_PELANGGAN
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_TELP_PELANGGAN
 import com.fero.skripsi.utils.ViewModelFactory
+import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.activity_edit_data_pelanggan.*
@@ -39,10 +43,12 @@ class EditDataPelangganActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEditDataPelangganBinding
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     lateinit var prefHelper: PrefHelper
+    var fileUri : Uri? = null
 
     companion object {
         //image pick code
         private val IMAGE_PICK_CODE = 1000
+
         //Permission code
         private val PERMISSION_CODE = 1001
 
@@ -123,6 +129,9 @@ class EditDataPelangganActivity : AppCompatActivity() {
             finish()
         }
 
+        Log.d("Image FileUri create", fileUri.toString())
+
+
         binding.btnSimpanDataPelanggan.setOnClickListener {
 
             val namaPelanggan = binding.etNama.text.toString().trim()
@@ -148,7 +157,7 @@ class EditDataPelangganActivity : AppCompatActivity() {
                 lat,
                 long,
                 teleponPelanggan,
-                "",
+                fileUri.toString(),
             )
 
             Log.d("Data Pelanggan", dataPelangan.toString())
@@ -163,10 +172,18 @@ class EditDataPelangganActivity : AppCompatActivity() {
     private fun getUserLocation() {
 
         val geocoder = Geocoder(this, Locale.getDefault())
-        var addresses:List<Address>
+        var addresses: List<Address>
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                1
+            )
             return
         } else {
             fusedLocationProviderClient.lastLocation.addOnSuccessListener { location: Location? ->
@@ -180,7 +197,7 @@ class EditDataPelangganActivity : AppCompatActivity() {
                 binding.tvLatitude.text = "Latitude : " + location?.latitude
                 binding.tvLongitude.text = "Longitude : " + location?.longitude
 
-                addresses = geocoder.getFromLocation(location!!.latitude,location.longitude,1)
+                addresses = geocoder.getFromLocation(location!!.latitude, location.longitude, 1)
                 val address: String = addresses[0].getAddressLine(0)
 
                 binding.etAlamat.setText(address)
@@ -194,11 +211,43 @@ class EditDataPelangganActivity : AppCompatActivity() {
     }
 
     private fun pickImageFromGallery() {
-        //Intent to pick image
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        startActivityForResult(intent, IMAGE_PICK_CODE)
+
+        ImagePicker.with(this)
+            .compress(1024)         //Final image size will be less than 1 MB(Optional)
+            .maxResultSize(
+                1080,
+                1080
+            )  //Final image resolution will be less than 1080 x 1080(Optional)
+            .createIntent { intent ->
+                startForProfileImageResult.launch(intent)
+            }
+
+//        //Intent to pick image
+//        val intent = Intent(Intent.ACTION_PICK)
+//        intent.type = "image/*"
+//        startActivityForResult(intent, IMAGE_PICK_CODE)
     }
+
+    private val startForProfileImageResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            val resultCode = result.resultCode
+            val data = result.data
+
+            if (resultCode == Activity.RESULT_OK) {
+                //Image Uri will not be null for RESULT_OK
+                fileUri = data?.data!!
+
+                binding.imageView.setImageURI(fileUri)
+                Log.d("Image FileUri", fileUri.toString())
+
+            } else if (resultCode == ImagePicker.RESULT_ERROR) {
+                Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
 
     //handle requested permission result
     override fun onRequestPermissionsResult(
@@ -221,12 +270,17 @@ class EditDataPelangganActivity : AppCompatActivity() {
     }
 
     //handle result of picked image
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
-            binding.imageView.setImageURI(data?.data)
-        }
-    }
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
+//
+//            val fileUri = data?.data
+//
+//            binding.imageView.setImageURI(fileUri)
+//            Log.d("Image FileUri", fileUri.toString())
+//
+//        }
+//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {

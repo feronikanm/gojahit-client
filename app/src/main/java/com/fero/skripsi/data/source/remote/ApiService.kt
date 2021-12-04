@@ -8,9 +8,11 @@ import com.fero.skripsi.utils.Constant.URL_DETAIL_KATEGORI_INSERT
 import com.fero.skripsi.utils.Constant.URL_DETAIL_KATEGORI_UPDATE
 import com.fero.skripsi.utils.Constant.URL_KATEGORI_GET
 import com.fero.skripsi.utils.Constant.URL_PELANGGAN_GET
+import com.fero.skripsi.utils.Constant.URL_PELANGGAN_GET_BY_ID
 import com.fero.skripsi.utils.Constant.URL_PELANGGAN_INSERT
 import com.fero.skripsi.utils.Constant.URL_PELANGGAN_UPDATE
 import com.fero.skripsi.utils.Constant.URL_PENJAHIT_GET
+import com.fero.skripsi.utils.Constant.URL_PENJAHIT_GET_BY_ID
 import com.fero.skripsi.utils.Constant.URL_PENJAHIT_GET_BY_NILAI
 import com.fero.skripsi.utils.Constant.URL_PENJAHIT_INSERT
 import com.fero.skripsi.utils.Constant.URL_PENJAHIT_UPDATE
@@ -47,6 +49,16 @@ interface ApiService {
 
     @GET(URL_PENJAHIT_GET)
     fun getPenjahit(): Call<List<Penjahit>>
+
+    @GET(URL_PELANGGAN_GET_BY_ID)
+    fun getDataPelangganById(
+        @Path("id_pelanggan") id_pelanggan_path: Int
+    ): Call<Pelanggan>
+
+    @GET(URL_PENJAHIT_GET_BY_ID)
+    fun getDataPenjahitById(
+        @Path("id_penjahit") id_penjahit_path: Int
+    ): Call<Penjahit>
 
     @FormUrlEncoded
     @POST(URL_PELANGGAN_INSERT)

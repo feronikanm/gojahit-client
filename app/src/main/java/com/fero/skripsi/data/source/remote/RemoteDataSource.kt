@@ -75,6 +75,46 @@ class RemoteDataSource(context: Context) : DataSource {
             })
     }
 
+    override fun getDataPelangganById(data: Pelanggan, responseCallback: ResponseCallback<Pelanggan>) {
+        EspressoIdlingResource.increment()
+        apiService.getDataPelangganById(data.id_pelanggan!!).enqueue(object : Callback<Pelanggan>{
+            override fun onResponse(call: Call<Pelanggan>, response: Response<Pelanggan>) {
+                responseCallback.onHideProgress()
+                responseCallback.onSuccess(data)
+                Log.d("Repsonse : ", data.toString())
+                EspressoIdlingResource.decrement()
+            }
+
+            override fun onFailure(call: Call<Pelanggan>, t: Throwable) {
+                responseCallback.onHideProgress()
+                responseCallback.onFailed(500)
+                EspressoIdlingResource.decrement()
+            }
+
+        })
+
+    }
+
+    override fun getDataPenjahitById(data: Penjahit, responseCallback: ResponseCallback<Penjahit>) {
+        EspressoIdlingResource.increment()
+        apiService.getDataPenjahitById(data.id_penjahit!!).enqueue(object : Callback<Penjahit>{
+            override fun onResponse(call: Call<Penjahit>, response: Response<Penjahit>) {
+                responseCallback.onHideProgress()
+                responseCallback.onSuccess(data)
+                Log.d("Repsonse : ", data.toString())
+                EspressoIdlingResource.decrement()
+            }
+
+            override fun onFailure(call: Call<Penjahit>, t: Throwable) {
+                responseCallback.onHideProgress()
+                responseCallback.onFailed(500)
+                EspressoIdlingResource.decrement()
+            }
+
+        })
+
+    }
+
     override fun registerPelanggan(data: Pelanggan, responseCallback: ResponseCallback<Pelanggan>) {
         EspressoIdlingResource.increment()
 
