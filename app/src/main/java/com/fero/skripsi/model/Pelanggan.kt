@@ -5,14 +5,14 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Pelanggan(
-    val id_pelanggan: Int?,
-    val nama_pelanggan: String?,
-    val email_pelanggan: String?,
-    val password_pelanggan: String?,
-    val alamat_pelanggan: String?,
-    val jk_pelanggan: String?,
-    val latitude_pelanggan: String?,
-    val longitude_pelanggan: String?,
-    val telp_pelanggan: String?,
-    val foto_pelanggan: String?
+    var id_pelanggan: Int?,
+    var nama_pelanggan: String?,
+    var email_pelanggan: String?,
+    var password_pelanggan: String?,
+    var alamat_pelanggan: String?,
+    var jk_pelanggan: String?,
+    var latitude_pelanggan: String?,
+    var longitude_pelanggan: String?,
+    var telp_pelanggan: String?,
+    var foto_pelanggan: String?
 ): Parcelable

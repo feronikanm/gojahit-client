@@ -7,12 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.fero.skripsi.databinding.FragmentProfilePelangganBinding
 import com.fero.skripsi.model.Pelanggan
 import com.fero.skripsi.ui.main.PilihUserActivity
+import com.fero.skripsi.ui.pelanggan.auth.viewmodel.AuthPelangganViewModel
+import com.fero.skripsi.ui.penjahit.kategori.viewmodel.KategoriPenjahitViewModel
 import com.fero.skripsi.utils.Constant
 import com.fero.skripsi.utils.PrefHelper
+import com.fero.skripsi.utils.ViewModelFactory
 import com.google.gson.Gson
 
 class ProfilePelangganFragment : Fragment() {
@@ -34,6 +38,20 @@ class ProfilePelangganFragment : Fragment() {
 
         val bundleData = arguments?.getString(EXTRA_PELANGGAN)
         val dataPelanggan = Gson().fromJson(bundleData, Pelanggan::class.java)
+
+        val factory = ViewModelFactory.getInstance(requireActivity())
+        val viewModel = ViewModelProvider(this, factory)[AuthPelangganViewModel::class.java]
+
+        viewModel.apply {
+
+            messageSuccess.observe(viewLifecycleOwner, {
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+            })
+
+            messageFailed.observe(viewLifecycleOwner, {
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+            })
+        }
 
         binding.apply {
             tvNamaPelanggan.text = dataPelanggan.nama_pelanggan

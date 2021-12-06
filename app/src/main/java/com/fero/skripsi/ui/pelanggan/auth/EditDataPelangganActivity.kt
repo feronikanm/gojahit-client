@@ -36,6 +36,7 @@ import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.activity_edit_data_pelanggan.*
+import java.io.File
 import java.util.*
 
 class EditDataPelangganActivity : AppCompatActivity() {
@@ -43,7 +44,9 @@ class EditDataPelangganActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEditDataPelangganBinding
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     lateinit var prefHelper: PrefHelper
-    var fileUri : Uri? = null
+    var fileUri: Uri? = null
+
+    private val setupDataPelanggan = Pelanggan(null, "", "", "", "", "", "", "", "", "")
 
     companion object {
         //image pick code
@@ -139,6 +142,8 @@ class EditDataPelangganActivity : AppCompatActivity() {
             val alamatPelanggan = binding.etAlamat.text.toString().trim()
             val lat = binding.etLatitude.text.toString().trim()
             val long = binding.etLongitude.text.toString().trim()
+//            val foto = binding.etImageFile.text.toString().trim()
+            val foto = binding.tvImageSplitUri.text.toString().trim()
 
             var value = "laki-laki"
             when (binding.rgJk.checkedRadioButtonId) {
@@ -147,25 +152,37 @@ class EditDataPelangganActivity : AppCompatActivity() {
             }
             val jkPelanggan = value
 
-            val dataPelangan = Pelanggan(
-                extraData.id_pelanggan,
-                namaPelanggan,
-                extraData.email_pelanggan,
-                extraData.password_pelanggan,
-                alamatPelanggan,
-                jkPelanggan,
-                lat,
-                long,
-                teleponPelanggan,
-                fileUri.toString(),
-            )
+            setupDataPelanggan.id_pelanggan = extraData.id_pelanggan
+            setupDataPelanggan.nama_pelanggan = namaPelanggan
+            setupDataPelanggan.email_pelanggan = extraData.email_pelanggan
+            setupDataPelanggan.password_pelanggan = extraData.password_pelanggan
+            setupDataPelanggan.alamat_pelanggan = alamatPelanggan
+            setupDataPelanggan.jk_pelanggan = jkPelanggan
+            setupDataPelanggan.latitude_pelanggan = lat
+            setupDataPelanggan.longitude_pelanggan = long
+            setupDataPelanggan.telp_pelanggan = teleponPelanggan
+            setupDataPelanggan.foto_pelanggan = foto
 
-            Log.d("Data Pelanggan", dataPelangan.toString())
+
+//            val dataPelangan = Pelanggan(
+//                extraData.id_pelanggan,
+//                namaPelanggan,
+//                extraData.email_pelanggan,
+//                extraData.password_pelanggan,
+//                alamatPelanggan,
+//                jkPelanggan,
+//                lat,
+//                long,
+//                teleponPelanggan,
+//                "",
+//            )
+
+            Log.d("Data Pelanggan", setupDataPelanggan.toString())
 
             prefHelper.put(PREF_ID_PELANGGAN, extraData.id_pelanggan!!)
             prefHelper.put(PREF_NAMA_PELANGGAN, namaPelanggan)
 
-            viewModel.updatePelanggan(dataPelangan)
+            viewModel.updatePelanggan(setupDataPelanggan)
         }
     }
 
@@ -237,7 +254,36 @@ class EditDataPelangganActivity : AppCompatActivity() {
                 //Image Uri will not be null for RESULT_OK
                 fileUri = data?.data!!
 
+                val file = File(fileUri!!.path)
+
                 binding.imageView.setImageURI(fileUri)
+                binding.tvImageFileUri.text = fileUri.toString()
+                Log.d("Image FileUri", fileUri.toString())
+
+//                setupDataPelanggan.foto_pelanggan = fileUri.toString()
+
+//                val uri = data.data
+//                val file = File(uri!!.path) //create path from uri
+//
+                val split: List<String> = file.getPath().split("/") //split the path.
+//
+                val fileImage = split[9] //assign it to a string(your choice).
+
+                binding.tvImageSplitUri.text = fileImage
+                Log.d("Image PathUri", fileImage)
+                binding.etImageFile.setText(fileImage)
+
+//                setupDataPelanggan.foto_pelanggan = fileImage
+
+
+//                val filePath: String = PathUtil.getPath(context, yourURI)
+//
+//                String path = yourAndroidURI.uri.getPath() // "/mnt/sdcard/FileName.mp3"
+//                File file = new File(new URI(path));
+//
+//                String path = yourAndroidURI.uri.toString() // "file:///mnt/sdcard/FileName.mp3"
+//                File file = new File(new URI(path));
+
                 Log.d("Image FileUri", fileUri.toString())
 
             } else if (resultCode == ImagePicker.RESULT_ERROR) {
@@ -246,7 +292,6 @@ class EditDataPelangganActivity : AppCompatActivity() {
                 Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show()
             }
         }
-
 
 
     //handle requested permission result
