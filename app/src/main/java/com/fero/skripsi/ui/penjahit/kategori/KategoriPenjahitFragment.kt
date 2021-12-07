@@ -19,17 +19,20 @@ import com.fero.skripsi.model.Penjahit
 import com.fero.skripsi.ui.penjahit.kategori.adapter.ListKategoriAdapter
 import com.fero.skripsi.ui.penjahit.kategori.viewmodel.KategoriPenjahitViewModel
 import com.fero.skripsi.ui.penjahit.ukuran.UkuranDetailKategoriActivity
+import com.fero.skripsi.ui.penjahit.ukuran.viewmodel.UkuranViewModel
 import com.fero.skripsi.utils.ViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
 
 class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>() {
 
-    private lateinit var penjahitViewModel: KategoriPenjahitViewModel
+    private val penjahitViewModel: KategoriPenjahitViewModel by lazy {
+        obtainViewModel()
+    }
+
     private val dataPenjahit by lazy {
         baseGetInstance<Penjahit>("EXTRA_PENJAHIT_KATEGORI")
     }
-
     override fun setupViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -38,7 +41,7 @@ class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>()
     }
 
     override fun setupViewModel() {
-        penjahitViewModel = obtainViewModel<KategoriPenjahitViewModel>().apply {
+        penjahitViewModel.apply {
 
             listDetailKategori.observe(viewLifecycleOwner, {
                 setupRvDetailKategori(it)
@@ -165,7 +168,7 @@ class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>()
     }
 
     fun refreshGetDataViewModel() {
-        viewModel.getUkuranByDetailKategori(dataUkuran)
+        penjahitViewModel.getListDetailKategori(dataPenjahit)
     }
 
 

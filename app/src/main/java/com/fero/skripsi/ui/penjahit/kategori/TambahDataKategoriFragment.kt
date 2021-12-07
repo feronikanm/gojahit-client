@@ -31,9 +31,6 @@ class TambahDataKategoriFragment : DialogFragment() {
         return binding.root
     }
 
-    private val parentActivity: KategoriPenjahitFragment by lazy {
-        (activity as KategoriPenjahitFragment)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,7 +44,7 @@ class TambahDataKategoriFragment : DialogFragment() {
         viewModel.apply {
             dataDetailKategori.observe(this@TambahDataKategoriFragment, {
                 dialog?.dismiss()
-                parentActivity.refreshGetDataViewModel()
+                (parentFragment as KategoriPenjahitFragment).refreshGetDataViewModel()
             })
 
             messageSuccess.observe(this@TambahDataKategoriFragment, {
@@ -71,7 +68,7 @@ class TambahDataKategoriFragment : DialogFragment() {
     }
 
     private fun popupSimpanData(context: Context?, dataPenjahit: Penjahit?) {
-        val box: Context = ContextThemeWrapper(context, R.style.AppTheme)
+        val box: Context = ContextThemeWrapper(context, R.style.ThemeOverlay_MaterialComponents_Dialog_Alert)
         val materialAlertDialogBuilder = MaterialAlertDialogBuilder(box)
         materialAlertDialogBuilder.setTitle("Tambah Data")
             .setMessage("Apa anda yakin ingin menambah data ini?")
