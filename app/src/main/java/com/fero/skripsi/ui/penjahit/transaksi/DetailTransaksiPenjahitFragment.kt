@@ -2,22 +2,23 @@ package com.fero.skripsi.ui.penjahit.transaksi
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.fero.skripsi.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.fero.skripsi.core.BaseFragment
 import com.fero.skripsi.databinding.FragmentDetailTransaksiPenjahitBinding
-import com.fero.skripsi.model.Pelanggan
 import com.fero.skripsi.model.Pesanan
+import com.fero.skripsi.model.UkuranDetailPesanan
 import com.fero.skripsi.ui.pelanggan.pesanan.viewmodel.PesananViewModel
-import kotlinx.android.synthetic.main.activity_detail_penjahit.*
+import com.fero.skripsi.ui.pelanggan.transaksi.adapter.UkuranDetailPesananAdapter
+import com.fero.skripsi.ui.pelanggan.transaksi.viewmodel.UkuranDetailPesananViewModel
 
 class DetailTransaksiPenjahitFragment : BaseFragment<FragmentDetailTransaksiPenjahitBinding>() {
 
     private lateinit var pesananViewModel: PesananViewModel
-    private val dataPesanan by lazy{
+    private lateinit var ukuranDetailPesananViewModel: UkuranDetailPesananViewModel
+    private val extraDataPesanan by lazy{
         baseGetInstance<Pesanan>("DETAIL_PESANAN_PENJAHIT")
     }
 
@@ -48,9 +49,11 @@ class DetailTransaksiPenjahitFragment : BaseFragment<FragmentDetailTransaksiPenj
                 val statusProses = "Sedang dikerjakan"
                 val statusSelesai = "Selesai"
 
-                val ketStatusDiverifikasi = "Selamat Pesanan Anda telah diverifikasi oleh Penjahit, Jahitan Anda sedang di Proses"
+                val ketStatusDiverifikasi = "Selamat Pesanan Anda telah diverifikasi oleh Penjahit, Silahkan masukkan ukuran"
                 val ketStatusDiProses = "Pesanan Anda sedang diproses oleh Penjahit"
-                val ketStatusTidakDiterima = "Opss Maaf, Pesanan Anda Diterima oleh Penjahit, Jahitan Penjahit sedang penuh dalam waktu dekat ini"
+                val ketStatusTidakDiterima = "Opss Maaf, Pesanan Anda tidak Diterima oleh Penjahit, Jahitan Penjahit saat ini sedang penuh, cari yang lain"
+                val ketStatusUkuranTelahDimasukkan = "Data Ukuran telah dimasukkan"
+
 
                 val pesananDiTerima = Pesanan(
                     it.id_pesanan, it.id_pelanggan, it.id_penjahit, it.id_detail_kategori, it.tanggal_pesanan, it.tanggal_pesanan_selesai,
@@ -109,30 +112,42 @@ class DetailTransaksiPenjahitFragment : BaseFragment<FragmentDetailTransaksiPenj
                     binding.layoutTerimaTolak.visibility = View.VISIBLE
                     binding.btnProses.visibility = View.INVISIBLE
                     binding.btnSelesai.visibility = View.INVISIBLE
+                    binding.tvListUkuran.visibility = View.INVISIBLE
                 }
 
                 if (it.status_pesanan.equals(statusDiverifikasi)){
                     binding.layoutTerimaTolak.visibility = View.GONE
+                    binding.btnProses.visibility = View.INVISIBLE
+                    binding.btnSelesai.visibility = View.INVISIBLE
+                    binding.tvListUkuran.visibility = View.INVISIBLE
+                }
+
+                if (it.lama_waktu_pengerjaan.equals(ketStatusUkuranTelahDimasukkan)){
+                    binding.layoutTerimaTolak.visibility = View.GONE
                     binding.btnProses.visibility = View.VISIBLE
                     binding.btnSelesai.visibility = View.INVISIBLE
+                    binding.tvListUkuran.visibility = View.VISIBLE
                 }
 
                 if (it.status_pesanan.equals(statusProses)){
                     binding.layoutTerimaTolak.visibility = View.GONE
                     binding.btnProses.visibility = View.GONE
                     binding.btnSelesai.visibility = View.VISIBLE
+                    binding.tvListUkuran.visibility = View.VISIBLE
                 }
 
                 if (it.status_pesanan.equals(statusTidakDiterima)){
                     binding.layoutTerimaTolak.visibility = View.GONE
                     binding.btnProses.visibility = View.GONE
                     binding.btnSelesai.visibility = View.GONE
+                    binding.tvListUkuran.visibility = View.GONE
                 }
 
                 if (it.status_pesanan.equals(statusSelesai)){
                     binding.layoutTerimaTolak.visibility = View.GONE
                     binding.btnProses.visibility = View.GONE
                     binding.btnSelesai.visibility = View.GONE
+                    binding.tvListUkuran.visibility = View.VISIBLE
                 }
 
             })
@@ -150,14 +165,43 @@ class DetailTransaksiPenjahitFragment : BaseFragment<FragmentDetailTransaksiPenj
                 // setupEventEmptyView(binding?.{EMPTY_VIEW MU}!! ,it)
             })
         }
-        pesananViewModel.getDataPesananById(dataPesanan)
+        pesananViewModel.getDataPesananById(extraDataPesanan)
+
+        ukuranDetailPesananViewModel = obtainViewModel<UkuranDetailPesananViewModel>().apply {
+            listUkuranDetailPesanan.observe(viewLifecycleOwner, {
+                setupRvUkuran(it)
+            })
+
+            eventShowProgress.observe(viewLifecycleOwner, {
+                setupEventProgressView(binding.progressBar, it)
+            })
+
+            eventErrorMessage.observe(viewLifecycleOwner, {
+                showToast(it)
+
+            })
+
+            eventIsEmpty.observe(viewLifecycleOwner, {
+                // setupEventEmptyView(binding?.{EMPTY_VIEW MU}!! ,it)
+            })
+        }
+        ukuranDetailPesananViewModel.getDataUkuranByPesanan(extraDataPesanan)
+        val listUkuran = ukuranDetailPesananViewModel.getDataUkuranByPesanan(extraDataPesanan)
+
+        Log.d("data ukuran : ", listUkuran.toString())
+    }
+
+    private fun setupRvUkuran(data: List<UkuranDetailPesanan>?) {
+        val ukuranDetailPesananAdapter = UkuranDetailPesananAdapter()
+        ukuranDetailPesananAdapter.setUkuranPesanan(data!!)
+
+        binding.rvUkuran.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = ukuranDetailPesananAdapter
+        }
     }
 
     override fun setupUI(view: View, savedInstanceState: Bundle?) {
-
-
-
-
     }
 
     companion object {

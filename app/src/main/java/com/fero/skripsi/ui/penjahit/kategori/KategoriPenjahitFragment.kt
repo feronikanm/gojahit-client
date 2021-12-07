@@ -164,7 +164,9 @@ class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>()
 
     }
 
-
+    fun refreshGetDataViewModel() {
+        viewModel.getUkuranByDetailKategori(dataUkuran)
+    }
 
 
     private fun showMessage(message: String, context: Context?) {

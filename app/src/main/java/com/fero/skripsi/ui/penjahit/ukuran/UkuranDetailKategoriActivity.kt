@@ -209,7 +209,7 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
                 editDataKategoriFragment.show(
                     supportFragmentManager,
                     EditDataKategoriFragment::class.java.simpleName
-                ) //cara memunculkan dialog box(2)
+                )
                 return true
             }
             else -> {}

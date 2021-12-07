@@ -29,72 +29,72 @@
                 android:id="@+id/tv_id_pesanan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Kode pesanan"/>
+                android:text="Kode pesanan" />
 
             <TextView
                 android:id="@+id/tv_id_penjahit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Id Penjahit"/>
+                android:text="Id Penjahit" />
 
             <TextView
                 android:id="@+id/tv_id_pelanggan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Id Pelanggan"/>
+                android:text="Id Pelanggan" />
 
             <TextView
                 android:id="@+id/tv_id_detail_kategori"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Id Detail Kategori"/>
+                android:text="Id Detail Kategori" />
 
             <TextView
                 android:id="@+id/tv_tanggal_pesanan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tanggal Pesanan"/>
+                android:text="Tanggal Pesanan" />
 
             <TextView
                 android:id="@+id/tv_tanggal_pesanan_selesai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tanggal Pesanan Selesai"/>
+                android:text="Tanggal Pesanan Selesai" />
 
             <TextView
                 android:id="@+id/tv_ket_pesanan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Keterangan Pesanan"/>
+                android:text="Keterangan Pesanan" />
 
             <TextView
                 android:id="@+id/tv_status_pesanan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Status Pesanan"/>
+                android:text="Status Pesanan" />
 
             <LinearLayout
                 android:id="@+id/layout_terima_tolak"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:layout_marginTop="20dp"
-                android:visibility="invisible"
-                android:padding="16dp">
+                android:padding="16dp"
+                android:visibility="invisible">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_tolak"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/custom_button_accept"
                     android:drawableStart="@drawable/ic_reject"
-                    android:padding="8dp"
                     android:fontFamily="@font/gilroy_medium"
+                    android:padding="8dp"
                     android:text="Tolak"
                     android:textAppearance="@style/button_login_register"
                     android:textColor="@color/account_primary_dark" />
@@ -103,14 +103,14 @@
                     android:id="@+id/btn_terima"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/custom_button_accept"
                     android:drawableStart="@drawable/ic_accept"
-                    android:padding="8dp"
                     android:fontFamily="@font/gilroy_medium"
+                    android:padding="8dp"
                     android:text="Terima"
                     android:textAppearance="@style/button_login_register"
                     android:textColor="@color/teal_200" />
@@ -121,37 +121,52 @@
                 android:id="@+id/btn_proses"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="24dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/custom_button_accept"
-                android:padding="8dp"
                 android:fontFamily="@font/gilroy_medium"
+                android:padding="8dp"
                 android:text="Beritahu Pelanggan Jika Jahitan sedang di Proses"
                 android:textAppearance="@style/button_login_register"
-                android:visibility="invisible"
-                android:textColor="@color/teal_200" />
+                android:textColor="@color/teal_200"
+                android:visibility="invisible" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_selesai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="24dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/custom_button_accept"
                 android:drawableStart="@drawable/ic_accept"
-                android:padding="8dp"
                 android:fontFamily="@font/gilroy_medium"
+                android:padding="8dp"
                 android:text="Selesai"
-                android:visibility="invisible"
                 android:textAppearance="@style/button_login_register"
-                android:textColor="@color/teal_200" />
+                android:textColor="@color/teal_200"
+                android:visibility="invisible" />
 
 
+            <TextView
+                android:id="@+id/tv_list_ukuran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="List Ukuran" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_ukuran"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:clipToPadding="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detail_kategori" />
 
 
         </LinearLayout>

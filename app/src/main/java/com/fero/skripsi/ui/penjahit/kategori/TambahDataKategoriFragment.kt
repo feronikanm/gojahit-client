@@ -14,6 +14,7 @@ import com.fero.skripsi.databinding.FragmentTambahDataKategoriBinding
 import com.fero.skripsi.model.DetailKategori
 import com.fero.skripsi.model.Penjahit
 import com.fero.skripsi.ui.penjahit.kategori.viewmodel.KategoriPenjahitViewModel
+import com.fero.skripsi.ui.penjahit.ukuran.UkuranDetailKategoriActivity
 import com.fero.skripsi.utils.ViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
@@ -26,9 +27,12 @@ class TambahDataKategoriFragment : DialogFragment() {
     val FIELD_REQUIRED = "Field tidak boleh kosong"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         binding = FragmentTambahDataKategoriBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    private val parentActivity: KategoriPenjahitFragment by lazy {
+        (activity as KategoriPenjahitFragment)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,6 +47,7 @@ class TambahDataKategoriFragment : DialogFragment() {
         viewModel.apply {
             dataDetailKategori.observe(this@TambahDataKategoriFragment, {
                 dialog?.dismiss()
+                parentActivity.refreshGetDataViewModel()
             })
 
             messageSuccess.observe(this@TambahDataKategoriFragment, {
