@@ -72,10 +72,10 @@ class EditDataKategoriFragment : DialogFragment() {
     private fun popupSimpanData(context: Context?, data: DetailKategoriPenjahit?) {
         val box: Context = ContextThemeWrapper(context, R.style.AppTheme)
         val materialAlertDialogBuilder = MaterialAlertDialogBuilder(box)
-        materialAlertDialogBuilder.setTitle("Tambah Data")
+        materialAlertDialogBuilder.setTitle("Perbarui Data")
             .setMessage("Apa Anda yakin ingin mengubah data ini?")
             .setNegativeButton("Batalkan", null)
-            .setPositiveButton("Tambah") { dialogInterface, i -> simpanData(data) }
+            .setPositiveButton("Simpan") { dialogInterface, i -> simpanData(data) }
             .show()
     }
 
@@ -84,22 +84,9 @@ class EditDataKategoriFragment : DialogFragment() {
         val factory = ViewModelFactory.getInstance(requireActivity())
         val viewModel = ViewModelProvider(this, factory)[KategoriPenjahitViewModel::class.java]
 
-        var value = 1
-        when (binding.rgKategori.checkedRadioButtonId) {
-            R.id.rb_kategori_1 -> value = 1
-            R.id.rb_kategori_2 -> value = 2
-            R.id.rb_kategori_3 -> value = 3
-            R.id.rb_kategori_4 -> value = 4
-            R.id.rb_kategori_5 -> value = 5
-            R.id.rb_kategori_6 -> value = 6
-            R.id.rb_kategori_7 -> value = 7
-            R.id.rb_kategori_8 -> value = 8
-        }
-        val idKategori = value
-
         val ketKategori = binding.etKetKategori.text.toString().trim()
         val bahanJahit = binding.etBahanJahit.text.toString().trim()
-        val hargaBahan = binding.etBahanJahit.text.toString().trim()
+        val hargaBahan = binding.etHargaBahan.text.toString().trim()
         val ongkosPenjahit = binding.etOngkosJahit.text.toString().trim()
         val lamaWaktu = binding.etLamaWaktu.text.toString().trim()
 
@@ -111,7 +98,7 @@ class EditDataKategoriFragment : DialogFragment() {
         val dataDetailKategori = DetailKategoriPenjahit(
             data?.id_detail_kategori,
             data?.id_penjahit,
-            idKategori,
+            data?.id_kategori,
             data?.alamat_penjahit,
             bahanJahit,
             data?.email_penjahit,

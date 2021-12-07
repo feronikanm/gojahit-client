@@ -6,7 +6,7 @@
         android:id="@+id/btn_edit"
         android:orderInCategory="100"
         android:title="Edit"
-        android:icon="@drawable/ic_edit"
+        android:icon="@drawable/ic_edit_white"
         app:showAsAction="always" />
 
 </menu>

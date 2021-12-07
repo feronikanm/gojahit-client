@@ -92,7 +92,7 @@ class TransaksiPelangganFragment : BaseFragment<FragmentTransaksiPelangganBindin
     }
 
     private fun popupDelete(context: Context?, data: Pesanan) {
-        val box: Context = ContextThemeWrapper(context, R.style.AppTheme)
+        val box: Context = ContextThemeWrapper(context, R.style.ThemeOverlay_MaterialComponents_Dialog_Alert)
         val materialAlertDialogBuilder = MaterialAlertDialogBuilder(box)
         materialAlertDialogBuilder.setTitle("Hapus Data")
             .setMessage("Apa anda yakin ingin membatalkan data ini?")

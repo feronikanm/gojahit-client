@@ -1,18 +1,23 @@
 package com.fero.skripsi.ui.pelanggan.transaksi
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fero.skripsi.R
 import com.fero.skripsi.core.BaseFragment
 import com.fero.skripsi.databinding.FragmentDetailTransaksiPelangganBinding
+import com.fero.skripsi.databinding.FragmentProfilePelangganBinding
 import com.fero.skripsi.model.Pesanan
 import com.fero.skripsi.model.UkuranDetailPesanan
+import com.fero.skripsi.ui.pelanggan.detail.DetailPenjahitPelangganActivity
 import com.fero.skripsi.ui.pelanggan.pesanan.viewmodel.PesananViewModel
+import com.fero.skripsi.ui.pelanggan.rating.RatingPenjahitActivity
 import com.fero.skripsi.ui.pelanggan.transaksi.adapter.TambahUkuranDetailPesananAdapter
 import com.fero.skripsi.ui.pelanggan.transaksi.adapter.UkuranDetailPesananAdapter
 import com.fero.skripsi.ui.pelanggan.transaksi.viewmodel.UkuranDetailPesananViewModel
@@ -24,8 +29,39 @@ class DetailTransaksiPelangganFragment : BaseFragment<FragmentDetailTransaksiPel
 
     private lateinit var pesananViewModel: PesananViewModel
     private lateinit var ukuranDetailPesananViewModel: UkuranDetailPesananViewModel
-    private val dataPesanan by lazy{
+    private val dataPesanan by lazy {
         baseGetInstance<Pesanan>("DETAIL_PESANAN_PELANGGAN")
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnRatingPenjahit.setOnClickListener {
+//                val intent = Intent (getActivity(), RatingPenjahitActivity::class.java)
+//                getActivity()?.startActivity(intent)
+//            Toast.makeText(context, "Clicked.", Toast.LENGTH_SHORT).show()
+//
+//            val intent = Intent(this@DetailTransaksiPelangganFragment.requireContext(), RatingPenjahitActivity::class.java)
+//            startActivity(intent)
+
+//                activity?.let{
+//                    val intent = Intent (it, RatingPenjahitActivity::class.java)
+//                    it.startActivity(intent)
+//                }
+
+//                requireActivity().run{
+//                    startActivity(Intent(this, RatingPenjahitActivity::class.java))
+//                    finish()
+//                }
+
+//            val intent = Intent (getActivity(), RatingPenjahitActivity::class.java)
+//            getActivity()?.startActivity(intent)
+
+            val intent = Intent(context, RatingPenjahitActivity::class.java)
+            intent.putExtra(RatingPenjahitActivity.EXTRA_DATA_RATING_PENJAHIT, dataPesanan)
+            startActivity(intent)
+        }
     }
 
     override fun setupViewBinding(
@@ -42,9 +78,11 @@ class DetailTransaksiPelangganFragment : BaseFragment<FragmentDetailTransaksiPel
                     tvIdPesanan.text = "Kode Pesanan : " + it.id_pesanan.toString()
                     tvIdPenjahit.text = "ID Penjahit : " + it.id_penjahit.toString()
                     tvIdPelanggan.text = "ID Pelanggan : " + it.id_pelanggan.toString()
-                    tvIdDetailKategori.text = "ID Detail Kategori : " + it.id_detail_kategori.toString()
+                    tvIdDetailKategori.text =
+                        "ID Detail Kategori : " + it.id_detail_kategori.toString()
                     tvTanggalPesanan.text = "Tanggal Pesanan : " + it.tanggal_pesanan
-                    tvTanggalPesananSelesai.text = "Tanggal Pesanan Selesai : " + it.tanggal_pesanan_selesai
+                    tvTanggalPesananSelesai.text =
+                        "Tanggal Pesanan Selesai : " + it.tanggal_pesanan_selesai
                     tvKetPesanan.text = "Keterangan : " + it.lama_waktu_pengerjaan
                     tvStatusPesanan.text = "Status Pesanan : " + it.status_pesanan
                 }
@@ -55,31 +93,31 @@ class DetailTransaksiPelangganFragment : BaseFragment<FragmentDetailTransaksiPel
                 val statusProses = "Sedang dikerjakan"
                 val statusSelesai = "Selesai"
 
-                if (it.status_pesanan.equals(statusBelumDiverifikasi)){
+                if (it.status_pesanan.equals(statusBelumDiverifikasi)) {
                     binding.btnInputUkuran.visibility = View.INVISIBLE
                     binding.tvListUkuran.visibility = View.INVISIBLE
                     binding.btnRatingPenjahit.visibility = View.GONE
                 }
 
-                if (it.status_pesanan.equals(statusDiverifikasi)){
+                if (it.status_pesanan.equals(statusDiverifikasi)) {
                     binding.btnInputUkuran.visibility = View.VISIBLE
                     binding.tvListUkuran.visibility = View.VISIBLE
                     binding.btnRatingPenjahit.visibility = View.GONE
                 }
 
-                if (it.status_pesanan.equals(statusTidakDiterima)){
+                if (it.status_pesanan.equals(statusTidakDiterima)) {
                     binding.btnInputUkuran.visibility = View.GONE
                     binding.tvListUkuran.visibility = View.GONE
                     binding.btnRatingPenjahit.visibility = View.GONE
                 }
 
-                if (it.status_pesanan.equals(statusProses)){
+                if (it.status_pesanan.equals(statusProses)) {
                     binding.btnInputUkuran.visibility = View.GONE
                     binding.tvListUkuran.visibility = View.GONE
                     binding.btnRatingPenjahit.visibility = View.GONE
                 }
 
-                if (it.status_pesanan.equals(statusSelesai)){
+                if (it.status_pesanan.equals(statusSelesai)) {
                     binding.btnInputUkuran.visibility = View.GONE
                     binding.tvListUkuran.visibility = View.VISIBLE
                     binding.btnRatingPenjahit.visibility = View.VISIBLE
@@ -125,7 +163,7 @@ class DetailTransaksiPelangganFragment : BaseFragment<FragmentDetailTransaksiPel
         ukuranDetailPesananViewModel.getDataUkuranByPesanan(dataPesanan)
         val listUkuran = ukuranDetailPesananViewModel.getDataUkuranByPesanan(dataPesanan)
 
-        Log.d("data ukuran : ", listUkuran.toString() )
+        Log.d("data ukuran : ", listUkuran.toString())
 
     }
 
@@ -151,10 +189,16 @@ class DetailTransaksiPelangganFragment : BaseFragment<FragmentDetailTransaksiPel
 
             val fragmentManager = parentFragmentManager
             fragmentManager.beginTransaction().apply {
-                replace(R.id.fragment_container, tambahUkuranDetailPesananFragment, TambahUkuranDetailPesananFragment::class.java.simpleName)
+                replace(
+                    R.id.fragment_container,
+                    tambahUkuranDetailPesananFragment,
+                    TambahUkuranDetailPesananFragment::class.java.simpleName
+                )
                 addToBackStack(null)
                 commit()
             }
+
+
         }
     }
 

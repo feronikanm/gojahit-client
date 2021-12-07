@@ -60,6 +60,8 @@ class TambahUkuranDetailPesananFragment : BaseFragment<FragmentTambahUkuranDetai
                 setupRvUkuran(it)
                 tempDataUkuranPesanan.clear()
                 tempDataUkuranPesanan.addAll(it)
+
+
             })
 
             eventShowProgress.observe(viewLifecycleOwner, {
@@ -84,7 +86,6 @@ class TambahUkuranDetailPesananFragment : BaseFragment<FragmentTambahUkuranDetai
             })
 
             onSuccessState.observe(viewLifecycleOwner, {
-
             })
 
         }
@@ -116,6 +117,7 @@ class TambahUkuranDetailPesananFragment : BaseFragment<FragmentTambahUkuranDetai
             for (i in isiUkuranPesanan().indices) {
                 ukuranDetailPesananViewModel.insertDataUkuranDetailPesanan(isiUkuranPesanan()[i])
             }
+
         }
     }
 

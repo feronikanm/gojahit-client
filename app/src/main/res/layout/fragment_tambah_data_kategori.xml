@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/gilroy_medium"
             android:text="Pilih Kategori"
             android:textSize="16sp" />
@@ -132,7 +132,7 @@
             android:id="@+id/ti_ket_kategori"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             app:boxStrokeColor="@color/primaryTextColor"
             app:errorEnabled="true"
             app:hintTextColor="@color/primaryTextColor">

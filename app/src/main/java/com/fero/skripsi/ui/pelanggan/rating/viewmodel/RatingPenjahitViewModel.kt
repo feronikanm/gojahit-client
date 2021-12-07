@@ -19,7 +19,7 @@ class RatingPenjahitViewModel(private val repository: Repository) : ViewModel() 
         repository.insertDataRating(data, object : ResponseCallback<Rating>{
             override fun onSuccess(data: Rating) {
                 dataRating.postValue(data)
-                messageSuccess.postValue("Rating Berhasil")
+                messageSuccess.postValue("Terimakasih, Data Penilaian telah dikirim")
                 onSuccessState.postValue(true)
             }
 

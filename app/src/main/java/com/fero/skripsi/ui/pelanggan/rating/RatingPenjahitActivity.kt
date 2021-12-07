@@ -7,9 +7,10 @@ import android.widget.RatingBar
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.fero.skripsi.databinding.ActivityRatingPenjahitBinding
+import com.fero.skripsi.model.Penjahit
+import com.fero.skripsi.model.Pesanan
 import com.fero.skripsi.model.Rating
 import com.fero.skripsi.ui.main.HomePelangganActivity
-import com.fero.skripsi.ui.pelanggan.auth.viewmodel.AuthPelangganViewModel
 import com.fero.skripsi.ui.pelanggan.rating.viewmodel.RatingPenjahitViewModel
 import com.fero.skripsi.utils.ViewModelFactory
 
@@ -17,16 +18,27 @@ class RatingPenjahitActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRatingPenjahitBinding
 
+    companion object {
+        const val EXTRA_DATA_RATING_PENJAHIT = "EXTRA_DATA_RATING_PENJAHIT"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRatingPenjahitBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val dataPesanan: Pesanan? = intent.extras?.getParcelable(EXTRA_DATA_RATING_PENJAHIT)
+        val idPenjahit = dataPesanan?.id_penjahit
+
 
         val factory = ViewModelFactory.getInstance(this)
         val viewModel = ViewModelProvider(this, factory)[RatingPenjahitViewModel::class.java]
 
         viewModel.apply {
             dataRating.observe(this@RatingPenjahitActivity, {
+//                val intent = Intent(this@RatingPenjahitActivity, HomePelangganActivity::class.java)
+//                startActivity(intent)
+                finish()
             })
 
             messageSuccess.observe(this@RatingPenjahitActivity, {
@@ -101,7 +113,7 @@ class RatingPenjahitActivity : AppCompatActivity() {
 
             val dataRating = Rating(
                 0,
-                0,
+                idPenjahit,
                 kriteria1,
                 kriteria2,
                 kriteria3,

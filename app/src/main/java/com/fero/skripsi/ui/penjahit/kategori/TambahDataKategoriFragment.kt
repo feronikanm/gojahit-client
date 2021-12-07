@@ -96,7 +96,7 @@ class TambahDataKategoriFragment : DialogFragment() {
 
         val ketKategori = binding.etKetKategori.text.toString().trim()
         val bahanJahit = binding.etBahanJahit.text.toString().trim()
-        val hargaBahan = binding.etBahanJahit.text.toString().trim()
+        val hargaBahan = binding.etHargaBahan.text.toString().trim()
         val ongkosPenjahit = binding.etOngkosJahit.text.toString().trim()
         val lamaWaktu = binding.etLamaWaktu.text.toString().trim()
 
