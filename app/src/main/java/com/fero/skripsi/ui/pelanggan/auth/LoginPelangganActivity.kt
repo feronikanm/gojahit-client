@@ -46,21 +46,21 @@ class LoginPelangganActivity : AppCompatActivity() {
 
                     val idPelanggan = it.id_pelanggan.toString()
                     val namaPelanggan = it.nama_pelanggan
-                    val teleponPelanggan = it.telp_pelanggan
-                    val latPelanggan = it.latitude_pelanggan
-                    val longPelanggan = it.longitude_pelanggan
-                    val alamatPelanggan = it.alamat_pelanggan
-                    val jkPelanggan = it.jk_pelanggan
-                    val fotoPelanggan = it.foto_pelanggan
+//                    val teleponPelanggan = it.telp_pelanggan
+//                    val latPelanggan = it.latitude_pelanggan
+//                    val longPelanggan = it.longitude_pelanggan
+//                    val alamatPelanggan = it.alamat_pelanggan
+//                    val jkPelanggan = it.jk_pelanggan
+//                    val fotoPelanggan = it.foto_pelanggan
 
                     prefHelper.put(PREF_ID_PELANGGAN, idPelanggan)
                     prefHelper.put(PREF_NAMA_PELANGGAN, namaPelanggan!!)
-                    prefHelper.put(PREF_TELP_PELANGGAN, teleponPelanggan!!)
-                    prefHelper.put(PREF_LATITUDE_PELANGGAN, latPelanggan!!)
-                    prefHelper.put(PREF_LONGITUDE_PELANGGAN, longPelanggan!!)
-                    prefHelper.put(PREF_ALAMAT_PELANGGAN, alamatPelanggan!!)
-                    prefHelper.put(PREF_JK_PELANGGAN, jkPelanggan!!)
-                    prefHelper.put(PREF_FOTO_PELANGGAN, fotoPelanggan!!)
+//                    prefHelper.put(PREF_TELP_PELANGGAN, teleponPelanggan!!)
+//                    prefHelper.put(PREF_LATITUDE_PELANGGAN, latPelanggan!!)
+//                    prefHelper.put(PREF_LONGITUDE_PELANGGAN, longPelanggan!!)
+//                    prefHelper.put(PREF_ALAMAT_PELANGGAN, alamatPelanggan!!)
+//                    prefHelper.put(PREF_JK_PELANGGAN, jkPelanggan!!)
+//                    prefHelper.put(PREF_FOTO_PELANGGAN, fotoPelanggan!!)
 
                     val moveIntent = Intent(this@LoginPelangganActivity, HomePelangganActivity::class.java)
                     moveIntent.putExtra("EXTRA_LOGIN_PELANGGAN", it)

@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -35,27 +36,30 @@ import com.fero.skripsi.utils.PrefHelper.Companion.PREF_TELP_PELANGGAN
 import com.fero.skripsi.utils.ViewModelFactory
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationListener
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.activity_edit_data_pelanggan.*
 import java.io.File
+import java.io.IOException
+import java.lang.IndexOutOfBoundsException
 import java.util.*
 
-class EditDataPelangganActivity : AppCompatActivity() {
+class EditDataPelangganActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener, GoogleMap.OnCameraMoveListener, GoogleMap.OnCameraMoveStartedListener, GoogleMap.OnCameraIdleListener  {
 
     private lateinit var binding: ActivityEditDataPelangganBinding
+    private lateinit var currentLocation : Location
+    private var mMap: GoogleMap? = null
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    val REQUEST_CODE = 101
     lateinit var prefHelper: PrefHelper
-    var fileUri: Uri? = null
 
     private val setupDataPelanggan = Pelanggan(null, "", "", "", "", "", "", "", "", "")
 
     companion object {
-        //image pick code
-        private val IMAGE_PICK_CODE = 1000
-
-        //Permission code
-        private val PERMISSION_CODE = 1001
-
         const val EXTRA_DATA_PELANGGAN = "EXTRA_DATA_PELANGGAN"
     }
 
@@ -64,8 +68,9 @@ class EditDataPelangganActivity : AppCompatActivity() {
         binding = ActivityEditDataPelangganBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.title = "Edit Data Pelanggan"
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+
+        fetchLocation()
 
         prefHelper = PrefHelper(this)
 
@@ -74,10 +79,6 @@ class EditDataPelangganActivity : AppCompatActivity() {
 
         viewModel.apply {
             dataPelanggan.observe(this@EditDataPelangganActivity, {
-//                prefHelper.clear()
-//                val moveIntent = Intent(this@EditDataPelangganActivity, HomePelangganActivity::class.java)
-//                intent.putExtra("EXTRA_LOGIN_PELANGGAN", it)
-//                startActivity(moveIntent)
                 finish()
             })
 
@@ -103,53 +104,35 @@ class EditDataPelangganActivity : AppCompatActivity() {
         binding.tvNamaPelanggan.text = extraData!!.nama_pelanggan
         binding.etNama.setText(extraData.nama_pelanggan)
         binding.etTelepon.setText(extraData.telp_pelanggan)
-//        binding.etAlamat.setText(extraData.alamat_pelanggan)
-//        binding.etLatitude.setText(extraData.latitude_pelanggan)
-//        binding.etLongitude.setText(extraData.longitude_pelanggan)
+        binding.etAlamat.setText(extraData.alamat_pelanggan)
+        binding.tvAlamat.setText(extraData.alamat_pelanggan)
+        binding.tvLatitude.setText(extraData.latitude_pelanggan)
+        binding.tvLongitude.setText(extraData.longitude_pelanggan)
 
-        initLocationProviderClient()
-//        binding.btnGetLoc.setOnClickListener {
-//            getUserLocation()
-//        }
+        binding.tvPilihAlamat.visibility = View.GONE
+        binding.googleMap.visibility = View.GONE
 
         binding.btnGetMaps.setOnClickListener {
-            val moveIntent = Intent(this, MapsPelangganActivity::class.java)
-            startActivity(moveIntent)
+            binding.tvPilihAlamat.visibility = View.VISIBLE
+            binding.googleMap.visibility = View.VISIBLE
+            binding.tvPerbaruiAlamat.visibility = View.GONE
+            binding.btnGetMaps.visibility = View.GONE
+//            val moveIntent = Intent(this, MapsPelangganActivity::class.java)
+//            startActivity(moveIntent)
         }
 
-//        binding.btnPickImage.setOnClickListener {
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-//                    //permission denied
-//                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
-//                    //show popup to request runtime permission
-//                    requestPermissions(permissions, PERMISSION_CODE)
-//                } else {
-//                    //permission already granted
-//                    pickImageFromGallery()
-//                }
-//            } else {
-//                //system OS is < Marshmallow
-//                pickImageFromGallery()
-//            }
-//        }
 
         binding.btnCancelDataPelanggan.setOnClickListener {
             finish()
         }
 
-        Log.d("Image FileUri create", fileUri.toString())
-
-
         binding.btnSimpanDataPelanggan.setOnClickListener {
 
             val namaPelanggan = binding.etNama.text.toString().trim()
             val teleponPelanggan = binding.etTelepon.text.toString().trim()
-//            val alamatPelanggan = binding.etAlamat.text.toString().trim()
-//            val lat = binding.etLatitude.text.toString().trim()
-//            val long = binding.etLongitude.text.toString().trim()
-//            val foto = binding.etImageFile.text.toString().trim()
-//            val foto = binding.tvImageSplitUri.text.toString().trim()
+            val alamatPelanggan = binding.etAlamat.text.toString().trim()
+            val lat = binding.tvLatitude.text.toString().trim()
+            val long = binding.tvLongitude.text.toString().trim()
 
             var value = "laki-laki"
             when (binding.rgJk.checkedRadioButtonId) {
@@ -162,12 +145,11 @@ class EditDataPelangganActivity : AppCompatActivity() {
             setupDataPelanggan.nama_pelanggan = namaPelanggan
             setupDataPelanggan.email_pelanggan = extraData.email_pelanggan
             setupDataPelanggan.password_pelanggan = extraData.password_pelanggan
-//            setupDataPelanggan.alamat_pelanggan = alamatPelanggan
             setupDataPelanggan.jk_pelanggan = jkPelanggan
-//            setupDataPelanggan.latitude_pelanggan = lat
-//            setupDataPelanggan.longitude_pelanggan = long
-//            setupDataPelanggan.telp_pelanggan = teleponPelanggan
-//            setupDataPelanggan.foto_pelanggan = foto
+            setupDataPelanggan.telp_pelanggan = teleponPelanggan
+            setupDataPelanggan.alamat_pelanggan = alamatPelanggan
+            setupDataPelanggan.latitude_pelanggan = lat
+            setupDataPelanggan.longitude_pelanggan = long
 
 
 //            val dataPelangan = Pelanggan(
@@ -192,146 +174,108 @@ class EditDataPelangganActivity : AppCompatActivity() {
         }
     }
 
-    private fun getUserLocation() {
+    private fun fetchLocation() {
 
-        val geocoder = Geocoder(this, Locale.getDefault())
-        var addresses: List<Address>
-
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                1
-            )
+        if(ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE)
             return
-        } else {
-            fusedLocationProviderClient.lastLocation.addOnSuccessListener { location: Location? ->
-
-                var lat = location?.latitude.toString()
-                var long = location?.longitude.toString()
-
-//                binding.etLatitude.setText(lat)
-//                binding.etLongitude.setText(long)
-
-                binding.tvLatitude.text = "Latitude : " + location?.latitude
-                binding.tvLongitude.text = "Longitude : " + location?.longitude
-
-                addresses = geocoder.getFromLocation(location!!.latitude, location.longitude, 1)
-                val address: String = addresses[0].getAddressLine(0)
-
-//                binding.etAlamat.setText(address)
-
-            }
         }
-    }
 
-    private fun initLocationProviderClient() {
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-    }
-
-    private fun pickImageFromGallery() {
-
-        ImagePicker.with(this)
-            .compress(1024)         //Final image size will be less than 1 MB(Optional)
-            .maxResultSize(
-                1080,
-                1080
-            )  //Final image resolution will be less than 1080 x 1080(Optional)
-            .createIntent { intent ->
-                startForProfileImageResult.launch(intent)
-            }
-
-//        //Intent to pick image
-//        val intent = Intent(Intent.ACTION_PICK)
-//        intent.type = "image/*"
-//        startActivityForResult(intent, IMAGE_PICK_CODE)
-    }
-
-    private val startForProfileImageResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-            val resultCode = result.resultCode
-            val data = result.data
-
-            if (resultCode == Activity.RESULT_OK) {
-                //Image Uri will not be null for RESULT_OK
-                fileUri = data?.data!!
-
-                val file = File(fileUri!!.path)
-
-//                binding.imageView.setImageURI(fileUri)
-//                binding.tvImageFileUri.text = fileUri.toString()
-                Log.d("Image FileUri", fileUri.toString())
-
-//                setupDataPelanggan.foto_pelanggan = fileUri.toString()
-
-//                val uri = data.data
-//                val file = File(uri!!.path) //create path from uri
-//
-                val split: List<String> = file.getPath().split("/") //split the path.
-//
-                val fileImage = split[9] //assign it to a string(your choice).
-
-//                binding.tvImageSplitUri.text = fileImage
-                Log.d("Image PathUri", fileImage)
-//                binding.etImageFile.setText(fileImage)
-
-//                setupDataPelanggan.foto_pelanggan = fileImage
-
-
-//                val filePath: String = PathUtil.getPath(context, yourURI)
-//
-//                String path = yourAndroidURI.uri.getPath() // "/mnt/sdcard/FileName.mp3"
-//                File file = new File(new URI(path));
-//
-//                String path = yourAndroidURI.uri.toString() // "file:///mnt/sdcard/FileName.mp3"
-//                File file = new File(new URI(path));
-
-                Log.d("Image FileUri", fileUri.toString())
-
-            } else if (resultCode == ImagePicker.RESULT_ERROR) {
-                Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show()
+        val task = fusedLocationProviderClient.lastLocation
+        task.addOnSuccessListener { location ->
+            if (location != null){
+                currentLocation = location
+                val supportMapFragment = (supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment)
+                supportMapFragment.getMapAsync(this)
             }
         }
 
+    }
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+        getMyLocation()
+    }
 
-    //handle requested permission result
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
+    private fun getMyLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return
+        }
+        mMap!!.isMyLocationEnabled = true
+
+        mMap!!.uiSettings.isZoomControlsEnabled = true
+        mMap!!.setOnCameraMoveListener(this)
+        mMap!!.setOnCameraMoveStartedListener(this)
+        mMap!!.setOnCameraIdleListener(this)
+
+        mMap!!.setOnMyLocationChangeListener { location ->
+            currentLocation = location
+        }
+
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            PERMISSION_CODE -> {
-                if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    //permission from popup granted
-                    pickImageFromGallery()
-                } else {
-                    //permission from popup denied
-                    Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+        when(requestCode){
+            REQUEST_CODE -> {
+                if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    fetchLocation()
                 }
             }
         }
     }
 
-    //handle result of picked image
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
-//
-//            val fileUri = data?.data
-//
-//            binding.imageView.setImageURI(fileUri)
-//            Log.d("Image FileUri", fileUri.toString())
-//
-//        }
-//    }
+    override fun onLocationChanged(location: Location) {
+        val geocoder = Geocoder(this, Locale.getDefault())
+        var addresses : List<Address>? = null
+        try {
+            addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+        }catch (e: IOException){
+            e.printStackTrace()
+        }
+        setAddress(addresses!![0])
+    }
+
+    private fun setAddress(addresses: Address) {
+        if (addresses != null){
+            if (addresses.getAddressLine(0) != null){
+                binding.tvAlamat.setText(addresses.getAddressLine(0))
+                binding.etAlamat.visibility = View.VISIBLE
+                binding.etAlamat.setText(addresses.getAddressLine(0))
+            }
+            if (addresses.getAddressLine(1) != null){
+                binding.tvAlamat.setText(binding.tvAlamat.text.toString() + addresses.getAddressLine(1))
+                binding.etAlamat.visibility = View.VISIBLE
+                binding.etAlamat.setText(binding.etAlamat.text.toString() + addresses.getAddressLine(1))
+            }
+        }
+    }
+
+    override fun onCameraMove() {
+    }
+
+    override fun onCameraMoveStarted(p0: Int) {
+    }
+
+    override fun onCameraIdle() {
+        var addresses: List<Address>? = null
+        val geocoder = Geocoder(this, Locale.getDefault())
+        try {
+            addresses = geocoder.getFromLocation( mMap!!.getCameraPosition().target.latitude, mMap!!.getCameraPosition().target.longitude, 1)
+
+            val lat = mMap!!.cameraPosition.target.latitude
+            val lng = mMap!!.cameraPosition.target.longitude
+
+            binding.tvLatitude.text = lat.toString()
+            binding.tvLongitude.text = lng.toString()
+
+            setAddress(addresses!![0])
+        }catch (e: IndexOutOfBoundsException){
+            e.printStackTrace()
+        }catch (e: IOException){
+            e.printStackTrace()
+        }
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -341,10 +285,4 @@ class EditDataPelangganActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-    override fun onResume() {
-        super.onResume()
-
-    }
-
 }

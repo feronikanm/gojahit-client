@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
             android:fontFamily="@font/gilroy_bold"
             android:maxLines="1"
@@ -52,7 +52,7 @@
             android:layout_below="@+id/tv_gojahit"
             android:layout_gravity="center"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/background_card"
@@ -67,7 +67,7 @@
                 android:fontFamily="@font/gilroy_bold"
                 android:text="Edit Data"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/almost_black"
                 android:textSize="18sp" />
 
             <TextView
@@ -78,7 +78,7 @@
                 android:fontFamily="@font/gilroy_bold"
                 android:text="Nama Penjahit"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/almost_black"
                 android:textSize="18sp" />
 
             <TextView
@@ -86,15 +86,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:textAppearance="@style/labelEditData"
                 android:text="Nama" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gilroy_medium"
-                android:textColor="@color/black"
                 android:inputType="text" />
 
             <TextView
@@ -102,15 +99,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textAppearance="@style/labelEditData"
                 android:text="Telepon" />
 
             <EditText
                 android:id="@+id/et_telepon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gilroy_medium"
-                android:textColor="@color/black"
                 android:inputType="phone" />
 
             <TextView
@@ -118,109 +112,190 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textAppearance="@style/labelEditData"
                 android:text="Nama Toko" />
 
             <EditText
                 android:id="@+id/et_nama_toko"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gilroy_medium"
-                android:textColor="@color/black"
                 android:inputType="text" />
-
-            <TextView
-                android:id="@+id/tv_alamat_toko"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/labelEditData"
-                android:layout_marginTop="8dp"
-                android:text="Alamat" />
-
-            <EditText
-                android:id="@+id/et_alamat_toko"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/gilroy_medium"
-                android:textColor="@color/black"
-                android:inputType="text" />
-
-            <EditText
-                android:id="@+id/et_latitude"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/gilroy_medium"
-                android:textColor="@color/black"
-                android:inputType="text" />
-
-            <EditText
-                android:id="@+id/et_longitude"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/gilroy_medium"
-                android:textColor="@color/black"
-                android:inputType="text" />
-
-            <ImageButton
-                android:id="@+id/btn_get_loc"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_location"
-                android:text="Get Location" />
-
-            <TextView
-                android:id="@+id/tv_latitude"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/labelEditData"
-                android:text="Latitude : 0.0" />
-
-            <TextView
-                android:id="@+id/tv_longitude"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/labelEditData"
-                android:text="Longitude : 0.0" />
 
             <TextView
                 android:id="@+id/tv_ket"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textAppearance="@style/labelEditData"
                 android:text="Keterangan tambahan mengenai toko" />
 
             <EditText
                 android:id="@+id/et_ket"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gilroy_medium"
-                android:textColor="@color/black"
-                android:hint="Toko ini dibuka kapan saja"
                 android:inputType="text" />
+
+            <TextView
+                android:id="@+id/tv_pilih_alamat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"
+                android:text="Geser peta sesuai alamat yang dituju" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/googleMap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp">
+
+                    <fragment
+                        android:id="@+id/map"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <ImageView
+                        android:id="@+id/mapPin"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_pin" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Latitude" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19dp"
+                    android:text=": " />
+
+                <TextView
+                    android:id="@+id/tv_latitude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.0" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Longitude" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text=": " />
+
+                <TextView
+                    android:id="@+id/tv_longitude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.0" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="27dp"
+                    android:text=": " />
+
+                <TextView
+                    android:id="@+id/tv_alamat_toko"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jalan" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_alamat_toko"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/tv_perbarui_alamat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="8dp"
+                android:text="Perbarui Alamat" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_get_maps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_button_accept"
+                android:drawableStart="@drawable/ic_map"
+                android:padding="8dp"
+                android:text="  Pilih Lokasi"
+                android:textAppearance="@style/button_login_register"
+                android:textColor="@color/not_black" />
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/btn_get_loc"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/ic_location"-->
+<!--                android:text="Get Location" />-->
 
             <TextView
                 android:id="@+id/tv_jangkauan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textAppearance="@style/labelEditData"
+                android:layout_marginTop="16dp"
                 android:text="Jangkauan" />
 
             <CheckBox
                 android:id="@+id/cb_jang_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gilroy_medium"
-                android:textColor="@color/black"
                 android:text="Anak-anak" />
 
             <CheckBox
                 android:id="@+id/cb_jang_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gilroy_medium"
-                android:textColor="@color/black"
                 android:text="Remaja - Dewasa" />
 
             <TextView
@@ -228,24 +303,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/gilroy_medium"
-                android:textColor="@color/black"
                 android:text="Spesifikasi" />
 
             <CheckBox
                 android:id="@+id/cb_spek_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gilroy_medium"
-                android:textColor="@color/black"
                 android:text="Laki-laki" />
 
             <CheckBox
                 android:id="@+id/cb_spek_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gilroy_medium"
-                android:textColor="@color/black"
                 android:text="Perempuan" />
 
             <TextView
@@ -253,7 +322,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textAppearance="@style/labelEditData"
                 android:text="Hari Buka" />
 
             <LinearLayout
@@ -270,32 +338,24 @@
                         android:id="@+id/cb_hari_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/gilroy_medium"
-                        android:textColor="@color/black"
                         android:text="Senin" />
 
                     <CheckBox
                         android:id="@+id/cb_hari_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/gilroy_medium"
-                        android:textColor="@color/black"
                         android:text="Selasa" />
 
                     <CheckBox
                         android:id="@+id/cb_hari_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/gilroy_medium"
-                        android:textColor="@color/black"
                         android:text="Rabu" />
 
                     <CheckBox
                         android:id="@+id/cb_hari_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/gilroy_medium"
-                        android:textColor="@color/black"
                         android:text="Kamis" />
 
                 </LinearLayout>
@@ -310,72 +370,109 @@
                         android:id="@+id/cb_hari_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/gilroy_medium"
-                        android:textColor="@color/black"
                         android:text="Jum'at" />
 
                     <CheckBox
                         android:id="@+id/cb_hari_6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/gilroy_medium"
-                        android:textColor="@color/black"
                         android:text="Sabtu" />
 
                     <CheckBox
                         android:id="@+id/cb_hari_7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/gilroy_medium"
-                        android:textColor="@color/black"
                         android:text="Minggu" />
 
                 </LinearLayout>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jam Buka" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19dp"
+                    android:text=": " />
+
+                <TextView
+                    android:id="@+id/tv_jam_buka"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="07.00" />
+            </LinearLayout>
+
             <TextView
-                android:id="@+id/jam_buka"
+                android:id="@+id/tv_perbarui_jam_buka"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textAppearance="@style/labelEditData"
-                android:text="Jam Buka" />
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="8dp"
+                android:text="Perbarui Jam Buka" />
 
-            <ImageButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_jam_buka"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_time"
-                android:text="Pilih Waktu" />
+                android:background="@drawable/custom_button_accept"
+                android:drawableStart="@drawable/ic_clock"
+                android:padding="8dp"
+                android:text="  Pilih Waktu"
+                android:textAppearance="@style/button_login_register"
+                android:textColor="@color/not_black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jam Tutup" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text=": " />
+
+                <TextView
+                    android:id="@+id/tv_jam_tutup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="07.00" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_jam_buka"
+                android:id="@+id/tv_perbarui_jam_tutup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/labelEditData"
-                android:text="Jam Buka" />
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="8dp"
+                android:text="Perbarui Jam Tutp" />
 
-            <TextView
-                android:id="@+id/jam_tutup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textAppearance="@style/labelEditData"
-                android:text="Jam Tutup" />
-
-            <ImageButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_jam_tutup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_time"
-                android:text="Pilih Waktu" />
+                android:background="@drawable/custom_button_accept"
+                android:drawableStart="@drawable/ic_clock"
+                android:padding="8dp"
+                android:text="  Pilih Waktu"
+                android:textAppearance="@style/button_login_register"
+                android:textColor="@color/not_black" />
 
-            <TextView
-                android:id="@+id/tv_jam_tutup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/labelEditData"
-                android:text="Jam Tutup" />
 
 <!--            <TextView-->
 <!--                android:id="@+id/tv_foto"-->

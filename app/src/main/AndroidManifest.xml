@@ -36,6 +36,7 @@
             android:theme="@style/Theme.Intro" />
         <activity
             android:name=".ui.penjahit.auth.EditDataPenjahitActivity"
+            android:theme="@style/Theme.Intro"
             android:exported="true" />
         <activity
             android:name=".ui.penjahit.dashboard.DetailPenjahitActivity"

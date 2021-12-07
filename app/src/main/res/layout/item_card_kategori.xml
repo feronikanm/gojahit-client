@@ -8,8 +8,10 @@
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:elevation="4dp"
+    android:layout_marginTop="4dp"
     android:layout_marginBottom="8dp"
-    android:layout_marginLeft="12dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
     app:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
