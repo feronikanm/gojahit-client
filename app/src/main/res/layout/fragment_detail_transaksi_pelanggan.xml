@@ -85,6 +85,26 @@
                 android:textAppearance="@style/button_login_register"
                 android:textColor="@color/white" />
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_rating_penjahit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/login_button_bk"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="Rating Penjahit"
+                android:textAppearance="@style/button_login_register"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_list_ukuran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="List Ukuran" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_ukuran"
                 android:layout_width="match_parent"

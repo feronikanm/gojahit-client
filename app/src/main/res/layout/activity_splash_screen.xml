@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/gilroy_bold"
-            android:shadowColor="#3EFFFFFF"
+            android:shadowColor="#3E000000"
             android:shadowDx="10"
             android:shadowDy="10"
             android:shadowRadius="5"

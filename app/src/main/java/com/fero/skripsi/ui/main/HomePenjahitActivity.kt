@@ -60,8 +60,8 @@ class HomePenjahitActivity : BaseActivity<ActivityHomePenjahitBinding>() {
         binding.apply {
             bottomNavigation.show(0)
             bottomNavigation.add(MeowBottomNavigation.Model(0, R.drawable.ic_home))
-            bottomNavigation.add(MeowBottomNavigation.Model(1, R.drawable.ic_order))
-            bottomNavigation.add(MeowBottomNavigation.Model(2, R.drawable.ic_add))
+            bottomNavigation.add(MeowBottomNavigation.Model(1, R.drawable.ic_shopping_cart))
+            bottomNavigation.add(MeowBottomNavigation.Model(2, R.drawable.ic_category))
             bottomNavigation.add(MeowBottomNavigation.Model(3, R.drawable.ic_profile))
 
             bottomNavigation.setOnClickMenuListener {

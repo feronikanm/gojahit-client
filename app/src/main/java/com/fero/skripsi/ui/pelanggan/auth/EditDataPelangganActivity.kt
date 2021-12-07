@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.fero.skripsi.R
 import com.fero.skripsi.databinding.ActivityEditDataPelangganBinding
 import com.fero.skripsi.model.Pelanggan
+import com.fero.skripsi.ui.main.PilihUserActivity
 import com.fero.skripsi.ui.pelanggan.auth.viewmodel.AuthPelangganViewModel
 import com.fero.skripsi.utils.PrefHelper
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_ALAMAT_PELANGGAN
@@ -102,31 +103,36 @@ class EditDataPelangganActivity : AppCompatActivity() {
         binding.tvNamaPelanggan.text = extraData!!.nama_pelanggan
         binding.etNama.setText(extraData.nama_pelanggan)
         binding.etTelepon.setText(extraData.telp_pelanggan)
-        binding.etAlamat.setText(extraData.alamat_pelanggan)
-        binding.etLatitude.setText(extraData.latitude_pelanggan)
-        binding.etLongitude.setText(extraData.longitude_pelanggan)
+//        binding.etAlamat.setText(extraData.alamat_pelanggan)
+//        binding.etLatitude.setText(extraData.latitude_pelanggan)
+//        binding.etLongitude.setText(extraData.longitude_pelanggan)
 
         initLocationProviderClient()
-        binding.btnGetLoc.setOnClickListener {
-            getUserLocation()
+//        binding.btnGetLoc.setOnClickListener {
+//            getUserLocation()
+//        }
+
+        binding.btnGetMaps.setOnClickListener {
+            val moveIntent = Intent(this, MapsPelangganActivity::class.java)
+            startActivity(moveIntent)
         }
 
-        binding.btnPickImage.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-                    //permission denied
-                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
-                    //show popup to request runtime permission
-                    requestPermissions(permissions, PERMISSION_CODE)
-                } else {
-                    //permission already granted
-                    pickImageFromGallery()
-                }
-            } else {
-                //system OS is < Marshmallow
-                pickImageFromGallery()
-            }
-        }
+//        binding.btnPickImage.setOnClickListener {
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+//                    //permission denied
+//                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+//                    //show popup to request runtime permission
+//                    requestPermissions(permissions, PERMISSION_CODE)
+//                } else {
+//                    //permission already granted
+//                    pickImageFromGallery()
+//                }
+//            } else {
+//                //system OS is < Marshmallow
+//                pickImageFromGallery()
+//            }
+//        }
 
         binding.btnCancelDataPelanggan.setOnClickListener {
             finish()
@@ -139,11 +145,11 @@ class EditDataPelangganActivity : AppCompatActivity() {
 
             val namaPelanggan = binding.etNama.text.toString().trim()
             val teleponPelanggan = binding.etTelepon.text.toString().trim()
-            val alamatPelanggan = binding.etAlamat.text.toString().trim()
-            val lat = binding.etLatitude.text.toString().trim()
-            val long = binding.etLongitude.text.toString().trim()
+//            val alamatPelanggan = binding.etAlamat.text.toString().trim()
+//            val lat = binding.etLatitude.text.toString().trim()
+//            val long = binding.etLongitude.text.toString().trim()
 //            val foto = binding.etImageFile.text.toString().trim()
-            val foto = binding.tvImageSplitUri.text.toString().trim()
+//            val foto = binding.tvImageSplitUri.text.toString().trim()
 
             var value = "laki-laki"
             when (binding.rgJk.checkedRadioButtonId) {
@@ -156,12 +162,12 @@ class EditDataPelangganActivity : AppCompatActivity() {
             setupDataPelanggan.nama_pelanggan = namaPelanggan
             setupDataPelanggan.email_pelanggan = extraData.email_pelanggan
             setupDataPelanggan.password_pelanggan = extraData.password_pelanggan
-            setupDataPelanggan.alamat_pelanggan = alamatPelanggan
+//            setupDataPelanggan.alamat_pelanggan = alamatPelanggan
             setupDataPelanggan.jk_pelanggan = jkPelanggan
-            setupDataPelanggan.latitude_pelanggan = lat
-            setupDataPelanggan.longitude_pelanggan = long
-            setupDataPelanggan.telp_pelanggan = teleponPelanggan
-            setupDataPelanggan.foto_pelanggan = foto
+//            setupDataPelanggan.latitude_pelanggan = lat
+//            setupDataPelanggan.longitude_pelanggan = long
+//            setupDataPelanggan.telp_pelanggan = teleponPelanggan
+//            setupDataPelanggan.foto_pelanggan = foto
 
 
 //            val dataPelangan = Pelanggan(
@@ -208,8 +214,8 @@ class EditDataPelangganActivity : AppCompatActivity() {
                 var lat = location?.latitude.toString()
                 var long = location?.longitude.toString()
 
-                binding.etLatitude.setText(lat)
-                binding.etLongitude.setText(long)
+//                binding.etLatitude.setText(lat)
+//                binding.etLongitude.setText(long)
 
                 binding.tvLatitude.text = "Latitude : " + location?.latitude
                 binding.tvLongitude.text = "Longitude : " + location?.longitude
@@ -217,7 +223,7 @@ class EditDataPelangganActivity : AppCompatActivity() {
                 addresses = geocoder.getFromLocation(location!!.latitude, location.longitude, 1)
                 val address: String = addresses[0].getAddressLine(0)
 
-                binding.etAlamat.setText(address)
+//                binding.etAlamat.setText(address)
 
             }
         }
@@ -256,8 +262,8 @@ class EditDataPelangganActivity : AppCompatActivity() {
 
                 val file = File(fileUri!!.path)
 
-                binding.imageView.setImageURI(fileUri)
-                binding.tvImageFileUri.text = fileUri.toString()
+//                binding.imageView.setImageURI(fileUri)
+//                binding.tvImageFileUri.text = fileUri.toString()
                 Log.d("Image FileUri", fileUri.toString())
 
 //                setupDataPelanggan.foto_pelanggan = fileUri.toString()
@@ -269,9 +275,9 @@ class EditDataPelangganActivity : AppCompatActivity() {
 //
                 val fileImage = split[9] //assign it to a string(your choice).
 
-                binding.tvImageSplitUri.text = fileImage
+//                binding.tvImageSplitUri.text = fileImage
                 Log.d("Image PathUri", fileImage)
-                binding.etImageFile.setText(fileImage)
+//                binding.etImageFile.setText(fileImage)
 
 //                setupDataPelanggan.foto_pelanggan = fileImage
 

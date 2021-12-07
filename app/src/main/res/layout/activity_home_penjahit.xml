@@ -19,16 +19,6 @@
         android:paddingVertical="8dp"
         android:clipToPadding="false">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_penjahit"
-            android:transitionName="userIconTransition"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:elevation="2dp"
-            app:civ_border_width="2dp"
-            app:civ_border_color="@color/white"
-            tools:src="@tools:sample/avatars"/>
-
         <TextView
             android:id="@+id/tv_hi"
             android:layout_width="wrap_content"
@@ -50,12 +40,22 @@
             android:textColor="#1C213F"
             android:fontFamily="@font/gilroy_medium"/>
 
-        <ImageButton
-            android:id="@+id/btn_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:src="@drawable/ic_search" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/btn_search"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@null"-->
+<!--            android:src="@drawable/ic_search" />-->
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_penjahit"
+            android:transitionName="userIconTransition"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:elevation="2dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/white"
+            tools:src="@tools:sample/avatars"/>
 
     </LinearLayout>
 
@@ -79,7 +79,7 @@
         app:mbn_countTextColor="@color/black"
         app:mbn_defaultIconColor="#90a4ae"
         app:mbn_rippleColor="#2f424242"
-        app:mbn_selectedIconColor="@color/purple_700"
+        app:mbn_selectedIconColor="@color/purple_200"
         app:mbn_shadowColor="#1f212121" />
 
 <!--    app:mbn_selectedIconColor="#67478F"-->

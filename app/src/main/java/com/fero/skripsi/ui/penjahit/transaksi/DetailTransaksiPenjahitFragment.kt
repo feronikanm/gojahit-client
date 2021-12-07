@@ -95,12 +95,12 @@ class DetailTransaksiPenjahitFragment : BaseFragment<FragmentDetailTransaksiPenj
                 }
 
                 binding.btnSelesai.setOnClickListener {
-                    Log.d("Pesanan Ditolak : ", pesananSelesai.toString())
+                    Log.d("Pesanan Selesai : ", pesananSelesai.toString())
                     pesananViewModel.updateDataPesanan(pesananSelesai)
                 }
 
                 binding.btnProses.setOnClickListener {
-                    Log.d("Pesanan Ditolak : ", pesananDiProses.toString())
+                    Log.d("Pesanan Di Proses : ", pesananDiProses.toString())
                     pesananViewModel.updateDataPesanan(pesananDiProses)
                 }
 

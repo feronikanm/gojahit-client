@@ -22,6 +22,8 @@
     <string name="sangat_buruk">Sangat Buruk</string>
     <string name="sangat_baik">Sangat Baik</string>
 
+    <string name="google_maps_key">AIzaSyALa4dXJi8sGWRnruL7BxmGD4LSVZCUOUQ</string>
+
 
     <!--    <string name="about">Designed by <a href="https://github.com/feronikanm">feronikanm</a></string>-->
     <!--    <string name="about_us"><font fgcolor="#039BE5">Designed by </font><font fgcolor="#000000"><a href="https://github.com/feronikanm">feronikanm</a></font></string>-->

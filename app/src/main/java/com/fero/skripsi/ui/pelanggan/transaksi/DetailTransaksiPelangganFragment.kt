@@ -57,11 +57,34 @@ class DetailTransaksiPelangganFragment : BaseFragment<FragmentDetailTransaksiPel
 
                 if (it.status_pesanan.equals(statusBelumDiverifikasi)){
                     binding.btnInputUkuran.visibility = View.INVISIBLE
+                    binding.tvListUkuran.visibility = View.INVISIBLE
+                    binding.btnRatingPenjahit.visibility = View.GONE
                 }
 
                 if (it.status_pesanan.equals(statusDiverifikasi)){
                     binding.btnInputUkuran.visibility = View.VISIBLE
+                    binding.tvListUkuran.visibility = View.VISIBLE
+                    binding.btnRatingPenjahit.visibility = View.GONE
                 }
+
+                if (it.status_pesanan.equals(statusTidakDiterima)){
+                    binding.btnInputUkuran.visibility = View.GONE
+                    binding.tvListUkuran.visibility = View.GONE
+                    binding.btnRatingPenjahit.visibility = View.GONE
+                }
+
+                if (it.status_pesanan.equals(statusProses)){
+                    binding.btnInputUkuran.visibility = View.GONE
+                    binding.tvListUkuran.visibility = View.GONE
+                    binding.btnRatingPenjahit.visibility = View.GONE
+                }
+
+                if (it.status_pesanan.equals(statusSelesai)){
+                    binding.btnInputUkuran.visibility = View.GONE
+                    binding.tvListUkuran.visibility = View.VISIBLE
+                    binding.btnRatingPenjahit.visibility = View.VISIBLE
+                }
+
 
             })
 

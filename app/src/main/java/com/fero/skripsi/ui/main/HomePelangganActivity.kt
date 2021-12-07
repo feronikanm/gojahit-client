@@ -54,8 +54,8 @@ class HomePelangganActivity : BaseActivity<ActivityHomePelangganBinding>() {
         val bundle = Bundle()
         val bundleData = Gson().toJson(extraData)
         bundle.putString("EXTRA_PELANGGAN", bundleData)
-        profilePelangganFragment.arguments = bundle
         transaksiPelangganFragment.arguments = bundle
+        profilePelangganFragment.arguments = bundle
 
         dashboardPelangganFragment.baseNewInstance("EXTRA_PELANGGAN_DASHBOARD",extraData)
         extraData.nama_pelanggan?.let { Log.d("EXTRA PELANGGAN DASH", it) }
@@ -64,7 +64,7 @@ class HomePelangganActivity : BaseActivity<ActivityHomePelangganBinding>() {
         binding.apply {
             bottomNavigation.show(0)
             bottomNavigation.add(MeowBottomNavigation.Model(0, R.drawable.ic_home))
-            bottomNavigation.add(MeowBottomNavigation.Model(1, R.drawable.ic_check))
+            bottomNavigation.add(MeowBottomNavigation.Model(1, R.drawable.ic_shopping_cart))
             bottomNavigation.add(MeowBottomNavigation.Model(2, R.drawable.ic_profile))
 
             bottomNavigation.setOnClickMenuListener {

@@ -117,7 +117,9 @@ dependencies {
     implementation "io.insert-koin:koin-androidx-workmanager:3.1.1" // Koin for Jetpack WorkManager
     implementation "io.insert-koin:koin-androidx-compose:3.1.1" // Koin for Jetpack Compose
 
+    implementation 'com.google.android.gms:play-services-maps:18.0.0'
     implementation 'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'com.github.jd-alexander:library:1.1.0'
     implementation "androidx.palette:palette:1.0.0"
 
     api "com.google.dagger:dagger:2.28.3"

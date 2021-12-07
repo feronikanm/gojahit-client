@@ -126,24 +126,24 @@ class EditDataPenjahitActivity : AppCompatActivity() {
             TimePickerDialog(this, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
         }
 
-        binding.btnPickImage.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
-                    PackageManager.PERMISSION_DENIED
-                ) {
-                    //permission denied
-                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
-                    //show popup to request runtime permission
-                    requestPermissions(permissions, PERMISSION_CODE)
-                } else {
-                    //permission already granted
-                    pickImageFromGallery()
-                }
-            } else {
-                //system OS is < Marshmallow
-                pickImageFromGallery()
-            }
-        }
+//        binding.btnPickImage.setOnClickListener {
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+//                    PackageManager.PERMISSION_DENIED
+//                ) {
+//                    //permission denied
+//                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+//                    //show popup to request runtime permission
+//                    requestPermissions(permissions, PERMISSION_CODE)
+//                } else {
+//                    //permission already granted
+//                    pickImageFromGallery()
+//                }
+//            } else {
+//                //system OS is < Marshmallow
+//                pickImageFromGallery()
+//            }
+//        }
 
         binding.btnCancelDataPenjahit.setOnClickListener {
             val moveIntent = Intent(this, HomePenjahitActivity::class.java)
@@ -275,7 +275,7 @@ class EditDataPenjahitActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
-            binding.imageView.setImageURI(data?.data)
+//            binding.imageView.setImageURI(data?.data)
         }
     }
 

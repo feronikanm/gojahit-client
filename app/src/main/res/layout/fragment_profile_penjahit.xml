@@ -37,9 +37,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:drawableLeft="@drawable/ic_person"
+            android:drawableLeft="@drawable/ic_profile"
             android:drawablePadding="4dp"
-            android:drawableTint="@color/purple_500"
+            android:drawableTint="@color/purple_200"
             android:gravity="center_vertical"
             android:textSize="12sp"
             tools:text="Feronika Nur Maghfiro" />
