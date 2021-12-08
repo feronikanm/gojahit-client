@@ -79,7 +79,7 @@
     <style name="profileStyledBackButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/custom_button</item>
+        <item name="android:background">@drawable/login_button_bk</item>
         <item name="android:textAlignment">center</item>
         <item name="android:paddingLeft">30dp</item>
         <item name="android:paddingRight">50dp</item>
@@ -87,10 +87,8 @@
         <item name="android:paddingBottom">10dp</item>
         <item name="android:gravity">center</item>
         <item name="android:drawableLeft">@drawable/ic_stars</item>
-        <item name="android:fontFamily">@font/rubik_regular</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_alignParentTop">true</item>
-        <item name="android:minWidth">250dp</item>
     </style>
 
     <style name="expandedappbar">

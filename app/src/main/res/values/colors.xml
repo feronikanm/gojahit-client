@@ -14,6 +14,7 @@
     <!--colors for modern ui-->
     <color name="whiteTextColor">#fff</color>
     <color name="primaryTextColor">#00a5ff</color>
+    <color name="blue_scroll">#5094FD</color>
     <color name="loginBkColor">#f0f0f0</color>
 
     <!--colros for card-->

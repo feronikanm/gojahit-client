@@ -3,6 +3,7 @@ package com.fero.skripsi.ui.pelanggan.detail
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -13,11 +14,9 @@ import com.fero.skripsi.R
 import com.fero.skripsi.databinding.ActivityDetailPenjahitPelangganBinding
 import com.fero.skripsi.databinding.ContentDataPenjahitBinding
 import com.fero.skripsi.model.DetailKategoriNilai
-import com.fero.skripsi.model.DetailKategoriPenjahit
-import com.fero.skripsi.model.Penjahit
+import com.fero.skripsi.model.Pelanggan
 import com.fero.skripsi.ui.pelanggan.detail.adapter.ListKategoriInDetailAdapter
 import com.fero.skripsi.ui.pelanggan.detail.viewmodel.KategoriPenjahitInPelangganViewModel
-import com.fero.skripsi.ui.pelanggan.pesanan.PesananActivity
 import com.fero.skripsi.utils.Constant
 import com.fero.skripsi.utils.PrefHelper
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_ID_PELANGGAN
@@ -34,6 +33,7 @@ class DetailPenjahitPelangganActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_DATA_PENJAHIT = "EXTRA_DATA_PENJAHIT"
+        const val EXTRA_DATA_PELANGGAN = "EXTRA_DATA_PELANGGAN"
         private const val SHOW_DETAIL_KETEGORI = "ShowDetailKategori"
     }
 
@@ -55,7 +55,8 @@ class DetailPenjahitPelangganActivity : AppCompatActivity() {
         contentBinding.tvNamaPelanggan.text = namaPelanggan
         contentBinding.tvIdPelanggan.text = idPelanggan
 
-        val extraData: DetailKategoriNilai? = intent.extras?.getParcelable(EXTRA_DATA_PENJAHIT)
+        val extraDataNilai: DetailKategoriNilai? = intent.extras?.getParcelable(EXTRA_DATA_PENJAHIT)
+        val extraDataPelanggan: Pelanggan? = intent.extras?.getParcelable(EXTRA_DATA_PELANGGAN)
 
         val factory = ViewModelFactory.getInstance(this)
         val viewModel = ViewModelProvider(this, factory)[KategoriPenjahitInPelangganViewModel::class.java]
@@ -80,28 +81,37 @@ class DetailPenjahitPelangganActivity : AppCompatActivity() {
             eventIsEmpty.observe(this@DetailPenjahitPelangganActivity, {
                 // setupEventEmptyView(binding?.{EMPTY_VIEW MU}!! ,it)
             })
-            getListDetailKategori(extraData!!)
+            getListDetailKategori(extraDataNilai!!)
         }
 
 
 
         binding.apply {
-            if (extraData != null) {
-                tvNamaToko.text = extraData.nama_toko
-                tvNamaPenjahit.text = extraData.nama_penjahit
-                tvRating.text = extraData.nilai_akhir.toString()
+            if (extraDataNilai != null) {
+                tvNamaToko.text = extraDataNilai.nama_toko
+                tvNamaPenjahit.text = extraDataNilai.nama_penjahit
+//                tvRating.text = extraDataNilai.nilai_akhir.toString()
 
                 Glide.with(this@DetailPenjahitPelangganActivity)
-                    .load("${Constant.IMAGE_PENJAHIT}${extraData.foto_penjahit}")
+                    .load("${Constant.IMAGE_PENJAHIT}${extraDataNilai.foto_penjahit}")
                     .into(imgPenjahit)
             }
         }
 
         contentBinding.apply {
-            tvNamaPenjahit.text = extraData!!.nama_penjahit
-            tvEmailPenjahit.text = extraData.email_penjahit
-            tvTeleponPenjahit.text = extraData.telp_penjahit
-            tvAlamatPenjahit.text = extraData.alamat_penjahit
+            tvNamaPenjahit.text = extraDataNilai!!.nama_penjahit
+            tvEmailPenjahit.text = extraDataNilai.email_penjahit
+            tvTeleponPenjahit.text = extraDataNilai.telp_penjahit
+            tvAlamatPenjahit.text = extraDataNilai.alamat_penjahit
+        }
+
+        contentBinding.btnGoToMaps.setOnClickListener {
+            Toast.makeText(this, "Cliked", Toast.LENGTH_SHORT).show()
+            Log.d("Test", "CLICKED")
+            val intent = Intent(this, MapsRoutePelangganActivity::class.java)
+            intent.putExtra(MapsRoutePelangganActivity.EXTRA_DATA_PENJAHIT, extraDataNilai)
+            intent.putExtra(MapsRoutePelangganActivity.EXTRA_DATA_PELANGGAN, extraDataPelanggan)
+            startActivity(intent)
         }
     }
 

@@ -209,6 +209,17 @@
 
             </RelativeLayout>
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_go_to_maps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_button_accept"
+                android:drawableStart="@drawable/ic_map"
+                android:padding="8dp"
+                android:text="  Lihat Lokasi"
+                android:textAppearance="@style/button_login_register"
+                android:textColor="@color/not_black" />
+
             <TextView
                 android:id="@+id/tv_kategori"
                 android:layout_width="wrap_content"

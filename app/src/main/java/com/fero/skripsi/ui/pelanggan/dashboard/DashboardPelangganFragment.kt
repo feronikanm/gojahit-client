@@ -151,6 +151,7 @@ class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBindin
         Log.d("Test", "CLICK FROM ADAPTER")
         val intent = Intent(binding.root.context, DetailPenjahitPelangganActivity::class.java)
         intent.putExtra(DetailPenjahitPelangganActivity.EXTRA_DATA_PENJAHIT, data)
+        intent.putExtra(DetailPenjahitPelangganActivity.EXTRA_DATA_PELANGGAN, dataPelanggan)
         startActivity(intent)
     }
 

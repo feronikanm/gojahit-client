@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.fero.skripsi" >
+    package="com.fero.skripsi">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -13,13 +13,14 @@
         android:label="@string/application_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Skripsi" >
-
+        android:theme="@style/Theme.Skripsi">
+        <activity
+            android:name=".ui.pelanggan.detail.MapsRoutePelangganActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.pelanggan.auth.MapsPelangganActivity"
-            android:theme="@style/Theme.Intro"
-            android:exported="false" />
-
+            android:exported="false"
+            android:theme="@style/Theme.Intro" />
         <activity
             android:name=".ui.pelanggan.pesanan.PesananActivity"
             android:exported="false" />
@@ -28,16 +29,16 @@
             android:exported="false" />
         <activity
             android:name=".ui.pelanggan.auth.EditDataPelangganActivity"
-            android:theme="@style/Theme.Intro"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Intro" />
         <activity
             android:name=".ui.pelanggan.detail.DetailPenjahitPelangganActivity"
             android:exported="true"
             android:theme="@style/Theme.Intro" />
         <activity
             android:name=".ui.penjahit.auth.EditDataPenjahitActivity"
-            android:theme="@style/Theme.Intro"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Intro" />
         <activity
             android:name=".ui.penjahit.dashboard.DetailPenjahitActivity"
             android:exported="true" />
@@ -74,13 +75,10 @@
             android:exported="true" />
         <activity
             android:name=".ui.pelanggan.rating.RatingPenjahitActivity"
-            android:exported="false" />
-
-<!--         <activity-->
-<!--         android:name=".ui.splashscreen.SplashScreenActivity"-->
-<!--         android:exported="true"-->
-<!--         android:theme="@style/Theme.Intro"/>-->
-
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".ui.splashscreen.SplashScreenActivity" -->
+        <!-- android:exported="true" -->
+        <!-- android:theme="@style/Theme.Intro"/> -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -90,7 +88,7 @@
 
         <activity
             android:name=".ui.splashscreen.SplashScreenActivity"
-            android:theme="@style/Theme.Intro" >
+            android:theme="@style/Theme.Intro">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
