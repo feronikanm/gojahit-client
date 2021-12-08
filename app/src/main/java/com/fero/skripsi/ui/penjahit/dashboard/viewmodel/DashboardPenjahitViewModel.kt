@@ -1,12 +1,9 @@
 package com.fero.skripsi.ui.penjahit.dashboard.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import com.fero.skripsi.core.BaseViewModel
 import com.fero.skripsi.data.Repository
 import com.fero.skripsi.data.source.ResponseCallback
 import com.fero.skripsi.model.DetailKategoriNilai
-import com.fero.skripsi.model.Kategori
-import com.fero.skripsi.model.Nilai
 import com.fero.skripsi.utils.SingleLiveEvent
 
 class DashboardPenjahitViewModel (private val repository: Repository) : BaseViewModel() {
@@ -15,7 +12,7 @@ class DashboardPenjahitViewModel (private val repository: Repository) : BaseView
     var listKategori = SingleLiveEvent<List<DetailKategoriNilai>>()
 
     fun getDataPenjahit() {
-        repository.getDataPenjahit(object : ResponseCallback<List<DetailKategoriNilai>>{
+        repository.getDataPenjahitNilai(object : ResponseCallback<List<DetailKategoriNilai>>{
             override fun onSuccess(data: List<DetailKategoriNilai>) {
                 listNilai.postValue(data)
             }

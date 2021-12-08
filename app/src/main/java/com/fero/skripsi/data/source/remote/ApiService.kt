@@ -39,6 +39,9 @@ import retrofit2.http.*
 interface ApiService {
 
     @GET(URL_PENJAHIT_GET_BY_NILAI)
+    fun getDataPenjahitNilai() : Observable<List<DetailKategoriNilai>>
+
+    @GET(URL_PENJAHIT_GET)
     fun getDataPenjahit() : Observable<List<DetailKategoriNilai>>
 
     @GET(URL_KATEGORI_GET)

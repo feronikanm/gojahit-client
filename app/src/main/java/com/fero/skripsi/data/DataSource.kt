@@ -5,7 +5,7 @@ import com.fero.skripsi.model.*
 
 interface DataSource {
 
-    fun getDataPenjahit(callback: ResponseCallback<List<DetailKategoriNilai>>)
+    fun getDataPenjahitNilai(callback: ResponseCallback<List<DetailKategoriNilai>>)
 
     fun getDataKategori(callback: ResponseCallback<List<DetailKategoriNilai>>)
 

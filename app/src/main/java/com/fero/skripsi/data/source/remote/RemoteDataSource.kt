@@ -27,9 +27,9 @@ class RemoteDataSource(context: Context) : DataSource {
 
     private val apiService = ApiConfig.getApiService(context)
 
-    override fun getDataPenjahit(callback: ResponseCallback<List<DetailKategoriNilai>>) {
+    override fun getDataPenjahitNilai(callback: ResponseCallback<List<DetailKategoriNilai>>) {
         EspressoIdlingResource.increment()
-        apiService.getDataPenjahit().subscribeOn(Schedulers.io())
+        apiService.getDataPenjahitNilai().subscribeOn(Schedulers.io())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
