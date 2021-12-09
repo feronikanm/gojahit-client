@@ -51,6 +51,30 @@ class RemoteDataSource(context: Context) : DataSource {
             })
     }
 
+    override fun getDataPenjahit(callback: ResponseCallback<List<DetailKategoriNilai>>) {
+        EspressoIdlingResource.increment()
+        apiService.getDataPenjahit().subscribeOn(Schedulers.io())
+            .doOnSubscribe { callback.onShowProgress() }
+            .doOnTerminate { callback.onHideProgress() }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : ApiCallback<List<DetailKategoriNilai>>() {
+                override fun onSuccess(data: List<DetailKategoriNilai>) {
+                    if (data.isNotEmpty()) {
+                        callback.onSuccess(data)
+                        callback.isEmptyData(false)
+                    } else {
+                        callback.isEmptyData(true)
+                    }
+                    EspressoIdlingResource.decrement()
+                }
+
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
+                    EspressoIdlingResource.decrement()
+                }
+            })
+    }
+
     override fun getDataKategori(callback: ResponseCallback<List<DetailKategoriNilai>>) {
         EspressoIdlingResource.increment()
         apiService.getDataKategori().subscribeOn(Schedulers.io())

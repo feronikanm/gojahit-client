@@ -114,7 +114,9 @@ class DashboardPelangganFragment : BaseFragment<FragmentDashboardPelangganBindin
 
                 val bundle = Bundle()
                 val bundleData = Gson().toJson(data)
+                val bundleDataPelanggan = Gson().toJson(dataPelanggan)
                 bundle.putString("EXTRA_PENJAHIT_BY_KATEGORI", bundleData)
+                bundle.putString("EXTRA_PENJAHIT_BY_KATEGORI_EXTRA_PELANGGAN", bundleDataPelanggan)
                 bundle.putString("EXTRA_ACCOUNT_STATUS", "status_pelanggan")
                 detailKategoriFragment.arguments = bundle
 

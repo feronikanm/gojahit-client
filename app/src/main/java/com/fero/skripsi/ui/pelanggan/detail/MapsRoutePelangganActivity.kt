@@ -26,9 +26,6 @@ import java.util.*
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 
 
-
-
-
 class MapsRoutePelangganActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var binding: ActivityMapsRoutePelangganBinding
@@ -55,7 +52,7 @@ class MapsRoutePelangganActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(binding.root)
 
         binding.tvIdPelanggan.text = "Nama : " + extraDataPelanggan!!.nama_pelanggan + ", Id Pelanggan : " + extraDataPelanggan!!.id_pelanggan
-        binding.tvIdPenjahit.text = "Nama : " + extraDataNilai!!.nama_penjahit + ", Id Pelanggan : " + extraDataNilai!!.id_penjahit
+        binding.tvIdPenjahit.text = "Nama : " + extraDataNilai!!.nama_penjahit + ", Id Penjahit : " + extraDataNilai!!.id_penjahit
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 

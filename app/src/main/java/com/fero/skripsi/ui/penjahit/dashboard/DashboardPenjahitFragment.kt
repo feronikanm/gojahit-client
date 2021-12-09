@@ -94,7 +94,9 @@ class DashboardPenjahitFragment : BaseFragment<FragmentDashboardPenjahitBinding>
 
                 val bundle = Bundle()
                 val bundleData = Gson().toJson(data)
+                val bundleDataPenjahit = Gson().toJson(dataPenjahit)
                 bundle.putString("EXTRA_PENJAHIT_BY_KATEGORI", bundleData)
+                bundle.putString("EXTRA_PENJAHIT_BY_KATEGORI_EXTRA_PENJAHIT", bundleDataPenjahit)
                 bundle.putString("EXTRA_ACCOUNT_STATUS", "status_penjahit")
                 detailKategoriFragment.arguments = bundle
 

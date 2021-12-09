@@ -19,6 +19,10 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
         remoteDataSource.getDataPenjahitNilai(callback)
     }
 
+    override fun getDataPenjahit(callback: ResponseCallback<List<DetailKategoriNilai>>) {
+        remoteDataSource.getDataPenjahit(callback)
+    }
+
     override fun getDataKategori(callback: ResponseCallback<List<DetailKategoriNilai>>) {
         remoteDataSource.getDataKategori(callback)
     }
