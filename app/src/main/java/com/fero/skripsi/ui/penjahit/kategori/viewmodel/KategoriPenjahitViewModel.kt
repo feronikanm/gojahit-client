@@ -102,10 +102,10 @@ class KategoriPenjahitViewModel(private val repository: Repository) : BaseViewMo
         })
     }
 
-    fun updateDataDetailKategori(data: DetailKategoriPenjahit){
-        repository.updateDataDetailKategori(data, object : ResponseCallback<DetailKategoriPenjahit>{
-            override fun onSuccess(data: DetailKategoriPenjahit) {
-                dataListDetailKategori.postValue(data)
+    fun updateDataDetailKategori(data: DetailKategori){
+        repository.updateDataDetailKategori(data, object : ResponseCallback<DetailKategori>{
+            override fun onSuccess(data: DetailKategori) {
+                dataDetailKategori.postValue(data)
                 messageSuccess.postValue("Data Berhasil Diperbarui")
                 onSuccessState.postValue(true)
             }

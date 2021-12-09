@@ -105,6 +105,11 @@ class TambahDataKategoriFragment : DialogFragment() {
             return
         }
 
+        if (ongkosPenjahit.isEmpty()){
+            binding.etOngkosJahit.error = FIELD_REQUIRED
+            return
+        }
+
         val dataDetailKategori = DetailKategori(
             0,
             dataPenjahit?.id_penjahit,

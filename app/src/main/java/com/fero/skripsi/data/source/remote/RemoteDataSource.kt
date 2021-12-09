@@ -560,8 +560,8 @@ class RemoteDataSource(context: Context) : DataSource {
     }
 
     override fun updateDataDetailKategori(
-        data: DetailKategoriPenjahit,
-        responseCallback: ResponseCallback<DetailKategoriPenjahit>
+        data: DetailKategori,
+        responseCallback: ResponseCallback<DetailKategori>
     ) {
         EspressoIdlingResource.increment()
 
@@ -576,10 +576,10 @@ class RemoteDataSource(context: Context) : DataSource {
             harga_bahan = data.harga_bahan,
             ongkos_penjahit = data.ongkos_penjahit,
             perkiraan_lama_waktu_pengerjaan = data.perkiraan_lama_waktu_pengerjaan!!,
-        ).enqueue(object : Callback<Success<DetailKategoriPenjahit>> {
+        ).enqueue(object : Callback<Success<DetailKategori>> {
             override fun onResponse(
-                call: Call<Success<DetailKategoriPenjahit>>,
-                response: Response<Success<DetailKategoriPenjahit>>
+                call: Call<Success<DetailKategori>>,
+                response: Response<Success<DetailKategori>>
             ) {
                 responseCallback.onHideProgress()
                 response.body()?.data?.let { responseCallback.onSuccess(it) }
@@ -587,7 +587,7 @@ class RemoteDataSource(context: Context) : DataSource {
                 EspressoIdlingResource.decrement()
             }
 
-            override fun onFailure(call: Call<Success<DetailKategoriPenjahit>>, t: Throwable) {
+            override fun onFailure(call: Call<Success<DetailKategori>>, t: Throwable) {
                 responseCallback.onHideProgress()
                 EspressoIdlingResource.decrement()
                 responseCallback.onFailed(500, t.localizedMessage)

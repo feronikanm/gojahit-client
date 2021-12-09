@@ -11,6 +11,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.fero.skripsi.R
 import com.fero.skripsi.databinding.FragmentEditDataKategoriBinding
+import com.fero.skripsi.model.DetailKategori
 import com.fero.skripsi.model.DetailKategoriPenjahit
 import com.fero.skripsi.ui.penjahit.kategori.viewmodel.KategoriPenjahitViewModel
 import com.fero.skripsi.utils.ViewModelFactory
@@ -39,8 +40,9 @@ class EditDataKategoriFragment : DialogFragment() {
         val viewModel = ViewModelProvider(this, factory)[KategoriPenjahitViewModel::class.java]
 
         viewModel.apply {
-            dataListDetailKategori.observe(this@EditDataKategoriFragment, {
+            dataDetailKategori.observe(this@EditDataKategoriFragment, {
                 dialog?.dismiss()
+                (parentFragment as KategoriPenjahitFragment).refreshGetDataViewModel()
             })
 
             messageSuccess.observe(this@EditDataKategoriFragment, {
@@ -70,7 +72,7 @@ class EditDataKategoriFragment : DialogFragment() {
     }
 
     private fun popupSimpanData(context: Context?, data: DetailKategoriPenjahit?) {
-        val box: Context = ContextThemeWrapper(context, R.style.AppTheme)
+        val box: Context = ContextThemeWrapper(context, R.style.ThemeOverlay_MaterialComponents_Dialog_Alert)
         val materialAlertDialogBuilder = MaterialAlertDialogBuilder(box)
         materialAlertDialogBuilder.setTitle("Perbarui Data")
             .setMessage("Apa Anda yakin ingin mengubah data ini?")
@@ -95,33 +97,22 @@ class EditDataKategoriFragment : DialogFragment() {
             return
         }
 
-        val dataDetailKategori = DetailKategoriPenjahit(
+        if (ongkosPenjahit.isEmpty()){
+            binding.etOngkosJahit.error = FIELD_REQUIRED
+            return
+        }
+
+        val dataDetailKategori = DetailKategori(
             data?.id_detail_kategori,
             data?.id_penjahit,
             data?.id_kategori,
-            data?.alamat_penjahit,
-            bahanJahit,
-            data?.email_penjahit,
-            data?.foto_penjahit,
-            data?.gambar_kategori,
-            hargaBahan,
-            data?.hari_buka,
-            data?.jam_buka,
-            data?.jam_tutup,
-            data?.keterangan_toko,
-            data?.jangkauan_kategori_penjahit,
-            data?.spesifikasi_penjahit,
-            lamaWaktu,
             ketKategori,
-            data?.latitude_penjahit,
-            data?.longitude_penjahit,
-            data?.nama_kategori,
-            data?.nama_penjahit,
-            data?.nama_toko,
+            bahanJahit,
+            hargaBahan,
             ongkosPenjahit,
-            data?.password_penjahit,
-            data?.telp_penjahit,
+            lamaWaktu
         )
+
         viewModel.updateDataDetailKategori(dataDetailKategori)
     }
 

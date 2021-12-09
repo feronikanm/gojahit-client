@@ -35,7 +35,7 @@ interface DataSource {
 
     fun deleteDataDetailKategori(data: DetailKategoriPenjahit, responseCallback: ResponseCallback<Int>)
 
-    fun updateDataDetailKategori(data: DetailKategoriPenjahit, responseCallback: ResponseCallback<DetailKategoriPenjahit>)
+    fun updateDataDetailKategori(data: DetailKategori, responseCallback: ResponseCallback<DetailKategori>)
 
     fun getDataPenjahitByKategori(data: DetailKategoriNilai, callback: ResponseCallback<List<DetailKategoriNilai>>)
 

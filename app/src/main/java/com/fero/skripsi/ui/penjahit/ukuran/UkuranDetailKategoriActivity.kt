@@ -187,32 +187,32 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
         viewModel.deleteDataUkuranDetailKategori(data, position)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.option_menu, menu)
-        return true
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.option_menu, menu)
+//        return true
+//    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.btn_edit -> {
-
-                val editDataKategoriFragment = EditDataKategoriFragment()
-
-                val bundle = Bundle()
-                val bundleData = Gson().toJson(extraData)
-                bundle.putString("EXTRA_DETAIL_KATEGORI", bundleData)
-                editDataKategoriFragment.arguments = bundle
-
-                editDataKategoriFragment.show(
-                    supportFragmentManager,
-                    EditDataKategoriFragment::class.java.simpleName
-                )
-                return true
-            }
-            else -> {}
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when (item.itemId) {
+//            R.id.btn_edit -> {
+//
+//                val editDataKategoriFragment = EditDataKategoriFragment()
+//
+//                val bundle = Bundle()
+//                val bundleData = Gson().toJson(extraData)
+//                bundle.putString("EXTRA_DETAIL_KATEGORI", bundleData)
+//                editDataKategoriFragment.arguments = bundle
+//
+//                editDataKategoriFragment.show(
+//                    supportFragmentManager,
+//                    EditDataKategoriFragment::class.java.simpleName
+//                )
+//                return true
+//            }
+//            else -> {}
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 
     fun refreshGetDataViewModel() {
         viewModel.getUkuranByDetailKategori(dataUkuran)

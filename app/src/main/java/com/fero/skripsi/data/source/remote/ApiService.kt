@@ -185,7 +185,7 @@ interface ApiService {
         @Field("ongkosPenjahit") ongkos_penjahit: String?,
         @Field("perkiraanLamaWaktuPengerjaan") perkiraan_lama_waktu_pengerjaan: String,
 
-        ): Call<Success<DetailKategoriPenjahit>>
+        ): Call<Success<DetailKategori>>
 
 
     @GET(URL_DETAIL_KATEGORI_GET_BY_KATEGORI)
