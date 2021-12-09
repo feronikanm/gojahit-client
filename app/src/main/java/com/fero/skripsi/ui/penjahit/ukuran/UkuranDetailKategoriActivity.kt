@@ -156,10 +156,7 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
             }
 
             rvUkuran.layoutManager = LinearLayoutManager(this@UkuranDetailKategoriActivity, LinearLayoutManager.VERTICAL, false)
-
-
         }
-
     }
 
     private fun setupRV(data: List<UkuranDetailKategori>?) {

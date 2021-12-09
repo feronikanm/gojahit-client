@@ -33,7 +33,7 @@ interface DataSource {
 
     fun insertDataDetailKategoriPenjahit(data: DetailKategori, responseCallback: ResponseCallback<DetailKategori>)
 
-    fun deleteDataDetailKategori(data: DetailKategoriPenjahit, responseCallback: ResponseCallback<DetailKategoriPenjahit>)
+    fun deleteDataDetailKategori(data: DetailKategoriPenjahit, responseCallback: ResponseCallback<Int>)
 
     fun updateDataDetailKategori(data: DetailKategoriPenjahit, responseCallback: ResponseCallback<DetailKategoriPenjahit>)
 

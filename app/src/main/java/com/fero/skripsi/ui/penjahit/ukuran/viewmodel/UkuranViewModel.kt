@@ -107,11 +107,9 @@ class UkuranViewModel(private val repository: Repository) : BaseViewModel() {
 
     fun deleteDataUkuranDetailKategori(data: UkuranDetailKategori, position: Int) {
 
-        repository.deleteDataUkuranDetailKategori(
-            data,
-            object : ResponseCallback<ResponseDeleteSuccess> {
+        repository.deleteDataUkuranDetailKategori(data, object : ResponseCallback<ResponseDeleteSuccess> {
                 override fun onSuccess(data: ResponseDeleteSuccess) {
-                    messageSuccess.postValue("Data Berhasil Dihapus\nKembali untuk melihat data yang telah dihapus")
+                    messageSuccess.postValue("Data Berhasil Dihapus")
                     onSuccessDeleteState.postValue(true)
                     deleteItemPosition.postValue(position)
                 }

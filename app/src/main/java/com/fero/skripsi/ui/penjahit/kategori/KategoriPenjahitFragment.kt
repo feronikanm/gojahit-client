@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fero.skripsi.R
 import com.fero.skripsi.core.BaseFragment
@@ -19,20 +18,23 @@ import com.fero.skripsi.model.Penjahit
 import com.fero.skripsi.ui.penjahit.kategori.adapter.ListKategoriAdapter
 import com.fero.skripsi.ui.penjahit.kategori.viewmodel.KategoriPenjahitViewModel
 import com.fero.skripsi.ui.penjahit.ukuran.UkuranDetailKategoriActivity
-import com.fero.skripsi.ui.penjahit.ukuran.viewmodel.UkuranViewModel
-import com.fero.skripsi.utils.ViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
 
 class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>() {
 
-    private val penjahitViewModel: KategoriPenjahitViewModel by lazy {
+    private val kategoriPenjahitViewModel: KategoriPenjahitViewModel by lazy {
         obtainViewModel()
     }
 
     private val dataPenjahit by lazy {
         baseGetInstance<Penjahit>("EXTRA_PENJAHIT_KATEGORI")
     }
+
+    private val kategoriAdapter by lazy {
+        ListKategoriAdapter()
+    }
+
     override fun setupViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -41,7 +43,7 @@ class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>()
     }
 
     override fun setupViewModel() {
-        penjahitViewModel.apply {
+        kategoriPenjahitViewModel.apply {
 
             listDetailKategori.observe(viewLifecycleOwner, {
                 setupRvDetailKategori(it)
@@ -56,13 +58,31 @@ class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>()
 
             })
 
-            eventIsEmpty.observe(viewLifecycleOwner, {
-                // setupEventEmptyView(binding?.{EMPTY_VIEW MU}!! ,it)
+            dataListDetailKategori.observe(viewLifecycleOwner, {
+
+            })
+
+            messageSuccess.observe(viewLifecycleOwner, {
+                showToast(it)
+            })
+
+            eventShowProgress.observe(viewLifecycleOwner, {
+                setupEventProgressView(binding.progressBar, it)
+            })
+
+            onSuccessDeleteState.observe(viewLifecycleOwner, {
+                if (it) {
+
+                    deleteItemPosition.observe(viewLifecycleOwner, {
+                        kategoriAdapter.deleteItem(it)
+                    })
+
+                }
             })
 
         }
 
-        penjahitViewModel.getListDetailKategori(dataPenjahit)
+        kategoriPenjahitViewModel.getListDetailKategori(dataPenjahit)
     }
 
     override fun setupUI(view: View, savedInstanceState: Bundle?) {
@@ -84,21 +104,20 @@ class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>()
     }
 
     private fun setupRvDetailKategori(data: List<DetailKategoriPenjahit>?) {
-        val listKategoriAdapter = ListKategoriAdapter()
-        listKategoriAdapter.setDetailKategori(data!!)
+        kategoriAdapter.setDetailKategori(data!!)
 
         binding.rvDetailKategori.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = listKategoriAdapter
+            adapter = kategoriAdapter
         }
 
-        listKategoriAdapter.setOnDeleteClickCallback(object : ListKategoriAdapter.OnDeleteClickCallback{
-            override fun onDeleteClicked(data: DetailKategoriPenjahit) {
-                popupDelete(context, data)
+        kategoriAdapter.setOnDeleteClickCallback(object : ListKategoriAdapter.OnDeleteClickCallback{
+            override fun onDeleteClicked(data: DetailKategoriPenjahit, position: Int) {
+                popupDelete(context, data, position)
             }
         })
 
-        listKategoriAdapter.setOnUpdateClickCallback(object : ListKategoriAdapter.OnUpdateClickCallback{
+        kategoriAdapter.setOnUpdateClickCallback(object : ListKategoriAdapter.OnUpdateClickCallback{
             override fun onUpdateClikced(data: DetailKategoriPenjahit) {
 
                 val editDataKategoriFragment = EditDataKategoriFragment()
@@ -113,7 +132,7 @@ class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>()
             }
         })
 
-        listKategoriAdapter.setOnItemClickCallback(object : ListKategoriAdapter.OnItemClickCallback{
+        kategoriAdapter.setOnItemClickCallback(object : ListKategoriAdapter.OnItemClickCallback{
             override fun onItemClicked(data: DetailKategoriPenjahit) {
                 selectedKategori(data)
             }
@@ -128,47 +147,27 @@ class KategoriPenjahitFragment : BaseFragment<FragmentKategoriPenjahitBinding>()
         startActivity(intent)
     }
 
-    private fun popupDelete(context: Context?, data: DetailKategoriPenjahit) {
+    private fun popupDelete(context: Context?, data: DetailKategoriPenjahit, position: Int) {
         val box: Context = ContextThemeWrapper(context, R.style.ThemeOverlay_MaterialComponents_Dialog_Alert)
         val materialAlertDialogBuilder = MaterialAlertDialogBuilder(box)
         materialAlertDialogBuilder.setTitle("Hapus Data")
             .setMessage("Apa anda yakin ingin menghapus data ini?")
-            .setNegativeButton("Batalkan", null)
+            .setNegativeButton("Tidak", null)
             .setPositiveButton(
                 "Hapus"
             ) { dialogInterface, i ->
                 // panggil disini
-                deleteDataKategori(data)
+                deleteDataKategori(data, position)
              }
             .show()
     }
 
-    private fun deleteDataKategori(data: DetailKategoriPenjahit){
-        val factory = ViewModelFactory.getInstance(requireActivity())
-        val viewModel = ViewModelProvider(this, factory)[KategoriPenjahitViewModel::class.java]
-
-        viewModel.apply {
-            dataListDetailKategori.observe(this@KategoriPenjahitFragment, {
-            })
-
-            messageSuccess.observe(this@KategoriPenjahitFragment, {
-                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-            })
-
-            messageFailed.observe(this@KategoriPenjahitFragment, {
-                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-            })
-        }
-
-        viewModel.deleteDataDetailKategori(data)
-
-//        var message = data.nama_kategori
-//        showMessage( "Data $message Berhasil dihapus", context)
-
+    private fun deleteDataKategori(data: DetailKategoriPenjahit, position: Int){
+        kategoriPenjahitViewModel.deleteDataDetailKategori(data, position)
     }
 
     fun refreshGetDataViewModel() {
-        penjahitViewModel.getListDetailKategori(dataPenjahit)
+        kategoriPenjahitViewModel.getListDetailKategori(dataPenjahit)
     }
 
 

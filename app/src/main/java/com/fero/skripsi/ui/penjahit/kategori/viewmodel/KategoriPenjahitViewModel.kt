@@ -16,6 +16,8 @@ class KategoriPenjahitViewModel(private val repository: Repository) : BaseViewMo
     var messageFailed = SingleLiveEvent<String>()
     var messageSuccess = SingleLiveEvent<String>()
     var onSuccessState = SingleLiveEvent<Boolean>()
+    var onSuccessDeleteState = SingleLiveEvent<Boolean>()
+    var deleteItemPosition = SingleLiveEvent<Int>()
 
     fun getListDetailKategori(data: Penjahit){
 
@@ -71,17 +73,18 @@ class KategoriPenjahitViewModel(private val repository: Repository) : BaseViewMo
         })
     }
 
-    fun deleteDataDetailKategori(data: DetailKategoriPenjahit){
-        repository.deleteDataDetailKategori(data, object : ResponseCallback<DetailKategoriPenjahit>{
-            override fun onSuccess(data: DetailKategoriPenjahit) {
-                dataListDetailKategori.postValue(data)
+    fun deleteDataDetailKategori(data: DetailKategoriPenjahit, position: Int){
+
+        repository.deleteDataDetailKategori(data, object : ResponseCallback<Int>{
+            override fun onSuccess(data: Int) {
+                onSuccessDeleteState.postValue(true)
                 messageSuccess.postValue("Data Berhasil Dihapus")
-                onSuccessState.postValue(true)
+                deleteItemPosition.postValue(position)
             }
 
             override fun onFailed(statusCode: Int, errorMessage: String?) {
                 messageFailed.postValue(errorMessage)
-                onSuccessState.postValue(false)
+                onSuccessDeleteState.postValue(false)
             }
 
             override fun onShowProgress() {
@@ -93,7 +96,7 @@ class KategoriPenjahitViewModel(private val repository: Repository) : BaseViewMo
             }
 
             override fun isEmptyData(check: Boolean) {
-                TODO("Not yet implemented")
+                eventIsEmpty.postValue(check)
             }
 
         })

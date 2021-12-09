@@ -532,17 +532,17 @@ class RemoteDataSource(context: Context) : DataSource {
 
     override fun deleteDataDetailKategori(
         data: DetailKategoriPenjahit,
-        responseCallback: ResponseCallback<DetailKategoriPenjahit>
+        responseCallback: ResponseCallback<Int>
     ) {
         EspressoIdlingResource.increment()
 
         responseCallback.onShowProgress()
 
         apiService.deleteDataDetailKategori(data.id_detail_kategori!!)
-            .enqueue(object : Callback<Success<DetailKategoriPenjahit>> {
+            .enqueue(object : Callback<Success<Int>> {
                 override fun onResponse(
-                    call: Call<Success<DetailKategoriPenjahit>>,
-                    response: Response<Success<DetailKategoriPenjahit>>
+                    call: Call<Success<Int>>,
+                    response: Response<Success<Int>>
                 ) {
                     responseCallback.onHideProgress()
                     response.body()?.data?.let { responseCallback.onSuccess(it) }
@@ -550,7 +550,7 @@ class RemoteDataSource(context: Context) : DataSource {
                     EspressoIdlingResource.decrement()
                 }
 
-                override fun onFailure(call: Call<Success<DetailKategoriPenjahit>>, t: Throwable) {
+                override fun onFailure(call: Call<Success<Int>>, t: Throwable) {
                     responseCallback.onHideProgress()
                     EspressoIdlingResource.decrement()
                     responseCallback.onFailed(500, t.localizedMessage)

@@ -62,10 +62,10 @@ class DetailKetegoriAdapter : RecyclerView.Adapter<DetailKetegoriAdapter.DetailK
             binding.apply {
                 tvNamaToko.text = data.nama_toko
                 tvNamaPenjahit.text = data.nama_penjahit
-                val df = DecimalFormat("#.#")
-                val extraRating = data.nilai_akhir
-                val rating = df.format(extraRating)
-                tvRating.text = rating.toString()
+//                val df = DecimalFormat("#.#")
+//                val extraRating = data.nilai_akhir
+//                val rating = df.format(extraRating)
+//                tvRating.text = rating.toString()
 
                 Glide.with(itemView.context)
                     .load("${Constant.IMAGE_PENJAHIT}${data.foto_penjahit}")

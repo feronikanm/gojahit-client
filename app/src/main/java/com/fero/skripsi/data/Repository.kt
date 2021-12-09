@@ -96,7 +96,7 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
 
     override fun deleteDataDetailKategori(
         data: DetailKategoriPenjahit,
-        responseCallback: ResponseCallback<DetailKategoriPenjahit>
+        responseCallback: ResponseCallback<Int>
     ) {
         remoteDataSource.deleteDataDetailKategori(data, responseCallback)
     }

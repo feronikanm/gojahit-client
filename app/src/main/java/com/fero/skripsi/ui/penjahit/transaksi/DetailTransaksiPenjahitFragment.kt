@@ -13,6 +13,7 @@ import com.fero.skripsi.model.UkuranDetailPesanan
 import com.fero.skripsi.ui.pelanggan.pesanan.viewmodel.PesananViewModel
 import com.fero.skripsi.ui.pelanggan.transaksi.adapter.UkuranDetailPesananAdapter
 import com.fero.skripsi.ui.pelanggan.transaksi.viewmodel.UkuranDetailPesananViewModel
+import com.fero.skripsi.ui.penjahit.transaksi.adapter.UkuranDetailPesananPenjahitAdapter
 
 class DetailTransaksiPenjahitFragment : BaseFragment<FragmentDetailTransaksiPenjahitBinding>() {
 
@@ -192,12 +193,12 @@ class DetailTransaksiPenjahitFragment : BaseFragment<FragmentDetailTransaksiPenj
     }
 
     private fun setupRvUkuran(data: List<UkuranDetailPesanan>?) {
-        val ukuranDetailPesananAdapter = UkuranDetailPesananAdapter()
-        ukuranDetailPesananAdapter.setUkuranPesanan(data!!)
+        val ukuranDetailPesananPenjahitAdapter = UkuranDetailPesananPenjahitAdapter()
+        ukuranDetailPesananPenjahitAdapter.setUkuranPesanan(data!!)
 
         binding.rvUkuran.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = ukuranDetailPesananAdapter
+            adapter = ukuranDetailPesananPenjahitAdapter
         }
     }
 

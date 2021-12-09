@@ -1,5 +1,6 @@
 package com.fero.skripsi.ui.penjahit.kategori.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +34,12 @@ class ListKategoriAdapter : RecyclerView.Adapter<ListKategoriAdapter.ListKategor
         this.listDetailKategori.addAll(kategoriPenjahit)
     }
 
+    fun deleteItem(position: Int) {
+        Log.d("Position Removed", position.toString())
+        this.listDetailKategori.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListKategoriViewHolder {
         val itemListKategoriBinding = ItemListKategoriBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ListKategoriViewHolder(itemListKategoriBinding)
@@ -40,7 +47,7 @@ class ListKategoriAdapter : RecyclerView.Adapter<ListKategoriAdapter.ListKategor
 
     override fun onBindViewHolder(holder: ListKategoriViewHolder, position: Int) {
         val data = listDetailKategori[position]
-        holder.bind(data)
+        holder.bind(data, position)
     }
 
     override fun getItemCount(): Int {
@@ -48,7 +55,7 @@ class ListKategoriAdapter : RecyclerView.Adapter<ListKategoriAdapter.ListKategor
     }
 
     inner class ListKategoriViewHolder(private var binding: ItemListKategoriBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: DetailKategoriPenjahit){
+        fun bind(data: DetailKategoriPenjahit, position: Int){
             binding.apply {
 
                 tvKategori.text = data.nama_kategori
@@ -58,7 +65,7 @@ class ListKategoriAdapter : RecyclerView.Adapter<ListKategoriAdapter.ListKategor
                     .into(imgKategori)
 
                 btnDelete.setOnClickListener {
-                    onDeleteClickCallback.onDeleteClicked(listDetailKategori[adapterPosition])
+                    onDeleteClickCallback.onDeleteClicked(listDetailKategori[adapterPosition], position)
 //                    popupDelete(root.context)
 //                    deleteData(root.context, data)
                 }
@@ -80,7 +87,7 @@ class ListKategoriAdapter : RecyclerView.Adapter<ListKategoriAdapter.ListKategor
     }
 
     interface OnDeleteClickCallback{
-        fun onDeleteClicked(data: DetailKategoriPenjahit)
+        fun onDeleteClicked(data: DetailKategoriPenjahit, position: Int)
     }
 
     interface OnUpdateClickCallback{

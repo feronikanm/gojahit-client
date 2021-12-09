@@ -400,7 +400,7 @@
                         android:layout_height="40dp"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
-                        android:src="@drawable/ic_clock" />
+                        android:src="@drawable/ic_opened" />
 
                     <TextView
                         android:id="@+id/jam_buka"
@@ -438,7 +438,7 @@
                         android:layout_height="40dp"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
-                        android:src="@drawable/ic_clock" />
+                        android:src="@drawable/ic_closed" />
 
                     <TextView
                         android:id="@+id/jam_tutup"

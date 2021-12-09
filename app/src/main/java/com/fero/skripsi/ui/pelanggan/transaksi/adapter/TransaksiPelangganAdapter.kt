@@ -57,7 +57,6 @@ class TransaksiPelangganAdapter : RecyclerView.Adapter<TransaksiPelangganAdapter
                 tvTanggalSelesai.text = "Tanggal Selesai : " + data.tanggal_pesanan_selesai
                 tvStatusPesanan.text = "Status Pesanan : " + data.status_pesanan
 
-
 //                btnDelete.setOnClickListener {
 //                    onDeleteClickCallback.onDeleteClicked(listPesanan[adapterPosition])
 //                }

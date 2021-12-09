@@ -1,14 +1,15 @@
-package com.fero.skripsi.ui.pelanggan.transaksi.adapter
+package com.fero.skripsi.ui.penjahit.transaksi.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fero.skripsi.databinding.ItemListUkuranPesananBinding
+import com.fero.skripsi.databinding.ItemListUkuranPesananPenjahitBinding
 import com.fero.skripsi.model.UkuranDetailPesanan
 import com.fero.skripsi.utils.Constant
 
-class UkuranDetailPesananAdapter : RecyclerView.Adapter<UkuranDetailPesananAdapter.UkuranDetailPesananViewHolder>() {
+class UkuranDetailPesananPenjahitAdapter : RecyclerView.Adapter<UkuranDetailPesananPenjahitAdapter.UkuranDetailPesananViewHolder>() {
 
     val listUkuranPesanan = mutableListOf<UkuranDetailPesanan>()
 
@@ -21,8 +22,8 @@ class UkuranDetailPesananAdapter : RecyclerView.Adapter<UkuranDetailPesananAdapt
         parent: ViewGroup,
         viewType: Int
     ): UkuranDetailPesananViewHolder {
-        val itemListUkuranPesananBinding = ItemListUkuranPesananBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return UkuranDetailPesananViewHolder(itemListUkuranPesananBinding)
+        val itemListUkuranPesananPenjahitBinding = ItemListUkuranPesananPenjahitBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return UkuranDetailPesananViewHolder(itemListUkuranPesananPenjahitBinding)
     }
 
     override fun onBindViewHolder(holder: UkuranDetailPesananViewHolder, position: Int) {
@@ -34,7 +35,7 @@ class UkuranDetailPesananAdapter : RecyclerView.Adapter<UkuranDetailPesananAdapt
         return listUkuranPesanan.size
     }
 
-    inner class UkuranDetailPesananViewHolder(private var binding: ItemListUkuranPesananBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class UkuranDetailPesananViewHolder(private var binding: ItemListUkuranPesananPenjahitBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: UkuranDetailPesanan){
             binding.apply {
                 tvNamaUkuran.text = data.nama_ukuran

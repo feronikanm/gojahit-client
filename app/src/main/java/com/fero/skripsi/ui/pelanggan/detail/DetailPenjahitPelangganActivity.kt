@@ -126,6 +126,8 @@ class DetailPenjahitPelangganActivity : AppCompatActivity(), OnMapReadyCallback 
             }
         }
 
+
+
         contentBinding.apply {
             tvNamaPenjahit.text = extraDataNilai!!.nama_penjahit
             tvNamaToko.text = extraDataNilai!!.nama_toko
@@ -139,10 +141,16 @@ class DetailPenjahitPelangganActivity : AppCompatActivity(), OnMapReadyCallback 
             tvJamBuka.text = extraDataNilai!!.jam_buka
             tvJamTutup.text = extraDataNilai!!.jam_tutup
             tvJarak.text = " " + getHasilOlahDataLongLat(extraDataPelanggan!!, extraDataNilai!!) + " km"
+        }
+
+        if(extraDataNilai!!.nilai_akhir != null){
             val df = DecimalFormat("#.#")
             val extraRating = extraDataNilai!!.nilai_akhir
             val rating = df.format(extraRating)
-            tvRating.text = rating.toString()
+            contentBinding.tvRating.text = rating.toString()
+        }
+        else{
+            contentBinding.tvRating.text = "Belum ada penilaian"
         }
 
         contentBinding.btnGoToMaps.setOnClickListener {
@@ -301,9 +309,12 @@ class DetailPenjahitPelangganActivity : AppCompatActivity(), OnMapReadyCallback 
             val pelangganLatLng = LatLng(pelangganLatDouble, pelangganLngDouble)
             Log.d("pelangganLatLng : ", pelangganLatLng.toString())
 
+            val iconPengguna = BitmapDescriptorFactory.fromResource(R.drawable.ic_position_3d_2)
+
             val markerOptions = MarkerOptions().position(pelangganLatLng)
                 .title("Lokasi Saya")
                 .snippet(getAddress(pelangganLatDouble, pelangganLngDouble))
+                .icon(iconPengguna)
             mMap!!.addMarker(markerOptions)
 
 
@@ -322,18 +333,20 @@ class DetailPenjahitPelangganActivity : AppCompatActivity(), OnMapReadyCallback 
             val penjahitLatLng = LatLng(penjahitLatDouble, penjahitLngDouble)
             Log.d("penjahitLatLng : ", penjahitLatLng.toString())
 
+            val iconPenjahit = BitmapDescriptorFactory.fromResource(R.drawable.ic_home_taylor_3d)
 
             val markerPenjahit = MarkerOptions().position(penjahitLatLng).title("Lokasi Penjahit")
                 .snippet(getAddress(penjahitLatDouble, penjahitLngDouble))
+                .icon(iconPenjahit)
             mMap!!.addMarker(markerPenjahit)
 
-            mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(penjahitLatLng, 14f))
+            mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(penjahitLatLng, 13f))
 
             mMap!!.addPolyline(
                 PolylineOptions().add(penjahitLatLng, pelangganLatLng)
                     .width // below line is use to specify the width of poly line.
-                        (10f) // below line is use to add color to our poly line.
-                    .color(Color.BLUE) // below line is to make our poly line geodesic.
+                        (7f) // below line is use to add color to our poly line.
+                    .color(Color.RED) // below line is to make our poly line geodesic.
                     .geodesic(true)
             )
         }

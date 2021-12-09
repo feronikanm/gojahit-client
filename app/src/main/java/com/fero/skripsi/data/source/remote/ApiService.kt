@@ -170,7 +170,7 @@ interface ApiService {
     @POST(URL_DETAIL_KATEGORI_DELETE)
     fun deleteDataDetailKategori(
         @Path("id_detail_kategori") id_detail_kategori_path: Int
-    ): Call<Success<DetailKategoriPenjahit>>
+    ): Call<Success<Int>>
 
 
     @FormUrlEncoded

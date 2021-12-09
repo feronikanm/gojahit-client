@@ -47,7 +47,10 @@ class PenjahitAdapter : RecyclerView.Adapter<PenjahitAdapter.PenjahitViewHolder>
             binding.apply {
                 tvNamaToko.text = data.nama_toko
                 tvNamaPenjahit.text = data.nama_penjahit
-                tvRating.text = " " + data.nilai_akhir.toString()
+                val df = DecimalFormat("#.#")
+                val extraRating = data.nilai_akhir
+                val rating = df.format(extraRating)
+                tvRating.text = rating.toString()
                 tvJarak.text = " " + getHasilOlahDataLongLat(dataPenjahit, data) + " km"
 
                 Glide.with(itemView.context)
