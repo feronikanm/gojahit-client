@@ -18,18 +18,23 @@ class AuthPelangganViewModel(private val repository: Repository) : ViewModel() {
 
     fun getDataPelangganById(data: Pelanggan){
 
-        repository.getDataPelangganById(data, object : ResponseCallback<Pelanggan>{
-            override fun onSuccess(data: Pelanggan) {
-                dataPelangganVM.postValue(data)
+        repository.getDataPelangganById(data, object : ResponseCallback<List<Pelanggan>>{
+            override fun onSuccess(data: List<Pelanggan>) {
+                dataPelangganVM.postValue(data[0])
+                onSuccessState.postValue(true)
             }
 
             override fun onFailed(statusCode: Int, errorMessage: String?) {
+                messageFailed.postValue(errorMessage)
+                onSuccessState.postValue(false)
             }
 
             override fun onShowProgress() {
+                showProgress.postValue(true)
             }
 
             override fun onHideProgress() {
+                showProgress.postValue(false)
             }
 
             override fun isEmptyData(check: Boolean) {

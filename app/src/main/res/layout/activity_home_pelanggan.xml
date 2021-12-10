@@ -35,7 +35,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:text="Feronika"
+            tools:text="Feronika"
             android:textSize="18sp"
             android:textColor="@color/almost_black"
             android:fontFamily="@font/gilroy_medium"/>

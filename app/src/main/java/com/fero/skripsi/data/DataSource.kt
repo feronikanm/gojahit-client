@@ -11,7 +11,7 @@ interface DataSource {
 
     fun getDataKategori(callback: ResponseCallback<List<DetailKategoriNilai>>)
 
-    fun getDataPelangganById(data: Pelanggan, responseCallback: ResponseCallback<Pelanggan>)
+    fun getDataPelangganById(data: Pelanggan, responseCallback: ResponseCallback<List<Pelanggan>>)
 
     fun getDataPenjahitById(data: Penjahit, responseCallback: ResponseCallback<Penjahit>)
 

@@ -15,6 +15,7 @@ import com.fero.skripsi.ui.penjahit.auth.EditDataPenjahitActivity.Companion.EXTR
 import com.fero.skripsi.utils.Constant
 import com.fero.skripsi.utils.PrefHelper
 import com.google.gson.Gson
+import java.text.DecimalFormat
 
 class ProfilePenjahitFragment : Fragment() {
 
@@ -61,6 +62,16 @@ class ProfilePenjahitFragment : Fragment() {
                     .load("${Constant.IMAGE_PENJAHIT}${dataPenjahit.foto_penjahit}")
                     .into(imgPenjahit)
             }
+
+//            if(dataPenjahit!!.nilai_akhir != null){
+//                val df = DecimalFormat("#.#")
+//                val extraRating = extraDataNilai!!.nilai_akhir
+//                val rating = df.format(extraRating)
+//                contentBinding.tvRating.text = rating.toString()
+//            }
+//            else{
+//                contentBinding.tvRating.text = "Belum ada penilaian"
+//            }
         }
 
         binding.btnEditProfil.setOnClickListener {

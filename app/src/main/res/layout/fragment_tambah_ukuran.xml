@@ -38,7 +38,7 @@
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/gilroy_medium"
             android:gravity="center"
-            android:text="Pilih Ukuran\n(Tekan salah satu untuk memilih)"
+            android:text="Pilih Ukuran (Tekan salah satu untuk memilih)"
             android:textSize="16sp" />
 
         <androidx.recyclerview.widget.RecyclerView

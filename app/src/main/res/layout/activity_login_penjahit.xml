@@ -91,7 +91,6 @@
                     android:background="@color/white"
                     android:fontFamily="@font/gilroy_medium"
                     android:hint="Email"
-                    android:text="widyanatasha99@gmail.com"
                     android:textColor="@color/black"
                     android:inputType="textEmailAddress"
                     android:maxLines="1" />
@@ -118,7 +117,6 @@
                     android:fontFamily="@font/gilroy_medium"
                     android:textColor="@color/black"
                     android:hint="Password"
-                    android:text="widyanatasha123"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     app:hintAnimationEnabled="true"

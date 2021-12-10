@@ -23,6 +23,7 @@ import com.fero.skripsi.model.DetailKategoriNilai
 import com.fero.skripsi.model.Pelanggan
 import com.fero.skripsi.ui.pelanggan.detail.adapter.ListKategoriInDetailAdapter
 import com.fero.skripsi.ui.pelanggan.detail.viewmodel.KategoriPenjahitInPelangganViewModel
+import com.fero.skripsi.ui.penjahit.auth.viewmodel.AuthPenjahitViewModel
 import com.fero.skripsi.utils.Constant
 import com.fero.skripsi.utils.PrefHelper
 import com.fero.skripsi.utils.PrefHelper.Companion.PREF_ID_PELANGGAN
@@ -59,6 +60,18 @@ class DetailPenjahitPelangganActivity : AppCompatActivity(), OnMapReadyCallback 
         private const val SHOW_DETAIL_KETEGORI = "ShowDetailKategori"
     }
 
+    private val factory by lazy {
+        ViewModelFactory.getInstance(this)
+    }
+
+    private val authPenjahitViewModel by lazy {
+        ViewModelProvider(this, factory)[AuthPenjahitViewModel::class.java]
+    }
+
+    private val viewModel by lazy {
+        ViewModelProvider(this, factory)[KategoriPenjahitInPelangganViewModel::class.java]
+    }
+
     private val extraDataNilai: DetailKategoriNilai? by lazy {
         intent.getParcelableExtra(EXTRA_DATA_PENJAHIT)
     }
@@ -67,30 +80,8 @@ class DetailPenjahitPelangganActivity : AppCompatActivity(), OnMapReadyCallback 
         intent.getParcelableExtra(EXTRA_DATA_PELANGGAN)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityDetailPenjahitPelangganBinding.inflate(layoutInflater)
-        contentBinding = binding.detailPenjahit
-        setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        binding.collapsingToolbar.setTitle("Data Penjahit")
-        toolbarTextAppernce()
-
-        prefHelper = PrefHelper(this)
-        val namaPelanggan = prefHelper.getString(PREF_NAMA_PELANGGAN)
-        val idPelanggan = prefHelper.getString(PREF_ID_PELANGGAN)
-
-        contentBinding.tvNamaPelanggan.text = namaPelanggan
-        contentBinding.tvIdPelanggan.text = idPelanggan
-
-        contentBinding.tvIdPelangganFromIntent.text = "Nama : " + extraDataPelanggan!!.nama_pelanggan + ", Id Pelanggan : " + extraDataPelanggan!!.id_pelanggan
-        contentBinding.tvIdPenjahitFromIntent.text = "Nama : " + extraDataNilai!!.nama_penjahit + ", Id Penjahit : " + extraDataNilai!!.id_penjahit
-
-        val factory = ViewModelFactory.getInstance(this)
-        val viewModel = ViewModelProvider(this, factory)[KategoriPenjahitInPelangganViewModel::class.java]
-
+    private fun setupViewModel() {
         viewModel.apply {
             listDetailKategori.observe(this@DetailPenjahitPelangganActivity, {
                 setupRvDetailKategori(it)
@@ -112,6 +103,58 @@ class DetailPenjahitPelangganActivity : AppCompatActivity(), OnMapReadyCallback 
             })
             getListDetailKategori(extraDataNilai!!)
         }
+
+        authPenjahitViewModel.apply {
+            dataPenjahit.observe(this@DetailPenjahitPelangganActivity,{
+
+//
+//                contentBinding.apply {
+//                    tvNamaPenjahit.text = it!!.nama_penjahit
+//                    tvNamaToko.text = it.nama_toko
+//                    tvKetToko.text = it.keterangan_toko
+//                    tvEmailPenjahit.text = it.email_penjahit
+//                    tvTeleponPenjahit.text = it.telp_penjahit
+//                    tvAlamatPenjahit.text = it.alamat_penjahit
+//                    tvSpesifikasi.text = it.spesifikasi_penjahit
+//                    tvJangkauan.text = it.jangkauan_kategori_penjahit
+//                    tvHariBuka.text = it.hari_buka
+//                    tvJamBuka.text = it.jam_buka
+//                    tvJamTutup.text = it.jam_tutup
+//
+//                }
+
+            })
+        }
+
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityDetailPenjahitPelangganBinding.inflate(layoutInflater)
+        contentBinding = binding.detailPenjahit
+        setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.collapsingToolbar.setTitle("Data Penjahit")
+        toolbarTextAppernce()
+
+        setupViewModel()
+
+        prefHelper = PrefHelper(this)
+        val namaPelanggan = prefHelper.getString(PREF_NAMA_PELANGGAN)
+        val idPelanggan = prefHelper.getString(PREF_ID_PELANGGAN)
+
+        contentBinding.tvNamaPelanggan.text = namaPelanggan
+        contentBinding.tvIdPelanggan.text = idPelanggan
+
+        contentBinding.tvIdPelangganFromIntent.text = "Nama : " + extraDataPelanggan!!.nama_pelanggan + ", Id Pelanggan : " + extraDataPelanggan!!.id_pelanggan
+        contentBinding.tvIdPenjahitFromIntent.text = "Nama : " + extraDataNilai!!.nama_penjahit + ", Id Penjahit : " + extraDataNilai!!.id_penjahit
+
+//        val factory = ViewModelFactory.getInstance(this)
+//        val viewModel = ViewModelProvider(this, factory)[KategoriPenjahitInPelangganViewModel::class.java]
+
+
 
 
 

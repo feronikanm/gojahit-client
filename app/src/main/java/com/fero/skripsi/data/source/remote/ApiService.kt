@@ -56,7 +56,7 @@ interface ApiService {
     @GET(URL_PELANGGAN_GET_BY_ID)
     fun getDataPelangganById(
         @Path("id_pelanggan") id_pelanggan_path: Int
-    ): Call<Pelanggan>
+    ): Call<List<Pelanggan>>
 
     @GET(URL_PENJAHIT_GET_BY_ID)
     fun getDataPenjahitById(

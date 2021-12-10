@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:background="@color/white"
+    android:fitsSystemWindows="true"
     tools:context=".ui.penjahit.auth.ProfilePenjahitFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         android:padding="8dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -28,7 +27,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textSize="16sp"
+            android:fontFamily="@font/gilroy_medium"
+            android:textColor="@color/black"
+            android:textSize="18sp"
             android:textStyle="bold"
             tools:text="Toko Fero" />
 
@@ -40,23 +41,10 @@
             android:drawableLeft="@drawable/ic_profile"
             android:drawablePadding="4dp"
             android:drawableTint="@color/purple_200"
+            android:fontFamily="@font/gilroy_medium"
             android:gravity="center_vertical"
-            android:textSize="12sp"
-            tools:text="Feronika Nur Maghfiro" />
-
-        <TextView
-            android:id="@+id/tv_star"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/background_card"
-            android:elevation="4dp"
-            android:padding="16dp"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            tools:text="Feronika Nur Maghfiro" />
 
         <LinearLayout
             android:id="@+id/data"
@@ -71,184 +59,545 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Nama"
-                android:textStyle="italic" />
+                android:fontFamily="@font/gilroy_medium"
+                android:gravity="center_horizontal"
+                android:text="Informasi Penjahit"
+                android:textColor="@color/almost_black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_nama_penjahit2"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textColor="@color/black" />
+                android:layout_marginTop="20dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Nama Toko"
-                android:textStyle="italic" />
+                <ImageView
+                    android:id="@+id/img_person"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_worker" />
 
-            <TextView
-                android:id="@+id/tv_nama_toko2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textColor="@color/black" />
+                <TextView
+                    android:id="@+id/nama_penjahit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_person"
+                    android:text="Nama"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Email"
-                android:textStyle="italic" />
+                <TextView
+                    android:id="@+id/tv_nama_penjahit2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/nama_penjahit"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_person"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    tools:text="Feronika Nur Maghfiro" />
 
-            <TextView
-                android:id="@+id/tv_email_penjahit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textColor="@color/black" />
+            </RelativeLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Telepon"
-                android:textStyle="italic" />
 
-            <TextView
-                android:id="@+id/tv_telepon"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textColor="@color/black" />
+                android:layout_marginTop="20dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Alamat"
-                android:textStyle="italic" />
+                <ImageView
+                    android:id="@+id/img_nama_toko"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_toko" />
 
-            <TextView
-                android:id="@+id/tv_alamat_penjahit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textColor="@color/black" />
+                <TextView
+                    android:id="@+id/nama_toko"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_nama_toko"
+                    android:text="Nama Toko"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Latitude"
-                android:textStyle="italic" />
+                <TextView
+                    android:id="@+id/tv_nama_toko2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/nama_toko"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_nama_toko"
+                    tools:text="Toko"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tv_latitude"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textColor="@color/black" />
+            </RelativeLayout>
 
-            <TextView
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Longitude"
-                android:textStyle="italic" />
+                android:layout_marginTop="20dp">
 
-            <TextView
-                android:id="@+id/tv_longitude"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textColor="@color/black" />
+                <ImageView
+                    android:id="@+id/img_ket_toko"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_ket_toko" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Keterangan"
-                android:textStyle="italic" />
+                <TextView
+                    android:id="@+id/ket_toko"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_ket_toko"
+                    android:text="Keterangan"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_ket_toko"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textColor="@color/black" />
+                <TextView
+                    android:id="@+id/tv_ket_toko"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ket_toko"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_ket_toko"
+                    tools:text="Ket Toko"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Spesifikasi"
-                android:textStyle="italic" />
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tv_spesifikasi"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textColor="@color/black" />
+                android:layout_marginTop="20dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Jangkauan"
-                android:textStyle="italic" />
+                <ImageView
+                    android:id="@+id/img_telp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_telp" />
 
-            <TextView
-                android:id="@+id/tv_jangkauan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textColor="@color/black" />
+                <TextView
+                    android:id="@+id/telp_penjahit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_telp"
+                    android:text="Telepon"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Hari Buka"
-                android:textStyle="italic" />
+                <TextView
+                    android:id="@+id/tv_telepon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/telp_penjahit"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_telp"
+                    tools:text="082228038101"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tv_hari_buka"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textColor="@color/black" />
+            </RelativeLayout>
 
-            <TextView
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Jam Buka"
-                android:textStyle="italic" />
+                android:layout_marginTop="20dp">
 
-            <TextView
-                android:id="@+id/tv_jam_buka"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textColor="@color/black" />
+                <ImageView
+                    android:id="@+id/img_email"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_email" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Jam Tutup"
-                android:textStyle="italic" />
+                <TextView
+                    android:id="@+id/email_penjahit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_email"
+                    android:text="Email"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_jam_tutup"
-                android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tv_email_penjahit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/email_penjahit"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_email"
+                    tools:text="feronikanm@gmail.com"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textColor="@color/black" />
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/img_alamat"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_alamat" />
+
+                <TextView
+                    android:id="@+id/alamat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_alamat"
+                    android:text="Alamat"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_alamat_penjahit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/alamat"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_alamat"
+                    android:maxLines="4"
+                    tools:text="Jl. Pahlawan Probolinggo"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/img_latitude"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_globe" />
+
+                <TextView
+                    android:id="@+id/latitude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_latitude"
+                    android:text="Latitude"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_latitude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/latitude"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_latitude"
+                    android:maxLines="4"
+                    tools:text="0.0"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/img_longitude"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_globe" />
+
+                <TextView
+                    android:id="@+id/longitude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_longitude"
+                    android:text="Longitude"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_longitude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/longitude"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_longitude"
+                    android:maxLines="4"
+                    tools:text="0.0"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/img_spesifikasi"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_spesifikasi" />
+
+                <TextView
+                    android:id="@+id/spesifikasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_spesifikasi"
+                    android:text="Spesifikasi"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_spesifikasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/spesifikasi"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_spesifikasi"
+                    tools:text="Laki-laki, perempuan"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/img_jangkauan"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_jangkauan" />
+
+                <TextView
+                    android:id="@+id/jangkauan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_jangkauan"
+                    android:text="Jangkauan"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_jangkauan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/jangkauan"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_jangkauan"
+                    tools:text="Anak-anak, remaja, dewasa"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/img_hari_buka"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_hari_buka" />
+
+                <TextView
+                    android:id="@+id/hari_buka"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_hari_buka"
+                    android:text="Hari Buka"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_hari_buka"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/hari_buka"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_hari_buka"
+                    tools:text="Senin Selasa"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/img_jam_buka"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_opened" />
+
+                <TextView
+                    android:id="@+id/jam_buka"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_jam_buka"
+                    android:text="Jam Buka"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_jam_buka"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/jam_buka"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_jam_buka"
+                    tools:text="08:00"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/img_jam_tutup"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_closed" />
+
+                <TextView
+                    android:id="@+id/jam_tutup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_jam_tutup"
+                    android:text="Hari Buka"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_jam_tutup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/jam_tutup"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/img_jam_tutup"
+                    tools:text="16:00"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <!--                <RelativeLayout-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginTop="20dp">-->
+
+            <!--                    <ImageView-->
+            <!--                        android:id="@+id/img_rating"-->
+            <!--                        android:layout_width="40dp"-->
+            <!--                        android:layout_height="40dp"-->
+            <!--                        android:layout_alignParentLeft="true"-->
+            <!--                        android:layout_alignParentTop="true"-->
+            <!--                        android:src="@drawable/ic_rating" />-->
+
+            <!--                    <TextView-->
+            <!--                        android:id="@+id/rating"-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_marginLeft="10dp"-->
+            <!--                        android:layout_toRightOf="@id/img_rating"-->
+            <!--                        android:text="Rating Penjahit"-->
+            <!--                        android:textColor="@color/black"-->
+            <!--                        android:textSize="16sp"-->
+            <!--                        android:textStyle="bold" />-->
+
+            <!--                    <TextView-->
+            <!--                        android:id="@+id/tv_rating"-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_below="@id/rating"-->
+            <!--                        android:layout_alignParentBottom="true"-->
+            <!--                        android:layout_marginLeft="10dp"-->
+            <!--                        android:layout_toRightOf="@id/img_rating"-->
+            <!--                        android:text="4.0"-->
+            <!--                        android:textColor="@color/black"-->
+            <!--                        android:textSize="14sp" />-->
+
+            <!--                </RelativeLayout>-->
 
         </LinearLayout>
 
@@ -256,26 +605,26 @@
             android:id="@+id/btn_edit_profil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/custom_button_profile"
-            android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:text="Edit Profil"
+            android:background="@drawable/custom_button_profile"
             android:fontFamily="@font/gilroy_medium"
-            android:textAppearance="@style/button_login_register"/>
+            android:text="Edit Profil"
+            android:textAppearance="@style/button_login_register"
+            android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/custom_button_profile"
-            android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="40dp"
-            android:text="Logout"
+            android:background="@drawable/custom_button_profile"
             android:fontFamily="@font/gilroy_medium"
-            android:textAppearance="@style/button_login_register"/>
+            android:text="Logout"
+            android:textAppearance="@style/button_login_register"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

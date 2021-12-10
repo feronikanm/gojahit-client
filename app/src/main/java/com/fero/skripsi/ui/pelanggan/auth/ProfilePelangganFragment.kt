@@ -14,6 +14,9 @@ import com.fero.skripsi.databinding.FragmentProfilePelangganBinding
 import com.fero.skripsi.model.Pelanggan
 import com.fero.skripsi.ui.main.PilihUserActivity
 import com.fero.skripsi.ui.pelanggan.auth.viewmodel.AuthPelangganViewModel
+import com.fero.skripsi.ui.pelanggan.pesanan.viewmodel.PesananViewModel
+import com.fero.skripsi.ui.penjahit.kategori.viewmodel.KategoriPenjahitViewModel
+import com.fero.skripsi.ui.penjahit.ukuran.viewmodel.UkuranViewModel
 import com.fero.skripsi.utils.Constant
 import com.fero.skripsi.utils.PrefHelper
 import com.fero.skripsi.utils.ViewModelFactory
@@ -21,12 +24,24 @@ import com.google.gson.Gson
 
 class ProfilePelangganFragment : Fragment() {
 
-    private lateinit var binding : FragmentProfilePelangganBinding
+    private val factory by lazy {
+        ViewModelFactory.getInstance(requireContext())
+    }
+
+    private val authPelangganViewModel by lazy {
+        ViewModelProvider(this, factory)[AuthPelangganViewModel::class.java]
+    }
+
+    private lateinit var binding: FragmentProfilePelangganBinding
     lateinit var prefHelper: PrefHelper
 
     val EXTRA_PELANGGAN = "EXTRA_PELANGGAN"
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = FragmentProfilePelangganBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -39,25 +54,49 @@ class ProfilePelangganFragment : Fragment() {
         val bundleData = arguments?.getString(EXTRA_PELANGGAN)
         val dataPelanggan = Gson().fromJson(bundleData, Pelanggan::class.java)
 
-        binding.apply {
-            tvNamaPelanggan.text = dataPelanggan.nama_pelanggan
-            tvAlamatPelanggan.text = dataPelanggan.alamat_pelanggan
-            tvEmailPelanggan.text = dataPelanggan.email_pelanggan
-            tvEmailPelanggan2.text = dataPelanggan.email_pelanggan
-            tvJkPelanggan.text = dataPelanggan.jk_pelanggan
-            tvTelepon.text = dataPelanggan.telp_pelanggan
-            tvLatPelanggan.text = dataPelanggan.latitude_pelanggan.toString()
-            tvLongPelanggan.text = dataPelanggan.longitude_pelanggan.toString()
+        authPelangganViewModel.apply {
+            dataPelangganVM.observe(viewLifecycleOwner, {
+                binding.apply {
+                    tvNamaPelanggan.text = it.nama_pelanggan
+                    tvNamaPelanggan2.text = it.nama_pelanggan
+                    tvAlamatPelanggan.text = it.alamat_pelanggan
+                    tvEmailPelanggan.text = it.email_pelanggan
+                    tvEmailPelanggan2.text = it.email_pelanggan
+                    tvJkPelanggan.text = it.jk_pelanggan
+                    tvTelepon.text = it.telp_pelanggan
+                    tvLatPelanggan.text = it.latitude_pelanggan.toString()
+                    tvLongPelanggan.text = it.longitude_pelanggan.toString()
 
-            context?.let {
-                Glide.with(it)
-                    .load("${Constant.IMAGE_PELANGGAN}${dataPelanggan.foto_pelanggan}")
-                    .into(imgPelanggan)
-            }
+                    Glide.with(requireContext())
+                        .load("${Constant.IMAGE_PELANGGAN}${it.foto_pelanggan}")
+                        .into(imgPelanggan)
+
+                }
+            })
         }
+        authPelangganViewModel.getDataPelangganById(dataPelanggan)
+
+//        binding.apply {
+//            tvNamaPelanggan.text = dataPelanggan.nama_pelanggan
+//            tvNamaPelanggan2.text = dataPelanggan.nama_pelanggan
+//            tvAlamatPelanggan.text = dataPelanggan.alamat_pelanggan
+//            tvEmailPelanggan.text = dataPelanggan.email_pelanggan
+//            tvEmailPelanggan2.text = dataPelanggan.email_pelanggan
+//            tvJkPelanggan.text = dataPelanggan.jk_pelanggan
+//            tvTelepon.text = dataPelanggan.telp_pelanggan
+//            tvLatPelanggan.text = dataPelanggan.latitude_pelanggan.toString()
+//            tvLongPelanggan.text = dataPelanggan.longitude_pelanggan.toString()
+//
+//            context?.let {
+//                Glide.with(it)
+//                    .load("${Constant.IMAGE_PELANGGAN}${dataPelanggan.foto_pelanggan}")
+//                    .into(imgPelanggan)
+//            }
+//        }
 
         binding.btnEditProfil.setOnClickListener {
-            Toast.makeText(context, "Edit Data " + dataPelanggan.nama_pelanggan, Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Edit Data " + dataPelanggan.nama_pelanggan, Toast.LENGTH_SHORT)
+                .show()
             val moveIntent = Intent(context, EditDataPelangganActivity::class.java)
             moveIntent.putExtra(EditDataPelangganActivity.EXTRA_DATA_PELANGGAN, dataPelanggan)
             startActivity(moveIntent)
@@ -65,7 +104,7 @@ class ProfilePelangganFragment : Fragment() {
 
         binding.btnLogout.setOnClickListener {
             prefHelper.clear()
-            Toast.makeText(context, "Keluar" , Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Keluar", Toast.LENGTH_SHORT).show()
             val moveIntent = Intent(context, PilihUserActivity::class.java)
             startActivity(moveIntent)
             activity?.finish()
