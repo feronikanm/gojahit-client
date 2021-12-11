@@ -68,7 +68,8 @@ class PenjahitAdapter : RecyclerView.Adapter<PenjahitAdapter.PenjahitViewHolder>
 //                intent.putExtra(DetailPenjahitActivity.EXTRA_PENJAHIT, extraData)
 
                     // Using Parcelable
-                    intent.putExtra(DetailPenjahitActivity.EXTRA_PENJAHIT, data)
+                    intent.putExtra(DetailPenjahitActivity.EXTRA_DATA_NILAI, data)
+                    intent.putExtra(DetailPenjahitActivity.EXTRA_DATA_PENJAHIT, dataPenjahit)
 
                     binding.root.context.startActivity(intent)
                 }

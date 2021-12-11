@@ -92,13 +92,12 @@ class DetailKategoriFragment : BaseFragment<FragmentDetailKategoriBinding>() {
             DetailKetegoriAdapter.OnItemClickCallback {
             override fun onItemClicked(data: DetailKategoriNilai) {
 
-
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
-                Toast.makeText(context, "Kamu memilih " + data.nama_penjahit, Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(context, "Kamu memilih " + data.nama_penjahit, Toast.LENGTH_SHORT).show()
                 Log.d("Test", "CLICK FROM ADAPTER")
                 val intent = Intent(binding.root.context, DetailPenjahitActivity::class.java)
-                intent.putExtra(DetailPenjahitActivity.EXTRA_PENJAHIT, data)
+                intent.putExtra(DetailPenjahitActivity.EXTRA_DATA_NILAI, data)
+                intent.putExtra(DetailPenjahitActivity.EXTRA_DATA_PENJAHIT, dataPenjahit)
                 startActivity(intent)
 
             }
@@ -123,20 +122,13 @@ class DetailKategoriFragment : BaseFragment<FragmentDetailKategoriBinding>() {
             DetailKetegoriAdapter.OnItemClickCallback {
             override fun onItemClicked(data: DetailKategoriNilai) {
 
-
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
-                Toast.makeText(context, "Kamu memilih " + data.nama_penjahit, Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(context, "Kamu memilih " + data.nama_penjahit, Toast.LENGTH_SHORT).show()
                 Log.d("Test", "CLICK FROM ADAPTER")
 
-
-                val intent =
-                    Intent(binding.root.context, DetailPenjahitPelangganActivity::class.java)
+                val intent = Intent(binding.root.context, DetailPenjahitPelangganActivity::class.java)
                 intent.putExtra(DetailPenjahitPelangganActivity.EXTRA_DATA_PENJAHIT, data)
-                intent.putExtra(
-                    DetailPenjahitPelangganActivity.EXTRA_DATA_PELANGGAN,
-                    dataPelanggan
-                )
+                intent.putExtra(DetailPenjahitPelangganActivity.EXTRA_DATA_PELANGGAN, dataPelanggan)
                 startActivity(intent)
 
             }

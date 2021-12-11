@@ -135,9 +135,9 @@
                     android:layout_below="@+id/nama_toko"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/img_nama_toko"
-                    tools:text="Toko"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="Toko" />
 
             </RelativeLayout>
 
@@ -172,9 +172,9 @@
                     android:layout_below="@+id/ket_toko"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/img_ket_toko"
-                    tools:text="Ket Toko"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="Ket Toko" />
 
             </RelativeLayout>
 
@@ -210,9 +210,9 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/img_telp"
-                    tools:text="082228038101"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="082228038101" />
 
             </RelativeLayout>
 
@@ -248,9 +248,9 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/img_email"
-                    tools:text="feronikanm@gmail.com"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="feronikanm@gmail.com" />
 
             </RelativeLayout>
 
@@ -287,9 +287,9 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/img_alamat"
                     android:maxLines="4"
-                    tools:text="Jl. Pahlawan Probolinggo"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="Jl. Pahlawan Probolinggo" />
 
             </RelativeLayout>
 
@@ -326,9 +326,9 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/img_latitude"
                     android:maxLines="4"
-                    tools:text="0.0"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="0.0" />
 
             </RelativeLayout>
 
@@ -365,9 +365,9 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/img_longitude"
                     android:maxLines="4"
-                    tools:text="0.0"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="0.0" />
 
             </RelativeLayout>
 
@@ -542,7 +542,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/img_jam_tutup"
-                    android:text="Hari Buka"
+                    android:text="Jam Tutup"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />

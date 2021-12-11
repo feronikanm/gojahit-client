@@ -79,7 +79,7 @@
                         android:layout_below="@+id/nama_penjahit"
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@id/img_person"
-                        android:text="Feronika Nur Maghfiro"
+                        tools:text="Feronika Nur Maghfiro"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
@@ -116,7 +116,7 @@
                         android:layout_below="@+id/nama_toko"
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@id/img_nama_toko"
-                        android:text="Toko"
+                        tools:text="Toko"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
@@ -153,7 +153,7 @@
                         android:layout_below="@+id/ket_toko"
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@id/img_ket_toko"
-                        android:text="Ket Toko"
+                        tools:text="Ket Toko"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
@@ -191,7 +191,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@id/img_telp"
-                        android:text="082228038101"
+                        tools:text="082228038101"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
@@ -229,7 +229,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@id/img_email"
-                        android:text="feronikanm@gmail.com"
+                        tools:text="feronikanm@gmail.com"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
@@ -268,7 +268,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@id/img_alamat"
                         android:maxLines="4"
-                        android:text="Jl. Pahlawan Probolinggo"
+                        tools:text="Jl. Pahlawan Probolinggo"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
@@ -307,7 +307,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@id/img_spesifikasi"
-                        android:text="Laki-laki, perempuan"
+                        tools:text="Laki-laki, perempuan"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
@@ -345,7 +345,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@id/img_jangkauan"
-                        android:text="Anak-anak, remaja, dewasa"
+                        tools:text="Anak-anak, remaja, dewasa"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
@@ -383,7 +383,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@id/img_hari_buka"
-                        android:text="Senin Selasa"
+                        tools:text="Senin Selasa"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
@@ -421,7 +421,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@id/img_jam_buka"
-                        android:text="08:00"
+                        tools:text="08:00"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
@@ -446,7 +446,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@id/img_jam_tutup"
-                        android:text="Hari Buka"
+                        android:text="Jam Tutup"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -459,7 +459,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@id/img_jam_tutup"
-                        android:text="16:00"
+                        tools:text="16:00"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
@@ -497,7 +497,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@id/img_rating"
-                        android:text="4.0"
+                        tools:text="4.0"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
@@ -535,7 +535,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@id/img_jarak"
-                        android:text="3 km"
+                        tools:text="3 km"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
