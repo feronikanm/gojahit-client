@@ -11,6 +11,7 @@ import com.fero.skripsi.utils.SingleLiveEvent
 class AuthPenjahitViewModel(private val repository: Repository) : ViewModel() {
 
     var dataPenjahit = SingleLiveEvent<Penjahit>()
+    var dataPenjahitVM = SingleLiveEvent<Penjahit>()
     var messageFailed = SingleLiveEvent<String>()
     var messageSuccess = SingleLiveEvent<String>()
     var showProgress = SingleLiveEvent<Boolean>()
@@ -18,9 +19,10 @@ class AuthPenjahitViewModel(private val repository: Repository) : ViewModel() {
 
     fun getDataPenjahitById(data: Penjahit){
 
-        repository.getDataPenjahitById(data, object : ResponseCallback<Penjahit>{
-            override fun onSuccess(data: Penjahit) {
-                dataPenjahit.postValue(data)
+        repository.getDataPenjahitById(data, object : ResponseCallback<List<Penjahit>>{
+            override fun onSuccess(data: List<Penjahit>) {
+                dataPenjahitVM.postValue(data[0])
+                onSuccessState.postValue(true)
             }
 
             override fun onFailed(statusCode: Int, errorMessage: String?) {

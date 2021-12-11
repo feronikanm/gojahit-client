@@ -2,18 +2,23 @@ package com.fero.skripsi.ui.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.fero.skripsi.R
 import com.fero.skripsi.core.BaseActivity
 import com.fero.skripsi.databinding.ActivityHomePenjahitBinding
+import com.fero.skripsi.model.Pelanggan
 import com.fero.skripsi.model.Penjahit
+import com.fero.skripsi.ui.pelanggan.auth.viewmodel.AuthPelangganViewModel
 import com.fero.skripsi.ui.penjahit.transaksi.TransaksiPenjahitFragment
 import com.fero.skripsi.ui.penjahit.dashboard.DashboardPenjahitFragment
 import com.fero.skripsi.ui.penjahit.kategori.KategoriPenjahitFragment
 import com.fero.skripsi.ui.penjahit.auth.ProfilePenjahitFragment
+import com.fero.skripsi.ui.penjahit.auth.viewmodel.AuthPenjahitViewModel
 import com.fero.skripsi.utils.Constant
 import com.fero.skripsi.utils.PrefHelper
+import com.fero.skripsi.utils.ViewModelFactory
 import com.google.gson.Gson
 
 class HomePenjahitActivity : BaseActivity<ActivityHomePenjahitBinding>() {
@@ -24,12 +29,37 @@ class HomePenjahitActivity : BaseActivity<ActivityHomePenjahitBinding>() {
         const val EXTRA_LOGIN_PENJAHIT = "EXTRA_LOGIN_PENJAHIT"
     }
 
+    private val factory by lazy {
+        ViewModelFactory.getInstance(this)
+    }
+
+    private val authPenjahitViewModel by lazy {
+        ViewModelProvider(this, factory)[AuthPenjahitViewModel::class.java]
+    }
+
+    private val extraData: Penjahit? by lazy {
+        intent.getParcelableExtra(EXTRA_LOGIN_PENJAHIT)
+    }
+
     override fun setupViewBinding(): ActivityHomePenjahitBinding {
         return ActivityHomePenjahitBinding.inflate(layoutInflater)
     }
 
     override fun setupViewModel() {
-        // TODO("Not yet implemented")
+        authPenjahitViewModel.apply {
+            dataPenjahitVM.observe(this@HomePenjahitActivity, {
+                binding.apply {
+
+                    tvUsername.text = it.nama_penjahit
+                    Glide.with(this@HomePenjahitActivity)
+                        .load("${Constant.IMAGE_PENJAHIT}${it!!.foto_penjahit}")
+                        .into(imgPenjahit)
+
+                }
+            })
+        }
+
+        authPenjahitViewModel.getDataPenjahitById(extraData!!)
     }
 
     override fun setupUI(savedInstanceState: Bundle?) {
@@ -40,12 +70,12 @@ class HomePenjahitActivity : BaseActivity<ActivityHomePenjahitBinding>() {
         val profilePenjahitFragment = ProfilePenjahitFragment.newInstance()
 
         prefHelper = PrefHelper(this)
-        val extraData: Penjahit? = intent.extras?.getParcelable(EXTRA_LOGIN_PENJAHIT)
+//        val extraData: Penjahit? = intent.extras?.getParcelable(EXTRA_LOGIN_PENJAHIT)
 
-        binding.tvUsername.text = extraData!!.nama_penjahit
-        Glide.with(this)
-            .load("${Constant.IMAGE_PENJAHIT}${extraData.foto_penjahit}")
-            .into(binding.imgPenjahit)
+//        binding.tvUsername.text = extraData!!.nama_penjahit
+//        Glide.with(this)
+//            .load("${Constant.IMAGE_PENJAHIT}${extraData.foto_penjahit}")
+//            .into(binding.imgPenjahit)
 
         val bundle = Bundle()
         val bundleData = Gson().toJson(extraData)

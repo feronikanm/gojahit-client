@@ -61,7 +61,7 @@ interface ApiService {
     @GET(URL_PENJAHIT_GET_BY_ID)
     fun getDataPenjahitById(
         @Path("id_penjahit") id_penjahit_path: Int
-    ): Call<Penjahit>
+    ): Call<List<Penjahit>>
 
     @FormUrlEncoded
     @POST(URL_PELANGGAN_INSERT)

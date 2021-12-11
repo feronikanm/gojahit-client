@@ -13,7 +13,7 @@ interface DataSource {
 
     fun getDataPelangganById(data: Pelanggan, responseCallback: ResponseCallback<List<Pelanggan>>)
 
-    fun getDataPenjahitById(data: Penjahit, responseCallback: ResponseCallback<Penjahit>)
+    fun getDataPenjahitById(data: Penjahit, responseCallback: ResponseCallback<List<Penjahit>>)
 
     fun registerPelanggan(data: Pelanggan, responseCallback: ResponseCallback<Pelanggan>)
 
