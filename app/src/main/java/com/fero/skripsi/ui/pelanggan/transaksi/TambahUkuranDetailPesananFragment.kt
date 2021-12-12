@@ -115,27 +115,9 @@ class TambahUkuranDetailPesananFragment : BaseFragment<FragmentTambahUkuranDetai
         prefHelper = PrefHelper(context)
         val idPelanggan = prefHelper.getString(PrefHelper.PREF_ID_PELANGGAN)
         val idPelangganInt : Int = idPelanggan!!.toInt()
-        val namaPelanggan = prefHelper.getString(PrefHelper.PREF_NAMA_PELANGGAN)
-        val emailPelanggan = prefHelper.getString(PrefHelper.PREF_EMAIL_PELANGGAN)
-        val passwordPelanggan = prefHelper.getString(PrefHelper.PREF_PASSWORD_PELANGGAN)
-        val telpPelanggan = prefHelper.getString(PrefHelper.PREF_TELP_PELANGGAN)
-        val latPelanggan = prefHelper.getString(PrefHelper.PREF_LATITUDE_PELANGGAN)
-        val longPelanggan = prefHelper.getString(PrefHelper.PREF_LONGITUDE_PELANGGAN)
-        val alamatPelanggan = prefHelper.getString(PrefHelper.PREF_ALAMAT_PELANGGAN)
-        val jkPelanggan = prefHelper.getString(PrefHelper.PREF_JK_PELANGGAN)
-        val fotoPelanggan = prefHelper.getString(PrefHelper.PREF_FOTO_PELANGGAN)
 
         val dataPelanggan = Pelanggan(
-            idPelangganInt,
-            namaPelanggan,
-            emailPelanggan,
-            passwordPelanggan,
-            alamatPelanggan,
-            jkPelanggan,
-            latPelanggan,
-            longPelanggan,
-            telpPelanggan,
-            fotoPelanggan,
+            idPelangganInt, "","","","","","","","",""
         )
 
         Log.d("Data pesanan : ", dataPesanan.toString())

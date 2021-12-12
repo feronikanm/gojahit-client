@@ -7,7 +7,6 @@
     android:padding="8dp"
     tools:context=".ui.penjahit.transaksi.DetailTransaksiPenjahitFragment">
 
-
     <androidx.core.widget.NestedScrollView
         android:id="@+id/content"
         android:layout_width="match_parent"
@@ -20,58 +19,77 @@
 
             <TextView
                 android:id="@+id/tv_detail_pesanan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Detail Pesanan" />
-
-            <TextView
-                android:id="@+id/tv_id_pesanan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Kode pesanan" />
+                android:gravity="center"
+                android:text="Detail Pesanan"
+                android:textColor="@color/not_black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_id_penjahit"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Id Penjahit" />
+                android:layout_margin="8dp"
+                android:background="@drawable/background_card"
+                android:elevation="2dp"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-            <TextView
-                android:id="@+id/tv_id_pelanggan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Id Pelanggan" />
+                <TextView
+                    android:id="@+id/tv_id_pesanan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kode pesanan" />
 
-            <TextView
-                android:id="@+id/tv_id_detail_kategori"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Id Detail Kategori" />
+                <TextView
+                    android:id="@+id/tv_id_penjahit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:text="Id Penjahit" />
 
-            <TextView
-                android:id="@+id/tv_tanggal_pesanan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tanggal Pesanan" />
+                <TextView
+                    android:id="@+id/tv_id_pelanggan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:text="Id Pelanggan" />
 
-            <TextView
-                android:id="@+id/tv_tanggal_pesanan_selesai"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tanggal Pesanan Selesai" />
+                <TextView
+                    android:id="@+id/tv_id_detail_kategori"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:text="Id Detail Kategori" />
 
-            <TextView
-                android:id="@+id/tv_ket_pesanan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Keterangan Pesanan" />
+                <TextView
+                    android:id="@+id/tv_tanggal_pesanan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tanggal Pesanan" />
 
-            <TextView
-                android:id="@+id/tv_status_pesanan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Status Pesanan" />
+                <TextView
+                    android:id="@+id/tv_tanggal_pesanan_selesai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tanggal Pesanan Selesai" />
+
+                <TextView
+                    android:id="@+id/tv_ket_pesanan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:text="Keterangan Pesanan" />
+
+                <TextView
+                    android:id="@+id/tv_status_pesanan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Status Pesanan" />
+
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/layout_terima_tolak"
@@ -156,7 +174,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="List Ukuran" />
+                android:layout_marginTop="8dp"
+                android:text="List Ukuran"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_ukuran"
@@ -166,7 +187,8 @@
                 android:clipToPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_detail_kategori" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_detail_kategori"
+                tools:listitem="@layout/item_list_ukuran_pesanan_penjahit"/>
 
 
         </LinearLayout>

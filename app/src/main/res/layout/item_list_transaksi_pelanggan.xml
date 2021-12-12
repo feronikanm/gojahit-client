@@ -20,39 +20,121 @@
         android:background="@color/white"
         android:padding="8dp">
 
-        <TextView
-            android:id="@+id/tv_id_pesanan"
+        <RelativeLayout
+            android:id="@+id/rl_kode_pesanan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
-            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Kode Pesanan : " />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tv_tanggal_selesai"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginStart="16dp"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_id_pesanan"
-            tools:text="Tanggal Selesai : " />
+            <TextView
+                android:id="@+id/id_pesanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="Kode Pesanan : " />
 
-        <TextView
-            android:id="@+id/tv_status_pesanan"
+            <TextView
+                android:id="@+id/tv_id_pesanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/id_pesanan"
+                android:fontFamily="@font/gilroy_medium"
+                android:textSize="16sp"
+                tools:text="1" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_tanggal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_marginStart="16dp"
-            android:textSize="16sp"
-            android:fontFamily="@font/gilroy_medium"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_tanggal_selesai"
-            tools:text="Status Pesanan : " />
+            app:layout_constraintTop_toBottomOf="@+id/rl_kode_pesanan">
+
+            <TextView
+                android:id="@+id/tanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="Tanggal Selesai : " />
+
+            <TextView
+                android:id="@+id/tv_tanggal_selesai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tanggal"
+                android:fontFamily="@font/gilroy_medium"
+                android:textSize="16sp"
+                tools:text="12/12/2021" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rl_tanggal">
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:textSize="16sp"
+                android:text="Status Pesanan : " />
+
+            <TextView
+                android:id="@+id/tv_status_pesanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/status"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/gilroy_medium"
+                tools:text="Selesai" />
+        </RelativeLayout>
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_id_pesanan"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:textSize="16sp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            tools:text="Kode Pesanan : " />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_tanggal_selesai"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:textSize="16sp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/tv_id_pesanan"-->
+<!--            tools:text="Tanggal Selesai : " />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_status_pesanan"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:textSize="16sp"-->
+<!--            android:fontFamily="@font/gilroy_medium"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/tv_tanggal_selesai"-->
+<!--            tools:text="Status Pesanan : " />-->
 
         <RelativeLayout
             android:id="@+id/relativeLayout2"

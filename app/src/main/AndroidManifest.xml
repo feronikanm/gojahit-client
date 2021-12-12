@@ -75,7 +75,9 @@
             android:exported="true" />
         <activity
             android:name=".ui.pelanggan.rating.RatingPenjahitActivity"
-            android:exported="false" /> <!-- <activity -->
+            android:exported="false" />
+
+        <!-- <activity -->
         <!-- android:name=".ui.splashscreen.SplashScreenActivity" -->
         <!-- android:exported="true" -->
         <!-- android:theme="@style/Theme.Intro"/> -->

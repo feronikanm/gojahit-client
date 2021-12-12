@@ -23,6 +23,11 @@
     <string name="sangat_baik">Sangat Baik</string>
 
     <string name="google_maps_key">AIzaSyALa4dXJi8sGWRnruL7BxmGD4LSVZCUOUQ</string>
+    <string name="bahan_jahit">Bahan Jahit</string>
+    <string name="harga_bahan">Harga Bahan</string>
+    <string name="ongkos_penjahit">Ongkos Penjahit</string>
+    <string name="lama_waktu">Lama Waktu</string>
+    <string name="keterangan">Keterangan</string>
 
 
     <!--    <string name="about">Designed by <a href="https://github.com/feronikanm">feronikanm</a></string>-->

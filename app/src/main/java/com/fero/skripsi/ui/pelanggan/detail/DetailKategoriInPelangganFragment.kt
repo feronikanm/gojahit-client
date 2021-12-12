@@ -45,15 +45,15 @@ class DetailKategoriInPelangganFragment : DialogFragment() {
             tvNamaKategori.text = data.nama_kategori
             tvNamaPenjahit.text = data.nama_penjahit
             tvIdPenjahit.text = data.id_penjahit.toString()
-            tvBahanJahit.text = "Bahan Jahit : " + data.bahan_jahit
-            tvHargaBahan.text = "Harga Bahan : " + data.harga_bahan
-            tvOngkosPenjahit.text = "Ongkos Penjahit : " + data.ongkos_penjahit
-            tvLamaWaktu.text = "Lama Waktu : " + data.perkiraan_lama_waktu_pengerjaan
-            tvKet.text = "Keterangan : \n" + data.keterangan_kategori
+            tvBahanJahit.text = data.bahan_jahit
+            tvHargaBahan.text = data.harga_bahan.toString()
+            tvOngkosPenjahit.text = data.ongkos_penjahit.toString()
+            tvLamaWaktu.text = data.perkiraan_lama_waktu_pengerjaan
+            tvKet.text = data.keterangan_kategori
 
-            Glide.with(this@DetailKategoriInPelangganFragment)
-                .load("${Constant.IMAGE_KATEGORI}${data.gambar_kategori}")
-                .into(imgKategori)
+//            Glide.with(this@DetailKategoriInPelangganFragment)
+//                .load("${Constant.IMAGE_KATEGORI}${data.gambar_kategori}")
+//                .into(imgKategori)
         }
 
         binding.btnLakukanJahit.setOnClickListener {
@@ -61,6 +61,10 @@ class DetailKategoriInPelangganFragment : DialogFragment() {
             val moveIntent = Intent(context, PesananActivity::class.java)
             moveIntent.putExtra(EXTRA_DATA_DETAIL_KATEGORI_NILAI, data)
             startActivity(moveIntent)
+        }
+
+        binding.btnClose.setOnClickListener {
+            dialog?.cancel()
         }
 
     }

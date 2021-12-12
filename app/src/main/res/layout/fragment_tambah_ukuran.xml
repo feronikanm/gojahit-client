@@ -19,6 +19,8 @@
             android:fontFamily="@font/gilroy_bold"
             android:gravity="center_horizontal"
             android:text="Tambah Data Ukuran"
+            android:textStyle="bold"
+            android:textColor="@color/not_black"
             android:textSize="24sp" />
 
         <TextView
@@ -66,6 +68,37 @@
                 android:textAppearance="@style/button_login_register"
                 android:textColor="@color/white" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/login_button_bk"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="Cancel"
+                android:visibility="invisible"
+                android:textAppearance="@style/button_login_register"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_lakukan_jahit"
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
+                android:layout_marginLeft="15dp"
+                android:visibility="invisible"
+                android:layout_weight="1"
+                android:background="@drawable/login_button_bk"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="Simpan"
+                android:textAppearance="@style/button_login_register"
+                android:textColor="@color/white" />
         </LinearLayout>
 
     </LinearLayout>

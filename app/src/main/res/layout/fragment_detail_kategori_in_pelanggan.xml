@@ -1,117 +1,633 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
     tools:context=".ui.pelanggan.detail.DetailKategoriInPelangganFragment">
 
-    <androidx.cardview.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <LinearLayout
-            android:id="@+id/content"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/gilroy_bold"
+            android:gravity="center_horizontal"
+            android:text="Nama Kategori"
+            android:textSize="24sp" />
 
-            <TextView
-                android:id="@+id/tv_nama_kategori"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/gilroy_bold"
-                android:textColor="@color/almost_black"
-                android:textSize="18sp"
-                tools:text="Nama Kategori" />
+        <TextView
+            android:id="@+id/tv_nama_kategori"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/gilroy_medium"
+            android:gravity="center_horizontal"
+            android:text="Nama Kategori"
+            android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/tv_nama_penjahit"
+        <TextView
+            android:id="@+id/tv_nama_penjahit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="nama penjahit"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_id_penjahit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="id penjahit"
+            android:visibility="gone" />
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="nama penjahit"/>
+                android:orientation="vertical"
+                android:padding="16dp">
 
-            <TextView
-                android:id="@+id/tv_id_penjahit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="id penjahit"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/img_kategori"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginBottom="8dp"
-                tools:src="@tools:sample/avatars" />
+                    <ImageView
+                        android:id="@+id/img_bahan_jahit"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:src="@drawable/ic_bahan_jahit" />
 
-            <TextView
-                android:id="@+id/tv_bahan_jahit"
+                    <TextView
+                        android:id="@+id/bahan_jahit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/img_bahan_jahit"
+                        android:text="@string/bahan_jahit"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_bahan_jahit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/bahan_jahit"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/img_bahan_jahit"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:text="aaa" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <ImageView
+                        android:id="@+id/img_harga_bahan"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:src="@drawable/ic_harga_bahan" />
+
+                    <TextView
+                        android:id="@+id/harga_bahan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/img_harga_bahan"
+                        android:text="@string/harga_bahan"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_harga_bahan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/harga_bahan"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/img_harga_bahan"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:text="Feronika Nur Maghfiro" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <ImageView
+                        android:id="@+id/img_ongkos_penjahit"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:src="@drawable/ic_ongkos_penjahit" />
+
+                    <TextView
+                        android:id="@+id/ongkos_penjahit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/img_ongkos_penjahit"
+                        android:text="@string/ongkos_penjahit"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_ongkos_penjahit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ongkos_penjahit"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/img_ongkos_penjahit"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:text="Feronika Nur Maghfiro" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <ImageView
+                        android:id="@+id/img_lama_waktu"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:src="@drawable/ic_lama_waktu" />
+
+                    <TextView
+                        android:id="@+id/lama_waktu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/img_lama_waktu"
+                        android:text="@string/lama_waktu"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_lama_waktu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lama_waktu"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/img_lama_waktu"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:text="Feronika Nur Maghfiro" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <ImageView
+                        android:id="@+id/img_keterangan"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:src="@drawable/ic_ket_bahan" />
+
+                    <TextView
+                        android:id="@+id/keterangan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/img_keterangan"
+                        android:text="@string/keterangan"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_ket"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/keterangan"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/img_keterangan"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:text="Feronika Nur Maghfiro" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:padding="10dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_close"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/login_button_bk"
                 android:fontFamily="@font/gilroy_medium"
-                android:textColor="@color/not_black"
-                tools:text="Bahan Jahit" />
-
-            <TextView
-                android:id="@+id/tv_harga_bahan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/gilroy_medium"
-                android:textColor="@color/not_black"
-                tools:text="Harga Bahan" />
-
-            <TextView
-                android:id="@+id/tv_ongkos_penjahit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/gilroy_medium"
-                android:textColor="@color/not_black"
-                tools:text="Ongkos Penjahit" />
-
-            <TextView
-                android:id="@+id/tv_lama_waktu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/gilroy_medium"
-                android:textColor="@color/not_black"
-                tools:text="Lama Waktu" />
-
-            <TextView
-                android:id="@+id/tv_ket"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/gilroy_medium"
-                android:textColor="@color/not_black"
-                tools:text="Keterangan" />
+                android:text="Tutup"
+                android:textAppearance="@style/button_login_register"
+                android:textColor="@color/white" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_lakukan_jahit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/custom_button"
-                android:layout_gravity="center"
-                android:clickable="true"
-                android:focusable="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/login_button_bk"
                 android:fontFamily="@font/gilroy_medium"
-                android:gravity="center_horizontal|center"
-                android:paddingLeft="32dp"
-                android:paddingRight="32dp"
-                android:text="Lakukan Pesanan"
-                android:textAppearance="@style/button_login_register" />
-
+                android:text="Lakukan Jahitan"
+                android:textAppearance="@style/button_login_register"
+                android:textColor="@color/white" />
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
+
+    <!--        <?xml version="1.0" encoding="utf-8"?>-->
+    <!--    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--        xmlns:tools="http://schemas.android.com/tools"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--        android:padding="8dp"-->
+    <!--        tools:context=".ui.pelanggan.detail.DetailKategoriInPelangganFragment">-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:orientation="vertical">-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_nama_kategori"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginBottom="8dp"-->
+    <!--                android:gravity="center"-->
+    <!--                android:textColor="@color/almost_black"-->
+    <!--                android:textSize="20sp"-->
+    <!--                android:textStyle="bold"-->
+    <!--                tools:text="Nama Kategori" />-->
+
+    <!--            <EditText-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"/>-->
+
+    <!--            <ImageView-->
+    <!--                android:id="@+id/img_kategori"-->
+    <!--                android:layout_width="100dp"-->
+    <!--                android:layout_height="100dp"-->
+    <!--                android:layout_gravity="center"-->
+    <!--                android:layout_marginBottom="8dp"-->
+    <!--                tools:src="@tools:sample/avatars" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_nama_penjahit"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:visibility="gone"-->
+    <!--                android:text="nama penjahit"/>-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_id_penjahit"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:visibility="gone"-->
+    <!--                android:text="id penjahit"/>-->
+
+    <!--            <androidx.cardview.widget.CardView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="4dp"-->
+    <!--                app:cardCornerRadius="8dp">-->
+
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:padding="8dp"-->
+    <!--                    android:orientation="vertical">-->
+
+    <!--                    <RelativeLayout-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content">-->
+
+    <!--                        <ImageView-->
+    <!--                            android:id="@+id/img_bahan_jahit"-->
+    <!--                            android:layout_width="40dp"-->
+    <!--                            android:layout_height="40dp"-->
+    <!--                            android:layout_alignParentLeft="true"-->
+    <!--                            android:layout_alignParentTop="true"-->
+    <!--                            android:src="@drawable/ic_bahan_jahit" />-->
+
+    <!--                        <TextView-->
+    <!--                            android:id="@+id/bahan_jahit"-->
+    <!--                            android:layout_width="wrap_content"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginLeft="10dp"-->
+    <!--                            android:layout_toRightOf="@id/img_bahan_jahit"-->
+    <!--                            android:text="@string/bahan_jahit"-->
+    <!--                            android:textColor="@color/black"-->
+    <!--                            android:textSize="16sp"-->
+    <!--                            android:textStyle="bold" />-->
+
+    <!--                        <TextView-->
+    <!--                            android:id="@+id/tv_bahan_jahit"-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_below="@+id/bahan_jahit"-->
+    <!--                            android:layout_marginLeft="10dp"-->
+    <!--                            android:layout_toRightOf="@id/img_bahan_jahit"-->
+    <!--                            android:textColor="@color/black"-->
+    <!--                            android:textSize="14sp"-->
+    <!--                            tools:text="aaa" />-->
+
+    <!--                    </RelativeLayout>-->
+
+    <!--                    <RelativeLayout-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_marginTop="20dp">-->
+
+    <!--                        <ImageView-->
+    <!--                            android:id="@+id/img_harga_bahan"-->
+    <!--                            android:layout_width="40dp"-->
+    <!--                            android:layout_height="40dp"-->
+    <!--                            android:layout_alignParentLeft="true"-->
+    <!--                            android:layout_alignParentTop="true"-->
+    <!--                            android:src="@drawable/ic_harga_bahan" />-->
+
+    <!--                        <TextView-->
+    <!--                            android:id="@+id/harga_bahan"-->
+    <!--                            android:layout_width="wrap_content"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginLeft="10dp"-->
+    <!--                            android:layout_toRightOf="@id/img_harga_bahan"-->
+    <!--                            android:text="@string/harga_bahan"-->
+    <!--                            android:textColor="@color/black"-->
+    <!--                            android:textSize="16sp"-->
+    <!--                            android:textStyle="bold" />-->
+
+    <!--                        <TextView-->
+    <!--                            android:id="@+id/tv_harga_bahan"-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_below="@+id/harga_bahan"-->
+    <!--                            android:layout_marginLeft="10dp"-->
+    <!--                            android:layout_toRightOf="@id/img_harga_bahan"-->
+    <!--                            android:textColor="@color/black"-->
+    <!--                            android:textSize="14sp"-->
+    <!--                            tools:text="Feronika Nur Maghfiro" />-->
+
+    <!--                    </RelativeLayout>-->
+
+    <!--                    <RelativeLayout-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_marginTop="20dp">-->
+
+    <!--                        <ImageView-->
+    <!--                            android:id="@+id/img_ongkos_penjahit"-->
+    <!--                            android:layout_width="40dp"-->
+    <!--                            android:layout_height="40dp"-->
+    <!--                            android:layout_alignParentLeft="true"-->
+    <!--                            android:layout_alignParentTop="true"-->
+    <!--                            android:src="@drawable/ic_ongkos_penjahit" />-->
+
+    <!--                        <TextView-->
+    <!--                            android:id="@+id/ongkos_penjahit"-->
+    <!--                            android:layout_width="wrap_content"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginLeft="10dp"-->
+    <!--                            android:layout_toRightOf="@id/img_ongkos_penjahit"-->
+    <!--                            android:text="@string/ongkos_penjahit"-->
+    <!--                            android:textColor="@color/black"-->
+    <!--                            android:textSize="16sp"-->
+    <!--                            android:textStyle="bold" />-->
+
+    <!--                        <TextView-->
+    <!--                            android:id="@+id/tv_ongkos_penjahit"-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_below="@+id/ongkos_penjahit"-->
+    <!--                            android:layout_marginLeft="10dp"-->
+    <!--                            android:layout_toRightOf="@id/img_ongkos_penjahit"-->
+    <!--                            android:textColor="@color/black"-->
+    <!--                            android:textSize="14sp"-->
+    <!--                            tools:text="Feronika Nur Maghfiro" />-->
+
+    <!--                    </RelativeLayout>-->
+
+    <!--                    <RelativeLayout-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_marginTop="20dp">-->
+
+    <!--                        <ImageView-->
+    <!--                            android:id="@+id/img_lama_waktu"-->
+    <!--                            android:layout_width="40dp"-->
+    <!--                            android:layout_height="40dp"-->
+    <!--                            android:layout_alignParentLeft="true"-->
+    <!--                            android:layout_alignParentTop="true"-->
+    <!--                            android:src="@drawable/ic_lama_waktu" />-->
+
+    <!--                        <TextView-->
+    <!--                            android:id="@+id/lama_waktu"-->
+    <!--                            android:layout_width="wrap_content"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginLeft="10dp"-->
+    <!--                            android:layout_toRightOf="@id/img_lama_waktu"-->
+    <!--                            android:text="@string/lama_waktu"-->
+    <!--                            android:textColor="@color/black"-->
+    <!--                            android:textSize="16sp"-->
+    <!--                            android:textStyle="bold" />-->
+
+    <!--                        <TextView-->
+    <!--                            android:id="@+id/tv_lama_waktu"-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_below="@+id/lama_waktu"-->
+    <!--                            android:layout_marginLeft="10dp"-->
+    <!--                            android:layout_toRightOf="@id/img_lama_waktu"-->
+    <!--                            android:textColor="@color/black"-->
+    <!--                            android:textSize="14sp"-->
+    <!--                            tools:text="Feronika Nur Maghfiro" />-->
+
+    <!--                    </RelativeLayout>-->
+
+    <!--                    <RelativeLayout-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_marginTop="20dp">-->
+
+    <!--                        <ImageView-->
+    <!--                            android:id="@+id/img_keterangan"-->
+    <!--                            android:layout_width="40dp"-->
+    <!--                            android:layout_height="40dp"-->
+    <!--                            android:layout_alignParentLeft="true"-->
+    <!--                            android:layout_alignParentTop="true"-->
+    <!--                            android:src="@drawable/ic_ket_bahan" />-->
+
+    <!--                        <TextView-->
+    <!--                            android:id="@+id/keterangan"-->
+    <!--                            android:layout_width="wrap_content"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginLeft="10dp"-->
+    <!--                            android:layout_toRightOf="@id/img_keterangan"-->
+    <!--                            android:text="@string/keterangan"-->
+    <!--                            android:textColor="@color/black"-->
+    <!--                            android:textSize="16sp"-->
+    <!--                            android:textStyle="bold" />-->
+
+    <!--                        <TextView-->
+    <!--                            android:id="@+id/tv_ket"-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_below="@+id/keterangan"-->
+    <!--                            android:layout_marginLeft="10dp"-->
+    <!--                            android:layout_toRightOf="@id/img_keterangan"-->
+    <!--                            tools:text="Feronika Nur Maghfiro"-->
+    <!--                            android:textColor="@color/black"-->
+    <!--                            android:textSize="14sp" />-->
+
+    <!--                    </RelativeLayout>-->
+
+    <!--                </LinearLayout>-->
+
+    <!--    &lt;!&ndash;            <TableLayout&ndash;&gt;-->
+    <!--    &lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                android:layout_height="match_parent"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                android:padding="8dp"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                android:stretchColumns="1">&ndash;&gt;-->
+
+    <!--    &lt;!&ndash;                <TableRow&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    android:padding="8dp">&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+    <!--    &lt;!&ndash;                        android:text="@string/bahan_jahit" />&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+    <!--    &lt;!&ndash;                        android:text=" : " />&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+    <!--    &lt;!&ndash;                        android:id="@+id/tv_bahan_jahit" />&ndash;&gt;-->
+    <!--    &lt;!&ndash;                </TableRow>&ndash;&gt;-->
+
+    <!--    &lt;!&ndash;                <View&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    android:layout_height="2dip"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    android:background="#FF909090" />&ndash;&gt;-->
+
+    <!--    &lt;!&ndash;                <TableRow&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    android:padding="8dp">&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+    <!--    &lt;!&ndash;                        android:text="@string/harga_bahan" />&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+    <!--    &lt;!&ndash;                        android:text=" : " />&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+    <!--    &lt;!&ndash;                        android:id="@+id/tv_harga_bahan" />&ndash;&gt;-->
+    <!--    &lt;!&ndash;                </TableRow>&ndash;&gt;-->
+
+    <!--    &lt;!&ndash;                <View&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    android:layout_height="2dip"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    android:background="#FF909090" />&ndash;&gt;-->
+
+    <!--    &lt;!&ndash;                <TableRow&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    android:padding="8dp">&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+    <!--    &lt;!&ndash;                        android:text="@string/ongkos_penjahit" />&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+    <!--    &lt;!&ndash;                        android:text=" : " />&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+    <!--    &lt;!&ndash;                        android:id="@+id/tv_ongkos_penjahit" />&ndash;&gt;-->
+    <!--    &lt;!&ndash;                </TableRow>&ndash;&gt;-->
+
+    <!--    &lt;!&ndash;                <View&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    android:layout_height="2dip"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    android:background="#FF909090" />&ndash;&gt;-->
+
+    <!--    &lt;!&ndash;                <TableRow&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    android:padding="8dp">&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+    <!--    &lt;!&ndash;                        android:text="@string/lama_waktu" />&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+    <!--    &lt;!&ndash;                        android:text=" : " />&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+    <!--    &lt;!&ndash;                        android:id="@+id/tv_lama_waktu" />&ndash;&gt;-->
+    <!--    &lt;!&ndash;                </TableRow>&ndash;&gt;-->
+
+    <!--    &lt;!&ndash;                <View&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    android:layout_height="2dip"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    android:background="#FF909090" />&ndash;&gt;-->
+
+    <!--    &lt;!&ndash;                <TableRow&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    android:padding="8dp">&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+    <!--    &lt;!&ndash;                        android:text="@string/keterangan" />&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+    <!--    &lt;!&ndash;                        android:text=" : " />&ndash;&gt;-->
+    <!--    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+    <!--    &lt;!&ndash;                        android:id="@+id/tv_ket" />&ndash;&gt;-->
+    <!--    &lt;!&ndash;                </TableRow>&ndash;&gt;-->
+
+    <!--    &lt;!&ndash;            </TableLayout>&ndash;&gt;-->
+
+    <!--            </androidx.cardview.widget.CardView>-->
+
+    <!--            <androidx.appcompat.widget.AppCompatButton-->
+    <!--                android:id="@+id/btn_lakukan_jahit"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="24dp"-->
+    <!--                android:layout_marginBottom="30dp"-->
+    <!--                android:background="@drawable/custom_button"-->
+    <!--                android:layout_gravity="center"-->
+    <!--                android:clickable="true"-->
+    <!--                android:focusable="true"-->
+    <!--                android:fontFamily="@font/gilroy_medium"-->
+    <!--                android:gravity="center_horizontal|center"-->
+    <!--                android:paddingLeft="32dp"-->
+    <!--                android:paddingRight="32dp"-->
+    <!--                android:text="Lakukan Pesanan"-->
+    <!--                android:textAppearance="@style/button_login_register" />-->
+
+    <!--        </LinearLayout>-->
+
+
+    <!--    </androidx.core.widget.NestedScrollView>-->

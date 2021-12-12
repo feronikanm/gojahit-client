@@ -1,13 +1,16 @@
 package com.fero.skripsi.ui.pelanggan.transaksi.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.fero.skripsi.databinding.ItemListTransaksiPelangganBinding
 import com.fero.skripsi.model.DetailKategoriPenjahit
 import com.fero.skripsi.model.Pesanan
 
-class TransaksiPelangganAdapter : RecyclerView.Adapter<TransaksiPelangganAdapter.TransaksiPelangganViewHolder>() {
+class TransaksiPelangganAdapter :
+    RecyclerView.Adapter<TransaksiPelangganAdapter.TransaksiPelangganViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
     private lateinit var onDeleteClickCallback: OnDeleteClickCallback
@@ -15,19 +18,19 @@ class TransaksiPelangganAdapter : RecyclerView.Adapter<TransaksiPelangganAdapter
     val listPesanan = mutableListOf<Pesanan>()
 
 
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    fun setOnDeleteClickCallback(onDeleteClickCallback: OnDeleteClickCallback){
+    fun setOnDeleteClickCallback(onDeleteClickCallback: OnDeleteClickCallback) {
         this.onDeleteClickCallback = onDeleteClickCallback
     }
 
-    fun setOnUpdateClickCallback(onUpdateClickCallback: OnUpdateClickCallback){
+    fun setOnUpdateClickCallback(onUpdateClickCallback: OnUpdateClickCallback) {
         this.onUpdateClickCallback = onUpdateClickCallback
     }
 
-    fun setListPesanan(listPesanan: List<Pesanan>){
+    fun setListPesanan(listPesanan: List<Pesanan>) {
         this.listPesanan.clear()
         this.listPesanan.addAll(listPesanan)
     }
@@ -36,7 +39,11 @@ class TransaksiPelangganAdapter : RecyclerView.Adapter<TransaksiPelangganAdapter
         parent: ViewGroup,
         viewType: Int
     ): TransaksiPelangganViewHolder {
-        val itemListTransaksiPelangganBinding = ItemListTransaksiPelangganBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val itemListTransaksiPelangganBinding = ItemListTransaksiPelangganBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return TransaksiPelangganViewHolder(itemListTransaksiPelangganBinding)
     }
 
@@ -49,13 +56,41 @@ class TransaksiPelangganAdapter : RecyclerView.Adapter<TransaksiPelangganAdapter
         return listPesanan.size
     }
 
-    inner class TransaksiPelangganViewHolder(private var binding: ItemListTransaksiPelangganBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class TransaksiPelangganViewHolder(private var binding: ItemListTransaksiPelangganBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Pesanan) {
             binding.apply {
 
-                tvIdPesanan.text = "Kode Pesanan : " + data.id_pesanan.toString()
-                tvTanggalSelesai.text = "Tanggal Selesai : " + data.tanggal_pesanan_selesai
-                tvStatusPesanan.text = "Status Pesanan : " + data.status_pesanan
+                val statusBelumDiverifikasi = "Belum diverifikasi"
+                val statusDiverifikasi = "Verifikasi"
+                val statusTidakDiterima = "Tidak Diterima"
+                val statusProses = "Sedang dikerjakan"
+                val statusSelesai = "Selesai"
+
+                tvIdPesanan.text = data.id_pesanan.toString()
+                tvTanggalSelesai.text = data.tanggal_pesanan_selesai
+                tvStatusPesanan.text = data.status_pesanan
+
+//                if (data.status_pesanan.equals(statusBelumDiverifikasi)) {
+//                    binding.tvStatusPesanan.setTextColor(Color.parseColor("#FF0000"))
+//                    binding.tvStatusPesanan.setTextColor(Color.RED)
+//                }
+
+                if (data.status_pesanan.equals(statusDiverifikasi)) {
+                    binding.tvStatusPesanan.setTextColor(Color.GREEN)
+                }
+
+                if (data.status_pesanan.equals(statusProses)) {
+                    binding.tvStatusPesanan.setTextColor(Color.GREEN)
+                }
+
+                if (data.status_pesanan.equals(statusTidakDiterima)) {
+                    binding.tvStatusPesanan.setTextColor(Color.RED)
+                }
+
+                if (data.status_pesanan.equals(statusSelesai)) {
+                    binding.tvStatusPesanan.setTextColor(Color.BLUE)
+                }
 
 //                btnDelete.setOnClickListener {
 //                    onDeleteClickCallback.onDeleteClicked(listPesanan[adapterPosition])
@@ -78,11 +113,11 @@ class TransaksiPelangganAdapter : RecyclerView.Adapter<TransaksiPelangganAdapter
         fun onItemClicked(data: Pesanan)
     }
 
-    interface OnDeleteClickCallback{
+    interface OnDeleteClickCallback {
         fun onDeleteClicked(data: Pesanan)
     }
 
-    interface OnUpdateClickCallback{
+    interface OnUpdateClickCallback {
         fun onUpdateClikced(data: Pesanan)
     }
 

@@ -12,18 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_rating_penjahit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Rating Penjahit"
-            android:gravity="center"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/not_black"
-            app:layout_constraintTop_toTopOf="parent"
+        <ImageView
+            android:id="@+id/img_review"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/img_review2"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/tv_kriteria_1"
@@ -32,11 +29,12 @@
             android:layout_marginTop="16dp"
             android:gravity="center"
             android:text="@string/kriteria_1"
+            android:textStyle="bold"
             android:textSize="20sp"
-            android:textColor="@color/not_black"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_rating_penjahit" />
+            app:layout_constraintTop_toBottomOf="@+id/img_review" />
 
         <RatingBar
             android:id="@+id/rb_kriteria_1"
@@ -46,6 +44,7 @@
             android:layout_marginTop="8dp"
             android:progressTint="#FFC107"
             android:secondaryProgressTint="#FFC107"
+            android:progressBackgroundTint="@color/loginBkColor"
             android:stepSize="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -80,7 +79,8 @@
             android:gravity="center"
             android:text="@string/kriteria_2"
             android:textSize="20sp"
-            android:textColor="@color/not_black"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rb_kriteria_1" />
@@ -93,6 +93,8 @@
             android:layout_marginTop="8dp"
             android:progressTint="#FFC107"
             android:secondaryProgressTint="#FFC107"
+            android:progressBackgroundTint="@color/loginBkColor"
+
             android:stepSize="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -127,7 +129,8 @@
             android:gravity="center"
             android:text="@string/kriteria_3"
             android:textSize="20sp"
-            android:textColor="@color/not_black"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rb_kriteria_2" />
@@ -140,6 +143,7 @@
             android:layout_marginTop="8dp"
             android:progressTint="#FFC107"
             android:secondaryProgressTint="#FFC107"
+            android:progressBackgroundTint="@color/loginBkColor"
             android:stepSize="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -174,7 +178,8 @@
             android:gravity="center"
             android:text="@string/kriteria_4"
             android:textSize="20sp"
-            android:textColor="@color/not_black"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rb_kriteria_3" />
@@ -187,6 +192,7 @@
             android:layout_marginTop="8dp"
             android:progressTint="#FFC107"
             android:secondaryProgressTint="#FFC107"
+            android:progressBackgroundTint="@color/loginBkColor"
             android:stepSize="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -212,19 +218,31 @@
             app:layout_constraintStart_toEndOf="@+id/rb_kriteria_4"
             app:layout_constraintTop_toBottomOf="@+id/rb_kriteria_4" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_rating"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/custom_button_profile"
-            android:text="Rating"
-            android:textAppearance="@style/button_login_register"
-            android:textColor="@color/white"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rb_kriteria_4" />
+            app:layout_constraintTop_toBottomOf="@+id/rb_kriteria_4">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/custom_button_profile"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="Rating"
+                android:textAppearance="@style/button_login_register"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

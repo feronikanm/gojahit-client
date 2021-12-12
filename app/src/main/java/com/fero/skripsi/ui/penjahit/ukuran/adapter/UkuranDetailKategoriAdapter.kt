@@ -57,7 +57,6 @@ class UkuranDetailKategoriAdapter :
             binding.apply {
                 tvUkuran.text = data.nama_ukuran
 
-
                 Glide.with(root.context)
                     .load("${Constant.IMAGE_UKURAN}${data.gambar_ukuran}")
                     .into(imgUkuran)

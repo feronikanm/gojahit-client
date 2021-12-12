@@ -32,6 +32,7 @@ class BahanPelangganFragment : Fragment() {
 
     private lateinit var binding: FragmentBahanPelangganBinding
     val EXTRA_DATA_BAHAN_PELANGGAN = "EXTRA_DATA_BAHAN_PELANGGAN"
+    val FIELD_REQUIRED = "Field tidak boleh kosong"
     lateinit var prefHelper: PrefHelper
 
     override fun onCreateView(
@@ -49,26 +50,9 @@ class BahanPelangganFragment : Fragment() {
         val idPelanggan = prefHelper.getString(PrefHelper.PREF_ID_PELANGGAN)
         val idPelangganInt : Int = idPelanggan!!.toInt()
         val namaPelanggan = prefHelper.getString(PrefHelper.PREF_NAMA_PELANGGAN)
-        val emailPelanggan = prefHelper.getString(PrefHelper.PREF_EMAIL_PELANGGAN)
-        val passwordPelanggan = prefHelper.getString(PrefHelper.PREF_PASSWORD_PELANGGAN)
-        val telpPelanggan = prefHelper.getString(PrefHelper.PREF_TELP_PELANGGAN)
-        val latPelanggan = prefHelper.getString(PrefHelper.PREF_LATITUDE_PELANGGAN)
-        val longPelanggan = prefHelper.getString(PrefHelper.PREF_LONGITUDE_PELANGGAN)
-        val alamatPelanggan = prefHelper.getString(PrefHelper.PREF_ALAMAT_PELANGGAN)
-        val jkPelanggan = prefHelper.getString(PrefHelper.PREF_JK_PELANGGAN)
-        val fotoPelanggan = prefHelper.getString(PrefHelper.PREF_FOTO_PELANGGAN)
 
         val dataPelanggan = Pelanggan(
-            idPelangganInt,
-            namaPelanggan,
-            emailPelanggan,
-            passwordPelanggan,
-            alamatPelanggan,
-            jkPelanggan,
-            latPelanggan,
-            longPelanggan,
-            telpPelanggan,
-            fotoPelanggan,
+            idPelangganInt, "", "","","","","","","",""
         )
 
         val bundleData = arguments?.getString(EXTRA_DATA_BAHAN_PELANGGAN)
@@ -163,6 +147,11 @@ class BahanPelangganFragment : Fragment() {
         val lebarBahan = binding.etLebarBahan.text.toString().trim()
         val jumlahJahitanET = binding.etJumlahJahitan.text.toString().trim()
         val statusPesanan = "Belum diverifikasi"
+
+        if (jumlahJahitanET.isEmpty()){
+            binding.etJumlahJahitan.error = FIELD_REQUIRED
+            return
+        }
 
         val ongkosPenjahit = data.ongkos_penjahit
         val jumlahJahitan : Int = jumlahJahitanET.toInt()

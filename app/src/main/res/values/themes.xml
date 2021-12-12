@@ -30,6 +30,12 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="edit_text" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">#2196F3</item>
+        <item name="colorControlActivated">#2196F3</item>
+        <item name="colorControlHighlight">#2196F3</item>
+    </style>
+
     <style name="intro_title">
         <item name="android:textSize">24sp</item>
         <item name="android:letterSpacing">-0.02</item>

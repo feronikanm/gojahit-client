@@ -27,6 +27,8 @@ class RatingPenjahitActivity : AppCompatActivity() {
         binding = ActivityRatingPenjahitBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.title = "Rating Penjahit"
+
         val dataPesanan: Pesanan? = intent.extras?.getParcelable(EXTRA_DATA_RATING_PENJAHIT)
         val idPenjahit = dataPesanan?.id_penjahit
 

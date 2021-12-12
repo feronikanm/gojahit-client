@@ -3,8 +3,10 @@ package com.fero.skripsi.ui.pelanggan.transaksi.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.fero.skripsi.databinding.ItemAddUkuranPesananBinding
 import com.fero.skripsi.model.UkuranDetailPesanan
+import com.fero.skripsi.utils.Constant
 
 class TambahUkuranDetailPesananAdapter :
     RecyclerView.Adapter<TambahUkuranDetailPesananAdapter.TambahUkuranDetailPesananViewHolder>() {
@@ -51,8 +53,12 @@ class TambahUkuranDetailPesananAdapter :
 
         fun bind(data: UkuranDetailPesanan) {
             tvNamaUkuran.text = data.nama_ukuran
+
+            binding.apply {
+                Glide.with(root.context)
+                    .load("${Constant.IMAGE_UKURAN}${data.gambar_ukuran}")
+                    .into(imgUkuran)
+            }
         }
-
-
     }
 }

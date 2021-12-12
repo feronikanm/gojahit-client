@@ -1,5 +1,6 @@
 package com.fero.skripsi.ui.penjahit.transaksi
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -149,6 +150,22 @@ class DetailTransaksiPenjahitFragment : BaseFragment<FragmentDetailTransaksiPenj
                     binding.btnProses.visibility = View.GONE
                     binding.btnSelesai.visibility = View.GONE
                     binding.tvListUkuran.visibility = View.VISIBLE
+                }
+
+                if (it.status_pesanan.equals(statusDiverifikasi)) {
+                    binding.tvStatusPesanan.setTextColor(Color.GREEN)
+                }
+
+                if (it.status_pesanan.equals(statusProses)) {
+                    binding.tvStatusPesanan.setTextColor(Color.GREEN)
+                }
+
+                if (it.status_pesanan.equals(statusTidakDiterima)) {
+                    binding.tvStatusPesanan.setTextColor(Color.RED)
+                }
+
+                if (it.status_pesanan.equals(statusSelesai)) {
+                    binding.tvStatusPesanan.setTextColor(Color.BLUE)
                 }
 
             })

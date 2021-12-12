@@ -172,12 +172,24 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <ImageButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_pilih_tanggal"
-                style="@style/Base.Widget.AppCompat.ImageButton"
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_date" />
+                android:background="@drawable/background_card"
+                android:layout_margin="2dp"
+                android:drawableStart="@drawable/ic_pilih_tanggal"
+                android:padding="8dp"
+                android:text="  Pilih Tanggal"
+                android:textAppearance="@style/button_login_register"
+                android:textColor="@color/not_black" />
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/btn_pilih_tanggal"-->
+<!--                style="@style/Base.Widget.AppCompat.ImageButton"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/ic_date" />-->
 
             <TextView
                 android:id="@+id/tv_tanggal_selesai"
@@ -185,75 +197,96 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:fontFamily="@font/gilroy_medium"
-                android:text="2021-12-12" />
+                android:textSize="16sp"
+                tools:text="2021-12-12" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/tv_id_penjahit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_nama_penjahit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_id_kategori"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_nama_kategori"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_id_detail_kategori"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_id_pelanggan"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_nama_pelanggan"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_ongkos_penjahit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_total_biaya"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_status_bahan"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_status_pesanan"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_kirim_data"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/login_button_bk"
-            android:fontFamily="@font/gilroy_medium"
-            android:text="Kirim"
-            android:textAppearance="@style/button_login_register"
-            android:textColor="@color/white" />
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:padding="10dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_kirim_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/login_button_bk"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="Kirim"
+                android:textAppearance="@style/button_login_register"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

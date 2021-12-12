@@ -48,7 +48,6 @@ class TambahUkuranAdapter : RecyclerView.Adapter<TambahUkuranAdapter.TambahUkura
                 root.setOnClickListener {
                     onItemClickCallback.onItemClicked(listUkuran[adapterPosition])
                 }
-
             }
         }
     }

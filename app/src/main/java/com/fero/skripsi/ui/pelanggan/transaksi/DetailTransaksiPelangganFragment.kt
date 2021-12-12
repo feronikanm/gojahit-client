@@ -1,6 +1,7 @@
 package com.fero.skripsi.ui.pelanggan.transaksi
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -113,7 +114,7 @@ class DetailTransaksiPelangganFragment : BaseFragment<FragmentDetailTransaksiPel
 
                 if (it.status_pesanan.equals(statusDiverifikasi)) {
                     binding.btnInputUkuran.visibility = View.VISIBLE
-                    binding.tvListUkuran.visibility = View.VISIBLE
+                    binding.tvListUkuran.visibility = View.INVISIBLE
                     binding.btnRatingPenjahit.visibility = View.GONE
                 }
 
@@ -145,6 +146,22 @@ class DetailTransaksiPelangganFragment : BaseFragment<FragmentDetailTransaksiPel
                     binding.btnInputUkuran.visibility = View.GONE
                     binding.tvListUkuran.visibility = View.VISIBLE
                     binding.btnRatingPenjahit.visibility = View.GONE
+                }
+
+                if (it.status_pesanan.equals(statusDiverifikasi)) {
+                    binding.tvStatusPesanan.setTextColor(Color.GREEN)
+                }
+
+                if (it.status_pesanan.equals(statusProses)) {
+                    binding.tvStatusPesanan.setTextColor(Color.GREEN)
+                }
+
+                if (it.status_pesanan.equals(statusTidakDiterima)) {
+                    binding.tvStatusPesanan.setTextColor(Color.RED)
+                }
+
+                if (it.status_pesanan.equals(statusSelesai)) {
+                    binding.tvStatusPesanan.setTextColor(Color.BLUE)
                 }
 
 
