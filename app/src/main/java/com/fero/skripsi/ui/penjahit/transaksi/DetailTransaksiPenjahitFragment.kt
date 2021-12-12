@@ -127,7 +127,7 @@ class DetailTransaksiPenjahitFragment : BaseFragment<FragmentDetailTransaksiPenj
                 if (it.lama_waktu_pengerjaan.equals(ketStatusUkuranTelahDimasukkan)){
                     binding.layoutTerimaTolak.visibility = View.GONE
                     binding.btnProses.visibility = View.VISIBLE
-                    binding.btnSelesai.visibility = View.INVISIBLE
+                    binding.btnSelesai.visibility = View.GONE
                     binding.tvListUkuran.visibility = View.VISIBLE
                 }
 
