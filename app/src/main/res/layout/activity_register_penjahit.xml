@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/gilroy_bold"
-                android:text="Daftar Sebagai Pengguna"
+                android:text="Daftar Sebagai Penjahit"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
@@ -125,7 +125,7 @@
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/primaryTextColor"
                 app:counterEnabled="true"
-                app:counterMaxLength="8"
+                app:counterMaxLength="15"
                 app:errorEnabled="true"
                 app:hintTextColor="@color/primaryTextColor"
                 app:passwordToggleEnabled="true"

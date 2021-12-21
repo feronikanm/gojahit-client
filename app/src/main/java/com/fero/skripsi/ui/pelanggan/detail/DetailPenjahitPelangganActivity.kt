@@ -190,7 +190,8 @@ class DetailPenjahitPelangganActivity : AppCompatActivity(), OnMapReadyCallback 
             val df = DecimalFormat("#.#")
             val extraRating = extraDataNilai!!.nilai_akhir
             val rating = df.format(extraRating)
-            contentBinding.tvRating.text = rating.toString()
+//            contentBinding.tvRating.text = rating.toString()
+            contentBinding.tvRating.text = extraRating.toString()
         }
         else{
             contentBinding.tvRating.text = "Belum ada penilaian"

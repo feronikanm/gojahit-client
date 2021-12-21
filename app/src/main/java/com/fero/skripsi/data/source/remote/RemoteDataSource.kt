@@ -813,6 +813,29 @@ class RemoteDataSource(context: Context) : DataSource {
         })
     }
 
+    override fun getDataDetailPesananById(
+        data: Pesanan,
+        responseCallback: ResponseCallback<List<DetailPesanan>>
+    ) {
+        EspressoIdlingResource.increment()
+        apiService.getDataDetailPesananById(data.id_pesanan!!).enqueue(object : Callback<List<DetailPesanan>>{
+            override fun onResponse(call: Call<List<DetailPesanan>>, response: Response<List<DetailPesanan>>) {
+                responseCallback.onHideProgress()
+                responseCallback.onSuccess(response.body()!!)
+                Log.d("Repsonse : ", data.toString())
+                EspressoIdlingResource.decrement()
+            }
+
+            override fun onFailure(call: Call<List<DetailPesanan>>, t: Throwable) {
+                responseCallback.onHideProgress()
+                responseCallback.onFailed(500)
+                EspressoIdlingResource.decrement()
+            }
+
+        })
+
+    }
+
     override fun getDataPesananByPelanggan(
         data: Pelanggan,
         callback: ResponseCallback<List<Pesanan>>

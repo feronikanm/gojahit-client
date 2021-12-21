@@ -23,9 +23,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Detail Pesanan"
-                android:textColor="@color/not_black"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:fontFamily="@font/gilroy_medium"
+                android:lineSpacingExtra="4sp"
+                android:textAppearance="@style/intro_title" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -64,29 +64,94 @@
                     android:text="Id Detail Kategori" />
 
                 <TextView
+                    android:id="@+id/tv_nama_pelanggan3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Nama Pelanggan" />
+
+                <TextView
+                    android:id="@+id/tv_telp_pelanggan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Telp Pelanggan" />
+
+                <TextView
+                    android:id="@+id/tv_alamat_pelanggan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Alamat Pelanggan" />
+
+                <TextView
+                    android:id="@+id/tv_kategori"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Kategori" />
+
+                <TextView
                     android:id="@+id/tv_tanggal_pesanan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tanggal Pesanan" />
+                    tools:text="Tanggal Pesanan" />
 
                 <TextView
                     android:id="@+id/tv_tanggal_pesanan_selesai"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tanggal Pesanan Selesai" />
+                    tools:text="Tanggal Pesanan Selesai" />
+
+                <TextView
+                    android:id="@+id/tv_catatan_pesanan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Catatan Pesanan" />
+
+                <TextView
+                    android:id="@+id/tv_asal_bahan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Asal Bahan" />
+
+                <TextView
+                    android:id="@+id/tv_status_bahan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Status Bahan" />
+
+                <TextView
+                    android:id="@+id/tv_harga_bahan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Harga Bahan" />
+
+                <TextView
+                    android:id="@+id/tv_ongkos_penjahit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Ongkos Penjahit" />
+
+                <TextView
+                    android:id="@+id/tv_jumlah_jahitan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Jumlah Jahitan" />
+
+                <TextView
+                    android:id="@+id/tv_total_biaya"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Total Biaya" />
 
                 <TextView
                     android:id="@+id/tv_ket_pesanan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:text="Keterangan Pesanan" />
+                    tools:text="Keterangan Pesanan" />
 
                 <TextView
                     android:id="@+id/tv_status_pesanan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Status Pesanan" />
+                    tools:text="Status Pesanan" />
 
 
             </LinearLayout>
@@ -175,6 +240,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/gilroy_medium"
                 android:text="List Ukuran"
                 android:textSize="18sp"
                 android:textStyle="bold" />

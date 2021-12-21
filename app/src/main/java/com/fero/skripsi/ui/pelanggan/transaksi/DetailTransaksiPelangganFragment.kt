@@ -37,17 +37,51 @@ class DetailTransaksiPelangganFragment : BaseFragment<FragmentDetailTransaksiPel
 
     override fun setupViewModel() {
         pesananViewModel = obtainViewModel<PesananViewModel>().apply {
-            dataPesanan.observe(viewLifecycleOwner, {
+
+            dataDetailPesanan.observe(viewLifecycleOwner, {
                 binding.apply {
                     tvIdPesanan.text = "Kode Pesanan : " + it.id_pesanan.toString()
                     tvIdPenjahit.text = "ID Penjahit : " + it.id_penjahit.toString()
                     tvIdPelanggan.text = "ID Pelanggan : " + it.id_pelanggan.toString()
                     tvIdDetailKategori.text = "ID Detail Kategori : " + it.id_detail_kategori.toString()
+                    tvNamaPenjahit3.text = "Nama Penjahit : " + it.nama_penjahit
+                    tvTelpPenjahit.text = "Telp Penjahit : " + it.telp_penjahit
+                    tvAlamatPenjahit.text = "Alamat Penjahit : " + it.alamat_penjahit
+                    tvKategori.text = "Kategori : " + it.nama_kategori
                     tvTanggalPesanan.text = "Tanggal Pesanan : " + it.tanggal_pesanan
                     tvTanggalPesananSelesai.text = "Tanggal Pesanan Selesai : " + it.tanggal_pesanan_selesai
+                    tvCatatanPesanan.text = "Catatan Pesanam : " + it.catatan_pesanan
+                    tvStatusBahan.text = "Status Bahan : " + it.status_bahan
+
+                    tvOngkosPenjahit.text = "Ongkos Penjahit : " + it.ongkos_penjahit
+                    tvJumlahJahitan.text = "Jumlah Jahitan : " + it.jumlah_jahitan
+                    tvTotalBiaya.text = "Total Biaya : " + it.total_biaya
                     tvKetPesanan.text = "Keterangan : " + it.lama_waktu_pengerjaan
                     tvStatusPesanan.text = "Status Pesanan : " + it.status_pesanan
+
+                    val asalPelanggan = "Pelanggan"
+                    if (it.asal_bahan.equals(asalPelanggan)){
+                        tvHargaBahan.visibility = View.GONE
+                        tvAsalBahan.text = "Asal Bahan : Milik Sendiri"
+                    } else {
+                        tvHargaBahan.text = "Harga Bahan : " + it.harga_bahan
+                        tvAsalBahan.text = "Asal Bahan : " + it.asal_bahan
+                    }
                 }
+            })
+            getDataDetailPesananById(extraDataPesanan)
+
+            dataPesanan.observe(viewLifecycleOwner, {
+//                binding.apply {
+//                    tvIdPesanan.text = "Kode Pesanan : " + it.id_pesanan.toString()
+//                    tvIdPenjahit.text = "ID Penjahit : " + it.id_penjahit.toString()
+//                    tvIdPelanggan.text = "ID Pelanggan : " + it.id_pelanggan.toString()
+//                    tvIdDetailKategori.text = "ID Detail Kategori : " + it.id_detail_kategori.toString()
+//                    tvTanggalPesanan.text = "Tanggal Pesanan : " + it.tanggal_pesanan
+//                    tvTanggalPesananSelesai.text = "Tanggal Pesanan Selesai : " + it.tanggal_pesanan_selesai
+//                    tvKetPesanan.text = "Keterangan : " + it.lama_waktu_pengerjaan
+//                    tvStatusPesanan.text = "Status Pesanan : " + it.status_pesanan
+//                }
 
                 val statusBelumDiverifikasi = "Belum diverifikasi"
                 val statusDiverifikasi = "Verifikasi"

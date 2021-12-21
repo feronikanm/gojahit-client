@@ -76,10 +76,11 @@ class ProfilePenjahitFragment : Fragment() {
                     tvJamBuka.text = it.jam_buka
                     tvJamTutup.text = it.jam_tutup
 
-                    Glide.with(requireContext())
-                        .load("${Constant.IMAGE_PENJAHIT}${it.foto_penjahit}")
-                        .into(imgPenjahit)
-
+                    if(it.foto_penjahit != null){
+                        Glide.with(requireContext())
+                            .load("${Constant.IMAGE_PENJAHIT}${it.foto_penjahit}")
+                            .into(imgPenjahit)
+                    }
 
                 }
             })

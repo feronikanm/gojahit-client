@@ -156,7 +156,8 @@ class DetailPenjahitActivity : AppCompatActivity(), OnMapReadyCallback {
                 val df = DecimalFormat("#.#")
                 val extraRating = extraDataNilai!!.nilai_akhir
                 val rating = df.format(extraRating)
-                tvRating.text = rating.toString()
+//                tvRating.text = rating.toString()
+                tvRating.text = extraRating.toString()
             }
             else{
                 tvRating.text = "Belum ada penilaian"

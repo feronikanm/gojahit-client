@@ -46,6 +46,7 @@
             android:secondaryProgressTint="#FFC107"
             android:progressBackgroundTint="@color/loginBkColor"
             android:stepSize="1"
+            android:numStars="3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +55,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sangat_buruk"
+            android:text="Buruk"
             android:textColor="@color/not_black"
             app:layout_constraintEnd_toStartOf="@+id/rb_kriteria_1"
             app:layout_constraintHorizontal_bias="0.0"
@@ -64,7 +65,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sangat_baik"
+            android:text="Baik"
             android:textColor="@color/not_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -94,7 +95,7 @@
             android:progressTint="#FFC107"
             android:secondaryProgressTint="#FFC107"
             android:progressBackgroundTint="@color/loginBkColor"
-
+            android:numStars="3"
             android:stepSize="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -104,7 +105,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sangat_buruk"
+            android:text="Tidak Tepat"
             android:textColor="@color/not_black"
             app:layout_constraintEnd_toStartOf="@+id/rb_kriteria_2"
             app:layout_constraintHorizontal_bias="0.0"
@@ -114,7 +115,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sangat_baik"
+            android:text="Lebih Awal"
             android:textColor="@color/not_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -145,6 +146,7 @@
             android:secondaryProgressTint="#FFC107"
             android:progressBackgroundTint="@color/loginBkColor"
             android:stepSize="1"
+            android:numStars="3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
@@ -153,7 +155,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sangat_buruk"
+            android:text="Tidak Suka"
             android:textColor="@color/not_black"
             app:layout_constraintEnd_toStartOf="@+id/rb_kriteria_3"
             app:layout_constraintHorizontal_bias="0.0"
@@ -163,7 +165,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sangat_baik"
+            android:text="Sangat Suka"
             android:textColor="@color/not_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -194,6 +196,7 @@
             android:secondaryProgressTint="#FFC107"
             android:progressBackgroundTint="@color/loginBkColor"
             android:stepSize="1"
+            android:numStars="3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_kriteria_4" />
@@ -201,7 +204,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sangat_buruk"
+            android:text="Tinggi"
             android:textColor="@color/not_black"
             app:layout_constraintEnd_toStartOf="@+id/rb_kriteria_4"
             app:layout_constraintHorizontal_bias="0.0"
@@ -211,7 +214,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sangat_baik"
+            android:text="Rendah"
             android:textColor="@color/not_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"

@@ -242,6 +242,12 @@ interface ApiService {
     ): Call<Pesanan>
 
 
+    @GET(URL_PESANAN_GET_BY_ID)
+    fun getDataDetailPesananById(
+        @Path("id_pesanan") id_pesanan_path: Int
+    ): Call<List<DetailPesanan>>
+
+
     @GET(URL_PESANAN_GET_BY_PELANGGAN)
     fun getDataPesananByPelanggan(
         @Path("id_pelanggan") id_pelanggan_path: Int

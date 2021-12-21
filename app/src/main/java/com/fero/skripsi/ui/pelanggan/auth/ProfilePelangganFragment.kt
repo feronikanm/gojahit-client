@@ -67,10 +67,11 @@ class ProfilePelangganFragment : Fragment() {
                     tvLatPelanggan.text = it.latitude_pelanggan.toString()
                     tvLongPelanggan.text = it.longitude_pelanggan.toString()
 
-                    Glide.with(requireContext())
-                        .load("${Constant.IMAGE_PELANGGAN}${it.foto_pelanggan}")
-                        .into(imgPelanggan)
-
+                    if(it.foto_pelanggan != null){
+                        Glide.with(requireContext())
+                            .load("${Constant.IMAGE_PELANGGAN}${it.foto_pelanggan}")
+                            .into(imgPelanggan)
+                    }
                 }
             })
         }

@@ -53,10 +53,12 @@ class HomePelangganActivity : BaseActivity<ActivityHomePelangganBinding>() {
                 binding.apply {
 
                     tvUsername.text = it.nama_pelanggan
-                    Glide.with(this@HomePelangganActivity)
-                        .load("${Constant.IMAGE_PELANGGAN}${it!!.foto_pelanggan}")
-                        .into(imgPelanggan)
 
+                    if(it.foto_pelanggan != null){
+                        Glide.with(this@HomePelangganActivity)
+                            .load("${Constant.IMAGE_PELANGGAN}${it!!.foto_pelanggan}")
+                            .into(imgPelanggan)
+                    }
                 }
             })
         }

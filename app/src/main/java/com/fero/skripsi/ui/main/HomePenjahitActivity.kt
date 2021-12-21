@@ -51,10 +51,12 @@ class HomePenjahitActivity : BaseActivity<ActivityHomePenjahitBinding>() {
                 binding.apply {
 
                     tvUsername.text = it.nama_penjahit
-                    Glide.with(this@HomePenjahitActivity)
-                        .load("${Constant.IMAGE_PENJAHIT}${it!!.foto_penjahit}")
-                        .into(imgPenjahit)
 
+                    if(it.foto_penjahit != null){
+                        Glide.with(this@HomePenjahitActivity)
+                            .load("${Constant.IMAGE_PENJAHIT}${it!!.foto_penjahit}")
+                            .into(imgPenjahit)
+                    }
                 }
             })
         }

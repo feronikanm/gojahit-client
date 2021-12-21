@@ -153,6 +153,13 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
         remoteDataSource.getDataPesananById(data, responseCallback)
     }
 
+    override fun getDataDetailPesananById(
+        data: Pesanan,
+        responseCallback: ResponseCallback<List<DetailPesanan>>
+    ) {
+        remoteDataSource.getDataDetailPesananById(data, responseCallback)
+    }
+
     override fun getDataPesananByPelanggan(
         data: Pelanggan,
         callback: ResponseCallback<List<Pesanan>>

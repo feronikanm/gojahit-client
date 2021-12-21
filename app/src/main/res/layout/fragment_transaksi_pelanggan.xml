@@ -22,9 +22,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Data Pesanan"
-                android:textColor="@color/not_black"
-                android:textSize="24sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/gilroy_medium"
+                android:lineSpacingExtra="4sp"
+                android:textAppearance="@style/intro_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

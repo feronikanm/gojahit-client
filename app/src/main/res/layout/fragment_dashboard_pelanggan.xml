@@ -35,8 +35,8 @@
                 android:layout_margin="16dp"
                 android:fontFamily="@font/gilroy_bold"
                 android:lineSpacingExtra="4sp"
-                android:text="Kategori"
                 android:textAppearance="@style/intro_title"
+                android:text="Kategori"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/viewFlipper" />
 

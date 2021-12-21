@@ -55,7 +55,7 @@
             android:transitionName="userIconTransition"
             app:civ_border_color="@color/white"
             app:civ_border_width="2dp"
-            tools:src="@tools:sample/avatars" />
+            android:src="@drawable/img_user" />
 
     </LinearLayout>
 

@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/gilroy_bold"
-                android:text="Daftar Sebagai Penjahit"
+                android:text="Daftar Sebagai Pengguna"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
