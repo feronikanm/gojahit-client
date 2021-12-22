@@ -54,8 +54,8 @@ class DetailTransaksiPenjahitFragment : BaseFragment<FragmentDetailTransaksiPenj
                     tvOngkosPenjahit.text = "Ongkos Penjahit : " + it.ongkos_penjahit
                     tvJumlahJahitan.text = "Jumlah Jahitan : " + it.jumlah_jahitan
                     tvTotalBiaya.text = "Total Biaya : " + it.total_biaya
-                    tvKetPesanan.text = "Keterangan : " + it.lama_waktu_pengerjaan
-                    tvStatusPesanan.text = "Status Pesanan : " + it.status_pesanan
+//                    tvKetPesanan.text = "Keterangan : " + it.lama_waktu_pengerjaan
+//                    tvStatusPesanan.text = "Status Pesanan : " + it.status_pesanan
 
                     val asalPelanggan = "Pelanggan"
                     if (it.asal_bahan.equals(asalPelanggan)){
@@ -69,16 +69,16 @@ class DetailTransaksiPenjahitFragment : BaseFragment<FragmentDetailTransaksiPenj
 
 
             dataPesanan.observe(viewLifecycleOwner, {
-//                binding.apply {
+                binding.apply {
 //                    tvIdPesanan.text = "Kode Pesanan : " + it.id_pesanan.toString()
 //                    tvIdPenjahit.text = "ID Penjahit : " + it.id_penjahit.toString()
 //                    tvIdPelanggan.text = "ID Pelanggan : " + it.id_pelanggan.toString()
 //                    tvIdDetailKategori.text = "ID Detail Kategori : " + it.id_detail_kategori.toString()
 //                    tvTanggalPesanan.text = "Tanggal Pesanan : " + it.tanggal_pesanan
 //                    tvTanggalPesananSelesai.text = "Tanggal Pesanan Selesai : " + it.tanggal_pesanan_selesai
-//                    tvKetPesanan.text = "Keterangan : " + it.lama_waktu_pengerjaan
-//                    tvStatusPesanan.text = "Status Pesanan : " + it.status_pesanan
-//                }
+                    tvKetPesanan.text = "Keterangan : " + it.lama_waktu_pengerjaan
+                    tvStatusPesanan.text = "Status Pesanan : " + it.status_pesanan
+                }
 
                 val statusBelumDiverifikasi = "Belum diverifikasi"
                 val statusDiverifikasi = "Verifikasi"

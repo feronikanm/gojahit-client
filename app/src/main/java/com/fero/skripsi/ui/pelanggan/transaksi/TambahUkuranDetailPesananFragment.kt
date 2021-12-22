@@ -131,9 +131,10 @@ class TambahUkuranDetailPesananFragment : BaseFragment<FragmentTambahUkuranDetai
 
             Toast.makeText(context, "Data Ukuran Berhasil Ditambahkan", Toast.LENGTH_SHORT).show()
 
-            val intent = Intent(requireContext(), HomePelangganActivity::class.java)
+            val intent = Intent(getActivity(), HomePelangganActivity::class.java)
             intent.putExtra("EXTRA_LOGIN_PELANGGAN", dataPelanggan)
-            startActivity(intent)
+            getActivity()?.startActivity(intent)
+//            getActivity()?.finish()
 
         }
     }

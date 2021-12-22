@@ -64,9 +64,10 @@ class BahanPelangganFragment : Fragment() {
 
         viewModel.apply {
             dataPesanan.observe(this@BahanPelangganFragment, {
-                val move = Intent(requireContext(), HomePelangganActivity::class.java)
-                move.putExtra("EXTRA_LOGIN_PELANGGAN", dataPelanggan)
-                startActivity(move)
+//                val move = Intent(getActivity(), HomePelangganActivity::class.java)
+//                move.putExtra("EXTRA_LOGIN_PELANGGAN", dataPelanggan)
+//                getActivity()?.startActivity(move)
+                getActivity()?.finish()
             })
 
             messageSuccess.observe(this@BahanPelangganFragment, {

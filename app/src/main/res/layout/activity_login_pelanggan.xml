@@ -88,7 +88,6 @@
                     android:background="@color/white"
                     android:fontFamily="@font/gilroy_medium"
                     android:hint="Email"
-                    android:text="dinda@gmail.com"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:textColor="@color/black" />
@@ -114,7 +113,6 @@
                     android:background="@color/white"
                     android:fontFamily="@font/gilroy_medium"
                     android:hint="Password"
-                    android:text="dinda1234"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:textColor="@color/black"

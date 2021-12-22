@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.fero.skripsi.R
 import com.fero.skripsi.databinding.ActivityEditDataPenjahitBinding
 import com.fero.skripsi.model.Penjahit
+import com.fero.skripsi.ui.main.HomePelangganActivity
 import com.fero.skripsi.ui.main.HomePenjahitActivity
 import com.fero.skripsi.ui.penjahit.auth.viewmodel.AuthPenjahitViewModel
 import com.fero.skripsi.utils.PrefHelper
@@ -65,9 +66,32 @@ class EditDataPenjahitActivity : AppCompatActivity(), OnMapReadyCallback, Locati
         val factory = ViewModelFactory.getInstance(this)
         val viewModel = ViewModelProvider(this, factory)[AuthPenjahitViewModel::class.java]
 
+        val extraData: Penjahit? = intent.extras?.getParcelable(EXTRA_DATA_PENJAHIT)
+
         viewModel.apply {
+
+            dataPenjahitVM.observe(this@EditDataPenjahitActivity,{
+                binding.tvNamaPenjahit.text = it!!.nama_penjahit
+                binding.etNama.setText(it.nama_penjahit)
+                binding.etNamaToko.setText(it.nama_toko)
+                binding.etTelepon.setText(it.telp_penjahit)
+                binding.tvAlamatToko.setText(it.alamat_penjahit)
+                binding.etAlamatToko.setText(it.alamat_penjahit)
+                binding.tvLatitude.setText(it.latitude_penjahit)
+                binding.tvLongitude.setText(it.longitude_penjahit)
+                binding.etKet.setText(it.keterangan_toko)
+                binding.tvJamBuka.text = it.jam_buka
+                binding.tvJamTutup.text = it.jam_tutup
+
+            })
+            viewModel.getDataPenjahitById(extraData!!)
+
+
             dataPenjahit.observe(this@EditDataPenjahitActivity, {
-                finish()
+                val move = Intent(this@EditDataPenjahitActivity, HomePenjahitActivity::class.java)
+                move.putExtra("EXTRA_LOGIN_PENJAHIT", extraData)
+                startActivity(move)
+//                finish()
             })
 
             messageSuccess.observe(this@EditDataPenjahitActivity, {
@@ -87,19 +111,18 @@ class EditDataPenjahitActivity : AppCompatActivity(), OnMapReadyCallback, Locati
             })
         }
 
-        val extraData: Penjahit? = intent.extras?.getParcelable(EXTRA_DATA_PENJAHIT)
 
-        binding.tvNamaPenjahit.text = extraData!!.nama_penjahit
-        binding.etNama.setText(extraData.nama_penjahit)
-        binding.etNamaToko.setText(extraData.nama_toko)
-        binding.etTelepon.setText(extraData.telp_penjahit)
-        binding.tvAlamatToko.setText(extraData.alamat_penjahit)
-        binding.etAlamatToko.setText(extraData.alamat_penjahit)
-        binding.tvLatitude.setText(extraData.latitude_penjahit)
-        binding.tvLongitude.setText(extraData.longitude_penjahit)
-        binding.etKet.setText(extraData.keterangan_toko)
-        binding.tvJamBuka.text = extraData.jam_buka
-        binding.tvJamTutup.text = extraData.jam_tutup
+//        binding.tvNamaPenjahit.text = extraData!!.nama_penjahit
+//        binding.etNama.setText(extraData.nama_penjahit)
+//        binding.etNamaToko.setText(extraData.nama_toko)
+//        binding.etTelepon.setText(extraData.telp_penjahit)
+//        binding.tvAlamatToko.setText(extraData.alamat_penjahit)
+//        binding.etAlamatToko.setText(extraData.alamat_penjahit)
+//        binding.tvLatitude.setText(extraData.latitude_penjahit)
+//        binding.tvLongitude.setText(extraData.longitude_penjahit)
+//        binding.etKet.setText(extraData.keterangan_toko)
+//        binding.tvJamBuka.text = extraData.jam_buka
+//        binding.tvJamTutup.text = extraData.jam_tutup
 
         binding.tvPilihAlamat.visibility = View.GONE
         binding.googleMap.visibility = View.GONE
@@ -164,7 +187,7 @@ class EditDataPenjahitActivity : AppCompatActivity(), OnMapReadyCallback, Locati
 
 
             val dataPenjahit = Penjahit(
-                extraData.id_penjahit,
+                extraData!!.id_penjahit,
                 namaPenjahit,
                 extraData.email_penjahit,
                 extraData.password_penjahit,

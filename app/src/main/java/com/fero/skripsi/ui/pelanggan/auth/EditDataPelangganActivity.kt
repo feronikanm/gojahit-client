@@ -22,6 +22,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.fero.skripsi.R
 import com.fero.skripsi.databinding.ActivityEditDataPelangganBinding
 import com.fero.skripsi.model.Pelanggan
+import com.fero.skripsi.ui.main.HomePelangganActivity
 import com.fero.skripsi.ui.main.PilihUserActivity
 import com.fero.skripsi.ui.pelanggan.auth.viewmodel.AuthPelangganViewModel
 import com.fero.skripsi.utils.PrefHelper
@@ -77,9 +78,27 @@ class EditDataPelangganActivity : AppCompatActivity(), OnMapReadyCallback, Locat
         val factory = ViewModelFactory.getInstance(this)
         val viewModel = ViewModelProvider(this, factory)[AuthPelangganViewModel::class.java]
 
+        val extraData: Pelanggan? = intent.extras?.getParcelable(EXTRA_DATA_PELANGGAN)
+
         viewModel.apply {
+            dataPelangganVM.observe(this@EditDataPelangganActivity,{
+                binding.tvNamaPelanggan.text = it!!.nama_pelanggan
+                binding.etNama.setText(it.nama_pelanggan)
+                binding.etTelepon.setText(it!!.telp_pelanggan)
+                binding.etAlamat.setText(it.alamat_pelanggan)
+                binding.tvAlamat.setText(it.alamat_pelanggan)
+                binding.tvLatitude.setText(it.latitude_pelanggan)
+                binding.tvLongitude.setText(it.longitude_pelanggan)
+
+            })
+            viewModel.getDataPelangganById(extraData!!)
+
+
             dataPelanggan.observe(this@EditDataPelangganActivity, {
-                finish()
+                val move = Intent(this@EditDataPelangganActivity, HomePelangganActivity::class.java)
+                move.putExtra("EXTRA_LOGIN_PELANGGAN", extraData)
+                startActivity(move)
+//                finish()
             })
 
             messageSuccess.observe(this@EditDataPelangganActivity, {
@@ -99,15 +118,15 @@ class EditDataPelangganActivity : AppCompatActivity(), OnMapReadyCallback, Locat
             })
         }
 
-        val extraData: Pelanggan? = intent.extras?.getParcelable(EXTRA_DATA_PELANGGAN)
 
-        binding.tvNamaPelanggan.text = extraData!!.nama_pelanggan
-        binding.etNama.setText(extraData.nama_pelanggan)
-        binding.etTelepon.setText(extraData.telp_pelanggan)
-        binding.etAlamat.setText(extraData.alamat_pelanggan)
-        binding.tvAlamat.setText(extraData.alamat_pelanggan)
-        binding.tvLatitude.setText(extraData.latitude_pelanggan)
-        binding.tvLongitude.setText(extraData.longitude_pelanggan)
+
+//        binding.tvNamaPelanggan.text = extraData!!.nama_pelanggan
+//        binding.etNama.setText(extraData.nama_pelanggan)
+//        binding.etTelepon.setText(extraData.telp_pelanggan)
+//        binding.etAlamat.setText(extraData.alamat_pelanggan)
+//        binding.tvAlamat.setText(extraData.alamat_pelanggan)
+//        binding.tvLatitude.setText(extraData.latitude_pelanggan)
+//        binding.tvLongitude.setText(extraData.longitude_pelanggan)
 
         binding.tvPilihAlamat.visibility = View.GONE
         binding.googleMap.visibility = View.GONE
@@ -141,7 +160,7 @@ class EditDataPelangganActivity : AppCompatActivity(), OnMapReadyCallback, Locat
             }
             val jkPelanggan = value
 
-            setupDataPelanggan.id_pelanggan = extraData.id_pelanggan
+            setupDataPelanggan.id_pelanggan = extraData!!.id_pelanggan
             setupDataPelanggan.nama_pelanggan = namaPelanggan
             setupDataPelanggan.email_pelanggan = extraData.email_pelanggan
             setupDataPelanggan.password_pelanggan = extraData.password_pelanggan

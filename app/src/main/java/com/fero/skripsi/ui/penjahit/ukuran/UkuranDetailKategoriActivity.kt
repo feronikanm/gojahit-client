@@ -126,6 +126,7 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         supportActionBar?.title = extraData?.nama_kategori
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         setupViewModel()
 
@@ -216,6 +217,15 @@ class UkuranDetailKategoriActivity : AppCompatActivity() {
 
     fun refreshGetDataViewModel() {
         viewModel.getUkuranByDetailKategori(dataUkuran)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }
