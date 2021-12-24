@@ -207,7 +207,7 @@ class DetailPenjahitActivity : AppCompatActivity(), OnMapReadyCallback {
             distance = rad2deg(distance)
             distance = distance * 60 * 1.1515
             distance = distance * 1.609344
-            Log.d("in meter : ", distance.toString())
+            Log.d("in km : ", distance.toString())
 
             val df = DecimalFormat("#.#")
             Log.d("with decimal format: ", (df.format(distance)).toString())
@@ -295,30 +295,7 @@ class DetailPenjahitActivity : AppCompatActivity(), OnMapReadyCallback {
             currentLocation = location
             val latlng = LatLng(location.latitude, location.longitude)
 
-            val penjahitUserLat = extraDataPenjahit?.latitude_penjahit
-            val penjahitUserLng = extraDataPenjahit?.longitude_penjahit
-
-            Log.d("penjahitUserLat : ", penjahitUserLat.toString())
-            Log.d("penjahitUserLng : ", penjahitUserLng.toString())
-
-            val penjahitUserLatDouble = penjahitUserLat!!.toDouble()
-            val penjahitUserLngDouble = penjahitUserLng!!.toDouble()
-
-            Log.d("penjahitUserLatDouble", penjahitUserLatDouble.toString())
-            Log.d("penjahitUserLngDouble", penjahitUserLngDouble.toString())
-
-            val penjahitUserLatLng = LatLng(penjahitUserLatDouble, penjahitUserLngDouble)
-            Log.d("penjahitUserLatLng", penjahitUserLatLng.toString())
-
-            val iconPengguna = BitmapDescriptorFactory.fromResource(R.drawable.ic_position_3d_2)
-
-            val markerOptions = MarkerOptions().position(penjahitUserLatLng)
-                .title("Lokasi Saya")
-                .snippet(getAddress(penjahitUserLatDouble, penjahitUserLngDouble))
-                .icon(iconPengguna)
-            mMap!!.addMarker(markerOptions)
-
-
+            //penjahit nilai
             val penjahitLat = extraDataNilai?.latitude_penjahit
             val penjahitLng = extraDataNilai?.longitude_penjahit
 
@@ -343,13 +320,60 @@ class DetailPenjahitActivity : AppCompatActivity(), OnMapReadyCallback {
 
             mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(penjahitLatLng, 13f))
 
-            mMap!!.addPolyline(
-                PolylineOptions().add(penjahitLatLng, penjahitUserLatLng)
-                    .width // below line is use to specify the width of poly line.
-                        (7f) // below line is use to add color to our poly line.
-                    .color(Color.RED) // below line is to make our poly line geodesic.
-                    .geodesic(true)
-            )
+            //penjahit user
+
+            val penjahitUserLat = extraDataPenjahit?.latitude_penjahit
+            val penjahitUserLng = extraDataPenjahit?.longitude_penjahit
+
+            if (penjahitUserLat != null && penjahitUserLng != null){
+
+                Log.d("penjahitUserLat : ", penjahitUserLat.toString())
+                Log.d("penjahitUserLng : ", penjahitUserLng.toString())
+
+                val penjahitUserLatDouble = penjahitUserLat!!.toDouble()
+                val penjahitUserLngDouble = penjahitUserLng!!.toDouble()
+
+                Log.d("penjahitUserLatDouble", penjahitUserLatDouble.toString())
+                Log.d("penjahitUserLngDouble", penjahitUserLngDouble.toString())
+
+                val penjahitUserLatLng = LatLng(penjahitUserLatDouble, penjahitUserLngDouble)
+                Log.d("penjahitUserLatLng", penjahitUserLatLng.toString())
+
+                val iconPengguna = BitmapDescriptorFactory.fromResource(R.drawable.ic_position_3d_2)
+
+                val markerOptions = MarkerOptions().position(penjahitUserLatLng)
+                    .title("Lokasi Saya")
+                    .snippet(getAddress(penjahitUserLatDouble, penjahitUserLngDouble))
+                    .icon(iconPengguna)
+                mMap!!.addMarker(markerOptions)
+
+                mMap!!.addPolyline(
+                    PolylineOptions().add(penjahitLatLng, penjahitUserLatLng)
+                        .width // below line is use to specify the width of poly line.
+                            (7f) // below line is use to add color to our poly line.
+                        .color(Color.RED) // below line is to make our poly line geodesic.
+                        .geodesic(true)
+                )
+
+            } else{
+
+                val iconPengguna = BitmapDescriptorFactory.fromResource(R.drawable.ic_position_3d_2)
+
+                val markerOptions = MarkerOptions().position(latlng)
+                    .title("Lokasi Saya")
+                    .snippet(getAddress(latlng.latitude, latlng.longitude))
+                    .icon(iconPengguna)
+                mMap!!.addMarker(markerOptions)
+
+                mMap!!.addPolyline(
+                    PolylineOptions().add(penjahitLatLng, latlng)
+                        .width // below line is use to specify the width of poly line.
+                            (7f) // below line is use to add color to our poly line.
+                        .color(Color.RED) // below line is to make our poly line geodesic.
+                        .geodesic(true)
+                )
+            }
+
         }
 
     }

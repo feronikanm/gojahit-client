@@ -133,7 +133,7 @@ class RekomendasiPenjahitAdapter : RecyclerView.Adapter<RekomendasiPenjahitAdapt
             distance = rad2deg(distance)
             distance = distance * 60 * 1.1515
             distance = distance * 1.609344
-            Log.d("in meter : ", distance.toString())
+            Log.d("in km : ", distance.toString())
 
             val df = DecimalFormat("#.#")
             Log.d("with decimal format: ", (df.format(distance)).toString())
