@@ -10,6 +10,7 @@ import com.fero.skripsi.R
 
 
 class IntroSlideAdapter(private val introSlides: List<IntroSlide>): RecyclerView.Adapter<IntroSlideAdapter.IntroSlideViewHolder>() {
+
     inner class IntroSlideViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
         private val textTitle = view.findViewById<TextView>(R.id.tv_intro_title)
