@@ -23,13 +23,13 @@ Setiap kriteria dibagi dalam tiga parameter yang berbeda, diantaranya yaitu:
 3. Layanan Penjahit : 1 tidak suka, 2 suka, 3 sangat suka.
 4. Harga Jasa Jahit : 1 tinggi, 2 sedang, 3 rendah.
 
-Download the apps [here](https://drive.google.com/drive/folders/1bp0LWzJ0XXViDGqM-BnUzkKF_stwFPIi).
+Download the application [here](https://drive.google.com/drive/folders/1bp0LWzJ0XXViDGqM-BnUzkKF_stwFPIi).
 
-## Screenshot Apps
+## Screenshot Application
 
-|Free Hand Drawing |   Draw a Line              |   Draw a Rectangle    | Draw a Circle |
+|Splash Screen |   Landing Page (1)              |   Landing Page (2)    | Landing Page (3) |
 |:------------------:|:----------------------------:|:---------------------:|:-----------------:|
-|<img width="200px" height="360px" src="docs/images/ss_splash_screen.jpg"> | <img width="200px" height="360px" src="docs/images/ss_landing_page_1.jpg"> | <img width="200px" height="360px" src="docs/images/ss_landing_page_2.jpg"> | <img width="200px" height="360px" src="ss_landing_page_3.jpg"> |
+|<img width="200px" height="360px" src="docs/images/ss_splash_screen.jpg"> | <img width="200px" height="360px" src="docs/images/ss_landing_page_1.jpg"> | <img width="200px" height="360px" src="docs/images/ss_landing_page_2.jpg"> | <img width="200px" height="360px" src="docs/images/ss_landing_page_3.jpg"> |
 
 ## Colaborator
 Very open to anyone, I'll write your name under this, please contribute by sending an email to me
