@@ -7,13 +7,13 @@ Aplikasi Pencari Penjahit Berbasis Android Menggunakan Teknologi Location Based 
 
 Dalam menentukan kriteria, saya menggunakan data dari penelitian sebelumnya milik sdr Susandri dkk pada tahun 2020 mengenai Aplikasi Jasa Jahit Pakaian Berbasis Mobile dengan Teknologi Location Based Services dan Metode SMART dalam menentukan kriteria yang dibutuhkan untuk diimplementasikan ke dalam sistem.
 Berikut kriteria yang dipilih:
-1. Kriteria kualitas pekerjaan
+1. Kriteria kualitas pekerjaan.
    Pada kriteria kualitas pekerjaan diambil berdasarkan penilaian mengenai kepuasan hasil jahitan yang dilakukan oleh penjahit.
-2. Kriteria lama waktu pengerjaan
+2. Kriteria lama waktu pengerjaan.
    Pada kriteria lama waktu pengerjaan diambil berdasarkan penilaian kecepatan dan ketepatan waktu penjahit dalam menyelesaikan jahitan.
-3. Kriteria layanan penjahit
+3. Kriteria layanan penjahit.
    Pada kriteria layanan penjahit diambil berdasarkan penilaian mengenai keramahan dan respon penjahit pada saat terjadinya pemesanan hingga jahitan selesai.
-4. Kriteria harga jasa jahit
+4. Kriteria harga jasa jahit.
    Pada kriteria layanan penjahit diambil berdasarkan penilaian mengenai kecocokan harga dengan hasil yang diberikan. 
    
 Dalam menentukan bobot kriteria dan parameter untuk setiap kriteria dengan memberikan bobot kriteria pada masing-masing kriteria dengan menggunakan interval 1-100 untuk masing-masing kriteria dengan prioritas terpenting. 
@@ -51,5 +51,5 @@ Waiting for your contribution
 
 ![Screenshot Mad Score Summary](docs/images/mad_score/summary.png?raw=true)
 ![Screenshot Mad Score Kotlin](docs/images/mad_score/kotlin.png?raw=true)
-![Screenshot Mad Score Android Studio](docs/images/studio.png?raw=true)
-![Screenshot Mad Score Jetpack](docs/images/jetpack.png?raw=true)
+![Screenshot Mad Score Android Studio](docs/images/mad_score/studio.png?raw=true)
+![Screenshot Mad Score Jetpack](docs/images/mad_score/jetpack.png?raw=true)
