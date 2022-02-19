@@ -23,14 +23,35 @@ Setiap kriteria dibagi dalam tiga parameter yang berbeda, diantaranya yaitu:
 3. Layanan Penjahit : 1 tidak suka, 2 suka, 3 sangat suka.
 4. Harga Jasa Jahit : 1 tinggi, 2 sedang, 3 rendah.
 
-Download the application [here](https://drive.google.com/drive/folders/1bp0LWzJ0XXViDGqM-BnUzkKF_stwFPIi).
+## Final Task (Skipsi)
 
-Watch the demo video of the application [here](https://drive.google.com/drive/u/4/my-drive).
+- Download the application [here](https://drive.google.com/drive/folders/1bp0LWzJ0XXViDGqM-BnUzkKF_stwFPIi). 
+- Watch the demo video of the application [here](https://drive.google.com/drive/u/4/my-drive).
+
+## Informatics Lecturers
+
+- Retno Mumpuni, S.Kom, M.Sc. (NPT. 172198 70 716054) - retnomumpuni.if@upnjatim.ac.id
+- Hendra Maulana, S.Kom, M.Kom. (NPT. 201198 31 223248)- hendra.maulana.if@upnjatim.ac.id
+
+## Architecture
+-   Pattern  [Model-View-ViewModel](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)  (MVVM) facilitating a [separation](https://en.wikipedia.org/wiki/Separation_of_concerns) of development of the graphical user interface.
+
+## Version Release
+This Is Latest Release
+
+    ~ Beta Release
+    $version_release = 1.0.0
+
+
+
+## Diagram
+
+
 
 ## Screenshot Application
 
-|Splash Screen |   Landing Page (1)              |   Landing Page (2)    | Landing Page (3) |
-|:------------------:|:----------------------------:|:---------------------:|:-----------------:|
+| Splash Screen | Landing Page (1) | Landing Page (2) | Landing Page (3) |
+|:-------------:|:----------------:|:----------------:|:----------------:|
 |<img width="200px" height="360px" src="docs/images/ss_splash_screen.jpg"> | <img width="200px" height="360px" src="docs/images/ss_landing_page_1.jpg"> | <img width="200px" height="360px" src="docs/images/ss_landing_page_2.jpg"> | <img width="200px" height="360px" src="docs/images/ss_landing_page_3.jpg"> |
 
 ## Colaborator
@@ -42,7 +63,7 @@ Very open to anyone, I'll write your name under this, please contribute by sendi
 
 Name of Contributor
 - Feronika Nur Maghfiro
-- Waiting List
+- Muhammad Faisal Amir
 - Waiting List
 
 Waiting for your contribution
@@ -50,10 +71,10 @@ Waiting for your contribution
 ## Adding Information
 
 - Please enjoy and you can fork or give a star for this project
-- Free to follow my github account
+- Free to follow my github account feronikanm
 - Hope this project can help, thankyou for the support
 
-## Mad Scorecard Result
+## MAD Scorecard Result
 
 ![Screenshot Mad Score Summary](docs/images/mad_score/summary.png?raw=true)
 ![Screenshot Mad Score Kotlin](docs/images/mad_score/kotlin.png?raw=true)
