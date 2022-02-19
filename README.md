@@ -1,4 +1,4 @@
-## Simple Paint Android Apps with Kotlin
+## GoJahit Client - Aplikasi Pencari Penjahit
 
 ![Headline](docs/images/headline_client.png?raw=true)
 
@@ -29,7 +29,7 @@ Download the apps [here](https://drive.google.com/drive/folders/1bp0LWzJ0XXViDGq
 
 |Free Hand Drawing |   Draw a Line              |   Draw a Rectangle    | Draw a Circle |
 |:------------------:|:----------------------------:|:---------------------:|:-----------------:|
-|<img width="200px" height="360px" src="docs/images/ss_pencil.png"> | <img width="200px" height="360px" src="docs/images/ss_line.png"> | <img width="200px" height="360px" src="docs/images/ss_rectangle.png"> | <img width="200px" height="360px" src="docs/images/ss_circle.png"> |
+|<img width="200px" height="360px" src="docs/images/ss_splash_screen.jpg"> | <img width="200px" height="360px" src="docs/images/ss_landing_page_1.jpg"> | <img width="200px" height="360px" src="docs/images/ss_landing_page_2.jpg"> | <img width="200px" height="360px" src="ss_landing_page_3.jpg"> |
 
 ## Colaborator
 Very open to anyone, I'll write your name under this, please contribute by sending an email to me
