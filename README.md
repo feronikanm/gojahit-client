@@ -54,11 +54,10 @@ This Is Latest Release
 
 | Memilih User | Login Pengguna | Register Pengguna | Login Penjahit |  Register Penjahit |
 |:------------:|:--------------:|:-----------------:|:--------------:|:------------------:|
-|<img width="120px" height="210px" src="docs/images/ss_memilih_user.png"> | <img width="120px" height="210px" src="docs/images/ss_login_pengguna.png"> | <img width="120px" height="210px" src="docs/images/ss_register_pengguna.png"> | <img width="120px" height="210px" src="docs/images/ss_login_penjahit.png"> | <img width="120px" height="210px" src="docs/images/ss_register_penjahit.png"> |
+|<img width="120px" height="250px" src="docs/images/ss_memilih_user.png"> | <img width="120px" height="250px" src="docs/images/ss_login_pengguna.png"> | <img width="120px" height="250px" src="docs/images/ss_register_pengguna.png"> | <img width="120px" height="250px" src="docs/images/ss_login_penjahit.png"> | <img width="120px" height="250px" src="docs/images/ss_register_penjahit.png"> |
 
 ## Colaborator
 
-ganti tidak
 Very open to anyone, I'll write your name under this, please contribute by sending an email to me
 
 - Mail to feronikanm@gmail.com
