@@ -5,21 +5,16 @@
 ## About This Project
 Aplikasi Pencari Penjahit Berbasis Android Menggunakan Teknologi Location Based Services dan Metode SMART. Teknologi Location Based Services (LBS) digunakan untuk penentuan lokasi, sedangkan metode SMART digunakan untuk perangkingan penjahit.
 
-Dalam menentukan kriteria, saya menggunakan data dari penelitian sebelumnya milik sdr Susandri dkk pada tahun 2020 mengenai Aplikasi Jasa Jahit Pakaian Berbasis Mobile dengan Teknologi Location Based Services dan Metode SMART dalam menentukan kriteria yang dibutuhkan untuk diimplementasikan ke dalam sistem.
+Dalam menentukan kriteria, saya menggunakan data dari penelitian sebelumnya milik sdr Susandri dan rekan-rekannya pada tahun 2020 mengenai Aplikasi Jasa Jahit Pakaian Berbasis Mobile dengan Teknologi Location Based Services dan Metode SMART dalam menentukan kriteria yang dibutuhkan untuk diimplementasikan ke dalam sistem.
 Berikut kriteria yang dipilih:
-
 1. Kriteria kualitas pekerjaan.
-   
-Pada kriteria kualitas pekerjaan diambil berdasarkan penilaian mengenai kepuasan hasil jahitan yang dilakukan oleh penjahit.
+   Pada kriteria kualitas pekerjaan diambil berdasarkan penilaian mengenai kepuasan hasil jahitan yang dilakukan oleh penjahit.
 2. Kriteria lama waktu pengerjaan.
-   
-Pada kriteria lama waktu pengerjaan diambil berdasarkan penilaian kecepatan dan ketepatan waktu penjahit dalam menyelesaikan jahitan.
+   Pada kriteria lama waktu pengerjaan diambil berdasarkan penilaian kecepatan dan ketepatan waktu penjahit dalam menyelesaikan jahitan.
 3. Kriteria layanan penjahit.
-   
-Pada kriteria layanan penjahit diambil berdasarkan penilaian mengenai keramahan dan respon penjahit pada saat terjadinya pemesanan hingga jahitan selesai.
+   Pada kriteria layanan penjahit diambil berdasarkan penilaian mengenai keramahan dan respon penjahit pada saat terjadinya pemesanan hingga jahitan selesai.
 4. Kriteria harga jasa jahit.
-
-Pada kriteria layanan penjahit diambil berdasarkan penilaian mengenai kecocokan harga dengan hasil yang diberikan. 
+   Pada kriteria layanan penjahit diambil berdasarkan penilaian mengenai kecocokan harga dengan hasil yang diberikan. 
    
 Dalam menentukan bobot kriteria dan parameter untuk setiap kriteria dengan memberikan bobot kriteria pada masing-masing kriteria dengan menggunakan interval 1-100 untuk masing-masing kriteria dengan prioritas terpenting. 
 Setiap kriteria dibagi dalam tiga parameter yang berbeda, diantaranya yaitu:
@@ -29,7 +24,6 @@ Setiap kriteria dibagi dalam tiga parameter yang berbeda, diantaranya yaitu:
 4. Harga Jasa Jahit : 1 tinggi, 2 sedang, 3 rendah.
 
 Download the application [here](https://drive.google.com/drive/folders/1bp0LWzJ0XXViDGqM-BnUzkKF_stwFPIi).
-
 Watch the demo video of the application [here](https://drive.google.com/drive/u/4/my-drive).
 
 ## Screenshot Application
