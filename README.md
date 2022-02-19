@@ -52,6 +52,10 @@ This Is Latest Release
 |:-------------:|:----------------:|:----------------:|:----------------:|
 |<img width="200px" height="360px" src="docs/images/ss_splash_screen.jpg"> | <img width="200px" height="360px" src="docs/images/ss_landing_page_1.jpg"> | <img width="200px" height="360px" src="docs/images/ss_landing_page_2.jpg"> | <img width="200px" height="360px" src="docs/images/ss_landing_page_3.jpg"> |
 
+| Memilih User | Login Pengguna | Register Pengguna | Login Penjahit |  Register Penjahit |
+|:------------:|:--------------:|:-----------------:|:--------------:|:------------------:|
+|<img width="200px" height="360px" src="docs/images/ss_memilih_user.png"> | <img width="200px" height="360px" src="docs/images/ss_login_pengguna.png"> | <img width="200px" height="360px" src="docs/images/ss_register_pengguna.png"> | <img width="200px" height="360px" src="docs/images/ss_login_penjahit.png"> | <img width="200px" height="360px" src="docs/images/ss_register_penjahit.png"> |
+
 ## Colaborator
 Very open to anyone, I'll write your name under this, please contribute by sending an email to me
 
