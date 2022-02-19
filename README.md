@@ -54,7 +54,7 @@ This Is Latest Release
 
 | Memilih User | Login Pengguna | Register Pengguna | Login Penjahit |  Register Penjahit |
 |:------------:|:--------------:|:-----------------:|:--------------:|:------------------:|
-|<img width="130px" height="270px" src="docs/images/ss_memilih_user.png"> | <img width="130px" height="270px" src="docs/images/ss_login_pengguna.png"> | <img width="130px" height="270px" src="docs/images/ss_register_pengguna.png"> | <img width="130px" height="270px" src="docs/images/ss_login_penjahit.png"> | <img width="130px" height="270px" src="docs/images/ss_register_penjahit.png"> |
+|<img width="140px" height="300px" src="docs/images/ss_memilih_user.png"> | <img width="140px" height="300px" src="docs/images/ss_login_pengguna.png"> | <img width="140px" height="300px" src="docs/images/ss_register_pengguna.png"> | <img width="140px" height="300px" src="docs/images/ss_login_penjahit.png"> | <img width="140px" height="300px" src="docs/images/ss_register_penjahit.png"> |
 
 ## Colaborator
 
