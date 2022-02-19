@@ -24,6 +24,7 @@ Setiap kriteria dibagi dalam tiga parameter yang berbeda, diantaranya yaitu:
 4. Harga Jasa Jahit : 1 tinggi, 2 sedang, 3 rendah.
 
 Download the application [here](https://drive.google.com/drive/folders/1bp0LWzJ0XXViDGqM-BnUzkKF_stwFPIi).
+Watch the demo video of the application [here](https://drive.google.com/drive/u/4/my-drive).
 
 ## Screenshot Application
 
@@ -34,9 +35,9 @@ Download the application [here](https://drive.google.com/drive/folders/1bp0LWzJ0
 ## Colaborator
 Very open to anyone, I'll write your name under this, please contribute by sending an email to me
 
-- Mail to firaferonika27@gmail.com
+- Mail to feronikanm@gmail.com
 - Subject : Github _ [Github-Username-Account] _ [Language] _ [Repository-Name]
-- Example : Github_feronikanm_kotlin_simple-paint
+- Example : Github_feronikanm_kotlin_gojahit_client
 
 Name of Contributor
 - Feronika Nur Maghfiro
@@ -45,10 +46,13 @@ Name of Contributor
 
 Waiting for your contribution
 
-## Attention !!!
+## Adding Information
+
 - Please enjoy and you can fork or give a star for this project
 - Free to follow my github account
 - Hope this project can help, thankyou for the support
+
+## Mad Scorecard Result
 
 ![Screenshot Mad Score Summary](docs/images/mad_score/summary.png?raw=true)
 ![Screenshot Mad Score Kotlin](docs/images/mad_score/kotlin.png?raw=true)
