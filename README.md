@@ -23,7 +23,7 @@ Setiap kriteria dibagi dalam tiga parameter yang berbeda, diantaranya yaitu:
 3. Layanan Penjahit : 1 tidak suka, 2 suka, 3 sangat suka.
 4. Harga Jasa Jahit : 1 tinggi, 2 sedang, 3 rendah.
 
-Download the apps [here](https://drive.google.com/file/d/11SrHqBEjH-kYXpc8DcDnW3SgZT2MC81r/view?usp=sharing).
+Download the apps [here](https://drive.google.com/drive/folders/1bp0LWzJ0XXViDGqM-BnUzkKF_stwFPIi).
 
 ## Screenshot Apps
 
@@ -47,7 +47,8 @@ Waiting for your contribution
 
 ## Attention !!!
 - Please enjoy and you can fork or give a star for this project
-- Don't forget to follow my Github Account, thankyou
+- Free to follow my github account
+- Hope this project can help, thankyou for the support
 
 ![Screenshot Mad Score Summary](docs/images/mad_score/summary.png?raw=true)
 ![Screenshot Mad Score Kotlin](docs/images/mad_score/kotlin.png?raw=true)
