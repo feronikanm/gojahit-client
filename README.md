@@ -24,6 +24,7 @@ Setiap kriteria dibagi dalam tiga parameter yang berbeda, diantaranya yaitu:
 4. Harga Jasa Jahit : 1 tinggi, 2 sedang, 3 rendah.
 
 Download the application [here](https://drive.google.com/drive/folders/1bp0LWzJ0XXViDGqM-BnUzkKF_stwFPIi).
+
 Watch the demo video of the application [here](https://drive.google.com/drive/u/4/my-drive).
 
 ## Screenshot Application
