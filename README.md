@@ -61,7 +61,7 @@ Very open to anyone, I'll write your name under this, please contribute by sendi
 
 Name of Contributor
 - Feronika Nur Maghfiro
-- Muhammad Faisal Amir - [Github](https://github.com/amirisback/).
+- Muhammad Faisal Amir - [Github](https://github.com/amirisback/)
 - Waiting List
 
 Waiting for your contribution
