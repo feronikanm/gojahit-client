@@ -95,7 +95,7 @@ Min API level is set to 21, so the presented approach is suitable for over 94% o
 
 ## Thank you Note
 
-Alhamdulillah Puji Syukur kepada [Allah Subhaanahu wa ta’aalaa]() yang telah memberikan
+Alhamdulillah wa syukurillah. Puji Syukur kepada [Allah Subhaanahu wa ta’aalaa]() yang telah memberikan
 rahmat, hidayah, dan pertolongan-Nya. Karena hanya dengan ridho-Nya
 saya mampu berfikir dan menyelesaikan skripsi ini.
 Banyak dukungan dan bantuan yang didapatkan selama penelitian hingga
@@ -160,9 +160,9 @@ Waiting for your contribution
 
 ## Adding Information
 
-- Hope this project can help, thankyou for the support.
-- Please enjoy and you can fork or give a star for this project.
-- Free to follow my github account [feronikanm](https://github.com/feronikanm).
+- Hope this project can help, and thankyou for the support.
+- Please enjoy, and you can support with fork or give a star.
+- Feel free to follow my github account [feronikanm](https://github.com/feronikanm).
 
 ## MAD Scorecard Result
 
