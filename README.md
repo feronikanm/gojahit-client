@@ -56,8 +56,8 @@ This Is Latest Release
 
 ## Informatics Lecturers
 
-- Retno Mumpuni, S.Kom, M.Sc. (NPT. 172198 70 716054) - retnomumpuni.if@upnjatim.ac.id
-- Hendra Maulana, S.Kom, M.Kom. (NPT. 201198 31 223248)- hendra.maulana.if@upnjatim.ac.id
+- Ibu Retno Mumpuni, S.Kom, M.Sc. (NPT. 172198 70 716054) - retnomumpuni.if@upnjatim.ac.id
+- Bapak Hendra Maulana, S.Kom, M.Kom. (NPT. 201198 31 223248)- hendra.maulana.if@upnjatim.ac.id
 
 ## Architecture
 
