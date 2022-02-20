@@ -123,8 +123,8 @@ ucapkan kepada:
 
 - Mas [Muhammad Faisal Amir](linkedin.com/in/faisalamircs), my brother, who always supported me, encourage me to be confident, and suggest me with magic word 'JUST DO IT'.
 - Sdri [Annisa Raudya Wibowo](linkedin.com/in/annisawibowo), help me with the query and help me to understand SQL queries.
-- Mas [Mochamad Nor Fadilah](linkedin.com/in/fadil-mn), help me to get every bobot kriteria result and calculate the normalisasi, and show a way to put SQL query to PHP Code.
-- Sdr [Mifa Abiyyu H](https://www.linkedin.com/in/mifaabiyyu), help me to rearrange the result of the algorithm, so it doesn't come out double, and correct to be a descending value.
+- Mas [Mochamad Nor Fadilah](linkedin.com/in/fadil-mn), help me to get every bobot kriteria result and calculate the normalisasi, and show how to put SQL query to PHP Code.
+- Sdr [Mifa Abiyyu H](https://www.linkedin.com/in/mifaabiyyu), help me to rearrange the result of the algorithm, so it doesn't come out double, and formed to be descending values.
 - Sdri [Chilyatun Nisa'](linkedin.com/in/chilaact), help to ensure that my algorithm is true.
 - Sdri [Afifah Nur Ariani](linkedin.com/in/afifahnurariani) from bangkit, helped me with the application landing page, because I adopted it from our bangkit final project.
 - Sdri [Yuniar Intan Pratiwi](https://www.linkedin.com/in/yuniar-intan-pratiwi-9667411a), help me to get data penjahit in Probolinggo City.
