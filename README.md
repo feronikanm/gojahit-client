@@ -122,19 +122,19 @@ ucapkan kepada:
 ## Special thanks to
 
 - Mas [Muhammad Faisal Amir](linkedin.com/in/faisalamircs), my brother, who always supported me, encourage me to be confident, and suggest me with magic word like 'Just do it'.
-- Sdri [Annisa Raudya Wibowo](linkedin.com/in/annisawibowo), help me with query and understand SQL queries.
+- Sdri [Annisa Raudya Wibowo](linkedin.com/in/annisawibowo), help me with the query and understand SQL queries.
 - Mas [Mochamad Nor Fadilah](linkedin.com/in/fadil-mn), help me to get every bobot kriteria result and calculate the normalisasi, and show a way to put SQL query to PHP Code.
 - Sdr [Mifa Abiyyu H](https://www.linkedin.com/in/mifaabiyyu), help me to rearrange the result of the algorithm, so it doesn't come out double, and correct to be a descending value.
 - Sdri [Chilyatun Nisa'](linkedin.com/in/chilaact), help to ensure that my algorithm is true.
 - Sdri [Afifah Nur Ariani](linkedin.com/in/afifahnurariani) from bangkit, helped me with the application landing page, because I adopted it from our bangkit final project.
-- Sdri [Yuniar Intan Pratiwi](https://www.linkedin.com/in/yuniar-intan-pratiwi-9667411a), help me to get data penjahit in Probolinggo City
-- Sdri [Natasha Widyasari](https://www.instagram.com/natasha_ws/?hl=en), help me to get data penjahit
+- Sdri [Yuniar Intan Pratiwi](https://www.linkedin.com/in/yuniar-intan-pratiwi-9667411a), help me to get data penjahit in Probolinggo City.
+- Sdri [Natasha Widyasari](https://www.instagram.com/natasha_ws/?hl=en), help me to get data penjahit.
 - Sdri [Alifia Setyaning Yuniarti](linkedin.com/in/alifia-setiyaning-yuniarti-a02490214), help me to get data penjahit and fill it to the application and website, also fill data kategori penjahit to the application.
 - Sdri [Aviatika Inayatullah](linkedin.com/in/aviatika-inayatullah-ba5184216), help me to fill data kategori penjahit to the application.
 - Srdi [Fajar Andhika Putra](linkedin.com/in/fajar-andhika-09722410b), help me to fix and synchronize CDM and PDM with database.
 - Sdri [Muhammad Amir Fanani](linkedin.com/in/amir-fanani-bb0b891a2), help me with his VISA card in my Google Cloud Pratform for Google API Location.
 - Sdri [Annisa Fadhilasari](https://www.instagram.com/nisafdlsr/?hl=en), help me with some discussion and information about skripsi.
-- Mbak [Ilvi Nur Diana](linkedin.com/in/ilvi-nur-diana-835a59b9), and Mas [Muhammad Thoriq Sholihuddin A.](), help me write the laporan with shared theirs.
+- Mbak [Ilvi Nur Diana](linkedin.com/in/ilvi-nur-diana-835a59b9), and Mas [Muhammad Thoriq Sholihuddin](), help me write the laporan with shared theirs.
 
 ## Colaborator
 
