@@ -95,7 +95,7 @@ Min API level is set to 21, so the presented approach is suitable for over 94% o
 
 ## Thank you Note
 
-Puji Syukur kepada [Allah Subhaanahu wa ta’aalaa]() yang telah memberikan
+Alhamdulillah Puji Syukur kepada [Allah Subhaanahu wa ta’aalaa]() yang telah memberikan
 rahmat, hidayah, dan pertolongan-Nya. Karena hanya dengan ridho-Nya
 saya mampu berfikir dan menyelesaikan skripsi ini.
 Banyak dukungan dan bantuan yang didapatkan selama penelitian hingga
