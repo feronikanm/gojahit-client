@@ -93,7 +93,7 @@ Min API level is set to 21, so the presented approach is suitable for over 94% o
 
 ## Thank you Note
 
-Puji Syukur kepada [Allah Subhaanahu wa ta’aalaa] yang telah memberikan
+Puji Syukur kepada [Allah Subhaanahu wa ta’aalaa]() yang telah memberikan
 rahmat, hidayah, dan pertolongan-Nya. Karena hanya dengan ridho-Nya
 saya mampu berfikir dan menyelesaikan skripsi ini.
 Banyak dukungan dan bantuan yang didapatkan selama penelitian hingga
@@ -104,7 +104,7 @@ Saya menyadari masih banyak kekurangan mengingat keterbatasan
 pengetahuan dan kemampuan. Oleh karena itu saya menerima segala
 kritik dan saran dari semua pihak dalam penyempurnaan skripsi ini.
 
-Dengan izin dan ridho [Allah Subhaanahu wa ta’aalaa] penelitian dan
+Dengan izin dan ridho [Allah Subhaanahu wa ta’aalaa]() penelitian dan
 studi ini berhasil terselesaikan. Selain itu, dengan segala hormat, ucapan terima
 kasih yang sebesar–besarnya saya ucapkan kepada seluruh pihak terkait yang telah
 membantu atas selesainya skripsi ini. Tanpa bantuan dan dukungan mereka,
@@ -132,7 +132,7 @@ ucapkan kepada:
 - Srdi [Fajar Andhika Putra](linkedin.com/in/fajar-andhika-09722410b), help me fix and synchronize the CDM and PDM with the database.
 - Sdri [Muhammad Amir Fanani](linkedin.com/in/amir-fanani-bb0b891a2), help me with his VISA card in my Google Cloud Pratform for Google API Location.
 - Sdri [Annisa Fadhilasari](https://www.instagram.com/nisafdlsr/?hl=en), help me with some discussion and information about skripsi.
-- Mbak [Ilvi Nur Diana](linkedin.com/in/ilvi-nur-diana-835a59b9), and Mas [Muhammad Thoriq Sholihuddin A.] help me write the laporan with shared to me their laporan.
+- Mbak [Ilvi Nur Diana](linkedin.com/in/ilvi-nur-diana-835a59b9), and Mas [Muhammad Thoriq Sholihuddin A.]() help me write the laporan with shared to me their laporan.
 
 ## Colaborator
 
@@ -159,7 +159,7 @@ Waiting for your contribution
 ## Adding Information
 
 - Please enjoy and you can fork or give a star for this project
-- Free to follow my github account feronikanm
+- Free to follow my github account [feronikanm](https://github.com/feronikanm)
 - Hope this project can help, thankyou for the support
 
 ## MAD Scorecard Result
