@@ -134,7 +134,7 @@ ucapkan kepada:
 - Srdi [Fajar Andhika Putra](linkedin.com/in/fajar-andhika-09722410b), help me to fix and synchronize CDM and PDM with database.
 - Sdri [Muhammad Amir Fanani](linkedin.com/in/amir-fanani-bb0b891a2), help me with his VISA card in my Google Cloud Pratform for Google API Location.
 - Sdri [Annisa Fadhilasari](https://www.instagram.com/nisafdlsr/?hl=en), help me with some discussion and information about skripsi.
-- Mbak [Ilvi Nur Diana](linkedin.com/in/ilvi-nur-diana-835a59b9), and Mas [Muhammad Thoriq Sholihuddin A.](), help me write the laporan with shared their laporan.
+- Mbak [Ilvi Nur Diana](linkedin.com/in/ilvi-nur-diana-835a59b9), and Mas [Muhammad Thoriq Sholihuddin A.](), help me write the laporan with shared theirs.
 
 ## Colaborator
 
