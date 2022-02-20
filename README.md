@@ -117,6 +117,7 @@ ucapkan kepada:
 - Ibu Retno dan Bapak Hendra sebagai Dosen Pembimbing.
 - Seluruh Bapak dan Ibu Dosen Program Studi Informatika UPN “Veteran” Jawa Timur yang telah mendidik dan memberikan ilmunya.
 - Teman seperjuangan yang ada dimanapun yang selalu mendoakan, mengingatkan, menghibur, dan menyemangati dalam pengerjaan skripsi ini.
+- Tim Work yang telah menjadi rekan, dan sering memberikan bantuan dan kerjasamanya selama kuliah.
 - Teman-teman Informatika angkatan 2017 dan kakak maupun adik tingkat serta pihak-pihak lain yang terkait yang tidak disebutkan atas segala bentuk kepeduliannya.
 
 ## Special thanks to
