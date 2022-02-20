@@ -121,7 +121,7 @@ ucapkan kepada:
 
 ## Special thanks to
 
-- Mas [Muhammad Faisal Amir](linkedin.com/in/faisalamircs), my brother, who always supported me, encourage me to be confident, and suggest me with magic word like 'Just do it'.
+- Mas [Muhammad Faisal Amir](linkedin.com/in/faisalamircs), my brother, who always supported me, encourage me to be confident, and suggest me with magic word 'JUST DO IT'.
 - Sdri [Annisa Raudya Wibowo](linkedin.com/in/annisawibowo), help me with the query and understand SQL queries.
 - Mas [Mochamad Nor Fadilah](linkedin.com/in/fadil-mn), help me to get every bobot kriteria result and calculate the normalisasi, and show a way to put SQL query to PHP Code.
 - Sdr [Mifa Abiyyu H](https://www.linkedin.com/in/mifaabiyyu), help me to rearrange the result of the algorithm, so it doesn't come out double, and correct to be a descending value.
