@@ -30,7 +30,7 @@ This Is Latest Release
     ~ Beta Release
     $version_release = 1.0.0
 
-## Test Case Framework
+## Test Case Project
 
 - Website Admin Scenario Test [Click Here]()
 - Android Apps Scenario Test [Click Here]()
