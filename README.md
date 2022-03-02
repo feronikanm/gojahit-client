@@ -48,10 +48,7 @@ This Is Latest Release
 
 ### Final Task (Skipsi)
 
-- Download the application [here](https://drive.google.com/drive/folders/1bp0LWzJ0XXViDGqM-BnUzkKF_stwFPIi). 
-
-[comment]: <> (- Watch the demo video of the application [here]&#40;https://drive.google.com/drive/u/4/my-drive&#41;.)
-
+- Download the application [here](https://drive.google.com/drive/folders/1bp0LWzJ0XXViDGqM-BnUzkKF_stwFPIi).
 - Watch the demo video of the GoJahit application [here](https://www.youtube.com/watch?v=LMil55RY9Ho).
 - Watch the demo video of the GoJahit Server - website admin [here](https://www.youtube.com/watch?v=okxcWtx5dZU&t=5s).
 - Visit the website admin [here]()
