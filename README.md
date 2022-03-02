@@ -49,7 +49,11 @@ This Is Latest Release
 ### Final Task (Skipsi)
 
 - Download the application [here](https://drive.google.com/drive/folders/1bp0LWzJ0XXViDGqM-BnUzkKF_stwFPIi). 
-- Watch the demo video of the application [here](https://drive.google.com/drive/u/4/my-drive).
+
+[comment]: <> (- Watch the demo video of the application [here]&#40;https://drive.google.com/drive/u/4/my-drive&#41;.)
+
+- Watch the demo video of the GoJahit application [here](https://www.youtube.com/watch?v=LMil55RY9Ho).
+- Watch the demo video of the GoJahit Server - website admin [here](https://www.youtube.com/watch?v=okxcWtx5dZU&t=5s).
 - Visit the website admin [here]()
 - Documentation of the GoJahit Client Application [here]()
 - Documentation of the GoJahit Server [here]()
@@ -80,6 +84,14 @@ Min API level is set to 21, so the presented approach is suitable for over 94% o
 -   [Compose](https://www.jetbrains.com/lp/compose/) - Compose for Desktop simplifies and accelerates UI development for desktop applications, and allows extensive UI code sharing between Android and desktop applications. Currently in alpha.
 
 ## Diagram
+
+### Use Case Diagram
+
+
+### Activity Diagram
+
+
+### Sequence Diagram
 
 ## REST API Documentation
 
@@ -146,7 +158,7 @@ Very open to anyone, I'll write your name under this, please contribute by sendi
 - Example : Github_feronikanm_kotlin_gojahit_client
 
 Name of Contributor
-- Feronika Nur Maghfiro
+- Feronika Nur Maghfiro - [Github](https://github.com/feronikanm/)
 - Muhammad Faisal Amir - [Github](https://github.com/amirisback/)
 - Waiting List
 
