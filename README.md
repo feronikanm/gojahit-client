@@ -78,7 +78,6 @@ Min API level is set to 21, so the presented approach is suitable for over 94% o
 -   [Dagger2](https://dagger.dev/)  - dependency injector for replacement all Factory classes.
 -   [Retrofit2](https://square.github.io/retrofit/)  - type-safe HTTP client.
 -   [Glide](https://github.com/bumptech/glide)  - image loading and caching library.
--   [Compose](https://www.jetbrains.com/lp/compose/) - Compose for Desktop simplifies and accelerates UI development for desktop applications, and allows extensive UI code sharing between Android and desktop applications. Currently in alpha.
 
 ## Diagram
 
